@@ -1,0 +1,69 @@
+#game_body2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+#game_body2 .line:first-child .key:nth-child(2){
+    background-color: rgb(164, 252, 129);
+}
+
+#game_body2 .line:first-child .key:nth-child(2):active{
+    background-color: rgb(164, 252, 129);
+    box-shadow: 0px 0px 5px 1px rgb(164, 252, 129);
+}
+
+#game_body2 .line:first-child .key:nth-child(6){
+    background-color: rgb(113, 120, 255);
+}
+
+#game_body2 .line:nth-child(3) .key:nth-child(4){
+    background-color: rgb(231, 129, 252);
+}
+
+#game_body2 .space{
+    opacity: 0.00;
+}
+
+#game_body2 .space:active{
+    opacity: 0.4;
+    color:#FF0000;
+    background-color: white;
+    box-shadow: 0px 0px 20px 10px #FF0000;
+}
+
+#game_body2 .key:not(#game_body2 .line:nth-child(3) .key:nth-child(4),#game_body2 .line:first-child .key:nth-child(6),#game_body2 .line:first-child .key:nth-child(2)) {
+    opacity: 0.00;
+}
+
+#game_body2 .key:not(#game_body2 .line:nth-child(3) .key:nth-child(4),#game_body2 .line:first-child .key:nth-child(6),#game_body2 .line:first-child .key:nth-child(2)):active {
+    opacity: 0.4;
+    color:#FF0000;
+    background-color: white;
+    box-shadow: 0px 0px 20px 10px #FF0000;
+}
+
+#game_header2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#hand2 {
+    width: 15vw;
+    height: 15vw;
+    align-self: center;
+}
+
+
+#timer2 {
+    font-size: 3vw;
+    border:1px solid #000;
+    height:25%; 
+    margin-top:20px;
+    margin-left:20px;
+    border-radius: 10%;
+    padding:5px;
+    box-shadow: 0 0 3px #000;
+}

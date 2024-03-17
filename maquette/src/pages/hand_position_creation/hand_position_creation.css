@@ -1,0 +1,131 @@
+.hand_position_creation h1 {
+    text-align: center;
+}
+
+.hand_position_creation a.exit {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height:60px;
+    text-decoration: none;
+}
+
+.hand_position_creation a.exit .button {
+    margin:10px;
+    padding: 10px;
+}
+
+.hand_position_creation a.exit img {
+    width: 20px;
+    height: 20px;
+}
+
+
+
+.hand_position_creation .global_option .option_type {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+
+
+.hand_position_creation .global_option .position_name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+}
+
+
+
+.hand_position_creation .global_option .hand_selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+}
+
+.hand_position_creation .global_option .hand_selection .choice .hand {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5px;
+    background-color: #cacaca;
+    box-shadow: 0 0 2px #000;
+    padding-bottom: 10px;
+}
+
+.hand_position_creation .global_option .hand_selection .choice .hand img {
+    width: 10vw;
+    height: 20vh;
+    margin-bottom: 10px;
+}
+
+
+
+.hand_position_creation .global_option .position_directory {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+}
+
+
+
+.hand_position_creation .global_option .description_tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+}
+
+
+
+.hand_position_creation .global_option .validation_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+}
+
+.hand_position_creation .validation_button .button {
+    font-size: 20px;
+}
+
+
+
+.global_option .keyboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 50vh;
+    padding-top: 10px;
+    /*padding-bottom: 10px;
+    border-bottom: 1px solid #000;*/
+}
+
+
+
+.global_option .choice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

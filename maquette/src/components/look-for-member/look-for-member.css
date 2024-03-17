@@ -1,0 +1,14 @@
+.look-for-member{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+.look-for-member input[type="search"]{
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 20px;
+}

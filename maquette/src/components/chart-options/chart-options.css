@@ -1,0 +1,28 @@
+.chart-options {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.chart-options .switch {
+    margin: 5px;
+    width:30px;
+    height: 15px;
+}
+
+.chart-options .slider:before {
+    border-radius: 50%;
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 1px;
+    bottom: 1px;
+
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  transform: translateX(15px);
+}

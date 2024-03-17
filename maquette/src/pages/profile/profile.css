@@ -1,0 +1,6 @@
+.profile header img{
+    width: 10vw;
+    margin-bottom: 0;
+    object-fit: cover;
+    position: fixed;
+}

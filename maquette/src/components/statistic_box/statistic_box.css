@@ -1,0 +1,10 @@
+.box.statistic_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: white;
+}
+
+.button.statistic_button {
+    background-color: lightseagreen;
+}

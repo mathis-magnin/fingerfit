@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="french">
+
+<head>
+    <title>FingerFit</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <a href="/index.html" class="exit">
+        <matrio path="components/button/button"><img src="assets/cross.png"></matrio>
+    </a>
+
+    <h1>Options de la partie</h1>
+    <main class="option">
+        <section class="global-option">
+
+            <div class="hand-selection">
+                <label class="option-type">Choix de la main </label>
+                <div class="choice">
+                    <matrio path="components/button/button" class="hand">
+                        <img src="./assets/main_gauche.png" />
+                        <label>Main gauche</label>
+                    </matrio>
+                    <matrio path="components/button/button" class="hand">
+                        <img src="./assets/main_droite.png"/>
+                        <label>Main droite</label>
+                    </matrio>
+                </div>
+            </div>
+
+            <div class="choice" id="chrono">
+                <label class="option-type">Chronometre </label>
+                <matrio path="components/custom-checkbox/custom-checkbox"></matrio>
+            </div>
+
+            <div class="choice" id="time">
+                <label class="option-type">Definir un temps par position de main </label>
+                <div>
+                    <matrio path="components/custom-checkbox/custom-checkbox"></matrio>
+                    <input type="number" placeholder="Temps en secondes" />
+                </div>
+            </div>
+
+            <div class="choice" id="position">
+                <label class="option-type">Position des mains travaillees </label>
+                <a href="#popup">
+                    <matrio path="components/button/button">Choisir</matrio>
+                </a>
+                <div id="popup">
+                    <h2>Choisissez les positions souhaitees</h2>
+                    <div class="position-list">
+                        <a href="/option.html" class="exit">
+                            <matrio path="components/button/button"><img src="assets/cross.png"></matrio>
+                        </a>
+                        <a href="./option.html">
+                            <matrio path="components/hand-possibility/hand-possibility"></matrio> 
+                        </a>
+                        <matrio path="components/hand-possibility/hand-possibility"></matrio> 
+                    </div>
+                </div>
+            </div>
+        </section>
+        <a href="/game2.html">
+            <matrio path="components/button/button">Valider et Jouer</matrio>
+        </a>
+    </main>
+</body>
+
+</html>

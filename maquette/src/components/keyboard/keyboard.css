@@ -1,0 +1,11 @@
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 70vh;
+}
+
+.line {
+    display: flex;
+    justify-content: space-evenly;
+}

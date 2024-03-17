@@ -1,0 +1,72 @@
+.profil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.profil_description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #cacaca;
+    box-shadow: 0 0 3px #000;
+    border-radius: 10%;
+}
+
+.profil_description img {
+    filter: drop-shadow(0 0 10px #e6fffa);
+    width: 200px;
+    height: 200px;
+    border-radius: 10%;
+    margin: 20px 20px 0px 20px;
+}
+
+.profil_description p {
+    margin-top:10px;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top:20px;
+}
+
+.options button {
+    margin: 0 20px 0 20px;
+    padding:0 30px 0 30px;
+    border-radius: 10%;
+    height:50px;
+    background-color: rgb(27, 205, 30);
+    color:white;
+    box-shadow: 0 0 3px #000;
+}
+
+.options input[type="image"] {
+    border-radius: 50%;
+    padding:10px;
+    width: 25px;
+    height: 25px;
+    background-color: #cacaca;
+    box-shadow: 0 0 3px #000;
+}
+
+/* same as button */
+.options input[type="image"]:hover {
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+    filter:contrast(1.5);
+}
+
+.options input[type="image"]:active{
+    transform: scale(0.9);
+    transition-duration: 0.5s;
+    filter:contrast(0.5);
+}

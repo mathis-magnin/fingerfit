@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="french">
+
+<head>
+    <title>FingerFit</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body class="hand_position_creation">
+    <a href="/index.html" class="exit">
+        <matrio path="components/button/button"><img src="assets/cross.png"></matrio>
+    </a>
+
+    <h1>Creation d'une position de main</h1>
+
+    <section class="global_option">
+
+        <div class="position_name">
+            <label class="option_type">Nom de la position :</label>
+            <input type="text" placeholder="Nom de la position" />
+        </div>
+
+        <div class="hand_selection">
+            <label class="option_type">Main travaillee :</label>
+            <div class="choice">
+                <matrio path="components/button/button" class="hand">
+                    <img src="./assets/main_gauche.png" />
+                    <label>Main gauche</label>
+                </matrio>
+                <matrio path="components/button/button" class="hand">
+                    <img src="./assets/main_droite.png"/>
+                    <label>Main droite</label>
+                </matrio>
+            </div>
+        </div>
+
+        <div class="position_directory">
+            <label class="option_type">Dossier dans lequel enregistrer la position :</label>
+            <select name="option_position">
+                <option value="">--Dossier de positions de main--</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+
+        <div class="description_tab">
+            <label class="option_type">Description de la position :</label>
+            <matrio path="components/position_description_tab/position_description_tab"></matrio>
+        </div>
+
+        <div class="validation_button">
+            <matrio path="components/button/button">Valider</matrio>
+        </div>
+
+        <div class="keyboard">
+            <label class="option_type">Clavier :</label>
+            <matrio path="components/keyboard/keyboard"></matrio>
+        </div>
+
+    </section>
+</body>
