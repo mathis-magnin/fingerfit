@@ -5,12 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+  
 export class AppComponent {
-  public title: string = 'FingerFit';
-  
   constructor() { }
-  
-  onClick(): void {
-    console.log('Element clicked');
-  }
 }
