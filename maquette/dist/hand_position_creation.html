@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="french">
+<head>
+<title>FingerFit</title>
+<link href="./style.css" rel="stylesheet"/>
+</head>
+<body class="hand_position_creation">
+<a class="exit" href="/index.html">
+<button class="button" matrio-class="">
+<img src="assets/cross.png"/>
+</button>
+</a>
+<h1>Creation d'une position de main</h1>
+<section class="global_option">
+<div class="position_name">
+<label class="option_type">Nom de la position :</label>
+<input placeholder="Nom de la position" type="text"/>
+</div>
+<div class="hand_selection">
+<label class="option_type">Main travaillee :</label>
+<div class="choice">
+<button class="button hand">
+<img src="./assets/main_gauche.png"/><label>Main gauche</label>
+</button>
+<button class="button hand">
+<img src="./assets/main_droite.png"/><label>Main droite</label>
+</button>
+</div>
+</div>
+<div class="position_directory">
+<label class="option_type">Dossier dans lequel enregistrer la position :</label>
+<select name="option_position">
+<option value="">--Dossier de positions de main--</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+</select>
+</div>
+<div class="description_tab">
+<label class="option_type">Description de la position :</label>
+<div class="position_description_tab">
+<div class="box first_column">
+<p>Doigt</p>
+</div>
+<div class="box second_column">
+<p>Auriculaire</p>
+</div>
+<div class="box third_column">
+<p>Annulaire</p>
+</div>
+<div class="box fourth_column">
+<p>Majeur</p>
+</div>
+<div class="box fifth_column">
+<p>Index</p>
+</div>
+<div class="box sixth_column">
+<p>Pouce</p>
+</div>
+<div class="box first_column">
+<p>Touche</p>
+</div>
+<div>
+<div class="box key_selection_box second_column">
+<select class="key_selection">
+<option value="">--Choisir une touche--</option>
+<option value="A">A</option>
+<option value="B">B</option>
+<option value="C">C</option>
+<option value="D">D</option>
+<option value="E">E</option>
+<option value="F">F</option>
+<option value="G">G</option>
+<option value="H">H</option>
+<option value="I">I</option>
+<option value="J">J</option>
+<option value="K">K</option>
+<option value="L">L</option>
+<option value="M">M</option>
+<option value="N">N</option>
+<option value="O">O</option>
+<option value="P">P</option>
+<option value="Q">Q</option>
+<option value="R">R</option>
+<option value="S">S</option>
+<option value="T">T</option>
+<option value="U">U</option>
+<option value="V">V</option>
+<option value="W">W</option>
+<option value="X">X</option>
+<option value="Y">Y</option>
+<option value="Z">Z</option>
+<option value=",">,</option>
+<option value=";">;</option>
+<option value=":">:</option>
+<option value="!">!</option>
+</select>
+</div>
+</div>
+<div>
+<div class="box key_selection_box third_column">
+<select class="key_selection">
+<option value="">--Choisir une touche--</option>
+<option value="A">A</option>
+<option value="B">B</option>
+<option value="C">C</option>
+<option value="D">D</option>
+<option value="E">E</option>
+<option value="F">F</option>
+<option value="G">G</option>
+<option value="H">H</option>
+<option value="I">I</option>
+<option value="J">J</option>
+<option value="K">K</option>
+<option value="L">L</option>
+<option value="M">M</option>
+<option value="N">N</option>
+<option value="O">O</option>
+<option value="P">P</option>
+<option value="Q">Q</option>
+<option value="R">R</option>
+<option value="S">S</option>
+<option value="T">T</option>
+<option value="U">U</option>
+<option value="V">V</option>
+<option value="W">W</option>
+<option value="X">X</option>
+<option value="Y">Y</option>
+<option value="Z">Z</option>
+<option value=",">,</option>
+<option value=";">;</option>
+<option value=":">:</option>
+<option value="!">!</option>
+</select>
+</div>
+</div>
+<div>
+<div class="box key_selection_box fourth_column">
+<select class="key_selection">
+<option value="">--Choisir une touche--</option>
+<option value="A">A</option>
+<option value="B">B</option>
+<option value="C">C</option>
+<option value="D">D</option>
+<option value="E">E</option>
+<option value="F">F</option>
+<option value="G">G</option>
+<option value="H">H</option>
+<option value="I">I</option>
+<option value="J">J</option>
+<option value="K">K</option>
+<option value="L">L</option>
+<option value="M">M</option>
+<option value="N">N</option>
+<option value="O">O</option>
+<option value="P">P</option>
+<option value="Q">Q</option>
+<option value="R">R</option>
+<option value="S">S</option>
+<option value="T">T</option>
+<option value="U">U</option>
+<option value="V">V</option>
+<option value="W">W</option>
+<option value="X">X</option>
+<option value="Y">Y</option>
+<option value="Z">Z</option>
+<option value=",">,</option>
+<option value=";">;</option>
+<option value=":">:</option>
+<option value="!">!</option>
+</select>
+</div>
+</div>
+<div>
+<div class="box key_selection_box fifth_column">
+<select class="key_selection">
+<option value="">--Choisir une touche--</option>
+<option value="A">A</option>
+<option value="B">B</option>
+<option value="C">C</option>
+<option value="D">D</option>
+<option value="E">E</option>
+<option value="F">F</option>
+<option value="G">G</option>
+<option value="H">H</option>
+<option value="I">I</option>
+<option value="J">J</option>
+<option value="K">K</option>
+<option value="L">L</option>
+<option value="M">M</option>
+<option value="N">N</option>
+<option value="O">O</option>
+<option value="P">P</option>
+<option value="Q">Q</option>
+<option value="R">R</option>
+<option value="S">S</option>
+<option value="T">T</option>
+<option value="U">U</option>
+<option value="V">V</option>
+<option value="W">W</option>
+<option value="X">X</option>
+<option value="Y">Y</option>
+<option value="Z">Z</option>
+<option value=",">,</option>
+<option value=";">;</option>
+<option value=":">:</option>
+<option value="!">!</option>
+</select>
+</div>
+</div>
+<div>
+<div class="box key_selection_box sixth_column">
+<select class="key_selection">
+<option value="">--Choisir une touche--</option>
+<option value="A">A</option>
+<option value="B">B</option>
+<option value="C">C</option>
+<option value="D">D</option>
+<option value="E">E</option>
+<option value="F">F</option>
+<option value="G">G</option>
+<option value="H">H</option>
+<option value="I">I</option>
+<option value="J">J</option>
+<option value="K">K</option>
+<option value="L">L</option>
+<option value="M">M</option>
+<option value="N">N</option>
+<option value="O">O</option>
+<option value="P">P</option>
+<option value="Q">Q</option>
+<option value="R">R</option>
+<option value="S">S</option>
+<option value="T">T</option>
+<option value="U">U</option>
+<option value="V">V</option>
+<option value="W">W</option>
+<option value="X">X</option>
+<option value="Y">Y</option>
+<option value="Z">Z</option>
+<option value=",">,</option>
+<option value=";">;</option>
+<option value=":">:</option>
+<option value="!">!</option>
+</select>
+</div>
+</div>
+<div class="box first_column">
+<p>Ordre</p>
+</div>
+<div>
+<div class="box order_selection_box second_column">
+<select class="order_selection">
+<option value="">--Choisir l'ordre--</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+</div>
+</div>
+<div>
+<div class="box order_selection_box third_column">
+<select class="order_selection">
+<option value="">--Choisir l'ordre--</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+</div>
+</div>
+<div>
+<div class="box order_selection_box fourth_column">
+<select class="order_selection">
+<option value="">--Choisir l'ordre--</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+</div>
+</div>
+<div>
+<div class="box order_selection_box fifth_column">
+<select class="order_selection">
+<option value="">--Choisir l'ordre--</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+</div>
+</div>
+<div>
+<div class="box order_selection_box sixth_column">
+<select class="order_selection">
+<option value="">--Choisir l'ordre--</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<div class="validation_button">
+<button class="button hand">
+<p>Valider</p>
+</button>
+</div>
+<div class="keyboard">
+<label class="option_type">Clavier :</label>
+<div class="keyboard">
+<div class="line">
+<button class="key hand">
+<p>A</p>
+</button>
+<button class="key hand">
+<p>Z</p>
+</button>
+<button class="key hand">
+<p>E</p>
+</button>
+<button class="key hand">
+<p>R</p>
+</button>
+<button class="key hand">
+<p>T</p>
+</button>
+<button class="key hand">
+<p>Y</p>
+</button>
+<button class="key hand">
+<p>U</p>
+</button>
+<button class="key hand">
+<p>I</p>
+</button>
+<button class="key hand">
+<p>O</p>
+</button>
+<button class="key hand">
+<p>P</p>
+</button>
+</div>
+<div class="line">
+<button class="key hand">
+<p>Q</p>
+</button>
+<button class="key hand">
+<p>S</p>
+</button>
+<button class="key hand">
+<p>D</p>
+</button>
+<button class="key hand">
+<p>F</p>
+</button>
+<button class="key hand">
+<p>G</p>
+</button>
+<button class="key hand">
+<p>H</p>
+</button>
+<button class="key hand">
+<p>J</p>
+</button>
+<button class="key hand">
+<p>K</p>
+</button>
+<button class="key hand">
+<p>L</p>
+</button>
+<button class="key hand">
+<p>M</p>
+</button>
+</div>
+<div class="line">
+<button class="key hand">
+<p>W</p>
+</button>
+<button class="key hand">
+<p>X</p>
+</button>
+<button class="key hand">
+<p>C</p>
+</button>
+<button class="key hand">
+<p>V</p>
+</button>
+<button class="key hand">
+<p>B</p>
+</button>
+<button class="key hand">
+<p>N</p>
+</button>
+<button class="key hand">
+<p>,</p>
+</button>
+<button class="key hand">
+<p>;</p>
+</button>
+<button class="key hand">
+<p>:</p>
+</button>
+<button class="key hand">
+<p>!</p>
+</button>
+</div>
+<div class="line">
+<button class="key space_key">
+<p>ESPACE</p>
+</button>
+</div>
+</div>
+</div>
+</section>
+<script src="scripts/websockets.js"></script></body></html>
