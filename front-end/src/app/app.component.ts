@@ -6,12 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public title: string = 'Hello world!';
-  public showSuccess = false;
-
-  constructor() {}
-
-  showHideSuccess() {
-    this.showSuccess = !this.showSuccess;
+  public title: string = 'FingerFit';
+  
+  constructor() { }
+  
+  onClick(): void {
+    console.log('Element clicked');
   }
 }

@@ -1,7 +1,10 @@
-<h1 class="title">{{title}}</h1>
-<div class="description">Start your first app!</div>
-
-<button (click)="showHideSuccess()">Show success!</button>
-<div class="success" *ngIf="showSuccess">
-    <span class="message">Wow!</span>
-</div>
+<main class="home" (click)="onClick()">
+    <video autoplay loop>
+        <source src="assets/bg.mp4" type="video/mp4">
+    </video>
+    <section>
+        <img src="assets/main-logo.ico" alt="FingerFit logo" />
+        <h1>{{title}}</h1>
+        <p>Cliquer pour commencer !</p>
+    </section>   
+</main>
