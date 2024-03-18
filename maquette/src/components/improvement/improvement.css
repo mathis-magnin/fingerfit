@@ -1,0 +1,29 @@
+.improvement{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.improvement div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: #cacaca;
+    box-shadow: 0 0 2px #000;
+}
+
+.improvement .button{
+    margin-top: 10px;
+    background-color: green;
+}
+
+.improvement div>p{
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    color:rgb(0, 151, 0);
+}

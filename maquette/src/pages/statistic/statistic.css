@@ -1,0 +1,61 @@
+#stats_main {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+}
+
+.statistic header>img{
+    width: 10vw;
+    margin-bottom: 0;
+    object-fit: cover;
+    position: fixed;
+    z-index: 1;
+}
+
+.statistic nav{
+    top:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: 0 0 7px #000;
+    position: fixed;
+    z-index: 0;
+}
+
+.statistic nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.statistic nav a{
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1rem;
+    background-color: rgb(192, 192, 192);
+    width: 90%;
+    text-align: center;
+    border-radius: 2px;
+
+}
+
+.statistic nav a:nth-child(1){
+    scale: 1.05;
+}
+
+.statistic nav a:nth-child(2){
+    scale: 1;
+}
+
+.statistic main{
+    margin-left:15vw;
+}

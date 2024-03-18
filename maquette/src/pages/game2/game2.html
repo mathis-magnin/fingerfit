@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="french">
+
+<head>
+    <title>FingerFit</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body id="game_body2">
+    <!---->
+    <header id="game_header2">
+        <p id="timer2"></p>
+        <img src="assets/main_gauche_game2.png" id="hand2" />
+        <matrio path="components/exit_button/exit_button"></matrio>
+    </header>
+    <main>
+        <matrio path="components/keyboard/keyboard"></matrio>
+    </main>
+        
+        <script> 
+            var timeleft = 60;
+            document.getElementById("timer2").innerHTML = timeleft;
+            var downloadTimer = setInterval(function(){
+                timeleft--;
+                document.getElementById("timer2").innerHTML = timeleft;
+                if(timeleft <= 0)
+                    clearInterval(downloadTimer);
+            },1000);
+            
+            wrong=document.querySelectorAll("#game_body2 .key:not(#game_body2 .line:nth-child(3) .key:nth-child(4),#game_body2 .line:first-child .key:nth-child(6),#game_body2 .line:first-child .key:nth-child(2))");
+            wrong.forEach(function(element){
+                element.addEventListener("click",function(){
+                    timeleft-=2;
+                    time=document.getElementById("timer2");
+                    time.innerHTML = timeleft;
+                    time.style.border="2px solid red";
+                    time.style.boxShadow="0px 0px 10px red";
+                });
+            });
+
+            document.querySelector("#game_body2 .line:first-child .key:nth-child(2)").addEventListener("click",function(){
+                window.location.href = "/end_game.html";
+            });
+        </script> 
+</body>
+
+</html>

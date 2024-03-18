@@ -1,0 +1,38 @@
+.statistic_board {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90vh;
+    width: 73vw;
+}
+
+#stats_left_hand {
+    width: 17vw;
+    height: 17vw;
+    align-self: center;
+    grid-column-start: 2;
+}
+
+#stats_right_hand {
+    width: 17vw;
+    height: 17vw;
+    align-self: center;
+    grid-column-start: 3;
+}
+
+.box.left_box {
+    grid-column-start: 2;
+    background-color: lightblue;
+}
+
+.box.right_box {
+    grid-column-start: 3;
+    background-color: lightblue;
+}
+
+.side_box {
+    grid-column-start: 1;
+    background-color: lightblue;
+}

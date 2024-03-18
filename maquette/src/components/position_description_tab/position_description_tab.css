@@ -1,0 +1,47 @@
+.position_description_tab {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    flex-direction: column;
+    justify-content: center;
+    height: 25vh;
+    width: 50vw;
+}
+
+.position_description_tab .box.box {
+    width: 10vw;
+}
+
+.position_description_tab .box.key_selection_box {
+    width: 10vw;
+    background-color: white;
+}
+
+.position_description_tab .box.order_selection_box {
+    width: 10vw;
+    background-color: white;
+}
+
+.position_description_tab .box.first_column {
+    grid-column-start: 1;
+}
+
+.position_description_tab .box.second_column {
+    grid-column-start: 2;
+}
+
+.position_description_tab .box.third_column {
+    grid-column-start: 3;
+}
+
+.position_description_tab .box.fourth_column {
+    grid-column-start: 4;
+}
+
+.position_description_tab .box.fifth_column {
+    grid-column-start: 5;
+}
+
+.position_description_tab .box.sixth_column {
+    grid-column-start: 6;
+}

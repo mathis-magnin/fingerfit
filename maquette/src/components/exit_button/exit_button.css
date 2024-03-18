@@ -1,0 +1,14 @@
+.exit_button {
+    display: flex;
+    justify-content: right;
+    height: 60px;
+
+    .button{
+        margin: 10px;
+        padding: 10px;
+    }
+    img{
+        width: 20px;
+        height: 20px;
+    }
+}

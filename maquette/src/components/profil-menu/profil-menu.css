@@ -1,0 +1,46 @@
+.profile-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-menu .move-arrow{
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+}
+.profile-menu .move-arrow:hover{
+    transform: rotate(180deg);
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+}
+
+.profile-menu .move-arrow:nth-child(2):active {
+    transform:translateX(-10px);
+    transition-duration: 0.1s;
+    opacity: 0.5;
+}
+
+.profile-menu .move-arrow:nth-child(4):active {
+    transform:translateX(10px);
+    transition-duration: 0.1s;
+    opacity: 0.5;
+}
+
+.profile-menu .profil:first-child{
+    transform: scale(0.7);
+    opacity: 50%;
+}
+
+.profile-menu .profil:nth-child(5){
+    transform: scale(0.7);
+    opacity: 50%;
+}
+
+.profile-menu .profil:first-child .options{ 
+    opacity: 0;
+}
+
+.profile-menu .profil:last-child .options{ 
+    opacity: 0;
+}
