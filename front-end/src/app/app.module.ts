@@ -8,6 +8,8 @@ import { GameComponent } from './pages/game/game.component';
 import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { KeyComponent } from './components/key/key.component';
+import { CustomCheckboxComponent } from './components/custom-checkbox/custom-checkbox.component';
+
 
 @NgModule({
   declarations: [
@@ -16,11 +18,12 @@ import { KeyComponent } from './components/key/key.component';
     GameComponent,
     OptionsComponent,
     CongratsComponent,
-    KeyComponent
+    KeyComponent,
+    CustomCheckboxComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
