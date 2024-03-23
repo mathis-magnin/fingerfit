@@ -9,10 +9,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ExitButtonComponent implements OnInit {
 
     @Input()
-    public text: string = 'Exit';
+    public link: string = '\home';
 
     @Input()
-    public link: string = '\home';
+    public text?: string;
 
     constructor() {}
     ngOnInit(): void { }

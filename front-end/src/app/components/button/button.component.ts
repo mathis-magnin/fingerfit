@@ -9,10 +9,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ButtonComponent implements OnInit {
 
     @Input()
-    public text: string = 'Button';
+    public text?: string;
 
     @Input()
-    public link: string = '\home';
+    public link?: string;
 
     @Input()
     public picture?: string;
