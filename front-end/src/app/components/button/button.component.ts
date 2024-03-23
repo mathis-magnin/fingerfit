@@ -12,8 +12,12 @@ export class ButtonComponent implements OnInit {
     public text: string = 'Button';
 
     @Input()
+    public link: string = '\home';
+
+    @Input()
     public picture?: string;
 
     constructor() {}
-    ngOnInit(): void {}
+    ngOnInit(): void { }
+    
 }
