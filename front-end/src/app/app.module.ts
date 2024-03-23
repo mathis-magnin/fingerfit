@@ -10,6 +10,7 @@ import { OptionsComponent } from './pages/options/options.component';
 import { KeyComponent } from './components/key/key.component';
 import { ButtonComponent } from './components/button/button.component';
 import { CustomCheckboxComponent } from './components/custom-checkbox/custom-checkbox.component';
+import { ExitButtonComponent } from './components/exit-button/exit-button.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CustomCheckboxComponent } from './components/custom-checkbox/custom-che
     CongratsComponent,
     KeyComponent,
     ButtonComponent,
-    CustomCheckboxComponent
+    CustomCheckboxComponent,
+    ExitButtonComponent,
   ],
   imports: [
     BrowserModule,
