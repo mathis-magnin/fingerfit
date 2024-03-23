@@ -1,11 +1,41 @@
-<!--supprimer-->
-<p>options</p>
 
-<a routerLink="/game">
-    <app-button [text]="'Start Game'"></app-button>
-</a>
+<img src="./assets/static-bg.png" id="bg">
+<header>
+    <img src="./assets/main-logo.ico" id="logo"/>
+    <app-exit-button [link]="'/home'"/>
+</header>
+<main>
+    <h1>Options de la partie</h1>
 
-<app-quiz-list></app-quiz-list>
+    <section class="options">
 
-<app-button [text]="'Jouer'" [link]="'/game'"></app-button>
-<!--supprimer-->
+        <div id="hand-selection">
+            <label>Choix de la main </label>
+            <div>
+                <app-button [text]="'Main gauche'" [picture]="'./assets/main_gauche.png'"/>
+                <app-button [text]="'Main droite'" [picture]="'./assets/main_droite.png'"/>
+            </div>
+        </div>  
+
+        <div id="display-chrono">
+            <label>Afficher le chronomètre</label>
+            <app-custom-checkbox/>
+        </div>
+
+        <div id="time">
+            <label>Définir un temps par position de main </label>
+            <div>
+                <app-custom-checkbox/>
+                <input type="number" placeholder="sec" min="1" />
+            </div>
+        </div>
+
+        <div id="position">
+            <label class="option-type">Position des mains à travailler </label>
+            <app-button (click)="togglePopup()" [text]="'Selectionner'"/>
+            <app-quiz-list id="popup" *ngIf="isPopupVisible" (close)="togglePopup()"/>
+        </div>
+
+    </section>
+    <app-button id="play-button" [text]="'Valider et Jouer'" [link]="'/game'" id="play-button"/>
+</main>

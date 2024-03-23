@@ -1,8 +1,3 @@
-.app-button{
-    display: flex;
-    justify-content: right;
-    height: 60px;
-
-    margin: 10px;
-    padding: 10px;
+:host{
+    --app-button-background-color:red;
 }
