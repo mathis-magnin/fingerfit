@@ -6,8 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./custom-checkbox.component.scss'],
 })
 export class CustomCheckboxComponent {
-  @Input()
-  public label: string = '';
-
   constructor() {}
 }

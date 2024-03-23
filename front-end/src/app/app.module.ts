@@ -8,8 +8,9 @@ import { GameComponent } from './pages/game/game.component';
 import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { KeyComponent } from './components/key/key.component';
-import { CustomCheckboxComponent } from './components/custom-checkbox/custom-checkbox.component';
 import { ButtonComponent } from './components/button/button.component';
+import { CustomCheckboxComponent } from './components/custom-checkbox/custom-checkbox.component';
+import { ExitButtonComponent } from './components/exit-button/exit-button.component';
 
 @NgModule({
   declarations: [
@@ -18,9 +19,11 @@ import { ButtonComponent } from './components/button/button.component';
     GameComponent,
     OptionsComponent,
     CongratsComponent,
-    CustomCheckboxComponent,
     KeyComponent,
     ButtonComponent,
+    CustomCheckboxComponent,
+    ExitButtonComponent,
+
   ],
   imports: [
     BrowserModule,
