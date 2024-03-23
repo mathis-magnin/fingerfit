@@ -11,6 +11,10 @@
     font-size: 1vw;
     line-height: 0px;
 
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
     &:hover {
         transform: scale(1.1);
         transition-duration: 0.5s;
@@ -20,5 +24,10 @@
         transform: scale(0.9);
         transition-duration: 0.1s;
         opacity: 0.5;
+    }
+
+    img{
+        max-width: 20px;
+        max-height: 20px;
     }
 }
