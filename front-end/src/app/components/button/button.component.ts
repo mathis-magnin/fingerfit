@@ -11,6 +11,9 @@ export class ButtonComponent implements OnInit {
     @Input()
     public text: string = 'Button';
 
+    @Input()
+    public picture?: string;
+
     constructor() {}
     ngOnInit(): void {}
 }

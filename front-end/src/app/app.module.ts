@@ -9,6 +9,7 @@ import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { KeyComponent } from './components/key/key.component';
 import { ButtonComponent } from './components/button/button.component';
+import { ExitButtonComponent } from './components/exit-button/exit-button.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,9 @@ import { ButtonComponent } from './components/button/button.component';
     GameComponent,
     OptionsComponent,
     CongratsComponent,
-    KeyComponent
+    KeyComponent,
     ButtonComponent,
+    ExitButtonComponent,
     CongratsComponent
   ],
   imports: [
