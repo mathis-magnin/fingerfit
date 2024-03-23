@@ -9,6 +9,7 @@ import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { KeyComponent } from './components/key/key.component';
 import { ButtonComponent } from './components/button/button.component';
+import { CustomCheckboxComponent } from './components/custom-checkbox/custom-checkbox.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +18,13 @@ import { ButtonComponent } from './components/button/button.component';
     GameComponent,
     OptionsComponent,
     CongratsComponent,
-    KeyComponent
+    KeyComponent,
     ButtonComponent,
-    CongratsComponent
+    CustomCheckboxComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
