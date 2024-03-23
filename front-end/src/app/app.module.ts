@@ -8,8 +8,11 @@ import { GameComponent } from './pages/game/game.component';
 import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { KeyComponent } from './components/key/key.component';
+import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import { ButtonComponent } from './components/button/button.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
+import { CustomCheckboxComponent } from './components/custom-checkbox/custom-checkbox.component';
+import { ExitButtonComponent } from './components/exit-button/exit-button.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +24,15 @@ import { QuizListComponent } from './components/quiz-list/quiz-list.component';
     KeyComponent,
     ButtonComponent,
     CongratsComponent,
-    QuizListComponent
+    QuizListComponent,
+    KeyboardComponent,
+    ButtonComponent,
+    CustomCheckboxComponent,
+    ExitButtonComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

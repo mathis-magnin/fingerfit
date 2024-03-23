@@ -1,6 +1,9 @@
-<a routerLink="/congrats">
-    <p>game</p> <!--supprimer-->
-</a>
+<p>game</p> <!--supprimer-->
 
-<app-key [label]="a" />
-<app-key [label]="z" />
+<app-exit-button [link]="'/options'"></app-exit-button>
+
+<app-keyboard />
+
+<app-button [text]="'Finir le jeu'" [link]="'/congrats'"></app-button>
+
+<app-button [text]="'Recevoir du fun'"></app-button>
