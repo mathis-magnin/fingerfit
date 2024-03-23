@@ -9,6 +9,7 @@ import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { KeyComponent } from './components/key/key.component';
 import { ButtonComponent } from './components/button/button.component';
+import { CustomCheckboxComponent } from './components/custom-checkbox/custom-checkbox.component';
 import { ExitButtonComponent } from './components/exit-button/exit-button.component';
 
 @NgModule({
@@ -19,13 +20,15 @@ import { ExitButtonComponent } from './components/exit-button/exit-button.compon
     OptionsComponent,
     CongratsComponent,
     KeyComponent,
+    KeyComponent,
     ButtonComponent,
+    CustomCheckboxComponent,
     ExitButtonComponent,
     CongratsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
