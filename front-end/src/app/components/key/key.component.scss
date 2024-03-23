@@ -17,3 +17,12 @@
         opacity: 0.5;
     }
 }
+
+.space_key {
+    width: 12em;
+    border-radius: 100rem;
+
+    &:active {
+        transform: scale(1.125);
+    }
+}
