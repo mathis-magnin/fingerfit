@@ -1,3 +1,48 @@
-<a routerLink="/game">
-    <p>options</p> <!--supprimer-->
-</a>
+
+
+<img src="./assets/static-bg.png" id="bg">
+<header>
+    <img src="./assets/main-logo.ico" id="logo"/>
+    <!--exit right-->
+</header>
+<main>
+    <h1>Options de la partie</h1>
+
+    <section class="options">
+
+        <div id="hand-selection">
+            <label class="option-type">Choix de la main </label>
+            <div class="choice">
+                <app-button class="hand" [text]="'Main gauche'"/>
+                <app-button class="hand" [text]="'Main droite'"/>
+            </div>
+        </div>
+
+        <div id="display-chrono">
+            <label>Afficher le chronomètre</label>
+            <app-custom-checkbox/>
+        </div>
+
+        <div id="time">
+            <label>Définir un temps par position de main </label>
+            <div>
+                <app-custom-checkbox/>
+                <input type="number" placeholder="Temps en secondes" />
+            </div>
+        </div>
+
+        <div id="position">
+            <label class="option-type">Position des mains à travailler </label>
+            <a href="#popup">
+                <app-button class="hand" [text]="'Selectionner'"/>
+            </a>
+            <div id="popup">
+                <!--a venir-->
+            </div>
+        </div>
+
+    </section>
+    <a routerLink="/game" id="play-button">
+        <app-button [text]="'Valider et Jouer'"/>
+    </a>
+</main>

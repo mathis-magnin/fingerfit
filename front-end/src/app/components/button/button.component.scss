@@ -1,0 +1,22 @@
+.button {
+    min-width: 2em;
+    min-height: 1em;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    font-size: 1vw;
+    line-height: 0px;
+
+    &:hover {
+        transform: scale(1.1);
+        transition-duration: 0.5s;
+    }
+
+    &:active {
+        transform: scale(0.9);
+        transition-duration: 0.1s;
+        opacity: 0.5;
+    }
+}
