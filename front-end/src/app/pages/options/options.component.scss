@@ -73,6 +73,15 @@ label{
     margin-left:1vw;
 }
 
+#popup{
+    position: fixed;
+    //center the popup
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 2s ease-in-out;
+}
+
 :host{
     main{
         --app-button-width: 10vw;

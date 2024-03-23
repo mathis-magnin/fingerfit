@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class OptionsComponent {
   constructor() { }
+
+  public isPopupVisible: boolean = false;
+  ngOnInit(): void {
+  }
+  
+  public togglePopup(): void {
+    this.isPopupVisible = !this.isPopupVisible;
+  }
+
 }
