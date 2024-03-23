@@ -10,21 +10,26 @@ import { OptionsComponent } from './pages/options/options.component';
 import { KeyComponent } from './components/key/key.component';
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import { ButtonComponent } from './components/button/button.component';
+import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { CustomCheckboxComponent } from './components/custom-checkbox/custom-checkbox.component';
 import { ExitButtonComponent } from './components/exit-button/exit-button.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
     HomeComponent,
     GameComponent,
     OptionsComponent,
     CongratsComponent,
+
+    AppComponent,
     KeyComponent,
     KeyboardComponent,
     ButtonComponent,
+    ExitButtonComponent,
     CustomCheckboxComponent,
-    ExitButtonComponent
+    QuizComponent,
+    QuizListComponent
   ],
   imports: [
     BrowserModule,
