@@ -13,6 +13,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { CustomCheckboxComponent } from './components/custom-checkbox/custom-checkbox.component';
 import { ExitButtonComponent } from './components/exit-button/exit-button.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ExitButtonComponent } from './components/exit-button/exit-button.compon
     KeyboardComponent,
     ButtonComponent,
     CustomCheckboxComponent,
-    ExitButtonComponent
+    ExitButtonComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,

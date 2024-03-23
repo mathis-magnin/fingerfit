@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
     selector: 'app-quiz-list',
@@ -7,9 +7,6 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 
 export class QuizListComponent {
-
-    @Input()
-    public text: string = 'quiz-list';
 
     constructor() {}
 }
