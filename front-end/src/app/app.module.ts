@@ -20,7 +20,6 @@ import { ExitButtonComponent } from './components/exit-button/exit-button.compon
     OptionsComponent,
     CongratsComponent,
     KeyComponent,
-    KeyComponent,
     ButtonComponent,
     CustomCheckboxComponent,
     ExitButtonComponent,
