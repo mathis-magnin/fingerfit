@@ -10,5 +10,8 @@ export class KeyComponent {
     @Input()
     public label: string = '';
 
+    @Input()
+    public isSpaceKey: boolean = false;
+
     constructor() { }
 }
