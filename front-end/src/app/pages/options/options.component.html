@@ -1,7 +1,7 @@
 <img src="./assets/static-bg.png" id="bg">
 <header>
     <img src="./assets/main-logo.ico" id="logo"/>
-    <!--exit right-->
+    <app-exit-button [link]="'/home'"/>
 </header>
 <main>
     <h1>Options de la partie</h1>
@@ -9,12 +9,12 @@
     <section class="options">
 
         <div id="hand-selection">
-            <label class="option-type">Choix de la main </label>
-            <div class="choice">
-                <app-button class="hand" [text]="'Main gauche'"/>
-                <app-button class="hand" [text]="'Main droite'"/>
+            <label>Choix de la main </label>
+            <div>
+                <app-button class="hand" [text]="'Main gauche'" [picture]="'./assets/main_gauche.png'"/>
+                <app-button class="hand" [text]="'Main droite'" [picture]="'./assets/main_droite.png'"/>
             </div>
-        </div>
+        </div>  
 
         <div id="display-chrono">
             <label>Afficher le chronomètre</label>
@@ -31,16 +31,12 @@
 
         <div id="position">
             <label class="option-type">Position des mains à travailler </label>
-            <a href="#popup">
-                <app-button class="hand" [text]="'Selectionner'"/>
-            </a>
+                <app-button class="hand" [text]="'Selectionner'"  [link]="'#popup'"/>
             <div id="popup">
                 <!--a venir-->
             </div>
         </div>
 
     </section>
-    <a routerLink="/game" id="play-button">
-        <app-button [text]="'Valider et Jouer'"/>
-    </a>
+    <app-button id="play-button" [text]="'Valider et Jouer'" [link]="'/game'" id="play-button"/>
 </main>

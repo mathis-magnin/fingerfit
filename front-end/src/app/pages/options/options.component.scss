@@ -5,6 +5,12 @@
     width: 5vw;
 }
 
+header app-exit-button{
+    position: fixed;
+    top: 1vh;
+    right: 1vw;
+}
+
 #bg{
     position: fixed;
     top: 0;
@@ -63,7 +69,18 @@ label{
     height: 5vh;
 }
 
-:host ::ng-deep app-button button {
-    background-color: #bbb !important;
+#hand-selection app-button{
+    margin-left:1vw;
 }
 
+:host{
+    main{
+        --app-button-width: 10vw;
+        --app-button-height: 5vh;
+    }
+
+    #play-button{
+        --app-button-width: 10vw;
+        --app-button-height: 10vh;
+    }
+}
