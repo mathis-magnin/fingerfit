@@ -9,6 +9,9 @@ import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { KeyComponent } from './components/key/key.component';
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
+import { ButtonComponent } from './components/button/button.component';
+import { CustomCheckboxComponent } from './components/custom-checkbox/custom-checkbox.component';
+import { ExitButtonComponent } from './components/exit-button/exit-button.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,14 @@ import { KeyboardComponent } from './components/keyboard/keyboard.component';
     OptionsComponent,
     CongratsComponent,
     KeyComponent,
-    KeyboardComponent
+    KeyboardComponent,
+    ButtonComponent,
+    CustomCheckboxComponent,
+    ExitButtonComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

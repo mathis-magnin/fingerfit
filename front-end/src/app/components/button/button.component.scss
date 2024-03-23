@@ -1,0 +1,42 @@
+.button {
+    min-width: 2em;
+    min-height: 1em;
+    border: none;
+    border-radius: 5px;
+    transform: scale(1);
+    transition-duration: 0.5s;
+    cursor: pointer;
+    background-color: red;
+    font-size: 1vw;
+    line-height: 0px;
+
+    .button-link {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+
+        width: max-content;
+        height: max-content;
+        text-decoration: none;
+    }
+
+    .button-text {
+        color: white;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        transition-duration: 0.5s;
+    }
+
+    &:active {
+        transform: scale(0.9);
+        transition-duration: 0.1s;
+        opacity: 0.5;
+    }
+
+    img{
+        max-width: 20px;
+        max-height: 20px;
+    }
+}
