@@ -1,0 +1,26 @@
+.quiz-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    border-radius: 1dvi;
+    box-shadow: 0 0 5px 0px black;
+    width:30vw;
+
+    margin: 10vh;
+
+    .quiz {
+        display: grid;
+        grid-template-columns: 5fr 1fr;
+        align-items: center;
+        background-color: white;
+        border-radius: 0.5dvi;
+        box-shadow: 0 0 5px 0px black;
+        width: 25vw;
+        min-height: 5vh;
+        margin: 2vh;
+        padding: 1vh;
+    }
+}
