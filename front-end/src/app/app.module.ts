@@ -24,7 +24,6 @@ import { ExitButtonComponent } from './components/exit-button/exit-button.compon
     ButtonComponent,
     CustomCheckboxComponent,
     ExitButtonComponent,
-    CongratsComponent
   ],
   imports: [
     BrowserModule,
