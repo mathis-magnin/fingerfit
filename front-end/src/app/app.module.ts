@@ -17,20 +17,19 @@ import { QuizComponent } from './components/quiz/quiz.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
     HomeComponent,
     GameComponent,
     OptionsComponent,
     CongratsComponent,
+
+    AppComponent,
     KeyComponent,
-    ButtonComponent,
-    CongratsComponent,
-    QuizListComponent,
     KeyboardComponent,
     ButtonComponent,
-    CustomCheckboxComponent,
     ExitButtonComponent,
-    QuizComponent
+    CustomCheckboxComponent,
+    QuizComponent,
+    QuizListComponent
   ],
   imports: [
     BrowserModule,
