@@ -41,6 +41,12 @@ h1 {
     align-items: center;
 }
 
+app-warning-popup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 app-single-option input[type="number"]{
     margin-left: 1vw;
     width: 3vw;
@@ -60,6 +66,7 @@ app-single-option input[type="number"]{
     transition: opacity 2s ease-in-out;
 }
 
+
 :host{
     main{
         --app-button-width: 10vw;
@@ -69,5 +76,9 @@ app-single-option input[type="number"]{
     #play-button{
         --app-button-width: 10vw;
         --app-button-height: 10vh;
+    }
+
+    .grey{
+        --app-button-background-color : grey;
     }
 }

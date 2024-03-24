@@ -15,6 +15,7 @@ import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { CustomCheckboxComponent } from './components/custom-checkbox/custom-checkbox.component';
 import { ExitButtonComponent } from './components/exit-button/exit-button.component';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { WarningPopup } from './components/warning-popup/warning-popup.component';
 import { SingleOption } from './components/single-option/single-option.component';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { SingleOption } from './components/single-option/single-option.component
     CustomCheckboxComponent,
     QuizComponent,
     QuizListComponent,
+    WarningPopup,
     SingleOption
   ],
   imports: [
