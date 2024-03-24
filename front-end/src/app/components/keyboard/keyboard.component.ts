@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Finger } from '../../../models/finger.model';
 
 @Component({
     selector: 'app-keyboard',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
     styleUrls: ['./keyboard.component.scss']
 })
 export class KeyboardComponent {
+
+    Finger = Finger; // To use enum in html
 
     /* Line 1 */
     public A: string = "A";
