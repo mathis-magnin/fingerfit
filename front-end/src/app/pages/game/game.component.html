@@ -3,7 +3,7 @@
 <!---->
 
 <header>
-    <p id="timer">1:00</p>
+    <app-timer [maxTime]="options.timePerQuestion" [show]="options.chronometer" (timeOut)="showEnd()"/>
     <app-exit-button [link]="'/options'" />
 </header>
 
