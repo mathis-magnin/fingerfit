@@ -29,32 +29,10 @@ h1 {
     text-align: center;
 }
 
-label{
-    font-size: 1.5em;
-    margin-right: 1vw;
-    font-weight: bold;
-}
-
 .options{
     display: grid;
     grid-template-columns: 1fr;
     margin-top: 5vh;
-}
-
-.options > div{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin:1.5vw;
-    padding:1vw;
-    border-bottom: 1px solid black;
-    width: 50vw;
-    margin-left: 25vw;
-}
-
-.options > div > label + *{
-    display: flex;
-    justify-content: right;
-    align-items: center;
 }
 
 #play-button{
@@ -69,7 +47,7 @@ app-warning-popup{
     align-items: center;
 }
 
-#time input[type="number"]{
+app-single-option input[type="number"]{
     margin-left: 1vw;
     width: 3vw;
     height: 5vh;

@@ -8,34 +8,24 @@
     <h1>Options de la partie</h1>
 
     <section class="options">
+        <app-single-option id="hand-selection" [caption]="'Choix de la main'">
+                <app-button [ngClass]="{grey:getHand()==='R'}" [text]="'Main gauche'" [picture]="'./assets/main_gauche.png'" (click)="switchHand('L')"/>
+                <app-button [ngClass]="{grey:getHand()==='L'}" [text]="'Main droite'" [picture]="'./assets/main_droite.png'" (click)="switchHand('R')"/>
+        </app-single-option>
 
-        <div id="hand-selection">
-            <label>Choix de la main </label>
-            <div>
-                <app-button [ngClass]="{'grey':getHand()==='R'}" (click)="switchHand('L')" [text]="'Main gauche'" [picture]="'./assets/main_gauche.png'"/>
-                <app-button [ngClass]="{'grey':getHand()==='L'}" (click)="switchHand('R')" [text]="'Main droite'" [picture]="'./assets/main_droite.png'"/>
-            </div>
-        </div>  
+        <app-single-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer()">
+            <app-custom-checkbox />
+        </app-single-option>
 
-        <div id="display-chrono">
-            <label>Afficher le chronomètre </label>
-            <app-custom-checkbox (change)="switchChronometer()"/>
-        </div>
-
-        <div id="time">
-            <label>Définir un temps par position de main </label>
-            <div>
+        <app-single-option [caption]="'Définir un temps par position de main'">
                 <app-custom-checkbox (change)="switchTimer()"/>
                 <input type="number" placeholder="{{getTimer()}}sec" min="1" #numberInput (change)="setTimer(numberInput.value)"/>
-            </div>
-        </div>
+        </app-single-option>
 
-        <div id="position">
-            <label class="option-type">Position des mains à travailler </label>
+        <app-single-option [caption]="'Position des mains à travailler'">
             <app-button (click)="togglePopup()" [text]="'Selectionner'"/>
             <app-quiz-list id="popup" *ngIf="isPopupVisible" (closeSelection)="togglePopup()"/>
-        </div>
-
+        </app-single-option>
     </section>
     <app-button id="play-button" [text]="'Valider et Jouer'" (click)="switchGame()" id="play-button"/>
     <app-warning-popup *ngIf="isWarningVisible" [text]="'Veulliez selectionner un quiz'"/>

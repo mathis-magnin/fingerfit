@@ -17,13 +17,8 @@ export class OptionsComponent {
   constructor(private router: Router, private quizService: QuizService) {
   }
 
-
   ngOnInit(): void {
   }
-  
-
-
-
 
   public togglePopup(): void {
     this.isPopupVisible = !this.isPopupVisible;

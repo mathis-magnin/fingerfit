@@ -56,7 +56,6 @@ export class QuizService {
             this.options$.next({ ...this.options$.value, timePerQuestion: undefined });
         else
             this.options$.next({ ...this.options$.value, timePerQuestion: 20 });
-        console.log(this.options$.value.timePerQuestion);
     }
 
     public checkOptions(): boolean {
