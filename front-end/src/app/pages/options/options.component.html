@@ -12,30 +12,31 @@
         <div id="hand-selection">
             <label>Choix de la main </label>
             <div>
-                <app-button [text]="'Main gauche'" [picture]="'./assets/main_gauche.png'"/>
-                <app-button [text]="'Main droite'" [picture]="'./assets/main_droite.png'"/>
+                <app-button [ngClass]="{'grey':getHand()==='R'}" (click)="switchHand('L')" [text]="'Main gauche'" [picture]="'./assets/main_gauche.png'"/>
+                <app-button [ngClass]="{'grey':getHand()==='L'}" (click)="switchHand('R')" [text]="'Main droite'" [picture]="'./assets/main_droite.png'"/>
             </div>
         </div>  
 
         <div id="display-chrono">
-            <label>Afficher le chronomètre</label>
-            <app-custom-checkbox/>
+            <label>Afficher le chronomètre </label>
+            <app-custom-checkbox (change)="switchChronometer()"/>
         </div>
 
         <div id="time">
             <label>Définir un temps par position de main </label>
             <div>
-                <app-custom-checkbox/>
-                <input type="number" placeholder="sec" min="1" />
+                <app-custom-checkbox (change)="switchTimer()"/>
+                <input type="number" placeholder="{{getTimer()}}sec" min="1" #numberInput (change)="setTimer(numberInput.value)"/>
             </div>
         </div>
 
         <div id="position">
             <label class="option-type">Position des mains à travailler </label>
             <app-button (click)="togglePopup()" [text]="'Selectionner'"/>
-            <app-quiz-list id="popup" *ngIf="isPopupVisible" (close)="togglePopup()"/>
+            <app-quiz-list id="popup" *ngIf="isPopupVisible" (closeSelection)="togglePopup()"/>
         </div>
 
     </section>
-    <app-button id="play-button" [text]="'Valider et Jouer'" [link]="'/game'" id="play-button"/>
+    <app-button id="play-button" [text]="'Valider et Jouer'" (click)="switchGame()" id="play-button"/>
+    <app-warning-popup *ngIf="isWarningVisible" [text]="'Veulliez selectionner un quiz'"/>
 </main>

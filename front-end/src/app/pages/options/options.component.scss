@@ -63,6 +63,12 @@ label{
     align-items: center;
 }
 
+app-warning-popup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #time input[type="number"]{
     margin-left: 1vw;
     width: 3vw;
@@ -82,6 +88,7 @@ label{
     transition: opacity 2s ease-in-out;
 }
 
+
 :host{
     main{
         --app-button-width: 10vw;
@@ -91,5 +98,9 @@ label{
     #play-button{
         --app-button-width: 10vw;
         --app-button-height: 10vh;
+    }
+
+    .grey{
+        --app-button-background-color : grey;
     }
 }
