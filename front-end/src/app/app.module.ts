@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { GameComponent } from './pages/game/game.component';
 import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
+import { HandComponent } from './components/hand/hand.component';
 import { KeyComponent } from './components/key/key.component';
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import { ButtonComponent } from './components/button/button.component';
@@ -23,6 +24,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
     CongratsComponent,
 
     AppComponent,
+    HandComponent,
     KeyComponent,
     KeyboardComponent,
     ButtonComponent,
