@@ -9,32 +9,25 @@
 
     <section class="options">
 
-        <div id="hand-selection">
-            <label>Choix de la main </label>
-            <div>
+        <app-single-option id="hand-selection" [caption]="'Choix de la main'">
                 <app-button [text]="'Main gauche'" [picture]="'./assets/main_gauche.png'"/>
                 <app-button [text]="'Main droite'" [picture]="'./assets/main_droite.png'"/>
-            </div>
-        </div>  
+        </app-single-option>
 
-        <div id="display-chrono">
-            <label>Afficher le chronomètre</label>
+        <app-single-option [caption]="'Afficher le chronomètre'">
             <app-custom-checkbox/>
-        </div>
+        </app-single-option>
 
-        <div id="time">
-            <label>Définir un temps par position de main </label>
-            <div>
+        <app-single-option [caption]="'Définir un temps par position de main'">
                 <app-custom-checkbox/>
                 <input type="number" placeholder="sec" min="1" />
-            </div>
-        </div>
+        </app-single-option>
 
-        <div id="position">
-            <label class="option-type">Position des mains à travailler </label>
+        <app-single-option [caption]="'Position des mains à travailler'">
             <app-button (click)="togglePopup()" [text]="'Selectionner'"/>
             <app-quiz-list id="popup" *ngIf="isPopupVisible" (close)="togglePopup()"/>
-        </div>
+        </app-single-option>
+        
 
     </section>
     <app-button id="play-button" [text]="'Valider et Jouer'" [link]="'/game'" id="play-button"/>
