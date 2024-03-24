@@ -1,17 +1,17 @@
-#logo{
-    position:fixed;
-    top:1vh;
-    left:1vw;
+#logo {
+    position: fixed;
+    top: 1vh;
+    left: 1vw;
     width: 5vw;
 }
 
-header app-exit-button{
+header app-exit-button {
     position: fixed;
     top: 1vh;
     right: 1vw;
 }
 
-#bg{
+#bg {
     position: fixed;
     top: 0;
     left: 0;
@@ -21,43 +21,43 @@ header app-exit-button{
     filter: blur(5px);
 }
 
-main{
-    margin-top:10vh;
+main {
+    margin-top: 10vh;
 }
 
 h1 {
     text-align: center;
 }
 
-.options{
+.options {
     display: grid;
     grid-template-columns: 1fr;
     margin-top: 5vh;
 }
 
-#play-button{
+#play-button {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-app-warning-popup{
+app-warning-popup {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-app-single-option input[type="number"]{
+app-single-option input[type="number"] {
     margin-left: 1vw;
     width: 3vw;
     height: 5vh;
 }
 
-#hand-selection app-button{
-    margin-left:1vw;
+#hand-selection app-button {
+    margin-left: 1vw;
 }
 
-#popup{
+#popup {
     position: fixed;
     //center the popup
     top: 50%;
@@ -67,18 +67,18 @@ app-single-option input[type="number"]{
 }
 
 
-:host{
-    main{
+:host {
+    main {
         --app-button-width: 10vw;
         --app-button-height: 5vh;
     }
 
-    #play-button{
+    #play-button {
         --app-button-width: 10vw;
         --app-button-height: 10vh;
     }
 
-    .grey{
-        --app-button-background-color : grey;
+    .grey {
+        --app-button-background-color: grey;
     }
 }
