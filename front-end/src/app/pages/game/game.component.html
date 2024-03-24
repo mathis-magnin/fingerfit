@@ -1,6 +1,13 @@
-<app-hand />
-<app-exit-button [link]="'/options'" />
+<!-- delete when the game will be implemented -->
+<app-button id="delete_me" [text]="'Finir le jeu'" [link]="'/congrats'" />
+<!---->
 
-<app-keyboard />
+<header>
+    <p id="timer">1:00</p>
+    <app-exit-button [link]="'/options'" />
+</header>
 
-<app-button [text]="'Finir le jeu'" [link]="'/congrats'" />
+<main>
+    <app-hand />
+    <app-keyboard />
+</main>
