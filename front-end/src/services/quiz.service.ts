@@ -69,5 +69,14 @@ export class QuizService {
             return false;
         }
     }
+
+    public clearOptions(): void {
+        this.options$.next({
+            hand: 'R',
+            chronometer: false,
+            timePerQuestion: undefined,
+            quiz: undefined
+        });
+    }
 }
 

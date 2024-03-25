@@ -21,11 +21,15 @@ export class GameComponent {
       this.options = options;
     });
   }
+  
 
   public showEnd(): void {
     console.log('Game Over');
     //switch to another question or end the game here
   }
 
+  public clearOptions() {
+    this.quizService.clearOptions();
+  }
 
 }
