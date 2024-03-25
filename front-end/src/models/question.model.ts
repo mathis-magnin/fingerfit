@@ -1,6 +1,8 @@
+import { Finger } from "./finger.model";
+
 export interface Key {
-    value: string;
-    position: number;
+    label: string;
+    finger: Finger;
 }
 
 export interface Question {

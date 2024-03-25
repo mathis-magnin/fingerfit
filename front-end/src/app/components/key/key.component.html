@@ -1,4 +1,4 @@
 <button class="key"
-    [ngClass]="{space_key: isSpaceKey, undefined: (finger == Finger.UNDEFINED), thumb: (finger == Finger.THUMB), index: (finger == Finger.INDEX), middle: (finger == Finger.MIDDLE), ring: (finger == Finger.RING), pinky: (finger == Finger.PINKY)}">
+    [ngClass]="{space_key: label == 'ESPACE', undefined: (finger == Finger.UNDEFINED), thumb: (finger == Finger.THUMB), index: (finger == Finger.INDEX), middle: (finger == Finger.MIDDLE), ring: (finger == Finger.RING), pinky: (finger == Finger.PINKY)}">
     {{label}}
 </button>

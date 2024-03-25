@@ -1,60 +1,57 @@
 import { Quiz } from '../models/quiz.model';
 import { Question } from '../models/question.model';
+import { Finger } from '../models/finger.model';
 
 export const FIRST_QUESTION: Question = {
     answers: [
         {
-            value: 'T',
-            position:4,
+            label: 'T',
+            finger: Finger.PINKY
         },
         {
-            value: 'B',
-            position:5
+            label: 'B',
+            finger: Finger.THUMB
         },
         {
-            value: 'E',
-            position:3
+            label: 'E',
+            finger: Finger.RING
         },
         {
-            value: 'Z',
-            position:2
+            label: 'Z',
+            finger: Finger.MIDDLE
         },
         {
-            value: 'Q',
-            position:1
+            label: 'Q',
+            finger: Finger.INDEX
         }
-    ],
+    ]
 };
 
 export const SECOND_QUESTION: Question = {
     answers: [
         {
-            value: 'T',
-            position: 4,
+            label: 'ESPACE',
+            finger: Finger.THUMB
         },
         {
-            value: 'B',
-            position: 5
+            label: 'S',
+            finger: Finger.INDEX
         },
         {
-            value: 'E',
-            position: 3
+            label: 'Y',
+            finger: Finger.MIDDLE
         },
         {
-            value: 'Z',
-            position: 2
-        },
-        {
-            value: 'Q',
-            position: 1
+            label: 'K',
+            finger: Finger.RING
         }
-    ],
+    ]
 };
 
 export const QUIZ_LIST: Quiz[] = [
     {
-        name: 'HELLO', 
-        questions: [FIRST_QUESTION, SECOND_QUESTION],
+        name: 'HELLO',
+        questions: [FIRST_QUESTION],
     },
     {
         name: 'WORLD',

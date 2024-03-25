@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { Finger } from '../../../models/finger.model';
 
 @Component({
@@ -10,10 +10,9 @@ export class KeyComponent {
 
     @Input() public label: string = '';
 
-    @Input() public isSpaceKey: boolean = false;
-
     Finger = Finger; // To use enum in html
     @Input() public finger: Finger = Finger.UNDEFINED;
 
     constructor() { }
+
 }
