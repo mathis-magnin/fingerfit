@@ -13,13 +13,13 @@
                 <app-button [ngClass]="{grey:getHand()==='L'}" [text]="'Main droite'" [picture]="'./assets/main_droite.png'" (click)="switchHand('R')"/>
         </app-single-option>
 
-        <app-single-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer()">
+        <app-single-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
             <app-custom-checkbox />
         </app-single-option>
 
         <app-single-option [caption]="'Définir un temps par position de main'">
-                <app-custom-checkbox (change)="switchTimer()"/>
-                <input type="number" placeholder="{{getTimer()}}sec" min="1" #numberInput (change)="setTimer(numberInput.value)"/>
+                <app-custom-checkbox (change)="switchTimer($event)"/>
+                <input type="number" placeholder="{{getTimer()}}sec" min="1" #numberInput (change)="setTime(numberInput.value)"/>
         </app-single-option>
 
         <app-single-option [caption]="'Position des mains à travailler'">
