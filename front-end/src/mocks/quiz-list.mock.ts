@@ -1,63 +1,58 @@
-import { Quiz } from '../models/quiz.model';
-import { Question } from '../models/question.model';
+import { Finger, Symbol, Position, Quiz } from '../models/quiz.model';
 
-export const FIRST_QUESTION: Question = {
-    answers: [
+export const FIRST_POSITION: Position = {
+    keys: [
         {
-            value: 'T',
-            position:4,
+            symbol: Symbol.T,
+            finger: Finger.PINKY
         },
         {
-            value: 'B',
-            position:5
+            symbol: Symbol.B,
+            finger: Finger.THUMB
         },
         {
-            value: 'E',
-            position:3
+            symbol: Symbol.E,
+            finger: Finger.RING
         },
         {
-            value: 'Z',
-            position:2
+            symbol: Symbol.Z,
+            finger: Finger.MIDDLE
         },
         {
-            value: 'Q',
-            position:1
+            symbol: Symbol.Q,
+            finger: Finger.INDEX
         }
-    ],
+    ]
 };
 
-export const SECOND_QUESTION: Question = {
-    answers: [
+export const SECOND_POSITION: Position = {
+    keys: [
         {
-            value: 'T',
-            position: 4,
+            symbol: Symbol.SPACE,
+            finger: Finger.THUMB
         },
         {
-            value: 'B',
-            position: 5
+            symbol: Symbol.S,
+            finger: Finger.INDEX
         },
         {
-            value: 'E',
-            position: 3
+            symbol: Symbol.Y,
+            finger: Finger.MIDDLE
         },
         {
-            value: 'Z',
-            position: 2
-        },
-        {
-            value: 'Q',
-            position: 1
+            symbol: Symbol.K,
+            finger: Finger.RING
         }
-    ],
+    ]
 };
 
 export const QUIZ_LIST: Quiz[] = [
     {
-        name: 'HELLO', 
-        questions: [FIRST_QUESTION, SECOND_QUESTION],
+        name: 'HELLO',
+        positions: [FIRST_POSITION],
     },
     {
         name: 'WORLD',
-        questions: [FIRST_QUESTION, SECOND_QUESTION],
+        positions: [FIRST_POSITION, SECOND_POSITION],
     }
 ];

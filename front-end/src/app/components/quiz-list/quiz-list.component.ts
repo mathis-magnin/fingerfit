@@ -1,5 +1,5 @@
-import { Component,Output,EventEmitter } from '@angular/core';
-import { QuizService } from '../../../services/quiz.service';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { QuizzesService } from '../../../services/quizzes.service';
 import { Quiz } from '../../../models/quiz.model';
 
 
@@ -18,14 +18,14 @@ export class QuizListComponent {
 
     public quizList: Quiz[] = [];
 
-    constructor(public quizService: QuizService) {
-        this.quizService.quizzes$.subscribe((quizList) => {
+    constructor(public quizzesService: QuizzesService) {
+        this.quizzesService.quizzes$.subscribe((quizList) => {
             this.quizList = quizList;
         });
     }
 
     quizSelected(Quiz: Quiz) {
-        this.quizService.selectQuiz(Quiz);
+        this.quizzesService.selectQuiz(Quiz);
         this.closeSelection.emit(true);
     }
 }

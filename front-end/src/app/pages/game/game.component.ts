@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { QuizService } from '../../../services/quiz.service';
+import { QuizzesService } from '../../../services/quizzes.service';
 import { Options } from '../../../models/options.model';
 
 @Component({
@@ -16,12 +16,12 @@ export class GameComponent {
     quiz: undefined
   };
 
-  constructor(private quizService: QuizService) {
-    this.quizService.options$.subscribe((options) => {
+  constructor(private quizzesService: QuizzesService) {
+    this.quizzesService.options$.subscribe((options) => {
       this.options = options;
     });
   }
-  
+
 
   public showEnd(): void {
     console.log('Game Over');
@@ -29,7 +29,7 @@ export class GameComponent {
   }
 
   public clearOptions() {
-    this.quizService.clearOptions();
+    this.quizzesService.clearOptions();
   }
 
 }

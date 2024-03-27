@@ -1,44 +1,4 @@
 <div class="keyboard">
-    <div class="line">
-        <app-key [label]="A" />
-        <app-key [label]="Z" />
-        <app-key [label]="E" />
-        <app-key [label]="R" />
-        <app-key [label]="T" />
-        <app-key [label]="Y" />
-        <app-key [label]="U" />
-        <app-key [label]="I" />
-        <app-key [label]="O" />
-        <app-key [label]="P" />
-    </div>
-
-    <div class="line">
-        <app-key [label]="Q" />
-        <app-key [label]="S" />
-        <app-key [label]="D" />
-        <app-key [label]="F" />
-        <app-key [label]="G" />
-        <app-key [label]="H" />
-        <app-key [label]="J" />
-        <app-key [label]="K" />
-        <app-key [label]="L" />
-        <app-key [label]="M" />
-    </div>
-
-    <div class="line">
-        <app-key [label]="W" />
-        <app-key [label]="X" />
-        <app-key [label]="C" />
-        <app-key [label]="V" />
-        <app-key [label]="B" />
-        <app-key [label]="N" />
-        <app-key [label]="QUESTION_MARK" />
-        <app-key [label]="POINT" />
-        <app-key [label]="SLASH" />
-        <app-key [label]="SECTION_MARK" />
-    </div>
-
-    <div class="line">
-        <app-key class="space_key" [label]="SPACE" [isSpaceKey]="true" />
-    </div>
+    <app-key *ngFor="let key of keys" [symbol]="key.symbol" [finger]="key.finger"
+        [ngClass]="{'space': key.symbol == Symbol.SPACE}" />
 </div>
