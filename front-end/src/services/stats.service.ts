@@ -1,0 +1,33 @@
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Answer } from 'src/models/answer.model';
+import { ANSWERS } from 'src/mocks/answers.mock';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class StatsService {
+
+    private answers: Answer[] = ANSWERS;
+    public answers$: BehaviorSubject<Answer[]> = new BehaviorSubject<Answer[]>([]);
+
+    constructor() { }
+
+    public getAverageTime(): number {
+        let sum = 0;
+        this.answers.forEach(answer => {
+            sum += answer.time;
+        });
+        return sum / this.answers.length;
+    }
+
+    public getCorrectPercentage(): number {
+        let correctAnswers = 0;
+        this.answers.forEach(answer => {
+            if (answer.correct) {
+                correctAnswers++;
+            }
+        });
+        return correctAnswers / this.answers.length * 100;
+    }
+}

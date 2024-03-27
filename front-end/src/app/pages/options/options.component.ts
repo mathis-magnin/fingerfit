@@ -33,19 +33,29 @@ export class OptionsComponent {
     }
   }
 
-  public switchChronometer(): void {
-    this.quizzesService.switchChronometer();
-  }
-
-  public setTimer(time: string): void {
-    const numberValue = parseFloat(time);
-    if (this.quizzesService.getTimer() != 0 && numberValue > 0) {
-      this.quizzesService.setTimer(numberValue);
+  public switchChronometer(event: any): void {
+    if (event.target.checked) {
+      this.quizzesService.setChronometer(true);
+    }
+    else {
+      this.quizzesService.setChronometer(false);
     }
   }
 
-  public switchTimer(): void {
-    this.quizzesService.switchTimer();
+  public setTime(time: string): void {
+    const numberValue = parseFloat(time);
+    if (this.quizzesService.getTimer() != 0 && numberValue > 0) {
+      this.quizzesService.setTime(numberValue);
+    }
+  }
+
+  public switchTimer(event: any): void {
+    if (event.target.checked) {
+      this.quizzesService.setTimer(true);
+    }
+    else {
+      this.quizzesService.setTimer(false);
+    }
   }
 
   public getTimer(): number {

@@ -1,1 +1,14 @@
-<p>congrats</p> <!--supprimer-->
+<img src="./assets/static-bg.png" id="bg">
+
+<header>
+    <img src="./assets/main-logo.ico" id="logo"/>
+</header>
+
+<main>
+    <h1 id="congrats-message">Bien joué ! Tu as reussi {{getCorrectPercentage()}}% des positions ! <br/> Tu as mis en moyenne {{getAverageTime()}} seconds pour en faire une !</h1>
+
+    <div class="congrats-choice">
+        <app-button class="congrats-button" id=quit-congrats [text]="'quitter'" [link]="'/options'" />
+        <app-button class="congrats-button" id=replay [text]="'rejouer'" [link]="'/game'" />
+    </div>
+</main>

@@ -12,4 +12,5 @@ export class QuizService {
     public quiz$: BehaviorSubject<Quiz> = new BehaviorSubject(QUIZ_LIST[0]);
 
     constructor() { }
+
 }
