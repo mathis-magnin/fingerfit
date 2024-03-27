@@ -21,7 +21,7 @@ export class GameComponent {
       this.options = options;
     });
   }
-  
+
 
   public showEnd(): void {
     console.log('Game Over');
@@ -29,7 +29,7 @@ export class GameComponent {
   }
 
   public clearOptions() {
-    this.quizService.clearOptions();
+    this.quizzesService.clearOptions();
   }
 
 }

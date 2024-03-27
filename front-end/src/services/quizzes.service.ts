@@ -30,8 +30,11 @@ export class QuizzesService {
         this.options$.next({ ...this.options$.value, hand });
     }
 
-    public switchChronometer(): void {
-        this.options$.next({ ...this.options$.value, chronometer: !this.options$.value.chronometer });
+    public setChronometer(set: boolean): void {
+        if (set)
+            this.options$.next({ ...this.options$.value, chronometer: true });
+        else
+            this.options$.next({ ...this.options$.value, chronometer: false });
     }
 
     public getTimer(): number {
@@ -47,12 +50,12 @@ export class QuizzesService {
         return this.options$.value.hand;
     }
 
-    public setTimer(time: number): void {
+    public setTime(time: number): void {
         this.options$.next({ ...this.options$.value, timePerQuestion: time });
     }
 
-    public switchTimer(): void {
-        if (this.options$.value.timePerQuestion)
+    public setTimer(set: boolean): void {
+        if (!set)
             this.options$.next({ ...this.options$.value, timePerQuestion: undefined });
         else
             this.options$.next({ ...this.options$.value, timePerQuestion: 20 });
@@ -65,5 +68,14 @@ export class QuizzesService {
         else {
             return false;
         }
+    }
+
+    public clearOptions(): void {
+        this.options$.next({
+            hand: 'R',
+            chronometer: false,
+            timePerQuestion: undefined,
+            quiz: undefined
+        });
     }
 }
