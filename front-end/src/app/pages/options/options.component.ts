@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { QuizzesService } from '../../../services/quizzes.service';
+import { OptionsService } from '../../../services/options.service';
+import { Options } from '../../../models/options.model';
 
 @Component({
   selector: 'app-options',
@@ -9,12 +10,15 @@ import { QuizzesService } from '../../../services/quizzes.service';
 })
 export class OptionsComponent {
 
-
+  public options: Options | undefined;
   public isPopupVisible: boolean = false;
   public numberValue: number = 0;
   public isWarningVisible: boolean = false;
 
-  constructor(private router: Router, private quizzesService: QuizzesService) {
+  constructor(private router: Router, public optionsService: OptionsService) {
+    this.optionsService.options$.subscribe((options) => {
+      this.options=options;
+    });
   }
 
   ngOnInit(): void {
@@ -26,48 +30,40 @@ export class OptionsComponent {
 
   public switchHand(hand: string): void {
     if (hand === 'L') {
-      this.quizzesService.switchHand('L');
+      this.optionsService.switchHand('L');
     }
     else {
-      this.quizzesService.switchHand('R');
+      this.optionsService.switchHand('R');
     }
   }
 
   public switchChronometer(event: any): void {
     if (event.target.checked) {
-      this.quizzesService.setChronometer(true);
+      this.optionsService.setChronometer(true);
     }
     else {
-      this.quizzesService.setChronometer(false);
+      this.optionsService.setChronometer(false);
     }
   }
 
   public setTime(time: string): void {
     const numberValue = parseFloat(time);
-    if (this.quizzesService.getTimer() != 0 && numberValue > 0) {
-      this.quizzesService.setTime(numberValue);
+    if (this.options?.timePerQuestion != 0 && numberValue > 0) {
+      this.optionsService.setTime(numberValue);
     }
   }
 
   public switchTimer(event: any): void {
     if (event.target.checked) {
-      this.quizzesService.setTimer(true);
+      this.optionsService.setTimer(true);
     }
     else {
-      this.quizzesService.setTimer(false);
+      this.optionsService.setTimer(false);
     }
-  }
-
-  public getTimer(): number {
-    return this.quizzesService.getTimer();
-  }
-
-  public getHand(): string {
-    return this.quizzesService.getHand();
   }
 
   public switchGame(): void {
-    if (this.quizzesService.checkOptions()) {
+    if (this.optionsService.checkOptions()) {
       this.router.navigateByUrl('/game');
     }
     else {

@@ -9,8 +9,8 @@
 
     <section class="options">
         <app-single-option id="hand-selection" [caption]="'Choix de la main'">
-                <app-button [ngClass]="{grey:getHand()==='R'}" [text]="'Main gauche'" [picture]="'./assets/main_gauche.png'" (click)="switchHand('L')"/>
-                <app-button [ngClass]="{grey:getHand()==='L'}" [text]="'Main droite'" [picture]="'./assets/main_droite.png'" (click)="switchHand('R')"/>
+                <app-button [ngClass]="{grey:options?.hand==='R'}" [text]="'Main gauche'" [picture]="'./assets/main_gauche.png'" (click)="switchHand('L')"/>
+                <app-button [ngClass]="{grey:options?.hand==='L'}" [text]="'Main droite'" [picture]="'./assets/main_droite.png'" (click)="switchHand('R')"/>
         </app-single-option>
 
         <app-single-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
@@ -19,7 +19,7 @@
 
         <app-single-option [caption]="'Définir un temps par position de main'">
                 <app-custom-checkbox (change)="switchTimer($event)"/>
-                <input type="number" placeholder="{{getTimer()}}sec" min="1" #numberInput (change)="setTime(numberInput.value)"/>
+                <input type="number" placeholder="{{options?.timePerQuestion}}sec" min="1" #numberInput (change)="setTime(numberInput.value)"/>
         </app-single-option>
 
         <app-single-option [caption]="'Position des mains à travailler'">
