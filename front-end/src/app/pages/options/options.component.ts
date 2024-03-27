@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { QuizService } from '../../../services/quiz.service';
+import { QuizzesService } from '../../../services/quizzes.service';
 
 @Component({
   selector: 'app-options',
@@ -14,7 +14,7 @@ export class OptionsComponent {
   public numberValue: number = 0;
   public isWarningVisible: boolean = false;
 
-  constructor(private router: Router, private quizService: QuizService) {
+  constructor(private router: Router, private quizzesService: QuizzesService) {
   }
 
   ngOnInit(): void {
@@ -26,38 +26,38 @@ export class OptionsComponent {
 
   public switchHand(hand: string): void {
     if (hand === 'L') {
-      this.quizService.switchHand('L');
+      this.quizzesService.switchHand('L');
     }
     else {
-      this.quizService.switchHand('R');
+      this.quizzesService.switchHand('R');
     }
   }
 
   public switchChronometer(): void {
-    this.quizService.switchChronometer();
+    this.quizzesService.switchChronometer();
   }
 
   public setTimer(time: string): void {
     const numberValue = parseFloat(time);
-    if (this.quizService.getTimer() != 0 && numberValue > 0) {
-      this.quizService.setTimer(numberValue);
+    if (this.quizzesService.getTimer() != 0 && numberValue > 0) {
+      this.quizzesService.setTimer(numberValue);
     }
   }
 
   public switchTimer(): void {
-    this.quizService.switchTimer();
+    this.quizzesService.switchTimer();
   }
 
   public getTimer(): number {
-    return this.quizService.getTimer();
+    return this.quizzesService.getTimer();
   }
 
   public getHand(): string {
-    return this.quizService.getHand();
+    return this.quizzesService.getHand();
   }
 
   public switchGame(): void {
-    if (this.quizService.checkOptions()) {
+    if (this.quizzesService.checkOptions()) {
       this.router.navigateByUrl('/game');
     }
     else {

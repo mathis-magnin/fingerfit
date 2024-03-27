@@ -1,4 +1,4 @@
 <div class="keyboard">
-    <app-key [label]="key.label" [finger]="key.finger" *ngFor="let key of keys"
-        [ngClass]="{'space': key.label == 'ESPACE'}" />
+    <app-key *ngFor="let key of keys" [symbol]="key.symbol" [finger]="key.finger"
+        [ngClass]="{'space': key.symbol == Symbol.SPACE}" />
 </div>

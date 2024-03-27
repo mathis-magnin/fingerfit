@@ -1,48 +1,46 @@
-import { Quiz } from '../models/quiz.model';
-import { Question } from '../models/question.model';
-import { Finger } from '../models/finger.model';
+import { Finger, Symbol, Position, Quiz } from '../models/quiz.model';
 
-export const FIRST_QUESTION: Question = {
-    answers: [
+export const FIRST_POSITION: Position = {
+    keys: [
         {
-            label: 'T',
+            symbol: Symbol.T,
             finger: Finger.PINKY
         },
         {
-            label: 'B',
+            symbol: Symbol.B,
             finger: Finger.THUMB
         },
         {
-            label: 'E',
+            symbol: Symbol.E,
             finger: Finger.RING
         },
         {
-            label: 'Z',
+            symbol: Symbol.Z,
             finger: Finger.MIDDLE
         },
         {
-            label: 'Q',
+            symbol: Symbol.Q,
             finger: Finger.INDEX
         }
     ]
 };
 
-export const SECOND_QUESTION: Question = {
-    answers: [
+export const SECOND_POSITION: Position = {
+    keys: [
         {
-            label: 'ESPACE',
+            symbol: Symbol.SPACE,
             finger: Finger.THUMB
         },
         {
-            label: 'S',
+            symbol: Symbol.S,
             finger: Finger.INDEX
         },
         {
-            label: 'Y',
+            symbol: Symbol.Y,
             finger: Finger.MIDDLE
         },
         {
-            label: 'K',
+            symbol: Symbol.K,
             finger: Finger.RING
         }
     ]
@@ -51,10 +49,10 @@ export const SECOND_QUESTION: Question = {
 export const QUIZ_LIST: Quiz[] = [
     {
         name: 'HELLO',
-        questions: [FIRST_QUESTION],
+        positions: [FIRST_POSITION],
     },
     {
         name: 'WORLD',
-        questions: [FIRST_QUESTION, SECOND_QUESTION],
+        positions: [FIRST_POSITION, SECOND_POSITION],
     }
 ];

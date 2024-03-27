@@ -1,5 +1,5 @@
-import { Component, Inject, Input } from '@angular/core';
-import { Finger } from '../../../models/finger.model';
+import { Component, Input } from '@angular/core';
+import { Finger, Symbol, symbolToString } from '../../../models/quiz.model';
 
 @Component({
     selector: 'app-key',
@@ -8,7 +8,9 @@ import { Finger } from '../../../models/finger.model';
 })
 export class KeyComponent {
 
-    @Input() public label: string = '';
+    Symbol = Symbol;
+    symbolToString = symbolToString;
+    @Input() public symbol: Symbol = Symbol.UNDEFINED;
 
     Finger = Finger; // To use enum in html
     @Input() public finger: Finger = Finger.UNDEFINED;
