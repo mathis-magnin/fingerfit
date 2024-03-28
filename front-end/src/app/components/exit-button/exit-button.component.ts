@@ -22,6 +22,7 @@ export class ExitButtonComponent implements OnInit {
 
     ngOnInit(): void { }
 
+    // unused
     public exit(): void {
         if (this.exitFunction) {
             this.exitFunction();

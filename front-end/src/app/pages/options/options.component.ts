@@ -22,6 +22,7 @@ export class OptionsComponent {
   }
 
   ngOnInit(): void {
+    this.optionsService.clearOptions();
   }
 
   public togglePopup(): void {
