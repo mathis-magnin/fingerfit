@@ -33,9 +33,4 @@ export class GameComponent {
     console.log('Game Over');
     //switch to another question or end the game here
   }
-
-  public clearOptions() {
-    this.optionsService.clearOptions();
-  }
-
 }
