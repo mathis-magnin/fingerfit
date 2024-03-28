@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Quiz } from '../models/quiz.model';
+import { Quiz, Position } from '../models/quiz.model';
 import { BehaviorSubject } from 'rxjs';
 import { QUIZ_LIST } from 'src/mocks/quiz-list.mock';
 
@@ -8,8 +8,8 @@ import { QUIZ_LIST } from 'src/mocks/quiz-list.mock';
 })
 export class QuizService {
 
-    private quiz?: Quiz;
-    public quiz$: BehaviorSubject<Quiz> = new BehaviorSubject(QUIZ_LIST[0]);
+    private position?: Position;
+    public position$: BehaviorSubject<Position> = new BehaviorSubject(QUIZ_LIST[0].positions[0]);
 
     constructor() { }
 

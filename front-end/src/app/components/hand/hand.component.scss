@@ -8,3 +8,7 @@
     width: inherit;
     height: inherit;
 }
+
+.symmetrical {
+    transform: scaleX(-1);
+}
