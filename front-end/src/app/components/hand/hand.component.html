@@ -1,19 +1,6 @@
-<div class="hand_size">
-
-    <!-- Right hand -->
-    <img src="assets/main_droite.png" class="hand" *ngIf="!isLeft" />
-    <img src="assets/pouce_droit.png" class="hand" *ngIf="!isLeft && thumb" />
-    <img src="assets/index_droit.png" class="hand" *ngIf="!isLeft && indexFinger" />
-    <img src="assets/majeur_droit.png" class="hand" *ngIf="!isLeft && middleFinger" />
-    <img src="assets/anulaire_droit.png" class="hand" *ngIf="!isLeft && ringFinger" />
-    <img src="assets/auriculaire_droit.png" class="hand" *ngIf="!isLeft && pinkyFinger" />
-
-    <!-- Left hand -->
-    <img src="assets/main_gauche.png" class="hand" *ngIf="isLeft" />
-    <img src="assets/pouce_gauche.png" class="hand" *ngIf="isLeft && thumb" />
-    <img src="assets/index_gauche.png" class="hand" *ngIf="isLeft && indexFinger" />
-    <img src="assets/majeur_gauche.png" class="hand" *ngIf="isLeft && middleFinger" />
-    <img src="assets/anulaire_gauche.png" class="hand" *ngIf="isLeft && ringFinger" />
-    <img src="assets/auriculaire_gauche.png" class="hand" *ngIf="isLeft && pinkyFinger" />
-
+<div class="hand_size" [ngClass]="{symmetrical: side == Side.LEFT}">
+    <img src="assets/right_hand.png" class="hand" />
+    <ng-container *ngFor="let highlight of fingers; index as finger">
+        <img *ngIf="highlight" src="assets/{{Finger[finger]}}.png" class="hand" />
+    </ng-container>
 </div>

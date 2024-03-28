@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Finger, Symbol, Key, symbolToString } from '../../../models/quiz.model';
+import { Finger, Symbol, Key, symbolToString, Position } from 'src/models/quiz.model';
+import { QuizService } from 'src/services/quiz.service';
 
 @Component({
     selector: 'app-keyboard',
@@ -13,9 +14,17 @@ export class KeyboardComponent {
 
     public keys: Key[] = [];
 
-    constructor() {
+    constructor(public quizService: QuizService) {
         for (let symbol = Symbol.A; symbol <= Symbol.SPACE; symbol++) {
             this.keys.push({ symbol: symbol, finger: Finger.UNDEFINED })
         }
+
+        this.quizService.position$.subscribe(
+            (position: Position) => {
+                for (let key of position.keys) {
+                    this.keys[key.symbol].finger = key.finger;
+                }
+            }
+        )
     }
 }

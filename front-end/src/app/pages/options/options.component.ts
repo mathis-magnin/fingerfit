@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { OptionsService } from '../../../services/options.service';
-import { Options } from '../../../models/options.model';
+import { OptionsService } from 'src/services/options.service';
+import { Side, Options } from 'src/models/options.model';
 
 @Component({
   selector: 'app-options',
@@ -10,6 +10,8 @@ import { Options } from '../../../models/options.model';
 })
 export class OptionsComponent {
 
+  Side = Side;
+
   public options: Options | undefined;
   public isPopupVisible: boolean = false;
   public numberValue: number = 0;
@@ -17,7 +19,7 @@ export class OptionsComponent {
 
   constructor(private router: Router, public optionsService: OptionsService) {
     this.optionsService.options$.subscribe((options) => {
-      this.options=options;
+      this.options = options;
     });
   }
 
@@ -28,12 +30,14 @@ export class OptionsComponent {
     this.isPopupVisible = !this.isPopupVisible;
   }
 
-  public switchHand(hand: string): void {
-    if (hand === 'L') {
-      this.optionsService.switchHand('L');
-    }
-    else {
-      this.optionsService.switchHand('R');
+  public switchHand(hand: Side): void {
+    switch (hand) {
+      case Side.LEFT:
+        this.optionsService.switchHand(Side.LEFT);
+        break;
+      case Side.RIGHT:
+        this.optionsService.switchHand(Side.RIGHT);
+        break;
     }
   }
 

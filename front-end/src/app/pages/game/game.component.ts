@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { OptionsService } from '../../../services/options.service';
-import { Options } from '../../../models/options.model';
+import { Side, Options } from '../../../models/options.model';
 
 @Component({
   selector: 'app-game',
@@ -12,7 +12,7 @@ export class GameComponent {
   public options: Options = {
     timePerQuestion: undefined,
     chronometer: false,
-    hand: 'R',
+    hand: Side.RIGHT,
     quiz: undefined
   };
 
