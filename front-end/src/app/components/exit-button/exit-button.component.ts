@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Quiz } from 'src/models/quiz.model';
-import { QuizzesService } from 'src/services/quizzes.service';
+import { OptionsService } from '../../../services/options.service';
+
 @Component({
     selector: 'app-exit-button',
     templateUrl: './exit-button.component.html',
@@ -18,7 +18,7 @@ export class ExitButtonComponent implements OnInit {
     @Input()
     public exitFunction?: () => void;
 
-    constructor(private quizzesService: QuizzesService) { }
+    constructor(public optionsService:OptionsService) { }
 
     ngOnInit(): void { }
 
