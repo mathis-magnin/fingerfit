@@ -47,8 +47,8 @@ export class KeyboardComponent {
 
     isPositionFinished(): boolean {
         if (this.keysPressed.length === this.keysToPress.length) {
-            for (let k in this.keysToPress) {
-                if (!this.keysPressed.includes(this.keysToPress[k].symbol)) {
+            for (let k of this.keysToPress) {
+                if (!this.keysPressed.includes(k.symbol)) {
                     return false;
                 }
             }
