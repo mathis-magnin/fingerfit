@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Finger, Symbol, Key, symbolToString, Position } from 'src/models/quiz.model';
+import { Finger, Symbol, Key, IsSymbolPressed, Position } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 
 @Component({
@@ -14,6 +14,10 @@ export class KeyboardComponent {
 
     public keys: Key[] = [];
 
+    private symbolsToPress: Symbol[] = [];
+
+    private symbolsPressed: Symbol[] = [];
+
     constructor(public quizService: QuizService) {
         for (let symbol = Symbol.A; symbol <= Symbol.SPACE; symbol++) {
             this.keys.push({ symbol: symbol, finger: Finger.UNDEFINED })
@@ -23,8 +27,36 @@ export class KeyboardComponent {
             (position: Position) => {
                 for (let key of position.keys) {
                     this.keys[key.symbol].finger = key.finger;
+                    if(key.finger !== Finger.UNDEFINED) {
+                        this.symbolsToPress.push(key.symbol);
+                    }
                 }
             }
         )
+    }
+
+    updateKeysPressed(isKeyPressed: IsSymbolPressed) : void {
+        if (isKeyPressed.isPressed && !this.symbolsPressed.includes(isKeyPressed.symbol)) {
+            this.symbolsPressed.push(isKeyPressed.symbol);
+        }
+        else if(!isKeyPressed.isPressed) {
+            this.symbolsPressed = this.symbolsPressed.filter(symbol => symbol !== isKeyPressed.symbol);
+        }
+
+        if(this.isPositionFinished()) {
+            console.log("Position finished"); /* A SUPPRIMER */
+        }
+    }
+
+    isPositionFinished(): boolean {
+        if (this.symbolsPressed.length === this.symbolsToPress.length) {
+            for (let s of this.symbolsToPress) {
+                if (!this.symbolsPressed.includes(s)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 }

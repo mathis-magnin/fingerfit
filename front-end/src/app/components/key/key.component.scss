@@ -15,6 +15,12 @@
         transition-duration: 0.5s;
         opacity: 0.5;
     }
+
+    &.pressed {
+        transform: scale(1.25);
+        transition-duration: 0.5s;
+        opacity: 0.5;
+    }
 }
 
 .space_key {
@@ -24,14 +30,22 @@
     &:active {
         transform: scale(1.125);
     }
+
+    &.pressed {
+        transform: scale(1.125);
+    }
 }
 
-.undefined {
+.undef {
     opacity: 0.0;
     background-color: white;
     color: red;
 
     &:active {
+        box-shadow: 0vw 0vw 1vw 0.5vw red;
+    }
+
+    &.pressed {
         box-shadow: 0vw 0vw 1vw 0.5vw red;
     }
 }
