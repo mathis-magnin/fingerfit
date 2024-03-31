@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { OptionsService } from '../../../services/options.service';
+import { PositionService } from '../../../services/position.service';
 import { Side, Options } from '../../../models/options.model';
+import { Key } from 'src/models/quiz.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -16,9 +19,15 @@ export class GameComponent {
     quiz: undefined
   };
 
-  constructor(public optionsService: OptionsService) {
+  public keysToPress: Key[] = this.positionService.position$.value.keys;
+
+  constructor(public optionsService: OptionsService, public positionService: PositionService, private router: Router) {
     this.optionsService.options$.subscribe((options) => {
       this.options = options;
+    });
+
+    this.positionService.position$.subscribe((position) => {
+      this.keysToPress = position.keys;
     });
   }
 
@@ -27,10 +36,18 @@ export class GameComponent {
     console.log(this.options.chronometer);
     console.log(this.options.hand);
     console.log(this.options.quiz?.name);
+    console.log(this.keysToPress);
   }
 
-  public showEnd(): void {
+  public nextPosition(): void { //switch to another question or end the game here
+    console.log('Position Finished');
+    if (!this.positionService.nextPosition()) {
+      this.endGame();
+    }
+  }
+
+  private endGame(): void { //end the game here
     console.log('Game Over');
-    //switch to another question or end the game here
+    this.router.navigate(['/congrats']);
   }
 }
