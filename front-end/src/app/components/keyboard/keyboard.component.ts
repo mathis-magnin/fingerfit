@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Finger, Symbol, Key, IsSymbolPressed, Position } from 'src/models/quiz.model';
-import { QuizService } from 'src/services/quiz.service';
 
 @Component({
     selector: 'app-keyboard',
@@ -14,44 +13,30 @@ export class KeyboardComponent {
 
     public keys: Key[] = [];
 
-    private symbolsToPress: Symbol[] = [];
+    @Input() public keysToPress: Key[] = [];
 
     private symbolsPressed: Symbol[] = [];
 
-    constructor(public quizService: QuizService) {
-        for (let symbol = Symbol.A; symbol <= Symbol.SPACE; symbol++) {
-            this.keys.push({ symbol: symbol, finger: Finger.UNDEFINED })
-        }
+    @Output() public nextPosition: EventEmitter<void> = new EventEmitter();
 
-        this.quizService.position$.subscribe(
-            (position: Position) => {
-                for (let key of position.keys) {
-                    this.keys[key.symbol].finger = key.finger;
-                    if(key.finger !== Finger.UNDEFINED) {
-                        this.symbolsToPress.push(key.symbol);
-                    }
-                }
-            }
-        )
-    }
-
-    updateKeysPressed(isKeyPressed: IsSymbolPressed) : void {
+    updateSymbolsPressed(isKeyPressed: IsSymbolPressed) : void {
         if (isKeyPressed.isPressed && !this.symbolsPressed.includes(isKeyPressed.symbol)) {
             this.symbolsPressed.push(isKeyPressed.symbol);
         }
         else if(!isKeyPressed.isPressed) {
             this.symbolsPressed = this.symbolsPressed.filter(symbol => symbol !== isKeyPressed.symbol);
         }
+        console.log(this.symbolsPressed); /* A SUPPRIMER */
 
-        if(this.isPositionFinished()) {
-            console.log("Position finished"); /* A SUPPRIMER */
+        if (this.isPositionFinished()) {
+            this.nextPosition.emit();
         }
     }
 
     isPositionFinished(): boolean {
-        if (this.symbolsPressed.length === this.symbolsToPress.length) {
-            for (let s of this.symbolsToPress) {
-                if (!this.symbolsPressed.includes(s)) {
+        if (this.symbolsPressed.length === this.keysToPress.length) {
+            for (let k of this.keysToPress) {
+                if (!this.symbolsPressed.includes(k.symbol)) {
                     return false;
                 }
             }
@@ -59,4 +44,20 @@ export class KeyboardComponent {
         }
         return false;
     }
+
+    constructor() { }
+
+    ngOnChanges(): void {
+        this.keys = [];
+        this.symbolsPressed = [];
+
+        for (let symbol = Symbol.A; symbol <= Symbol.SPACE; symbol++) {
+            this.keys.push({ symbol: symbol, finger: Finger.UNDEFINED })
+        }
+
+        for (let key of this.keysToPress) {
+            this.keys[key.symbol].finger = key.finger;
+        }
+    }
+
 }

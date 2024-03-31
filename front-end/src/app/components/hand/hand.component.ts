@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Finger, Position } from 'src/models/quiz.model';
-import { Side } from 'src/models/quiz.model';
-import { QuizService } from 'src/services/quiz.service';
+import { Finger, Key, Side } from 'src/models/quiz.model';
 
 @Component({
     selector: 'app-hand',
@@ -13,21 +11,23 @@ export class HandComponent {
     Side = Side;
     @Input() public side: Side = Side.RIGHT;
 
+    @Input() public keysToPress: Key[] = [];
+
     Finger = Finger;
     public fingers: boolean[] = [];
 
-    constructor(public quizService: QuizService) {
+    constructor() { }
+
+    ngOnChanges(): void {
+        this.fingers = [];
+
         for (let finger = Finger.THUMB; finger <= Finger.PINKY; finger++) {
             this.fingers.push(false);
         }
 
-        this.quizService.position$.subscribe(
-            (position: Position) => {
-                for (let key of position.keys) {
-                    this.fingers[key.finger] = true;
-                }
-            }
-        )
+        for (let key of this.keysToPress) {
+            this.fingers[key.finger] = true;
+        }
     }
 
 }

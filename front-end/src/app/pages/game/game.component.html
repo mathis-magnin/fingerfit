@@ -3,11 +3,11 @@
 <!---->
 
 <header>
-    <app-timer [maxTime]="options.timePerQuestion" [show]="options.chronometer" (timeOut)="showEnd()" />
+    <app-timer [maxTime]="options.timePerQuestion" [show]="options.chronometer" (timeOut)="nextPosition()" />
     <app-exit-button [link]="'/options'" />
 </header>
 
 <main>
-    <app-hand />
-    <app-keyboard />
+    <app-hand [keysToPress]="keysToPress" />
+    <app-keyboard [keysToPress]="keysToPress" (nextPosition)="nextPosition()" />
 </main>
