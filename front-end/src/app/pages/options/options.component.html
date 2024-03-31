@@ -7,13 +7,6 @@
     <h1>Options de la partie</h1>
 
     <section class="options">
-        <app-single-option id="hand-selection" [caption]="'Choix de la main'">
-            <app-button [ngClass]="{grey: options?.hand == Side.RIGHT}" [text]="'Main gauche'"
-                [picture]="'./assets/left_hand.png'" (click)="switchHand(Side.LEFT)" />
-            <app-button [ngClass]="{grey: options?.hand == Side.LEFT}" [text]="'Main droite'"
-                [picture]="'./assets/right_hand.png'" (click)="switchHand(Side.RIGHT)" />
-        </app-single-option>
-
         <app-single-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
             <app-custom-checkbox />
         </app-single-option>
@@ -26,7 +19,7 @@
 
         <app-single-option [caption]="'Position des mains à travailler'">
             <app-button (click)="togglePopup()" [text]="'Selectionner'" />
-            <app-quiz-list id="popup" *ngIf="isPopupVisible" (closeSelection)="togglePopup()" />
+            <app-quiz-list id="popup" *ngIf="isPopupVisible" (exit)="togglePopup()" (closeSelection)="togglePopup()"/>
         </app-single-option>
     </section>
     <app-button id="play-button" [text]="'Valider et Jouer'" (click)="switchGame()" id="play-button" />

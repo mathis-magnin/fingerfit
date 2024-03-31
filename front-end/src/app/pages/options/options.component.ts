@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { OptionsService } from 'src/services/options.service';
-import { Side, Options } from 'src/models/options.model';
+import { Options } from 'src/models/options.model';
 
 @Component({
   selector: 'app-options',
@@ -9,8 +9,6 @@ import { Side, Options } from 'src/models/options.model';
   styleUrls: ['./options.component.scss']
 })
 export class OptionsComponent {
-
-  Side = Side;
 
   public options: Options | undefined;
   public isPopupVisible: boolean = false;
@@ -31,16 +29,6 @@ export class OptionsComponent {
     this.isPopupVisible = !this.isPopupVisible;
   }
 
-  public switchHand(hand: Side): void {
-    switch (hand) {
-      case Side.LEFT:
-        this.optionsService.switchHand(Side.LEFT);
-        break;
-      case Side.RIGHT:
-        this.optionsService.switchHand(Side.RIGHT);
-        break;
-    }
-  }
 
   public switchChronometer(event: any): void {
     if (event.target.checked) {
