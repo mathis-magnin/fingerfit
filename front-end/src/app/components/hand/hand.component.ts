@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Finger, Position } from 'src/models/quiz.model';
-import { Side } from 'src/models/options.model';
+import { Side } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 
 @Component({

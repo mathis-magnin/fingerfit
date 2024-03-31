@@ -1,5 +1,9 @@
 <div class="quiz" *ngIf="quiz">
-    {{quiz.name}}
-    <app-button class="detail-quiz-button" [text]="'détail'"></app-button>
-    <app-button class="chose-quiz-button" [text]="'choisir'" (click)="quizIsChosen()"></app-button>
+    <div>
+        <img src="{{this.src}}">
+        <p><b>{{quiz.name}}</b> <br> {{this.quiz.positions.length}} question(s)</p>
+        <app-button class="detail-quiz-button" [text]="detailsString" (click)="showMoreInfo()"></app-button>
+        <app-button class="chose-quiz-button" [text]="'choisir'" (click)="quizIsChosen()"></app-button>
+    </div>
+    <app-quiz-details *ngIf="showMore" [quiz]="this.quiz"></app-quiz-details>
 </div>

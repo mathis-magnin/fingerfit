@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Options, Side } from '../models/options.model';
+import { Options } from '../models/options.model';
 import { Quiz } from '../models/quiz.model';
 
 @Injectable({
@@ -10,7 +10,6 @@ export class OptionsService {
 
     public options$: BehaviorSubject<Options> =
         new BehaviorSubject<Options>({
-            hand: Side.RIGHT,
             chronometer: false,
             timePerQuestion: undefined,
             quiz: undefined
@@ -20,10 +19,6 @@ export class OptionsService {
 
     public selectQuiz(quiz: Quiz): void {
         this.options$.next({ ...this.options$.value, quiz });
-    }
-
-    public switchHand(hand: Side): void {
-        this.options$.next({ ...this.options$.value, hand });
     }
 
     public setChronometer(set: boolean): void {
@@ -55,7 +50,6 @@ export class OptionsService {
 
     public clearOptions(): void {
         this.options$.next({
-            hand: Side.RIGHT,
             chronometer: false,
             timePerQuestion: undefined,
             quiz: undefined

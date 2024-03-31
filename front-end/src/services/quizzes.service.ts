@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Quiz } from '../models/quiz.model';
+import { Quiz, Side } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 
 
@@ -13,4 +13,21 @@ export class QuizzesService {
 
     constructor() { }
 
+    public filterQuizzes(side: Side | undefined, searchValue: string): void {
+        let filteredQuizzes: Quiz[] = QUIZ_LIST;
+
+        if (searchValue.trim() !== '') {
+            const searchTerm = searchValue.toLowerCase();
+            filteredQuizzes = filteredQuizzes.filter(quiz => quiz.name.toLowerCase().includes(searchTerm));
+        }
+
+        if (side!== undefined) {
+            filteredQuizzes = filteredQuizzes.filter(quiz => quiz.side === side);
+        }
+
+
+        this.quizzes$.next(filteredQuizzes);
+    }
 }
+
+
