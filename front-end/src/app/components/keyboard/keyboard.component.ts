@@ -42,7 +42,6 @@ export class KeyboardComponent {
         else if(!isKeyPressed.isPressed) {
             this.symbolsPressed = this.symbolsPressed.filter(symbol => symbol !== isKeyPressed.symbol);
         }
-        console.log(this.symbolsPressed); /* A SUPPRIMER */
 
         if(this.isPositionFinished()) {
             console.log("Position finished"); /* A SUPPRIMER */
@@ -50,11 +49,8 @@ export class KeyboardComponent {
     }
 
     isPositionFinished(): boolean {
-        console.log("Lenght of symbolsPressed: ", this.symbolsPressed.length); /* A SUPPRIMER */
-        console.log("Lenght of symbolsToPress: ", this.symbolsToPress.length); /* A SUPPRIMER */
         if (this.symbolsPressed.length === this.symbolsToPress.length) {
             for (let s of this.symbolsToPress) {
-                console.log("symbolsToPress symbol: ", s); /* A SUPPRIMER */
                 if (!this.symbolsPressed.includes(s)) {
                     return false;
                 }
