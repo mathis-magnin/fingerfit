@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { OptionsService } from '../../../services/options.service';
+import { Options } from '../../../models/options.model';
 import { PositionService } from '../../../services/position.service';
-import { Side, Options } from '../../../models/options.model';
 import { Key } from 'src/models/quiz.model';
 import { Router } from '@angular/router';
 
@@ -15,7 +15,6 @@ export class GameComponent {
   public options: Options = {
     timePerQuestion: undefined,
     chronometer: false,
-    hand: Side.RIGHT,
     quiz: undefined
   };
 
@@ -34,7 +33,6 @@ export class GameComponent {
   ngOnInit(): void {
     console.log(this.options.timePerQuestion);
     console.log(this.options.chronometer);
-    console.log(this.options.hand);
     console.log(this.options.quiz?.name);
     console.log(this.keysToPress);
   }

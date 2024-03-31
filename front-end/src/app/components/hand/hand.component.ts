@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Finger, Key } from 'src/models/quiz.model';
-import { Side } from 'src/models/options.model';
+import { Finger, Key, Side } from 'src/models/quiz.model';
 
 @Component({
     selector: 'app-hand',

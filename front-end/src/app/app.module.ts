@@ -18,6 +18,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { WarningPopup } from './components/warning-popup/warning-popup.component';
 import { SingleOption } from './components/single-option/single-option.component';
 import { Timer } from './components/timer/timer.component';
+import { QuizDetailsComponent } from './components/quiz-details/quiz-details.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { Timer } from './components/timer/timer.component';
     QuizListComponent,
     WarningPopup,
     SingleOption,
-    Timer
+    Timer,
+    QuizDetailsComponent,
   ],
   imports: [
     BrowserModule,

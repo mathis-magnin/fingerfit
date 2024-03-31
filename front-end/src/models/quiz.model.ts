@@ -42,6 +42,11 @@ export enum Symbol {
     SPACE
 }
 
+export enum Side {
+    LEFT,
+    RIGHT
+}
+
 export function symbolToString(symbol: Symbol): string {
     switch (symbol) {
         case Symbol.UNDEFINED:
@@ -147,4 +152,5 @@ export interface Position {
 export interface Quiz {
     name: string;
     positions: Position[];
+    side: Side;
 }

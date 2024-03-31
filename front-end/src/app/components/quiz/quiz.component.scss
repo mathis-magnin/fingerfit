@@ -1,14 +1,25 @@
-.quiz {
+.quiz div:first-child{
     display: grid;
-    grid-template-columns: 3fr 1fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
     align-items: center;
+
+}
+
+.quiz{
+    box-shadow: 0 0 5px 0px black;
     background-color: white;
     border-radius: 0.5dvi;
-    box-shadow: 0 0 5px 0px black;
     width: 35vw;
     min-height: 5vh;
     margin: 2vh;
     padding: 1vh;
+    
+}
+
+.quiz img{
+    width: 3vw;
+    height: 5vh;
+
 }
 
 :host {

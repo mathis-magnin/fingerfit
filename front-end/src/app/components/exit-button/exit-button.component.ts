@@ -10,7 +10,7 @@ import { OptionsService } from '../../../services/options.service';
 export class ExitButtonComponent implements OnInit {
 
     @Input()
-    public link: string = '\home';
+    public link?: string;
 
     @Input()
     public text?: string;
