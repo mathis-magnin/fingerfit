@@ -130,7 +130,7 @@ export function stringToSymbol(s: string): Symbol {
     }
 }
 
-export interface IsKeyPressed {
+export interface IsSymbolPressed {
     symbol: Symbol;
     isPressed: boolean;
 }
