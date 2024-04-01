@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { count } from 'rxjs';
+import { TimerService } from 'src/services/timer.service';
 
 @Component({
     selector: 'app-timer',
@@ -20,25 +22,46 @@ export class TimerComponent implements OnInit {
     @Output()
     public timeOut: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    constructor() { }
+    constructor(public TimerService: TimerService) {
+        this.TimerService.time$.subscribe((time) => {
+            this.counter = time;
+            this.checkTime();
+        });
+    }
 
     ngOnInit(): void {
         this.startTimer();
     }
 
     public startTimer(): void {
-        setInterval(() => {
-            if (this.maxTime && this.counter === this.maxTime) {
-                this.timeOut.emit(true);
-            }
-            else {
-                this.counter++;
-            }
-            if (this.maxTime && this.counter + 10 >= this.maxTime) {
-                this.endNear = true;
-            }
-        }, 1000);
+        this.TimerService.clearTimer();
+        this.TimerService.startTimer();
     }
+
+    public clearTimer(): void {
+        this.TimerService.clearTimer();
+        this.endNear = false;
+    } 
+
+    public checkTime(): void {
+        if (this.maxTime && this.maxTime - this.counter <= 10) {
+            this.endNear = true;
+        }
+        if (this.maxTime && this.maxTime - this.counter <= 0) {
+            this.end();
+        }
+
+    }
+
+    public end(): void {
+        this.timeOut.emit(true);
+    }
+
+    ngOnDestroy(): void  {
+        this.TimerService.stop();
+    }   
+
+
 
 
 }
