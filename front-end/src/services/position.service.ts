@@ -22,21 +22,28 @@ export class PositionService {
         )
     }
 
-    nextPosition(): boolean {
+    nextPosition(time: boolean): boolean {
+        if (time)
+            this.TimerService.stop();
         this.current_position_index++;
         if (this.current_position_index >= this.quizService.quiz$.value.positions.length) {
             this.current_position_index = 0;
             this.position = this.quizService.quiz$.value.positions[this.current_position_index];
             this.position$.next(this.position);
-            this.TimerService.stop();
             return false;
         }
         else {
             this.position = this.quizService.quiz$.value.positions[this.current_position_index];
             this.position$.next(this.position);
-            this.TimerService.clearTimer();
             return true;
         }
+
     }
 
+    positionStart(time: boolean): void {
+        if (time) {
+            this.TimerService.clearTimer();
+            this.TimerService.startTimer();
+        }
+    }
 }

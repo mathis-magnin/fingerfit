@@ -20,6 +20,7 @@ import { SingleOptionComponent } from './components/single-option/single-option.
 import { TimerComponent } from './components/timer/timer.component';
 import { QuizDetailsComponent } from './components/quiz-details/quiz-details.component';
 import { ConfettiComponent } from './components/confetti/confetti.component';
+import { SuperHandComponent } from './components/super-hand/super-hand.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ConfettiComponent } from './components/confetti/confetti.component';
     SingleOptionComponent,
     TimerComponent,
     QuizDetailsComponent,
-    ConfettiComponent
+    ConfettiComponent,
+    SuperHandComponent
   ],
   imports: [
     BrowserModule,
