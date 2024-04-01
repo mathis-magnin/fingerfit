@@ -24,9 +24,11 @@ export class QuizzesService {
         if (side!== undefined) {
             filteredQuizzes = filteredQuizzes.filter(quiz => quiz.side === side);
         }
-
-
         this.quizzes$.next(filteredQuizzes);
+    }
+
+    public resetQuizzes(): void {
+        this.quizzes$.next(QUIZ_LIST);
     }
 }
 

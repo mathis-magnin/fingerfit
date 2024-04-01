@@ -74,7 +74,7 @@ export const QUIZ_LIST: Quiz[] = [
     },
     {
         name: 'BANANA',
-        positions: [FIRST_POSITION],
+        positions: [SECOND_POSITION],
         side: Side.LEFT,
     },
     {

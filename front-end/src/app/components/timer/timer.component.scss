@@ -13,7 +13,7 @@ div {
 
 .turningRed {
     color:red;
-    animation: pulse 10 1s;
+    animation: pulse infinite 1s;
 }
 
 @keyframes pulse {
