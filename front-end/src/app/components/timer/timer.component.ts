@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     styleUrls: ['./timer.component.scss']
 })
 
-export class Timer implements OnInit {
+export class TimerComponent implements OnInit {
 
     public counter: number = 0;
     public endNear: boolean = false;

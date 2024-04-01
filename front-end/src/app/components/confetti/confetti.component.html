@@ -1,0 +1,7 @@
+<div class="confetti-container">
+  <div class="confetti" *ngFor="let confetti of confettis"
+       [style.left.px]="confetti.left"
+       [style.background-color]="confetti.color"
+       [style.animation-delay]="confetti.animationDelay">
+  </div>
+</div>

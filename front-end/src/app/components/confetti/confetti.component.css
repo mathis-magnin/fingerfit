@@ -1,0 +1,20 @@
+.confetti-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+.confetti {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border-radius: 50%; 
+  top: -40vh;
+  animation: fall 2s linear forwards;
+}
+
+@keyframes fall {
+  100% {
+    transform: translateY(130vh);
+  }
+}
