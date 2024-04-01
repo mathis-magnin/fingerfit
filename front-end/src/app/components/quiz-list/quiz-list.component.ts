@@ -33,10 +33,12 @@ export class QuizListComponent {
     quizSelected(Quiz: Quiz) {
         this.optionsService.selectQuiz(Quiz);
         this.closeSelection.emit(true);
+        this.quizzesService.resetQuizzes();
     }
 
     exitQuizList() {
         this.exit.emit(true);
+        this.quizzesService.resetQuizzes();
     }
 
     public onSelect(event: any) {
@@ -65,4 +67,6 @@ export class QuizListComponent {
     public filterQuizzes(side: Side | undefined, name: string) {
         this.quizzesService.filterQuizzes(side, name);
     }
+
+    
 }

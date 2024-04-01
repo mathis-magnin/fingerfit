@@ -1,7 +1,3 @@
-<!-- delete when the game will be implemented -->
-<app-button id="delete_me" [text]="'Finir le jeu'" [link]="'/congrats'" />
-<!---->
-
 <header>
     <app-timer [maxTime]="options.timePerQuestion" [show]="options.chronometer" (timeOut)="nextPosition()" />
     <app-exit-button [link]="'/options'" />

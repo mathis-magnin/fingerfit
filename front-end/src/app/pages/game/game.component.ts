@@ -31,10 +31,7 @@ export class GameComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.options.timePerQuestion);
-    console.log(this.options.chronometer);
-    console.log(this.options.quiz?.name);
-    console.log(this.keysToPress);
+
   }
 
   public nextPosition(): void { //switch to another question or end the game here
