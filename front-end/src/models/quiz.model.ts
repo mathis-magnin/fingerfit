@@ -120,12 +120,16 @@ export function stringToSymbol(s: string): Symbol {
             return Symbol.B;
         case "N":
             return Symbol.N;
+        case ",":
         case "?":
             return Symbol.QUESTION_MARK;
+        case ";":
         case ".":
             return Symbol.POINT;
+        case ":":
         case "/":
             return Symbol.SLASH;
+        case "!":
         case "§":
             return Symbol.SECTION_MARK;
         case " ":

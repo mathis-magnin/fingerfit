@@ -23,8 +23,8 @@ export class KeyComponent {
         if ((stringToSymbol(event.key.toUpperCase()) === this.symbol) && !this.isDown.isPressed) {
             this.isDown = { symbol: this.symbol, isPressed: true };
             this.keyPressed.emit(this.isDown);
-            console.log(event.key + ' down'); /* A SUPPRIMER */
         }
+        console.log(event.key.toUpperCase() + ' down'); /* A SUPPRIMER */
     }
 
     @HostListener('document:keyup', ['$event'])
@@ -32,8 +32,8 @@ export class KeyComponent {
         if ((stringToSymbol(event.key.toUpperCase()) === this.symbol) && this.isDown.isPressed) {
             this.isDown = { symbol: this.symbol, isPressed: false };
             this.keyPressed.emit(this.isDown);
-            console.log(event.key + ' up'); /* A SUPPRIMER */
         }
+        console.log(event.key.toUpperCase() + ' up'); /* A SUPPRIMER */
     }
 
     constructor() { }
