@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./single-option.component.scss']
 })
 
-export class SingleOption implements OnInit {
+export class SingleOptionComponent implements OnInit {
 
     @Input()
     public caption: string="ceci est une description";

@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./warning-popup.component.scss']
 })
 
-export class WarningPopup implements OnInit {
+export class WarningPopupComponent implements OnInit {
 
     @Input()
     public text: string = "WARNING!";

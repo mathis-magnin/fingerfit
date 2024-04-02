@@ -1,9 +1,10 @@
 <header>
-    <app-timer [maxTime]="options.timePerQuestion" [show]="options.chronometer" (timeOut)="nextPosition()" />
+    <app-timer [maxTime]="options.timePerQuestion" [show]="options.chronometer" [start]="this.options.timePerQuestion !== undefined || this.options.chronometer" (timeOut)="nextPosition()"  />
     <app-exit-button [link]="'/options'" />
 </header>
 
-<main>
+<main [ngClass]="{correct:isCorrect}" *ngIf="!isCorrect">
     <app-hand [keysToPress]="keysToPress" />
-    <app-keyboard [keysToPress]="keysToPress" (nextPosition)="nextPosition()" />
+    <app-keyboard [keysToPress]="keysToPress" (nextPosition)="nextPosition()" (isCorrect)="isAnswerCorrect($event)" />
 </main>
+<app-super-hand *ngIf="isCorrect">

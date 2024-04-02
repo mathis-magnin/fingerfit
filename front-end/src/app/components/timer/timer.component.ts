@@ -8,7 +8,7 @@ import { TimerService } from 'src/services/timer.service';
     styleUrls: ['./timer.component.scss']
 })
 
-export class Timer implements OnInit {
+export class TimerComponent implements OnInit {
 
     public counter: number = 0;
     public endNear: boolean = false;
@@ -19,8 +19,12 @@ export class Timer implements OnInit {
     @Input()
     public show: boolean = false;
 
+    @Input()
+    public start: boolean = false;
+
     @Output()
     public timeOut: EventEmitter<boolean> = new EventEmitter<boolean>();
+
 
     constructor(public TimerService: TimerService) {
         this.TimerService.time$.subscribe((time) => {
@@ -30,7 +34,8 @@ export class Timer implements OnInit {
     }
 
     ngOnInit(): void {
-        this.startTimer();
+        if(this.start)
+            this.startTimer();
     }
 
     public startTimer(): void {

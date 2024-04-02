@@ -35,6 +35,5 @@ export class TimerService {
             this.timer = undefined;
         }
     }
-
     
 }

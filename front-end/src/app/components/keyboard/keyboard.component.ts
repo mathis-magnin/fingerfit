@@ -19,6 +19,8 @@ export class KeyboardComponent {
 
     @Output() public nextPosition: EventEmitter<void> = new EventEmitter();
 
+    @Output() public isCorrect: EventEmitter<boolean> = new EventEmitter();
+
     updateSymbolsPressed(isKeyPressed: IsSymbolPressed) : void {
         if (isKeyPressed.isPressed && !this.symbolsPressed.includes(isKeyPressed.symbol)) {
             this.symbolsPressed.push(isKeyPressed.symbol);
@@ -40,8 +42,10 @@ export class KeyboardComponent {
                     return false;
                 }
             }
+            this.isCorrect.emit(true);
             return true;
         }
+        this.isCorrect.emit(false);
         return false;
     }
 

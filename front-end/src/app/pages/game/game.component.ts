@@ -19,7 +19,7 @@ export class GameComponent {
   };
 
   public keysToPress: Key[] = this.positionService.position$.value.keys;
-
+  public isCorrect: boolean = false;
   constructor(public optionsService: OptionsService, public positionService: PositionService, private router: Router) {
     this.optionsService.options$.subscribe((options) => {
       this.options = options;
@@ -36,13 +36,40 @@ export class GameComponent {
 
   public nextPosition(): void { //switch to another question or end the game here
     console.log('Position Finished');
-    if (!this.positionService.nextPosition()) {
+    if (!this.positionService.nextPosition(this.options.timePerQuestion !== undefined || this.options.chronometer)) {
       this.endGame();
     }
+    else {
+      if (this.isCorrect) {
+        this.animate().then(() => {
+          this.isCorrect = false;
+          this.positionService.positionStart(this.options.timePerQuestion !== undefined || this.options.chronometer);
+        });
+      }
+      else {
+        this.positionService.positionStart(this.options.timePerQuestion !== undefined || this.options.chronometer);
+      }
+    }
+
+
   }
 
   private endGame(): void { //end the game here
     console.log('Game Over');
     this.router.navigate(['/congrats']);
+  }
+
+  public isAnswerCorrect(correct: boolean): void {
+    if (correct) {
+      this.isCorrect = true;
+    }
+  }
+
+  animate(): Promise<void> {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 3000);
+    });
   }
 }
