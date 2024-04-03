@@ -1,6 +1,6 @@
 import { Finger, Symbol, Position, Quiz,Side } from '../models/quiz.model';
 
-export const FIRST_POSITION: Position = {
+export const FIRST_POSITION_RIGHT: Position = {
     keys: [
         {
             symbol: Symbol.SPACE,
@@ -21,7 +21,7 @@ export const FIRST_POSITION: Position = {
     ]
 };
 
-export const SECOND_POSITION: Position = {
+export const SECOND_POSITION_RIGHT: Position = {
     keys: [
         {
             symbol: Symbol.T,
@@ -46,32 +46,7 @@ export const SECOND_POSITION: Position = {
     ]
 };
 
-export const THIRD_POSITION: Position = {
-    keys: [
-        {
-            symbol: Symbol.C,
-            finger: Finger.PINKY
-        },
-        {
-            symbol: Symbol.X,
-            finger: Finger.THUMB
-        },
-        {
-            symbol: Symbol.F,
-            finger: Finger.RING
-        },
-        {
-            symbol: Symbol.H,
-            finger: Finger.MIDDLE
-        },
-        {
-            symbol: Symbol.SPACE,
-            finger: Finger.INDEX
-        }
-    ]
-};
-
-export const FOURTH_POSITION: Position = {
+export const THIRD_POSITION_RIGHT: Position = {
     keys: [
         {
             symbol: Symbol.M,
@@ -96,122 +71,139 @@ export const FOURTH_POSITION: Position = {
     ]
 };
 
-export const FIFTH_POSITION: Position = {
+export const FOURTH_POSITION_RIGHT: Position = {
     keys: [
         {
-            symbol: Symbol.QUESTION_MARK,
+            symbol: Symbol.M,
             finger: Finger.PINKY
         },
         {
-            symbol: Symbol.D,
-            finger: Finger.INDEX
+            symbol: Symbol.SPACE,
+            finger: Finger.THUMB
         },
         {
-            symbol: Symbol.B,
+            symbol: Symbol.I,
+            finger: Finger.RING
+        },
+        {
+            symbol: Symbol.Y,
             finger: Finger.MIDDLE
         },
         {
             symbol: Symbol.T,
-            finger: Finger.RING
+            finger: Finger.INDEX
         }
     ]
 };
 
-export const SIXTH_POSITION: Position = {
+export const FIRST_POSITION_LEFT: Position = {
     keys: [
-        {
-            symbol: Symbol.J,
-            finger: Finger.PINKY
-        },
         {
             symbol: Symbol.C,
-            finger: Finger.THUMB
-        },
-        {
-            symbol: Symbol.T,
-            finger: Finger.RING
-        },
-        {
-            symbol: Symbol.R,
-            finger: Finger.MIDDLE
-        },
-        {
-            symbol: Symbol.D,
-            finger: Finger.INDEX
-        }
-    ]
-};
-
-export const SEVENTH_POSITION: Position = {
-    keys: [
-        {
-            symbol: Symbol.L,
             finger: Finger.PINKY
-        },
-        {
-            symbol: Symbol.N,
-            finger: Finger.THUMB
-        },
-        {
-            symbol: Symbol.U,
-            finger: Finger.RING
-        },
-        {
-            symbol: Symbol.G,
-            finger: Finger.MIDDLE
-        },
-        {
-            symbol: Symbol.S,
-            finger: Finger.INDEX
-        }
-    ]
-};
-
-export const EIGHTH_POSITION: Position = {
-    keys: [
-        {
-            symbol: Symbol.U,
-            finger: Finger.PINKY
-        },
-        {
-            symbol: Symbol.J,
-            finger: Finger.THUMB
-        },
-        {
-            symbol: Symbol.T,
-            finger: Finger.RING
-        },
-        {
-            symbol: Symbol.S,
-            finger: Finger.MIDDLE
         },
         {
             symbol: Symbol.X,
+            finger: Finger.THUMB
+        },
+        {
+            symbol: Symbol.F,
+            finger: Finger.RING
+        },
+        {
+            symbol: Symbol.H,
+            finger: Finger.MIDDLE
+        },
+        {
+            symbol: Symbol.SPACE,
             finger: Finger.INDEX
         }
     ]
 };
 
-export const NINTH_POSITION: Position = {
+export const SECOND_POSITION_LEFT: Position = {
     keys: [
         {
-            symbol: Symbol.L,
+            symbol: Symbol.A,
             finger: Finger.PINKY
         },
         {
-            symbol: Symbol.V,
+            symbol: Symbol.SPACE,
             finger: Finger.THUMB
         },
         {
-            symbol: Symbol.U,
+            symbol: Symbol.Z,
             finger: Finger.RING
         },
         {
-            symbol: Symbol.G,
+            symbol: Symbol.E,
             finger: Finger.MIDDLE
         },
         {
-            symbol: Symbol.S,
+            symbol: Symbol.R,
+            finger: Finger.INDEX
+        }
+    ]
+};
+
+export const THIRD_POSITION_LEFT: Position = {
+    keys: [
+        {
+            symbol: Symbol.SPACE,
+            finger: Finger.PINKY
+        },
+        {
+            symbol: Symbol.F,
+            finger: Finger.RING
+        },
+        {
+            symbol: Symbol.N,
+            finger: Finger.MIDDLE
+        },
+        {
+            symbol: Symbol.K,
+            finger: Finger.INDEX
+        }
+    ]
+};
+
+export const FOURTH_POSITION_LEFT: Position = {
+    keys: [
+        {
+            symbol: Symbol.SPACE,
+            finger: Finger.THUMB
+        },
+        {
+            symbol: Symbol.P,
+            finger: Finger.RING
+        },
+        {
+            symbol: Symbol.M,
+            finger: Finger.MIDDLE
+        },
+        {
+            symbol: Symbol.QUESTION_MARK,
+            finger: Finger.INDEX
+        }
+    ]
+};
+
+export const FIFTH_POSITION_LEFT: Position = {
+    keys: [
+        {
+            symbol: Symbol.K,
+            finger: Finger.THUMB
+        },
+        {
+            symbol: Symbol.V,
+            finger: Finger.RING
+        },
+        {
+            symbol: Symbol.T,
+            finger: Finger.MIDDLE
+        },
+        {
+            symbol: Symbol.N,
             finger: Finger.INDEX
         }
     ]
@@ -219,48 +211,33 @@ export const NINTH_POSITION: Position = {
 
 export const QUIZ_LIST: Quiz[] = [
     {
-        name: 'HELLO',
-        positions: [SIXTH_POSITION, FOURTH_POSITION, SECOND_POSITION],
+        name: 'Quiz 1',
+        positions: [FIRST_POSITION_RIGHT, SECOND_POSITION_RIGHT, THIRD_POSITION_RIGHT],
         side: Side.RIGHT,
     },
     {
-        name: 'WORLD',
-        positions: [FIFTH_POSITION, SEVENTH_POSITION, FOURTH_POSITION, FIRST_POSITION, EIGHTH_POSITION],
+        name: 'Quiz 2',
+        positions: [SECOND_POSITION_LEFT, FOURTH_POSITION_LEFT],
         side: Side.LEFT,
     },
     {
-        name: 'ESSAI',
-        positions: [SEVENTH_POSITION, SIXTH_POSITION, FOURTH_POSITION, SEVENTH_POSITION],
+        name: 'Quiz 3',
+        positions: [FIRST_POSITION_LEFT, FOURTH_POSITION_LEFT, THIRD_POSITION_LEFT, SECOND_POSITION_LEFT],
         side: Side.LEFT,
     },
     {
-        name: 'PEUTETRE',
-        positions: [FIRST_POSITION, SEVENTH_POSITION, EIGHTH_POSITION, SIXTH_POSITION],
+        name: 'Quiz 4',
+        positions: [FIFTH_POSITION_LEFT, THIRD_POSITION_LEFT, SECOND_POSITION_LEFT, FIRST_POSITION_LEFT],
         side: Side.LEFT,
     },
     {
-        name: 'BONJOUR',
-        positions: [FIFTH_POSITION, EIGHTH_POSITION, FOURTH_POSITION],
+        name: 'Quiz 5',
+        positions: [SECOND_POSITION_RIGHT, FIRST_POSITION_RIGHT, THIRD_POSITION_RIGHT, FOURTH_POSITION_RIGHT],
         side: Side.RIGHT,
     },
     {
-        name: 'BANANA',
-        positions: [FOURTH_POSITION, NINTH_POSITION, EIGHTH_POSITION, THIRD_POSITION],
+        name: 'Quiz 6',
+        positions: [FIRST_POSITION_LEFT, SECOND_POSITION_LEFT, THIRD_POSITION_LEFT, FOURTH_POSITION_LEFT, FIFTH_POSITION_LEFT],
         side: Side.LEFT,
-    },
-    {
-        name: 'TEST',
-        positions: [EIGHTH_POSITION, NINTH_POSITION, FOURTH_POSITION],
-        side: Side.RIGHT,
-    },
-    {
-        name: 'SUUUU',
-        positions: [SEVENTH_POSITION, FIRST_POSITION, FIFTH_POSITION, FOURTH_POSITION, SECOND_POSITION],
-        side: Side.RIGHT,
-    },
-    {
-        name: 'KIKOO',
-        positions: [SECOND_POSITION, NINTH_POSITION],
-        side : Side.LEFT,
     },
 ];
