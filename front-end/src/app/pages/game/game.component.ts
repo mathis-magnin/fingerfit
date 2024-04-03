@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { OptionsService } from '../../../services/options.service';
 import { Options } from '../../../models/options.model';
 import { PositionService } from '../../../services/position.service';
-import { Key } from 'src/models/quiz.model';
+import { Key, Side } from 'src/models/quiz.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,8 @@ export class GameComponent {
   public options: Options = {
     timePerQuestion: undefined,
     chronometer: false,
-    quiz: undefined
+    quiz: undefined,
+    side: Side.RIGHT,
   };
 
   public keysToPress: Key[] = this.positionService.position$.value.keys;

@@ -1,6 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { QuizzesService } from '../../../services/quizzes.service';
-import { OptionsService } from '../../../services/options.service';
 import { Quiz, Side } from '../../../models/quiz.model';
 
 
@@ -19,19 +18,22 @@ export class QuizListComponent {
 
     @Output()
     exit: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+    @Output()
+    selectQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
     
     public quizList: Quiz[] = [];
     public searchValue: string = '';
     public selectedHand: Side | undefined;
 
-    constructor(public quizzesService: QuizzesService, public optionsService: OptionsService) {
+    constructor(public quizzesService: QuizzesService) {
         this.quizzesService.quizzes$.subscribe((quizList) => {
             this.quizList = quizList;
         });
     }
 
     quizSelected(Quiz: Quiz) {
-        this.optionsService.selectQuiz(Quiz);
+        this.selectQuiz.emit(Quiz);
         this.closeSelection.emit(true);
         this.quizzesService.resetQuizzes();
     }

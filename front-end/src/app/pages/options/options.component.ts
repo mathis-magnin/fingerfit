@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { OptionsService } from 'src/services/options.service';
 import { Options } from 'src/models/options.model';
+import { Quiz } from 'src/models/quiz.model';
 
 @Component({
   selector: 'app-options',
@@ -64,4 +65,8 @@ export class OptionsComponent {
     }
   }
 
+  public selectQuiz(quiz: Quiz): void {
+    this.optionsService.selectQuiz(quiz);
+    this.optionsService.setHand(quiz.side);
+  }
 }

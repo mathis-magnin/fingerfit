@@ -4,7 +4,7 @@
 </header>
 
 <main [ngClass]="{correct:isCorrect}" *ngIf="!isCorrect">
-    <app-hand [keysToPress]="keysToPress" />
+    <app-hand [keysToPress]="keysToPress" [side]="this.options.side" />
     <app-keyboard [keysToPress]="keysToPress" (nextPosition)="nextPosition()" (isCorrect)="isAnswerCorrect($event)" />
 </main>
 <app-super-hand *ngIf="isCorrect">

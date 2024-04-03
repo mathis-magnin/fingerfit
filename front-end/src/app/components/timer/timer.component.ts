@@ -60,6 +60,7 @@ export class TimerComponent implements OnInit {
 
     public end(): void {
         this.timeOut.emit(true);
+        this.endNear = false;
     }
 
     ngOnDestroy(): void  {
