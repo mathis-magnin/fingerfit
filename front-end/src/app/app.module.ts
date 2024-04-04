@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { GameComponent } from './pages/game/game.component';
 import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
+
 import { HandComponent } from './components/hand/hand.component';
 import { KeyComponent } from './components/key/key.component';
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
@@ -21,6 +22,10 @@ import { TimerComponent } from './components/timer/timer.component';
 import { QuizDetailsComponent } from './components/quiz-details/quiz-details.component';
 import { ConfettiComponent } from './components/confetti/confetti.component';
 import { SuperHandComponent } from './components/super-hand/super-hand.component';
+import { BoxComponent } from './components/box/box.component';
+import { KeySelectionBoxComponent } from './components/key-selection-box/key-selection-box.component';
+import { OrderSelectionBoxComponent } from './components/order-selection-box/order-selection-box.component';
+import { PositionDescriptionTabComponent } from './components/position-description-tab/position-description-tab.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,11 @@ import { SuperHandComponent } from './components/super-hand/super-hand.component
     TimerComponent,
     QuizDetailsComponent,
     ConfettiComponent,
-    SuperHandComponent
+    SuperHandComponent,
+    BoxComponent,
+    KeySelectionBoxComponent,
+    OrderSelectionBoxComponent,
+    PositionDescriptionTabComponent
   ],
   imports: [
     BrowserModule,
