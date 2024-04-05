@@ -21,6 +21,7 @@ import { TimerComponent } from './components/timer/timer.component';
 import { QuizDetailsComponent } from './components/quiz-details/quiz-details.component';
 import { ConfettiComponent } from './components/confetti/confetti.component';
 import { SuperHandComponent } from './components/super-hand/super-hand.component';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SuperHandComponent } from './components/super-hand/super-hand.component
     CongratsComponent,
 
     AppComponent,
+    ProgressBarComponent,
     HandComponent,
     KeyComponent,
     KeyboardComponent,

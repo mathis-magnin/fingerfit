@@ -19,12 +19,28 @@ export class GameComponent {
     side: Side.RIGHT,
   };
 
+  public currentPositionIndex: number = 0;
+  public numberOfPositions: number = 0;
+
   public keysToPress: Key[] = this.positionService.position$.value.keys;
   public isCorrect: boolean = false;
+
   constructor(public optionsService: OptionsService, public positionService: PositionService, private router: Router) {
     this.optionsService.options$.subscribe((options) => {
       this.options = options;
     });
+
+    this.positionService.numberOfPositions$.subscribe(
+      (numberOfPositions) => {
+        this.numberOfPositions = numberOfPositions;
+      }
+    )
+
+    this.positionService.currentPositionIndex$.subscribe(
+      (currentPositionIndex) => {
+        this.currentPositionIndex = currentPositionIndex;
+      }
+    )
 
     this.positionService.position$.subscribe((position) => {
       this.keysToPress = position.keys;
