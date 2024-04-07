@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { count } from 'rxjs';
 import { TimerService } from 'src/services/timer.service';
 
 @Component({
@@ -28,7 +27,7 @@ export class TimerComponent implements OnInit {
 
     constructor(public TimerService: TimerService) {
         this.TimerService.time$.subscribe((time) => {
-            this.counter = time;
+            this.counter = Math.trunc(time);
             this.checkTime();
         });
     }
