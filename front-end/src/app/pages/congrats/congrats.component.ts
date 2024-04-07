@@ -11,7 +11,7 @@ export class CongratsComponent {
   constructor(private statsService: StatsService) { }
 
   public getAverageTime(): number {
-    return this.statsService.getAverageTime();
+    return Number(this.statsService.getAverageTime().toFixed(2));
   }
 
   public getCorrectPercentage(): number {

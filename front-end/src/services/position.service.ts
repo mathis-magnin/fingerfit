@@ -22,9 +22,8 @@ export class PositionService {
         )
     }
 
-    nextPosition(time: boolean): boolean {
-        if (time)
-            this.TimerService.stop();
+    nextPosition(): boolean {
+        this.TimerService.stop();
         this.current_position_index++;
         if (this.current_position_index >= this.quizService.quiz$.value.positions.length) {
             this.current_position_index = 0;
@@ -40,10 +39,8 @@ export class PositionService {
 
     }
 
-    positionStart(time: boolean): void {
-        if (time) {
-            this.TimerService.clearTimer();
-            this.TimerService.startTimer();
-        }
+    positionStart(): void {
+        this.TimerService.clearTimer();
+        this.TimerService.startTimer();
     }
 }
