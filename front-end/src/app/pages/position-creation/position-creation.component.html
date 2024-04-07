@@ -1,0 +1,37 @@
+<header>
+    <img src="./assets/main-logo.ico" id="logo" />
+<!--    <app-exit-button [link]="'/home'" /> -->
+</header>
+
+<main class="position_creation">
+
+    <h1>Creation d'une position de main</h1>
+
+    <section class="global_option">
+
+        <div class="position_name">
+            <label class="option_type">Nom de la position:</label>
+            <input type="text" placeholder="Nom de la position" />
+        </div>
+
+        <div class="position_quiz">
+            <label class="option_type">Quiz dans lequel ajouter la position:</label>
+            <app-quiz-list></app-quiz-list>
+        </div>
+
+        <div class="description_tab">
+            <label class="option_type">Description de la position:</label>
+            <app-position-description-tab></app-position-description-tab>
+        </div>
+
+        <div class="keyboard">
+            <label class="option_type">Clavier:</label>
+            <app-keyboard></app-keyboard>
+        </div>
+
+        <div class="validation_button">
+            <app-button></app-button>
+        </div>
+
+    </section>
+</main>

@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { GameComponent } from './pages/game/game.component';
 import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
+import { PositionCreationComponent } from './pages/position-creation/position-creation.component';
 
 import { HandComponent } from './components/hand/hand.component';
 import { KeyComponent } from './components/key/key.component';
@@ -33,6 +34,7 @@ import { PositionDescriptionTabComponent } from './components/position-descripti
     GameComponent,
     OptionsComponent,
     CongratsComponent,
+    PositionCreationComponent,
 
     AppComponent,
     HandComponent,
