@@ -13,90 +13,58 @@ header app-exit-button {
 
 .position_creation {
     margin-top: 10vh;
-}
 
-.position_creation h1 {
-    text-align: center;
-}
-
-.position_creation .global_option {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin-top: 5vh;
-}
-
-.position_creation .global_option .option_type {
-    font-size: 1.5rem;
-}
-
-.position_creation .global_option .position_name {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #000;
-
-    label {
-        margin-right: 10px;
+    h1 {
+        text-align: center;
     }
-}
 
-.position_creation .global_option .position_quiz {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #000;
+    .global_option {
+        margin-top: 5vh;
 
-    label {
-        width: 15vw;
-        margin-right: 10px;
+        .option_type {
+            font-size: 1.5rem;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 1.25vw;
+            padding-bottom: 1.25vw;
+        }
+
+        .position_name {
+            border-bottom: 1px solid #000;
+
+            label {
+                margin-right: 10px;
+            }
+        }
+
+        .position_quiz {
+            border-bottom: 1px solid #000;
+
+            label {
+                width: 15vw;
+                margin-right: 1.25vw;
+            }
+        }
+
+        .description_tab {
+            flex-direction: column;
+
+            label {
+                margin-bottom: 1.25vh;
+            }
+        }
+
+        .keyboard {
+            flex-direction: column;
+            border-bottom: 1px solid #000;
+
+            label {
+                margin-bottom: 1.25vh;
+            }
+        }
     }
-}
-
-.position_creation .global_option .description_tab {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100vw;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #000;
-
-    label {
-        margin-bottom: 10px;
-    }
-}
-
-.global_option .keyboard {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 50vh;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #000;
-
-    label {
-        margin-bottom: 10px;
-    }
-}
-
-.position_creation .global_option .validation_button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.position_creation .validation_button .button {
-    font-size: 20px;
 }

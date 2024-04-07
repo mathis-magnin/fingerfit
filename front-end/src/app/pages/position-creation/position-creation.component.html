@@ -25,12 +25,11 @@
         </div>
 
         <div class="keyboard">
-            <label class="option_type">Clavier:</label>
-            <app-keyboard></app-keyboard>
+            <app-keyboard [keysToPress]="allKeysInRed"></app-keyboard>
         </div>
 
         <div class="validation_button">
-            <app-button></app-button>
+            <app-button [text]="'Valider'"></app-button>
         </div>
 
     </section>
