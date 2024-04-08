@@ -1,11 +1,14 @@
 <header>
-    <app-timer [maxTime]="options.timePerQuestion" [show]="options.chronometer"
-        [start]="this.options.timePerQuestion !== undefined || this.options.chronometer" (timeOut)="nextPosition()" />
+    <div class="timer_progress">
+        <app-progress-bar [positions]="numberOfPositions" [current_position]="currentPositionNumber" />
+        <app-timer [maxTime]="options.timePerQuestion"
+            [start]="this.options.timePerQuestion !== undefined || this.options.chronometer" (timeOut)="nextPosition()"
+            *ngIf="options.chronometer" />
+    </div>
     <app-exit-button [link]="'/options'" />
 </header>
 
-<main [ngClass]="{correct:isCorrect}" *ngIf="!isCorrect">
-    <app-progress-bar [positions]="numberOfPositions" [current_position]="currentPositionIndex" />
+<main *ngIf="!isCorrect">
     <app-hand [keysToPress]="keysToPress" [side]="this.options.side" />
     <app-keyboard [keysToPress]="keysToPress" (nextPosition)="nextPosition()" (isCorrect)="isAnswerCorrect($event)" />
 </main>

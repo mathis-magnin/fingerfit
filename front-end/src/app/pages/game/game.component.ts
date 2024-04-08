@@ -19,7 +19,7 @@ export class GameComponent {
     side: Side.RIGHT,
   };
 
-  public currentPositionIndex: number = 0;
+  public currentPositionNumber: number = 1;
   public numberOfPositions: number = 0;
 
   public keysToPress: Key[] = this.positionService.position$.value.keys;
@@ -38,7 +38,7 @@ export class GameComponent {
 
     this.positionService.currentPositionIndex$.subscribe(
       (currentPositionIndex) => {
-        this.currentPositionIndex = currentPositionIndex;
+        this.currentPositionNumber = currentPositionIndex + 1;
       }
     )
 
