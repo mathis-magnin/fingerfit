@@ -1,0 +1,37 @@
+#logo {
+    position: fixed;
+    top: 1vh;
+    left: 1vw;
+    width: 5vw;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30vh;
+}
+
+#congrats-message {
+    text-align: center;
+}
+
+.congrats-choice {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5vw;
+    width: 20vw;
+}
+
+:host {
+    .congrats-button {
+        --app-button-width: 8vw;
+        --app-button-height: 8vh;
+    }
+
+    #quit-congrats {
+        --app-button-background-color: #ff0000;
+    }
+}

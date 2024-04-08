@@ -1,0 +1,12 @@
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    justify-items: center;
+    align-items: center;
+    width: 100vw;
+    height: 70vh;
+}
+
+.space {
+    grid-column: 4 / 8;
+}

@@ -1,0 +1,14 @@
+.hand_size {
+    width: 30vh;
+    height: 30vh;
+}
+
+.hand {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+}
+
+.symmetrical {
+    transform: scaleX(-1);
+}

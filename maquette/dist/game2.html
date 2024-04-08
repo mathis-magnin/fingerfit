@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="french">
+<head>
+<title>FingerFit</title>
+<link href="./style.css" rel="stylesheet"/>
+</head>
+<body id="game_body2">
+<!-- -->
+<header id="game_header2">
+<p id="timer2"></p>
+<img id="hand2" src="assets/main_gauche_game2.png"/>
+<a class="exit_button" href="/profile.html" matrio-class="">
+<button class="button" matrio-class="">
+<img src="assets/cross.png"/>
+</button>
+</a>
+</header>
+<main>
+<div class="keyboard">
+<div class="line">
+<button class="key" matrio-class="">
+<p>A</p>
+</button>
+<button class="key" matrio-class="">
+<p>Z</p>
+</button>
+<button class="key" matrio-class="">
+<p>E</p>
+</button>
+<button class="key" matrio-class="">
+<p>R</p>
+</button>
+<button class="key" matrio-class="">
+<p>T</p>
+</button>
+<button class="key" matrio-class="">
+<p>Y</p>
+</button>
+<button class="key" matrio-class="">
+<p>U</p>
+</button>
+<button class="key" matrio-class="">
+<p>I</p>
+</button>
+<button class="key" matrio-class="">
+<p>O</p>
+</button>
+<button class="key" matrio-class="">
+<p>P</p>
+</button>
+</div>
+<div class="line">
+<button class="key" matrio-class="">
+<p>Q</p>
+</button>
+<button class="key" matrio-class="">
+<p>S</p>
+</button>
+<button class="key" matrio-class="">
+<p>D</p>
+</button>
+<button class="key" matrio-class="">
+<p>F</p>
+</button>
+<button class="key" matrio-class="">
+<p>G</p>
+</button>
+<button class="key" matrio-class="">
+<p>H</p>
+</button>
+<button class="key" matrio-class="">
+<p>J</p>
+</button>
+<button class="key" matrio-class="">
+<p>K</p>
+</button>
+<button class="key" matrio-class="">
+<p>L</p>
+</button>
+<button class="key" matrio-class="">
+<p>M</p>
+</button>
+</div>
+<div class="line">
+<button class="key" matrio-class="">
+<p>W</p>
+</button>
+<button class="key" matrio-class="">
+<p>X</p>
+</button>
+<button class="key" matrio-class="">
+<p>C</p>
+</button>
+<button class="key" matrio-class="">
+<p>V</p>
+</button>
+<button class="key" matrio-class="">
+<p>B</p>
+</button>
+<button class="key" matrio-class="">
+<p>N</p>
+</button>
+<button class="key" matrio-class="">
+<p>,</p>
+</button>
+<button class="key" matrio-class="">
+<p>;</p>
+</button>
+<button class="key" matrio-class="">
+<p>:</p>
+</button>
+<button class="key" matrio-class="">
+<p>!</p>
+</button>
+</div>
+<div class="line">
+<button class="key space_key">
+<p>ESPACE</p>
+</button>
+</div>
+</div>
+</main>
+<script> 
+            var timeleft = 60;
+            document.getElementById("timer2").innerHTML = timeleft;
+            var downloadTimer = setInterval(function(){
+                timeleft--;
+                document.getElementById("timer2").innerHTML = timeleft;
+                if(timeleft <= 0)
+                    clearInterval(downloadTimer);
+            },1000);
+            
+            wrong=document.querySelectorAll("#game_body2 .key:not(#game_body2 .line:nth-child(3) .key:nth-child(4),#game_body2 .line:first-child .key:nth-child(6),#game_body2 .line:first-child .key:nth-child(2))");
+            wrong.forEach(function(element){
+                element.addEventListener("click",function(){
+                    timeleft-=2;
+                    time=document.getElementById("timer2");
+                    time.innerHTML = timeleft;
+                    time.style.border="2px solid red";
+                    time.style.boxShadow="0px 0px 10px red";
+                });
+            });
+
+            document.querySelector("#game_body2 .line:first-child .key:nth-child(2)").addEventListener("click",function(){
+                window.location.href = "/end_game.html";
+            });
+        </script>
+<script src="scripts/websockets.js"></script></body>
+</html>

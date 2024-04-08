@@ -1,0 +1,84 @@
+#logo {
+    position: fixed;
+    top: 1vh;
+    left: 1vw;
+    width: 5vw;
+}
+
+header app-exit-button {
+    position: fixed;
+    top: 1vh;
+    right: 1vw;
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    filter: blur(5px);
+}
+
+main {
+    margin-top: 10vh;
+}
+
+h1 {
+    text-align: center;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 5vh;
+}
+
+#play-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+app-warning-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+app-single-option input[type="number"] {
+    margin-left: 1vw;
+    width: 3vw;
+    height: 5vh;
+}
+
+#hand-selection app-button {
+    margin-left: 1vw;
+}
+
+#popup {
+    position: fixed;
+    //center the popup
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 2s ease-in-out;
+}
+
+
+:host {
+    main {
+        --app-button-width: 10vw;
+        --app-button-height: 5vh;
+    }
+
+    #play-button {
+        --app-button-width: 10vw;
+        --app-button-height: 10vh;
+    }
+
+    .grey {
+        --app-button-background-color: grey;
+    }
+}

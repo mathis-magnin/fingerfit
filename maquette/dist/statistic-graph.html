@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="french">
+<head>
+<title>FingerFit</title>
+<link href="./style.css" rel="stylesheet"/>
+</head>
+<body class="statistic-graph">
+<header>
+<img alt="FingerFit logo" src="assets/logo.ico"/>
+<a class="exit_button" href="/profile.html" matrio-class="">
+<button class="button" matrio-class="">
+<img src="assets/cross.png"/>
+</button>
+</a>
+</header>
+<nav>
+<a href="./statistic.html">Performances generales</a>
+<a>Suivi des performances</a>
+</nav>
+<main id="chart">
+<img alt="Graphique des performances" src="assets/chart.png"/>
+<fieldset>
+<legend>Options d'affichage</legend>
+<div class="chart-options" matrio-class="">
+<div>
+<label class="switch" matrio-class="">
+<input type="checkbox"/>
+<span class="slider"></span>
+</label>
+<label>Auriculaire</label>
+</div>
+<div>
+<label class="switch" matrio-class="">
+<input type="checkbox"/>
+<span class="slider"></span>
+</label>
+<label>Anulaire</label>
+</div>
+<div>
+<label class="switch" matrio-class="">
+<input type="checkbox"/>
+<span class="slider"></span>
+</label>
+<label>Majeur</label>
+</div>
+<div>
+<label class="switch" matrio-class="">
+<input type="checkbox"/>
+<span class="slider"></span>
+</label>
+<label>Index</label>
+</div>
+<div>
+<label class="switch" matrio-class="">
+<input type="checkbox"/>
+<span class="slider"></span>
+</label>
+<label>Pouce</label>
+</div>
+</div>
+
+</fieldset>
+</main>
+<footer>
+<div class="improvement" matrio-class="">
+<h2>Amelioration</h2>
+<div>
+<label>Amelioration sur les derniers quizz :</label>
+<input type="number"/>
+<button class="button" matrio-class="">
+<p>Calculer</p>
+</button>
+<p> 50% </p>
+</div>
+</div>
+</footer>
+<script src="scripts/websockets.js"></script></body>
+</html>

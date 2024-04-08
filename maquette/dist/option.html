@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="french">
+<head>
+<title>FingerFit</title>
+<link href="./style.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="exit" href="/index.html">
+<button class="button" matrio-class="">
+<img src="assets/cross.png"/>
+</button>
+</a>
+<h1>Options de la partie</h1>
+<main class="option">
+<section class="global-option">
+<div class="hand-selection">
+<label class="option-type">Choix de la main </label>
+<div class="choice">
+<button class="button hand">
+<img src="./assets/main_gauche.png"/><label>Main gauche</label>
+</button>
+<button class="button hand">
+<img src="./assets/main_droite.png"/><label>Main droite</label>
+</button>
+</div>
+</div>
+<div class="choice" id="chrono">
+<label class="option-type">Chronometre </label>
+<label class="switch hand">
+<input type="checkbox"/>
+<span class="slider"></span>
+</label>
+</div>
+<div class="choice" id="time">
+<label class="option-type">Definir un temps par position de main </label>
+<div>
+<label class="switch hand">
+<input type="checkbox"/>
+<span class="slider"></span>
+</label>
+<input placeholder="Temps en secondes" type="number"/>
+</div>
+</div>
+<div class="choice" id="position">
+<label class="option-type">Position des mains travaillees </label>
+<a href="#popup">
+<button class="button hand">
+<p>Choisir</p>
+</button>
+</a>
+<div id="popup">
+<h2>Choisissez les positions souhaitees</h2>
+<div class="position-list">
+<a class="exit" href="/option.html">
+<button class="button hand">
+<img src="assets/cross.png"/>
+</button>
+</a>
+<a href="./option.html">
+<div class="hand-possibility hand">
+<img src="assets/possible.png"/>
+<button class="button hand">
+<p>Choisir</p>
+</button>
+</div>
+</a>
+<div class="hand-possibility hand">
+<img src="assets/possible.png"/>
+<button class="button hand">
+<p>Choisir</p>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<a href="/game2.html">
+<button class="button hand">
+<p>Valider et Jouer</p>
+</button>
+</a>
+</main>
+<script src="scripts/websockets.js"></script></body>
+</html>
