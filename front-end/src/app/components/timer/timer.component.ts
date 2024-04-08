@@ -16,9 +16,6 @@ export class TimerComponent implements OnInit {
     public maxTime: number | undefined = undefined;
 
     @Input()
-    public show: boolean = false;
-
-    @Input()
     public start: boolean = false;
 
     @Output()
@@ -33,7 +30,7 @@ export class TimerComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if(this.start)
+        if (this.start)
             this.startTimer();
     }
 
@@ -45,7 +42,7 @@ export class TimerComponent implements OnInit {
     public clearTimer(): void {
         this.TimerService.clearTimer();
         this.endNear = false;
-    } 
+    }
 
     public checkTime(): void {
         if (this.maxTime && this.maxTime - this.counter <= 10) {
@@ -62,9 +59,9 @@ export class TimerComponent implements OnInit {
         this.endNear = false;
     }
 
-    ngOnDestroy(): void  {
+    ngOnDestroy(): void {
         this.TimerService.stop();
-    }   
+    }
 
 
 

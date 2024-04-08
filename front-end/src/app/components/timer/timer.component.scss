@@ -1,18 +1,15 @@
 div {
-    position: fixed;
-    top: 1vh;
-    left: 1vw;
     line-height: 0;
-    padding-left: 1vw;
-    padding-right: 1vw;
     font-size: 3em;
+    width: 3em;
     border-radius: 10px;
     box-shadow: 0 0 1px black;
     display: flex;
+    justify-content: center;
 }
 
 .turningRed {
-    color:red;
+    color: red;
     animation: pulse infinite 1s;
 }
 
@@ -20,9 +17,11 @@ div {
     0% {
         box-shadow: 0 0 3px red;
     }
+
     50% {
         box-shadow: 0 0 10px red;
     }
+
     100% {
         box-shadow: 0 0 3px red;
     }

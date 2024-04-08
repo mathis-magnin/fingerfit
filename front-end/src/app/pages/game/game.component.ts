@@ -20,12 +20,28 @@ export class GameComponent {
     side: Side.RIGHT,
   };
 
+  public currentPositionNumber: number = 1;
+  public numberOfPositions: number = 0;
+
   public keysToPress: Key[] = this.positionService.position$.value.keys;
   public isCorrect: boolean = false;
+
   constructor(public optionsService: OptionsService, public positionService: PositionService, public statsService: StatsService, private router: Router) {
     this.optionsService.options$.subscribe((options) => {
       this.options = options;
     });
+
+    this.positionService.numberOfPositions$.subscribe(
+      (numberOfPositions) => {
+        this.numberOfPositions = numberOfPositions;
+      }
+    )
+
+    this.positionService.currentPositionIndex$.subscribe(
+      (currentPositionIndex) => {
+        this.currentPositionNumber = currentPositionIndex + 1;
+      }
+    )
 
     this.positionService.position$.subscribe((position) => {
       this.keysToPress = position.keys;
@@ -39,7 +55,7 @@ export class GameComponent {
   public nextPosition(): void { //switch to another question or end the game here
     console.log('Position Finished');
 
-    this.statsService.addAnswer({time: this.positionService.TimerService.count, correct: this.isCorrect})
+    this.statsService.addAnswer({ time: this.positionService.TimerService.count, correct: this.isCorrect })
 
     if (!this.positionService.nextPosition()) {
       this.endGame();
