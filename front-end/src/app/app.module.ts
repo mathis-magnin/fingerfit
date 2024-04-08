@@ -51,6 +51,7 @@ import { ProfilesComponent } from './pages/profiles/profiles.component';
     SuperHandComponent,
     ProfileComponent,
     ProfileListComponent,
+    ProfilesComponent,
   ],
   imports: [
     BrowserModule,
