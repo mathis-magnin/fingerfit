@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { BoxInput } from 'src/models/input.model';
 
 @Component({
     selector: 'app-order-selection-box',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 
 export class OrderSelectionBoxComponent {
+
+    @Input() boxInput: BoxInput = { width: '15vw', backgroundColor: 'lightblue' };
 
     constructor() {}
 

@@ -1,39 +1,7 @@
 .position_description_tab {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     flex-direction: column;
     justify-content: center;
-    /*width: 5vw;*/
-
-    --app-box-width: 10vw;
-    --app-box-background-color: white;
-    --app-key-selection-box-width: 10vw;
-    --app-key-selection-box-background-color: white;
-    --app-order-selection-box-width: 10vw;
-    --app-order-selection-box-background-color: white;
-}
-
-.position_description_tab .box.box {
-    width: 10vw;
-}
-
-app-box {
-    width: 10vw;
-    background-color: white;
-}
-
-.position_description_tab .box.key_selection_box {
-    width: 10vw;
-    background-color: white;
-}
-
-app-key-selection-box {
-    width: 10vw;
-    background-color: white;
-}
-
-.position_description_tab .box.order_selection_box {
-    width: 10vw;
-    background-color: white;
 }
