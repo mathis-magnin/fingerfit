@@ -22,6 +22,9 @@ import { QuizDetailsComponent } from './components/quiz-details/quiz-details.com
 import { ConfettiComponent } from './components/confetti/confetti.component';
 import { SuperHandComponent } from './components/super-hand/super-hand.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileListComponent } from './components/profile-list/profile-list.component';
+import { ProfilesComponent } from './pages/profiles/profiles.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,9 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
     TimerComponent,
     QuizDetailsComponent,
     ConfettiComponent,
-    SuperHandComponent
+    SuperHandComponent,
+    ProfileComponent,
+    ProfileListComponent,
   ],
   imports: [
     BrowserModule,
