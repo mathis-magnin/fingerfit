@@ -25,6 +25,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileListComponent } from './components/profile-list/profile-list.component';
 import { ProfilesComponent } from './pages/profiles/profiles.component';
+import { PopupComponent } from './components/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ProfilesComponent } from './pages/profiles/profiles.component';
     GameComponent,
     OptionsComponent,
     CongratsComponent,
+    ProfilesComponent,
 
     AppComponent,
     ProgressBarComponent,
@@ -51,7 +53,7 @@ import { ProfilesComponent } from './pages/profiles/profiles.component';
     SuperHandComponent,
     ProfileComponent,
     ProfileListComponent,
-    ProfilesComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,

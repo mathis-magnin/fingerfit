@@ -18,7 +18,9 @@
 
         <app-single-option [caption]="'Position des mains à travailler'">
             <app-button (click)="togglePopup()" [text]="'Selectionner'" />
-            <app-quiz-list id="popup" *ngIf="isPopupVisible" (exit)="togglePopup()" (closeSelection)="togglePopup()" (selectQuiz)="selectQuiz($event)"/>
+            <app-popup *ngIf="isPopupVisible" (exit)="togglePopup()">
+                <app-quiz-list id="popup" (closeSelection)="togglePopup()" (selectQuiz)="selectQuiz($event)"/>
+            </app-popup>
         </app-single-option>
     </section>
     <app-button id="play-button" [text]="'Valider et Jouer'" (click)="switchGame()" id="play-button" />
