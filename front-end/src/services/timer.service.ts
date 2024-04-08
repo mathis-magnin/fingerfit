@@ -17,10 +17,10 @@ export class TimerService {
     public startTimer(): void {
         if (!this.timer) {
             this.timer = setInterval(() => {
-                this.count++;
+                this.count+=0.01;
                 this.time$.next(this.count);
                 console.log(this.count);
-            }, 1000);
+            }, 10);
         }
     }
 

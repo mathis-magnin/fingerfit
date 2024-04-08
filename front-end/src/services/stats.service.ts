@@ -8,7 +8,7 @@ import { ANSWERS } from 'src/mocks/answers.mock';
 })
 export class StatsService {
 
-    private answers: Answer[] = ANSWERS;
+    private answers: Answer[] = [];
     public answers$: BehaviorSubject<Answer[]> = new BehaviorSubject<Answer[]>([]);
 
     constructor() { }
@@ -29,5 +29,15 @@ export class StatsService {
             }
         });
         return correctAnswers / this.answers.length * 100;
+    }
+
+    public addAnswer(answer: Answer): void {
+        this.answers.push(answer);
+        this.answers$.next(this.answers);
+    }
+
+    public clearAnswers(): void {
+        this.answers = [];
+        this.answers$.next(this.answers);
     }
 }

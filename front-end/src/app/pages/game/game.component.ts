@@ -4,6 +4,7 @@ import { Options } from '../../../models/options.model';
 import { PositionService } from '../../../services/position.service';
 import { Key, Side } from 'src/models/quiz.model';
 import { Router } from '@angular/router';
+import { StatsService } from 'src/services/stats.service';
 
 @Component({
   selector: 'app-game',
@@ -21,7 +22,7 @@ export class GameComponent {
 
   public keysToPress: Key[] = this.positionService.position$.value.keys;
   public isCorrect: boolean = false;
-  constructor(public optionsService: OptionsService, public positionService: PositionService, private router: Router) {
+  constructor(public optionsService: OptionsService, public positionService: PositionService, public statsService: StatsService, private router: Router) {
     this.optionsService.options$.subscribe((options) => {
       this.options = options;
     });
@@ -32,23 +33,26 @@ export class GameComponent {
   }
 
   ngOnInit(): void {
-
+    this.statsService.clearAnswers();
   }
 
   public nextPosition(): void { //switch to another question or end the game here
     console.log('Position Finished');
-    if (!this.positionService.nextPosition(this.options.timePerQuestion !== undefined || this.options.chronometer)) {
+
+    this.statsService.addAnswer({time: this.positionService.TimerService.count, correct: this.isCorrect})
+
+    if (!this.positionService.nextPosition()) {
       this.endGame();
     }
     else {
       if (this.isCorrect) {
         this.animate().then(() => {
           this.isCorrect = false;
-          this.positionService.positionStart(this.options.timePerQuestion !== undefined || this.options.chronometer);
+          this.positionService.positionStart();
         });
       }
       else {
-        this.positionService.positionStart(this.options.timePerQuestion !== undefined || this.options.chronometer);
+        this.positionService.positionStart();
       }
     }
 
