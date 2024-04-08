@@ -30,15 +30,14 @@ export class PositionService {
     }
 
 
-    nextPosition(time: boolean): boolean {
-        if (time)
-            this.TimerService.stop();
-
+    nextPosition(): boolean {
+        this.TimerService.stop();
         this.currentPositionIndex$.next(++this.currentPositionIndex);
 
         if (this.currentPositionIndex >= this.quizService.quiz$.value.positions.length) {
             this.currentPositionIndex$.next(this.currentPositionIndex = 0);
             this.position = this.quizService.quiz$.value.positions[this.currentPositionIndex];
+
             this.position$.next(this.position);
             return false;
         }
@@ -50,11 +49,8 @@ export class PositionService {
 
     }
 
-
-    positionStart(time: boolean): void {
-        if (time) {
-            this.TimerService.clearTimer();
-            this.TimerService.startTimer();
-        }
+    positionStart(): void {
+        this.TimerService.clearTimer();
+        this.TimerService.startTimer();
     }
 }
