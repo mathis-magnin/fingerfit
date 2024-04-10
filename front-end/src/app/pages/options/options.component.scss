@@ -72,3 +72,8 @@ app-single-option input[type="number"] {
         --app-button-background-color: grey;
     }
 }
+
+.disable{
+    pointer-events: none;
+    filter: blur(50px);
+}

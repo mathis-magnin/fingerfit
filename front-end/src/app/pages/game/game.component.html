@@ -13,6 +13,6 @@
     <app-keyboard [keysToPress]="keysToPress" (nextPosition)="nextPosition()" (isCorrect)="isAnswerCorrect($event)" />
 </main>
 <app-popup *ngIf="showPopup" (exit)="togglePopup($event)">
-    <app-login (isLoggedIn)="goToProfile($event)"/>
+    <app-login/>
 </app-popup>
 <app-super-hand *ngIf="isCorrect">

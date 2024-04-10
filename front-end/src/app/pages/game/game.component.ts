@@ -102,11 +102,4 @@ export class GameComponent {
       this.positionService.positionStop();
     }
   }
-
-  public goToProfile(logged: boolean): void {
-    if (logged) {
-      this.router.navigate(['/profiles']);
-      this.togglePopup(true);
-    }
-  }
 }

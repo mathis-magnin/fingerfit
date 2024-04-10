@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  public showPopup: boolean = false;
   public title: string = 'FingerFit';
   constructor() { }
+
+  public togglePopup(exit: boolean): void {
+    this.showPopup = !exit;
+  }
 }
