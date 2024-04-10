@@ -26,6 +26,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileListComponent } from './components/profile-list/profile-list.component';
 import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { PopupComponent } from './components/popup/popup.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { PopupComponent } from './components/popup/popup.component';
     SuperHandComponent,
     ProfileComponent,
     ProfileListComponent,
-    PopupComponent
+    PopupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
