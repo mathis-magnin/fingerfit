@@ -19,7 +19,6 @@ export class TimerService {
             this.timer = setInterval(() => {
                 this.count+=0.01;
                 this.time$.next(this.count);
-                console.log(this.count);
             }, 10);
         }
     }

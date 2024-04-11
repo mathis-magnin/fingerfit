@@ -15,7 +15,7 @@ export class OptionsComponent {
   public isPopupVisible: boolean = false;
   public numberValue: number = 0;
   public isWarningVisible: boolean = false;
-
+  public showPopup: boolean = false;
   constructor(private router: Router, public optionsService: OptionsService) {
     this.optionsService.options$.subscribe((options) => {
       this.options = options;
@@ -68,5 +68,9 @@ export class OptionsComponent {
   public selectQuiz(quiz: Quiz): void {
     this.optionsService.selectQuiz(quiz);
     this.optionsService.setHand(quiz.side);
+  }
+
+  public togglePopupLogin(exit: boolean): void {
+    this.showPopup = !exit;
   }
 }

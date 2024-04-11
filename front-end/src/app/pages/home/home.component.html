@@ -1,12 +1,13 @@
-<a routerLink="/profiles">
-    <main class="home">
-        <video autoplay loop>
-            <source src="assets/bg.mp4" type="video/mp4">
-        </video>
-        <section>
-            <img src="assets/main-logo.ico" alt="FingerFit logo" />
-            <h1>{{title}}</h1>
-            <p>Cliquer pour commencer !</p>
-        </section>   
-    </main>
-</a>
+<main class="home" (click)="togglePopup(false)" [ngClass]="{disable:showPopup}">
+    <video autoplay loop>
+        <source src="assets/bg.mp4" type="video/mp4">
+    </video>
+    <section>
+        <img src="assets/main-logo.ico" alt="FingerFit logo"/>
+        <h1>{{title}}</h1>
+        <p>Cliquer pour commencer !</p>
+    </section>   
+</main>
+<app-popup *ngIf="showPopup" (exit)="togglePopup($event)">
+    <app-login/>
+</app-popup>
