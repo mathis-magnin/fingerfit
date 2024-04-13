@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { BoxInput } from 'src/models/input.model';
+import { BoxStyle } from 'src/models/style-input.model';
 
 @Component({
     selector: 'app-box',
@@ -8,7 +8,7 @@ import { BoxInput } from 'src/models/input.model';
 })
 export class BoxComponent {
 
-    @Input() boxInput: BoxInput = { width: '15vw', backgroundColor: 'lightblue' };
+    @Input() boxStyle: BoxStyle = { width: '15vw', backgroundColor: 'lightblue' };
 
     constructor() {}
 

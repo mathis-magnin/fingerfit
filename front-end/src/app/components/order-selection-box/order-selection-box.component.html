@@ -1,10 +1,6 @@
-<app-box [boxInput]="boxInput" class="order_selection_box">
+<app-box [boxStyle]="boxStyle" class="order_selection_box">
     <select class="order_selection">
         <option value="">--Choisir l'ordre--</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
+        <option *ngFor="let o of orders" value="{{o}}">{{orderToString(o)}}</option>
     </select>
 </app-box>

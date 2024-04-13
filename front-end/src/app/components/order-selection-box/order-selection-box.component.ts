@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { BoxInput } from 'src/models/input.model';
+import { Order, orderToString } from 'src/models/quiz.model';
+import { BoxStyle } from 'src/models/style-input.model';
 
 @Component({
     selector: 'app-order-selection-box',
@@ -9,8 +10,15 @@ import { BoxInput } from 'src/models/input.model';
 
 export class OrderSelectionBoxComponent {
 
-    @Input() boxInput: BoxInput = { width: '15vw', backgroundColor: 'lightblue' };
+    public orderToString = orderToString;
+    public orders: Order[] = [];
 
-    constructor() {}
+    @Input() boxStyle: BoxStyle = { width: '15vw', backgroundColor: 'lightblue' };
+
+    constructor() {
+        for (let order = Order.NOT_WORKED; order <= Order.FIFTH; order++) {
+            this.orders.push(order);
+        }
+    }
 
 }

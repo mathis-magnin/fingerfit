@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Symbol, symbolToString } from 'src/models/quiz.model';
-import { BoxInput } from 'src/models/input.model';
+import { BoxStyle } from 'src/models/style-input.model';
 
 @Component({
     selector: 'app-key-selection-box',
@@ -12,7 +12,7 @@ export class KeySelectionBoxComponent {
     public symbolToString = symbolToString;
     public symbols: Symbol[] = [];
 
-    @Input() boxInput: BoxInput = { width: '15vw', backgroundColor: 'lightblue' };
+    @Input() boxStyle: BoxStyle = { width: '15vw', backgroundColor: 'lightblue' };
 
     constructor() {
         for (let symbol = Symbol.A; symbol <= Symbol.SPACE; symbol++) {

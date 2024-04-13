@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BoxInput } from 'src/models/input.model';
+import { BoxStyle } from 'src/models/style-input.model';
 
 @Component({
     selector: 'app-position-description-tab',
@@ -9,10 +9,10 @@ import { BoxInput } from 'src/models/input.model';
 
 export class PositionDescriptionTabComponent {
 
-    public boxInput: BoxInput = { width: '5vw', backgroundColor: 'cornflowerblue' };
-    public fingerBoxInput: BoxInput = { width: '10vw', backgroundColor: 'lightblue' };
-    public keySelectionBoxInput: BoxInput = { width: '10vw', backgroundColor: 'antiquewhite' };
-    public orderSelectionBoxInput: BoxInput = { width: '10vw', backgroundColor: 'antiquewhite' };
+    public boxStyle: BoxStyle = { width: '5vw', backgroundColor: 'cornflowerblue' };
+    public fingerBoxStyle: BoxStyle = { width: '10vw', backgroundColor: 'lightblue' };
+    public keySelectionBoxStyle: BoxStyle = { width: '10vw', backgroundColor: 'antiquewhite' };
+    public orderSelectionBoxStyle: BoxStyle = { width: '10vw', backgroundColor: 'antiquewhite' };
 
     constructor() {}
 

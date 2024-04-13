@@ -139,6 +139,32 @@ export function stringToSymbol(s: string): Symbol {
     }
 }
 
+export enum Order {
+    NOT_WORKED = -1,
+    FIRST,
+    SECOND,
+    THIRD,
+    FOURTH,
+    FIFTH    
+}
+
+export function orderToString(order: Order): string {
+    switch (order) {
+        case Order.FIRST:
+            return "1";
+        case Order.SECOND:
+            return "2";
+        case Order.THIRD:
+            return "3";
+        case Order.FOURTH:
+            return "4";
+        case Order.FIFTH:
+            return "5";
+        default:
+            return "Non travaillé";
+    }
+}
+
 export interface IsSymbolPressed {
     symbol: Symbol;
     isPressed: boolean;

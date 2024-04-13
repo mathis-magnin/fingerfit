@@ -1,4 +1,4 @@
-<app-box [boxInput]="boxInput" class="key_selection_box">
+<app-box [boxStyle]="boxStyle" class="key_selection_box">
     <select class="key_selection">
         <option value="">--Choisir une touche--</option>
         <option *ngFor="let s of symbols" value="{{s}}">{{symbolToString(s)}}</option>
