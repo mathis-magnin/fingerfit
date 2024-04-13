@@ -10,11 +10,26 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 30vh;
+    margin-top: 20vh;
+}
+
+#congrats-emoji {
+    width: 20vw;
+    position: fixed;
+    transform: scaleX(-1) rotate(-20deg);
+    top: 10vh;
+    right: 10vw;
+}
+
+#congrats-title {
+    font-size: 4em;
+    margin-bottom: 5vh;
+    font-weight: 1000;
 }
 
 #congrats-message {
-    text-align: center;
+    font-size: 3em;
+    font-weight: 800;
 }
 
 .congrats-choice {
@@ -29,6 +44,7 @@ main {
     .congrats-button {
         --app-button-width: 8vw;
         --app-button-height: 8vh;
+        --app-button-font-size: 2vw;
     }
 
     #quit-congrats {
