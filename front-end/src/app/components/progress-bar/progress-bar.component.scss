@@ -1,0 +1,30 @@
+div {
+    width: 9em;
+    height: 1em;
+}
+
+label {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    text-align: center;
+}
+
+progress {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 7px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+progress::-webkit-progress-bar {
+    background-color: rgb(255, 255, 255);
+    border-radius: 7px;
+}
+
+progress::-webkit-progress-value {
+    background-color: rgb(130, 234, 250);
+    border-radius: 7px;
+    box-shadow: 1px 1px 5px 3px rgba(252, 252, 252, 0.8);
+}

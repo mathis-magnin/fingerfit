@@ -20,12 +20,29 @@ export class GameComponent {
     side: Side.RIGHT,
   };
 
+  public currentPositionNumber: number = 1;
+  public numberOfPositions: number = 0;
+  public showPopup: boolean = false;
+
   public keysToPress: Key[] = this.positionService.position$.value.keys;
   public isCorrect: boolean = false;
+
   constructor(public optionsService: OptionsService, public positionService: PositionService, public statsService: StatsService, private router: Router) {
     this.optionsService.options$.subscribe((options) => {
       this.options = options;
     });
+
+    this.positionService.numberOfPositions$.subscribe(
+      (numberOfPositions) => {
+        this.numberOfPositions = numberOfPositions;
+      }
+    )
+
+    this.positionService.currentPositionIndex$.subscribe(
+      (currentPositionIndex) => {
+        this.currentPositionNumber = currentPositionIndex + 1;
+      }
+    )
 
     this.positionService.position$.subscribe((position) => {
       this.keysToPress = position.keys;
@@ -36,11 +53,12 @@ export class GameComponent {
     this.statsService.clearAnswers();
   }
 
-  public nextPosition(): void { //switch to another question or end the game here
-    console.log('Position Finished');
+  public nextPosition(): void {
+    if (this.showPopup) {
+      return;
+    }
 
-    this.statsService.addAnswer({time: this.positionService.TimerService.count, correct: this.isCorrect})
-
+    this.statsService.addAnswer({ time: this.positionService.TimerService.count, correct: this.isCorrect })
     if (!this.positionService.nextPosition()) {
       this.endGame();
     }
@@ -48,24 +66,21 @@ export class GameComponent {
       if (this.isCorrect) {
         this.animate().then(() => {
           this.isCorrect = false;
-          this.positionService.positionStart();
+          this.positionService.positionStart(true);
         });
       }
       else {
-        this.positionService.positionStart();
+        this.positionService.positionStart(true);
       }
     }
-
-
   }
 
   private endGame(): void { //end the game here
-    console.log('Game Over');
     this.router.navigate(['/congrats']);
   }
 
   public isAnswerCorrect(correct: boolean): void {
-    if (correct) {
+    if (correct && !this.showPopup) {
       this.isCorrect = true;
     }
   }
@@ -76,5 +91,15 @@ export class GameComponent {
         resolve();
       }, 3000);
     });
+  }
+
+  public togglePopup(exit:boolean): void {
+    this.showPopup = !exit;
+    if (exit) {
+      this.positionService.positionStart();
+    }
+    else {
+      this.positionService.positionStop();
+    }
   }
 }
