@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     display: flex;
+    cursor: pointer;
 }
 
 .home section {
@@ -52,6 +53,7 @@ video {
     position: fixed;
 }
 
-a {
-    text-decoration: none;
+.disable{
+    pointer-events: none;
+    filter: blur(50px);
 }

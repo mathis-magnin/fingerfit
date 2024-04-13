@@ -51,3 +51,8 @@ main {
         --app-button-background-color: #ff0000;
     }
 }
+
+.disable{
+    pointer-events: none;
+    filter: blur(50px);
+}

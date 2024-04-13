@@ -49,8 +49,14 @@ export class PositionService {
 
     }
 
-    positionStart(): void {
-        this.TimerService.clearTimer();
+
+    positionStop(): void {
+        this.TimerService.stop();
+    }
+
+    positionStart(reset?: boolean): void {
+        if(reset)
+            this.TimerService.clearTimer();
         this.TimerService.startTimer();
     }
 }

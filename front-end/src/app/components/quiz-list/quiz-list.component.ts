@@ -38,10 +38,6 @@ export class QuizListComponent {
         this.quizzesService.resetQuizzes();
     }
 
-    exitQuizList() {
-        this.exit.emit(true);
-        this.quizzesService.resetQuizzes();
-    }
 
     public onSelect(event: any) {
         const selection = event.target.value;

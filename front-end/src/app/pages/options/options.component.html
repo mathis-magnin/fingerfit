@@ -1,8 +1,8 @@
-<header>
+<header [ngClass]="{disable:showPopup}">
     <img src="./assets/main-logo.ico" id="logo" />
-    <app-exit-button [link]="'/home'" />
+    <app-exit-button (click)="togglePopupLogin(false)"/>
 </header>
-<main>
+<main [ngClass]="{disable:showPopup}">
     <h1>Options de la partie</h1>
 
     <section class="options">
@@ -18,9 +18,15 @@
 
         <app-single-option [caption]="'Position des mains à travailler'">
             <app-button (click)="togglePopup()" [text]="'Selectionner'" />
-            <app-quiz-list id="popup" *ngIf="isPopupVisible" (exit)="togglePopup()" (closeSelection)="togglePopup()" (selectQuiz)="selectQuiz($event)"/>
+            <app-popup *ngIf="isPopupVisible" (exit)="togglePopup()">
+                <app-quiz-list id="popup" (closeSelection)="togglePopup()" (selectQuiz)="selectQuiz($event)"/>
+            </app-popup>
         </app-single-option>
     </section>
     <app-button id="play-button" [text]="'Valider et Jouer'" (click)="switchGame()" id="play-button" />
-    <app-warning-popup *ngIf="isWarningVisible" [text]="'Veulliez selectionner un quiz'" />
+    <app-warning-popup *ngIf="isWarningVisible" [text]="currentError" />
 </main>
+
+<app-popup *ngIf="showPopup" (exit)="togglePopupLogin($event)">
+    <app-login/>
+</app-popup>

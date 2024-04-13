@@ -7,7 +7,7 @@ import { StatsService } from 'src/services/stats.service';
   styleUrls: ['./congrats.component.scss']
 })
 export class CongratsComponent {
-
+  public showPopup: boolean = false;
   constructor(private statsService: StatsService) { }
 
   public getAverageTime(): number {
@@ -16,5 +16,9 @@ export class CongratsComponent {
 
   public getCorrectPercentage(): number {
     return Math.trunc(this.statsService.getCorrectPercentage());
+  }
+
+  public togglePopup(exit: boolean): void {
+    this.showPopup = !exit;
   }
 }

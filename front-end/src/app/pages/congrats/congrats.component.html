@@ -1,10 +1,9 @@
 <app-confetti></app-confetti>
-<header>
+<header [ngClass]="{disable:showPopup}">
     <img src="./assets/main-logo.ico" id="logo" />
 </header>
 
-<main>
-    
+<main [ngClass]="{disable:showPopup}">
     <h1 id="congrats-title">Félicitations !
         <img src="./assets/partying-face-emoji.png" id="congrats-emoji" alt="party-emoji" />
     </h1>
@@ -12,7 +11,11 @@
     <h1 id="congrats-submessage">Tu as mis en moyenne {{getAverageTime()}} secondes pour en faire une !</h1>
 
     <div class="congrats-choice">
-        <app-button class="congrats-button" id=quit-congrats [text]="'quitter'" [link]="'/options'" />
+        <app-button class="congrats-button" id=quit-congrats [text]="'quitter'" (click)="togglePopup(false)"/>
         <app-button class="congrats-button" id=replay [text]="'rejouer'" [link]="'/game'" />
     </div>
 </main>
+
+<app-popup *ngIf="showPopup" (exit)="togglePopup($event)">
+    <app-login/>
+</app-popup>
