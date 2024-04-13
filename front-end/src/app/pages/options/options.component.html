@@ -24,7 +24,7 @@
         </app-single-option>
     </section>
     <app-button id="play-button" [text]="'Valider et Jouer'" (click)="switchGame()" id="play-button" />
-    <app-warning-popup *ngIf="isWarningVisible" [text]="'Veulliez selectionner un quiz'" />
+    <app-warning-popup *ngIf="isWarningVisible" [text]="currentError" />
 </main>
 
 <app-popup *ngIf="showPopup" (exit)="togglePopupLogin($event)">
