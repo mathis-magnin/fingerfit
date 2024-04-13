@@ -23,9 +23,9 @@ export class GameComponent {
   public currentPositionNumber: number = 1;
   public numberOfPositions: number = 0;
   public showPopup: boolean = false;
-
   public keysToPress: Key[] = this.positionService.position$.value.keys;
   public isCorrect: boolean = false;
+  public paused: boolean = false;
 
   constructor(public optionsService: OptionsService, public positionService: PositionService, public statsService: StatsService, private router: Router) {
     this.optionsService.options$.subscribe((options) => {
@@ -64,9 +64,13 @@ export class GameComponent {
     }
     else {
       if (this.isCorrect) {
+        this.paused = true;
+        console.log('animate');
         this.animate().then(() => {
+          console.log('animate end');
           this.isCorrect = false;
           this.positionService.positionStart(true);
+          this.paused = false;
         });
       }
       else {
@@ -100,6 +104,12 @@ export class GameComponent {
     }
     else {
       this.positionService.positionStop();
+    }
+  }
+
+  public endNear(event: boolean): void {
+    if (event && this.options.timePerQuestion) {
+      console.log('end near');
     }
   }
 }

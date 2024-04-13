@@ -8,7 +8,8 @@
     padding-bottom:0.75vh;
     border: none;
     cursor: pointer;
-    font-size: 1vw;
+    font-size: var(--app-button-font-size, 1vw);
+    font-family: "nunito";    
     line-height: 0px;
     .button-text {
         color: white;

@@ -4,14 +4,18 @@
 </header>
 
 <main [ngClass]="{disable:showPopup}">
-    <h1 id="congrats-message">Bien joué ! Tu as reussi {{getCorrectPercentage()}}% des positions ! <br /> Tu as mis en
-        moyenne {{getAverageTime()}} secondes pour en faire une !</h1>
+    <h1 id="congrats-title">Félicitations !
+        <img src="./assets/partying-face-emoji.png" id="congrats-emoji" alt="party-emoji" />
+    </h1>
+    <h1 id="congrats-message">Tu as reussi {{getCorrectPercentage()}}% des positions !</h1>
+    <h1 id="congrats-submessage">Tu as mis en moyenne {{getAverageTime()}} secondes pour en faire une !</h1>
 
     <div class="congrats-choice">
         <app-button [buttonStyle]="quitButtonStyle" [text]="'quitter'" (click)="togglePopup(false)"/>
         <app-button [buttonStyle]="replayButtonStyle" [text]="'rejouer'" [link]="'/game'" />
     </div>
 </main>
+
 <app-popup *ngIf="showPopup" (exit)="togglePopup($event)">
     <app-login/>
 </app-popup>

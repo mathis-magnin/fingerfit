@@ -24,6 +24,7 @@ export class BoxStyle {
 interface ButtonStyleType {
     width?: string;
     height?: string;
+    fontSize?: string;
     backgroundColor?: string;
     borderRadius?: string;
 }
@@ -31,6 +32,7 @@ interface ButtonStyleType {
 const defaultButtonStyle: ButtonStyleType = {
     width: 'fit-content',
     height: 'fit-content',
+    fontSize: '1vw',
     backgroundColor: '#1dc42e',
     borderRadius: '5px'
 };
