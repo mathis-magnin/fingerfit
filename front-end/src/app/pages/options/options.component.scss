@@ -57,22 +57,6 @@ app-single-option input[type="number"] {
     margin-left: 1vw;
 }
 
-:host {
-    main {
-        --app-button-width: 10vw;
-        --app-button-height: 5vh;
-    }
-
-    #play-button {
-        --app-button-width: 10vw;
-        --app-button-height: 10vh;
-    }
-
-    .grey {
-        --app-button-background-color: grey;
-    }
-}
-
 .disable{
     pointer-events: none;
     filter: blur(50px);

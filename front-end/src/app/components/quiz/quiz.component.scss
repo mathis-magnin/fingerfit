@@ -19,19 +19,8 @@
 .quiz img{
     width: 3vw;
     height: 5vh;
-
 }
 
-:host {
-    .quiz .detail-quiz-button {
-        --app-button-height: 5vh;
-        --app-button-width: 5vw;
-        margin-left: 10px;
-        --app-button-background-color: rgb(128, 185, 203);
-    }
-
-    .quiz .chose-quiz-button {
-        --app-button-height: 5vh;
-        --app-button-width: 5vw;
-    }
+.quiz .detail-quiz-button {
+    margin-left: 10px;
 }

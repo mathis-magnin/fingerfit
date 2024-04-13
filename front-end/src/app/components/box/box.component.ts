@@ -8,7 +8,7 @@ import { BoxStyle } from 'src/models/style-input.model';
 })
 export class BoxComponent {
 
-    @Input() boxStyle: BoxStyle = { width: '15vw', backgroundColor: 'lightblue' };
+    @Input() boxStyle: BoxStyle = new BoxStyle({});
 
     constructor() {}
 

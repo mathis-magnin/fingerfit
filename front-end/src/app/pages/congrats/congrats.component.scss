@@ -25,17 +25,6 @@ main {
     width: 20vw;
 }
 
-:host {
-    .congrats-button {
-        --app-button-width: 8vw;
-        --app-button-height: 8vh;
-    }
-
-    #quit-congrats {
-        --app-button-background-color: #ff0000;
-    }
-}
-
 .disable{
     pointer-events: none;
     filter: blur(50px);

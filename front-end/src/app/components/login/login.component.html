@@ -5,5 +5,5 @@
     </div>
     <input type="password" placeholder="Mot de passe" (input)="onPasswordChange($event)">
     <app-warning-popup *ngIf="showWarning" [text]="'Mot de passe incorrect'"></app-warning-popup>
-    <app-button [text]="'Se connecter'" (click)="tryLogin()"></app-button>
+    <app-button [buttonStyle]="buttonStyle" [text]="'Se connecter'" (click)="tryLogin()"></app-button>
 </div>

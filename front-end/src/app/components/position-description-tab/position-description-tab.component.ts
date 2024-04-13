@@ -9,10 +9,10 @@ import { BoxStyle } from 'src/models/style-input.model';
 
 export class PositionDescriptionTabComponent {
 
-    public boxStyle: BoxStyle = { width: '5vw', backgroundColor: 'cornflowerblue' };
-    public fingerBoxStyle: BoxStyle = { width: '10vw', backgroundColor: 'lightblue' };
-    public keySelectionBoxStyle: BoxStyle = { width: '10vw', backgroundColor: 'antiquewhite' };
-    public orderSelectionBoxStyle: BoxStyle = { width: '10vw', backgroundColor: 'antiquewhite' };
+    public boxStyle: BoxStyle = new BoxStyle({ width: '5vw', backgroundColor: 'cornflowerblue' });
+    public fingerBoxStyle: BoxStyle = new BoxStyle({ width: '10vw', backgroundColor: 'lightblue' });
+    public keySelectionBoxStyle: BoxStyle = new BoxStyle({ width: '10vw', backgroundColor: 'antiquewhite' });
+    public orderSelectionBoxStyle: BoxStyle = new BoxStyle({ width: '10vw', backgroundColor: 'antiquewhite' });
 
     constructor() {}
 

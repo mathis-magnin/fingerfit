@@ -1,6 +1,7 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Profile } from '../../../models/profile.model';
 import { profilesService } from '../../../services/profiles.service';
+import { ButtonStyle } from 'src/models/style-input.model';
 
 @Component({
     selector: 'app-profile-list',
@@ -17,6 +18,8 @@ export class ProfileListComponent {
     public showProfiles: Profile[] = [];
 
     @Input() public redirect: string = '';
+    @Input() public firstAndLastButtonStyle: ButtonStyle = new ButtonStyle({ width: '3vw', height: '6vh', backgroundColor: 'rgb(167, 165, 165)', borderRadius: '50%' });
+    @Input() public middleButtonStyle: ButtonStyle = new ButtonStyle({ width: '8vw', height: '6vh' });
 
     constructor(public profilesService: profilesService) {
         this.profilesService.profiles$.subscribe((profiles) => {

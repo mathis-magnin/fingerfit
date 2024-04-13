@@ -12,7 +12,7 @@ export class KeySelectionBoxComponent {
     public symbolToString = symbolToString;
     public symbols: Symbol[] = [];
 
-    @Input() boxStyle: BoxStyle = { width: '15vw', backgroundColor: 'lightblue' };
+    @Input() boxStyle: BoxStyle = new BoxStyle({});
 
     constructor() {
         for (let symbol = Symbol.A; symbol <= Symbol.SPACE; symbol++) {

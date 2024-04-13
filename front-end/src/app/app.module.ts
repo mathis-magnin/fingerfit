@@ -14,7 +14,7 @@ import { KeyComponent } from './components/key/key.component'
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import { ButtonComponent } from './components/button/button.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
-import { CustomCheckboxComponent } from './components/custom-checkbox/custom-checkbox.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { ExitButtonComponent } from './components/exit-button/exit-button.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { WarningPopupComponent } from './components/warning-popup/warning-popup.component';
@@ -50,7 +50,7 @@ import { PositionDescriptionTabComponent } from './components/position-descripti
     KeyboardComponent,
     ButtonComponent,
     ExitButtonComponent,
-    CustomCheckboxComponent,
+    CheckboxComponent,
     QuizComponent,
     QuizListComponent,
     WarningPopupComponent,

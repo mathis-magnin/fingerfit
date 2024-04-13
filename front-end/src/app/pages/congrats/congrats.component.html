@@ -8,8 +8,8 @@
         moyenne {{getAverageTime()}} secondes pour en faire une !</h1>
 
     <div class="congrats-choice">
-        <app-button class="congrats-button" id=quit-congrats [text]="'quitter'" (click)="togglePopup(false)"/>
-        <app-button class="congrats-button" id=replay [text]="'rejouer'" [link]="'/game'" />
+        <app-button [buttonStyle]="quitButtonStyle" [text]="'quitter'" (click)="togglePopup(false)"/>
+        <app-button [buttonStyle]="replayButtonStyle" [text]="'rejouer'" [link]="'/game'" />
     </div>
 </main>
 <app-popup *ngIf="showPopup" (exit)="togglePopup($event)">

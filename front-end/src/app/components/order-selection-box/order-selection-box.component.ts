@@ -13,7 +13,7 @@ export class OrderSelectionBoxComponent {
     public orderToString = orderToString;
     public orders: Order[] = [];
 
-    @Input() boxStyle: BoxStyle = { width: '15vw', backgroundColor: 'lightblue' };
+    @Input() boxStyle: BoxStyle = new BoxStyle({});
 
     constructor() {
         for (let order = Order.NOT_WORKED; order <= Order.FIFTH; order++) {
