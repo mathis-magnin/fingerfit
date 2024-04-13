@@ -10,7 +10,8 @@
     border-radius:var(--app-button-border-radius, 5px);
     cursor: pointer;
     background-color: var(--app-button-background-color, #1dc42e);
-    font-size: 1vw;
+    font-size: var(--app-button-font-size, 1vw);
+    font-family: "nunito";
     line-height: 0px;
     height: var(--app-button-height);
     width: var(--app-button-width);

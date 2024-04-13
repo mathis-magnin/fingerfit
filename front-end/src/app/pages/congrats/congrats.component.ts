@@ -15,6 +15,6 @@ export class CongratsComponent {
   }
 
   public getCorrectPercentage(): number {
-    return this.statsService.getCorrectPercentage();
+    return Math.trunc(this.statsService.getCorrectPercentage());
   }
 }
