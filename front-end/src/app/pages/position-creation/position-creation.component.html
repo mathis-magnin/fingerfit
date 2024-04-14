@@ -21,7 +21,7 @@
 
         <div class="description_tab">
             <label class="option_type">Description de la position:</label>
-            <app-position-description-tab></app-position-description-tab>
+            <app-position-description-tab [createPosition]="endCreation" (positionDescription)="updatePosition($event)"></app-position-description-tab>
         </div>
 
         <div class="keyboard">
@@ -29,7 +29,7 @@
         </div>
 
         <div class="validation_button">
-            <app-button [text]="'Valider'"></app-button>
+            <app-button [buttonStyle]="buttonStyle" [text]="'Valider'" (buttonClicked)="onCreationEnd()"></app-button>
         </div>
 
     </section>

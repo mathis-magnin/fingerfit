@@ -10,10 +10,8 @@ import { ButtonStyle } from 'src/models/style-input.model';
 export class CongratsComponent {
   public showPopup: boolean = false;
 
-  @Input()
   public replayButtonStyle: ButtonStyle = new ButtonStyle({ width: '8vw', height: '8vh', fontSize: '2vw' });
 
-  @Input()
   public quitButtonStyle: ButtonStyle = new ButtonStyle({ width: '8vw', height: '8vh', fontSize: '2vw', backgroundColor: '#ff0000' });
 
   constructor(private statsService: StatsService) { }

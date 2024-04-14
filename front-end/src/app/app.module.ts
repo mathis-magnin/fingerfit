@@ -33,6 +33,7 @@ import { BoxComponent } from './components/box/box.component';
 import { KeySelectionBoxComponent } from './components/key-selection-box/key-selection-box.component';
 import { OrderSelectionBoxComponent } from './components/order-selection-box/order-selection-box.component';
 import { PositionDescriptionTabComponent } from './components/position-description-tab/position-description-tab.component';
+import { HandSelectionBoxComponent } from './components/hand-selection-box/hand-selection-box.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { PositionDescriptionTabComponent } from './components/position-descripti
     BoxComponent,
     KeySelectionBoxComponent,
     OrderSelectionBoxComponent,
-    PositionDescriptionTabComponent
+    PositionDescriptionTabComponent,
+    HandSelectionBoxComponent
   ],
   imports: [
     BrowserModule,

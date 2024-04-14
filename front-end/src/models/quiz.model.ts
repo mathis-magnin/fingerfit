@@ -12,6 +12,24 @@ export enum Side {
     RIGHT
 }
 
+export function sideToString(side: Side): string {
+    switch (side) {
+        case Side.LEFT:
+            return "Main gauche";
+        case Side.RIGHT:
+            return "Main droite";
+    }
+}
+
+export function stringToSide(s: string): Side {
+    switch (s) {
+        case "Main gauche":
+            return Side.LEFT;
+        default:
+            return Side.RIGHT;
+    }
+}
+
 export enum Symbol {
     UNDEFINED = -1,
     A,

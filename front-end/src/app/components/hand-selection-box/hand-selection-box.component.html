@@ -1,0 +1,6 @@
+<app-box [boxStyle]="boxStyle" class="key_selection_box">
+    <select class="key_selection" #selectedKey (change)="onSelect(selectedKey.value)">
+        <option value="">--Choisir une touche--</option>
+        <option *ngFor="let s of sides">{{sideToString(s)}}</option>
+    </select>
+</app-box>

@@ -20,8 +20,8 @@ export class OptionsComponent {
   public timeWaitingValue: number = 20;
   public currentError: string = '';
 
-  @Input() public selectButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
-  @Input() public playButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh' });
+  public selectButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
+  public playButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh' });
 
   constructor(private router: Router, public optionsService: OptionsService) {
     this.optionsService.options$.subscribe((options) => {

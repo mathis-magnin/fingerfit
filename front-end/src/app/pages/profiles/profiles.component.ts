@@ -10,7 +10,7 @@ import { ButtonStyle } from 'src/models/style-input.model';
 
 export class ProfilesComponent {
 
-  @Input() public addButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
+  public addButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
 
   constructor() {}
 
