@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { profilesService } from 'src/services/profiles.service';
 import { ButtonStyle } from 'src/models/style-input.model';
 
 @Component({
@@ -10,11 +9,12 @@ import { ButtonStyle } from 'src/models/style-input.model';
 
 export class ProfilesComponent {
 
+  public profilToAdd: boolean = false;
+  
   public addButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
 
   constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

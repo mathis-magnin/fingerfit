@@ -1,0 +1,5 @@
+<div class="file-upload">
+    <img src="{{this.imgURL}}" alt="profile-picture">
+    <label *ngIf="!selectedProfilePicture"  for="file-upload">Selectionner</label>
+    <input type="file" class="uploader" accept="image/*" (change)="onUpload($event)">
+</div>

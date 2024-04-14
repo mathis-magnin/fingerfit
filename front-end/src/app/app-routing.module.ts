@@ -14,7 +14,8 @@ const routes: Routes = [
   { path: 'congrats', component: CongratsComponent },
   { path: 'options', component: OptionsComponent },
   { path: 'profiles', component: ProfilesComponent },
-  { path: 'position-creation', component: PositionCreationComponent }
+  { path: 'position-creation', component: PositionCreationComponent },
+  { path: 'profiles', component: ProfilesComponent }
 ];
 
 @NgModule({

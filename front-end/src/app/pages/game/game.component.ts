@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { OptionsService } from '../../../services/options.service';
 import { Options } from '../../../models/options.model';
 import { PositionService } from '../../../services/position.service';
-import { Key, Side } from 'src/models/quiz.model';
+import { Key, Side, Position } from 'src/models/quiz.model';
 import { Router } from '@angular/router';
 import { StatsService } from 'src/services/stats.service';
 
@@ -23,9 +23,9 @@ export class GameComponent {
   public currentPositionNumber: number = 1;
   public numberOfPositions: number = 0;
   public showPopup: boolean = false;
-  public keysToPress: Key[] = this.positionService.position$.value.keys;
+  public position: Position = this.positionService.position$.value;
   public isCorrect: boolean = false;
-  public paused: boolean = false;
+  public stop: boolean = false;
 
   constructor(public optionsService: OptionsService, public positionService: PositionService, public statsService: StatsService, private router: Router) {
     this.optionsService.options$.subscribe((options) => {
@@ -44,9 +44,11 @@ export class GameComponent {
       }
     )
 
-    this.positionService.position$.subscribe((position) => {
-      this.keysToPress = position.keys;
-    });
+    this.positionService.position$.subscribe(
+      (position) => {
+        this.position = position;
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -64,13 +66,13 @@ export class GameComponent {
     }
     else {
       if (this.isCorrect) {
-        this.paused = true;
+        this.stop = true;
         console.log('animate');
         this.animate().then(() => {
           console.log('animate end');
           this.isCorrect = false;
           this.positionService.positionStart(true);
-          this.paused = false;
+          this.stop = false;
         });
       }
       else {
@@ -97,9 +99,10 @@ export class GameComponent {
     });
   }
 
-  public togglePopup(exit:boolean): void {
+  public togglePopup(exit: boolean): void {
     this.showPopup = !exit;
     if (exit) {
+  
       this.positionService.positionStart();
     }
     else {

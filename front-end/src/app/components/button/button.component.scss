@@ -4,28 +4,38 @@
     align-items: center;
     min-width: 2em;
     min-height: 1em;
-    padding-top:0.75vh;
-    padding-bottom:0.75vh;
+    padding-top: 0.75vh;
+    padding-bottom: 0.75vh;
     border: none;
+<<<<<<< HEAD
+=======
+    border-radius: var(--app-button-border-radius, 5px);
+>>>>>>> develop
     cursor: pointer;
     font-family: "nunito";    
     line-height: 0px;
+<<<<<<< HEAD
+=======
+    height: var(--app-button-height);
+    width: var(--app-button-width);
+
+>>>>>>> develop
     .button-text {
         color: white;
     }
 
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
         transition-duration: 0.5s;
     }
 
     &:active {
-        transform: scale(0.9);
+        transform: scale(0.95);
         transition-duration: 0.1s;
         opacity: 0.5;
     }
 
-    img{
+    img {
         max-width: 4vw;
         max-height: 3vh;
     }

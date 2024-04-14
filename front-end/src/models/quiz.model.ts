@@ -8,8 +8,10 @@ export enum Finger {
 }
 
 export enum Side {
+    UNDEFINED = -1,
     LEFT,
-    RIGHT
+    RIGHT,
+    BOTH
 }
 
 export function sideToString(side: Side): string {
@@ -18,6 +20,10 @@ export function sideToString(side: Side): string {
             return "Main gauche";
         case Side.RIGHT:
             return "Main droite";
+        case Side.BOTH:
+            return "Deux mains";
+        default:
+            return "Non défini";
     }
 }
 
@@ -25,8 +31,12 @@ export function stringToSide(s: string): Side {
     switch (s) {
         case "Main gauche":
             return Side.LEFT;
-        default:
+        case "Main droite":
             return Side.RIGHT;
+        case "Deux mains":
+            return Side.BOTH;
+        default:
+            return Side.UNDEFINED;
     }
 }
 
@@ -83,6 +93,7 @@ export function symbolToString(symbol: Symbol): string {
             return Symbol[symbol];
     }
 }
+
 
 export function stringToSymbol(s: string): Symbol {
     switch (s) {
@@ -201,19 +212,24 @@ export function stringToOrder(o: string): Order {
     }
 }
 
+
 export interface IsSymbolPressed {
     symbol: Symbol;
     isPressed: boolean;
 }
+
 
 export interface Key {
     symbol: Symbol;
     finger: Finger;
 }
 
+
 export interface Position {
     keys: Key[];
+    side: Side.LEFT | Side.RIGHT;
 }
+
 
 export interface Quiz {
     name: string;

@@ -1,9 +1,23 @@
+<<<<<<< HEAD
 <div class="quiz" *ngIf="quiz">
     <div>
         <img src="{{this.src}}">
         <p><b>{{quiz.name}}</b> <br> {{this.quiz.positions.length}} question(s)</p>
         <app-button class="detail-quiz-button" [buttonStyle]="detailButtonStyle" [text]="detailsString" (click)="showMoreInfo()"></app-button>
         <app-button class="chose-quiz-button" [buttonStyle]="choseButtonStyle" [text]="'choisir'" (click)="quizIsChosen()"></app-button>
+=======
+<div class="quiz" *ngIf="quiz" [ngClass]="{selected: isSelected}">
+    <div class="hand">
+        <img src="assets/left_hand.png" *ngIf="(quiz.side == Side.LEFT) || (quiz.side == Side.BOTH)">
+        <img src="assets/right_hand.png" *ngIf="(quiz.side == Side.RIGHT) || (quiz.side == Side.BOTH)">
+    </div>
+
+    <p><b>{{quiz.name}}</b> <br> {{this.quiz.positions.length}} positions</p>
+
+    <div class="name">
+        <app-button class="detail-quiz-button" [text]="detailsString" (click)="showMoreInfo()"></app-button>
+        <app-button class="chose-quiz-button" [text]="'choisir'" (click)="quizIsChosen()"></app-button>
+>>>>>>> develop
     </div>
     <app-quiz-details *ngIf="showMore" [quiz]="this.quiz"></app-quiz-details>
 </div>

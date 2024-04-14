@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, input } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,11 @@ import { ProfileListComponent } from './components/profile-list/profile-list.com
 import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { LoginComponent } from './components/login/login.component';
+import { PositionComponent } from './components/position/position.component';
+import { AddProfileComponent } from './components/add-profile/add-profile.component';
+import { ProfilePictureSelectionComponent } from './components/profile-picture-selection/profile-picture-selection.component';
+import { InputTextFieldComponent } from './components/input-text-field/input-text-field.component';
+
 import { BoxComponent } from './components/box/box.component';
 import { KeySelectionBoxComponent } from './components/key-selection-box/key-selection-box.component';
 import { OrderSelectionBoxComponent } from './components/order-selection-box/order-selection-box.component';
@@ -52,6 +57,7 @@ import { HandSelectionBoxComponent } from './components/hand-selection-box/hand-
     ButtonComponent,
     ExitButtonComponent,
     CheckboxComponent,
+    CheckboxComponent,
     QuizComponent,
     QuizListComponent,
     WarningPopupComponent,
@@ -64,6 +70,10 @@ import { HandSelectionBoxComponent } from './components/hand-selection-box/hand-
     ProfileListComponent,
     PopupComponent,
     LoginComponent,
+    PositionComponent,
+    ProfilePictureSelectionComponent,
+    InputTextFieldComponent,
+    AddProfileComponent,
     SuperHandComponent,
     BoxComponent,
     KeySelectionBoxComponent,

@@ -13,18 +13,13 @@ import { Quiz, Side } from '../../../models/quiz.model';
 
 export class QuizListComponent {
 
-    @Output()
-    closeSelection: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() selectQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
-    @Output()
-    exit: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-    @Output()
-    selectQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
-    
     public quizList: Quiz[] = [];
     public searchValue: string = '';
-    public selectedHand: Side | undefined;
+    public selectedSide: Side = Side.UNDEFINED;
+    public selectedQuiz: Quiz | undefined;
+
 
     constructor(public quizzesService: QuizzesService) {
         this.quizzesService.quizzes$.subscribe((quizList) => {
@@ -32,10 +27,15 @@ export class QuizListComponent {
         });
     }
 
-    quizSelected(Quiz: Quiz) {
-        this.selectQuiz.emit(Quiz);
-        this.closeSelection.emit(true);
+
+    ngOnInit() {
         this.quizzesService.resetQuizzes();
+    }
+
+
+    quizSelected(quiz: Quiz) {
+        this.selectedQuiz = quiz;
+        this.selectQuiz.emit(quiz);
     }
 
 
@@ -43,28 +43,32 @@ export class QuizListComponent {
         const selection = event.target.value;
         switch (selection) {
             case 'all':
-                this.selectedHand = undefined;
+                this.selectedSide = Side.UNDEFINED;
                 break;
-            case 'hand_right':
-                this.selectedHand = Side.RIGHT;
+            case 'side_right':
+                this.selectedSide = Side.RIGHT;
                 break;
-            case 'hand_left':
-                this.selectedHand = Side.LEFT;
+            case 'side_left':
+                this.selectedSide = Side.LEFT;
+                break;
+            case 'side_both':
+                this.selectedSide = Side.BOTH;
                 break;
             default:
                 break;
         }
-        this.filterQuizzes(this.selectedHand, this.searchValue);
+        this.filterQuizzes(this.selectedSide, this.searchValue);
     }
+
 
     public onSearch(event: any) {
         this.searchValue = event.target.value;
-        this.filterQuizzes(this.selectedHand, this.searchValue);
+        this.filterQuizzes(this.selectedSide, this.searchValue);
     }
 
-    public filterQuizzes(side: Side | undefined, name: string) {
+
+    public filterQuizzes(side: Side, name: string) {
         this.quizzesService.filterQuizzes(side, name);
     }
 
-    
 }

@@ -65,7 +65,7 @@ export class OptionsComponent {
   }
 
   public switchGame(): void {
-    if (this.optionsService.checkOptions() && (this.timeWaitingValue > 0 || this.options?.timePerQuestion===undefined)) {
+    if (this.optionsService.checkOptions() && (this.timeWaitingValue > 0 || this.options?.timePerQuestion === undefined)) {
       this.router.navigateByUrl('/game');
     }
     else if (this.timeWaitingValue <= 0) {

@@ -1,20 +1,19 @@
 <header [ngClass]="{disable:showPopup}">
     <div class="timer_progress">
         <app-progress-bar [positions]="numberOfPositions" [current_position]="currentPositionNumber" />
-        <app-timer [maxTime]="options.timePerQuestion" 
-            [start]="this.options.timePerQuestion !== undefined || this.options.chronometer" 
-            [paused]="this.paused"
-            (timeOut)="nextPosition()"
-            *ngIf="options.chronometer || options.timePerQuestion"/>
+        <app-timer [maxTime]="options.timePerQuestion"
+            [start]="this.options.timePerQuestion !== undefined || this.options.chronometer" [paused]="this.showPopup"
+            [stop]="this.stop" (timeOut)="nextPosition()" *ngIf="options.chronometer || options.timePerQuestion" />
     </div>
-    <app-exit-button (click)="togglePopup(false)"/>
+    <app-exit-button (click)="togglePopup(false)" />
 </header>
 
 <main *ngIf="!isCorrect" [ngClass]="{disable:showPopup}">
-    <app-hand [keysToPress]="keysToPress" [side]="this.options.side" />
-    <app-keyboard [keysToPress]="keysToPress" (nextPosition)="nextPosition()" (isCorrect)="isAnswerCorrect($event)" />
+    <app-hand [keysToPress]="position.keys" [side]="position.side" />
+    <app-keyboard [keysToPress]="position.keys" (nextPosition)="nextPosition()" (isCorrect)="isAnswerCorrect($event)" />
 </main>
+
 <app-popup *ngIf="showPopup" (exit)="togglePopup($event)">
-    <app-login/>
+    <app-login />
 </app-popup>
 <app-super-hand *ngIf="isCorrect">
