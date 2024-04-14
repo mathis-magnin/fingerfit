@@ -30,15 +30,19 @@ app-single-option input[type="number"] {
 }
 
 
-:host {
-    main {
-        --app-button-width: 10vw;
-        --app-button-height: 5vh;
-    }
+.validate {
+    position: fixed;
+    bottom: 1vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+
+:host {
     #play_button {
         --app-button-width: 10vw;
-        --app-button-height: 10vh;
+        --app-button-height: 5vh;
     }
 
     .grey {

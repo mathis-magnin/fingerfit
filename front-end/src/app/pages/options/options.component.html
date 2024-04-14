@@ -4,6 +4,8 @@
 </header>
 
 <main [ngClass]="{disable:showPopup}">
+    <h1>Options de la partie</h1>
+
     <app-single-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
         <app-checkbox />
     </app-single-option>
@@ -16,8 +18,10 @@
 
     <app-quiz-list (closeSelection)="togglePopup()" (selectQuiz)="selectQuiz($event)" />
 
-    <app-button [text]="'Valider et Jouer'" (click)="switchGame()" id="play_button" />
-    <app-warning-popup *ngIf="isWarningVisible" [text]="currentError" />
+    <div class="validate">
+        <app-warning-popup *ngIf="isWarningVisible" [text]="currentError" />
+        <app-button [text]="'Valider et Jouer'" (click)="switchGame()" id="play_button" />
+    </div>
 </main>
 
 <app-popup *ngIf="showPopup" (exit)="togglePopupLogin($event)">
