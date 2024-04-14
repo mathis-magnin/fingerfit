@@ -1,51 +1,27 @@
-#logo {
-    position: fixed;
-    top: 1vh;
-    left: 1vw;
-    width: 5vw;
+header {
+    img {
+        position: fixed;
+        top: 1vh;
+        left: 1vw;
+        width: 5vw;
+    }
+
+    app-exit-button {
+        position: fixed;
+        top: 1vh;
+        right: 1vw;
+    }
 }
 
-header app-exit-button {
-    position: fixed;
-    top: 1vh;
-    right: 1vw;
-}
-
-#bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    filter: blur(5px);
-}
 
 main {
-    margin-top: 10vh;
-}
-
-h1 {
-    text-align: center;
-}
-
-.options {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin-top: 5vh;
-}
-
-#play-button {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
-app-warning-popup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 app-single-option input[type="number"] {
     margin-left: 1vw;
@@ -53,9 +29,6 @@ app-single-option input[type="number"] {
     height: 5vh;
 }
 
-#hand-selection app-button {
-    margin-left: 1vw;
-}
 
 :host {
     main {
@@ -63,7 +36,7 @@ app-single-option input[type="number"] {
         --app-button-height: 5vh;
     }
 
-    #play-button {
+    #play_button {
         --app-button-width: 10vw;
         --app-button-height: 10vh;
     }
@@ -73,7 +46,7 @@ app-single-option input[type="number"] {
     }
 }
 
-.disable{
+.disable {
     pointer-events: none;
     filter: blur(50px);
 }

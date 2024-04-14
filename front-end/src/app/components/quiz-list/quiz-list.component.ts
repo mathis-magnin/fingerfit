@@ -13,24 +13,21 @@ import { Quiz, Side } from '../../../models/quiz.model';
 
 export class QuizListComponent {
 
-    @Output()
-    closeSelection: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() closeSelection: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() exit: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() selectQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
-    @Output()
-    exit: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-    @Output()
-    selectQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
-    
     public quizList: Quiz[] = [];
     public searchValue: string = '';
     public selectedHand: Side | undefined;
+
 
     constructor(public quizzesService: QuizzesService) {
         this.quizzesService.quizzes$.subscribe((quizList) => {
             this.quizList = quizList;
         });
     }
+
 
     quizSelected(Quiz: Quiz) {
         this.selectQuiz.emit(Quiz);
@@ -57,14 +54,15 @@ export class QuizListComponent {
         this.filterQuizzes(this.selectedHand, this.searchValue);
     }
 
+
     public onSearch(event: any) {
         this.searchValue = event.target.value;
         this.filterQuizzes(this.selectedHand, this.searchValue);
     }
 
+
     public filterQuizzes(side: Side | undefined, name: string) {
         this.quizzesService.filterQuizzes(side, name);
     }
 
-    
 }

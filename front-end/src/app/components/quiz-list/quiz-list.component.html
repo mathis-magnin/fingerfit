@@ -1,18 +1,16 @@
 <div class="quiz-list">
-    <h3>Sélectionnez un ensemble de positions</h3>
-    <div class="filter">
-        <input type="text" placeholder="Rechercher un quiz" (input)="onSearch($event)"/>
-        <label for="filter">Filtrer :</label>
+    <label>Sélectionner un ensemble de positions</label>
+    <div>
+        <input type="text" placeholder="Rechercher un quiz" (input)="onSearch($event)" />
         <select (change)="onSelect($event)">
-            <option value="all">Tous</option>
+            <option value="all">Filtrer</option>
             <option value="hand_right">Main droite</option>
             <option value="hand_left">Main gauche</option>
         </select>
     </div>
     <div class=quizzes>
-        <div class="quiz" *ngFor="let quiz of quizList"> 
+        <div *ngFor="let quiz of quizList">
             <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)"></app-quiz>
         </div>
     </div>
 </div>
-

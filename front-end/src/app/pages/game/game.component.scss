@@ -11,11 +11,13 @@
     }
 }
 
+
 app-exit-button {
     position: fixed;
     top: 1vh;
     right: 1vw;
 }
+
 
 main {
     display: flex;
@@ -23,7 +25,8 @@ main {
     align-items: center;
 }
 
-.disable{
+
+.disable {
     pointer-events: none;
     filter: blur(50px);
 }

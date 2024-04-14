@@ -1,25 +1,24 @@
-.quiz div:first-child{
+.quiz div:first-child {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr 1fr;
     align-items: center;
-
 }
 
-.quiz{
+.quiz {
     box-shadow: 0 0 5px 0px black;
     background-color: white;
     border-radius: 0.5dvi;
-    width: 35vw;
     min-height: 5vh;
-    margin: 2vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
     padding: 1vh;
-    
 }
 
-.quiz img{
+.quiz img {
     width: 3vw;
     height: 5vh;
-
 }
 
 :host {
