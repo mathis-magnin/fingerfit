@@ -1,11 +1,12 @@
 <div class="quiz-list">
     <label>Sélectionner un ensemble de positions</label>
     <div>
-        <input type="text" placeholder="Rechercher un quiz" (input)="onSearch($event)" />
+        <input type="text" placeholder="Rechercher un ensemble" (input)="onSearch($event)" />
         <select (change)="onSelect($event)">
             <option value="all">Filtrer</option>
-            <option value="hand_right">Main droite</option>
-            <option value="hand_left">Main gauche</option>
+            <option value="side_right">Main droite</option>
+            <option value="side_left">Main gauche</option>
+            <option value="side_both">Deux mains</option>
         </select>
     </div>
     <div class=quizzes>

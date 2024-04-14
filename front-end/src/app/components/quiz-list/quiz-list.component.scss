@@ -4,6 +4,7 @@ label {
     font-weight: bold;
 }
 
+
 label+* {
     display: flex;
     justify-content: right;
@@ -14,8 +15,10 @@ label+* {
 .quiz-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 1vw;
-    padding: 1vw;
+    border-top: 1px solid gray;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    border-bottom: 1px solid gray;
     width: 50vw;
 }
 
@@ -35,6 +38,7 @@ select {
     border: 1px solid black;
     width: 10vw;
 }
+
 
 input {
     margin-right: 20px;
