@@ -42,10 +42,14 @@ export enum Symbol {
     SPACE
 }
 
+
 export enum Side {
+    UNDEFINED = -1,
     LEFT,
-    RIGHT
+    RIGHT,
+    BOTH
 }
+
 
 export function symbolToString(symbol: Symbol): string {
     switch (symbol) {
@@ -65,6 +69,7 @@ export function symbolToString(symbol: Symbol): string {
             return Symbol[symbol];
     }
 }
+
 
 export function stringToSymbol(s: string): Symbol {
     switch (s) {
@@ -139,19 +144,24 @@ export function stringToSymbol(s: string): Symbol {
     }
 }
 
+
 export interface IsSymbolPressed {
     symbol: Symbol;
     isPressed: boolean;
 }
+
 
 export interface Key {
     symbol: Symbol;
     finger: Finger;
 }
 
+
 export interface Position {
     keys: Key[];
+    side: Side.LEFT | Side.RIGHT;
 }
+
 
 export interface Quiz {
     name: string;

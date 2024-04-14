@@ -3,6 +3,7 @@
     <app-exit-button [routerLink]="'/home'"/>
 </header>
 <main class="profiles">
-    <app-button [text]="'Ajouter un membre'"></app-button>
+    <app-button [text]="'Ajouter un membre'" (click)="profilToAdd=true"></app-button>
     <app-profile-list [redirect]="'/options'"/>
 </main>
+<app-popup *ngIf="profilToAdd" (exit)="profilToAdd=false"><app-add-profile (exit)="profilToAdd=false"/></app-popup>

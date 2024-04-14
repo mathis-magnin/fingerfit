@@ -9,8 +9,10 @@ import { TimerService } from 'src/services/timer.service';
 
 export class TimerComponent implements OnInit {
 
-    public counter: number = 0;
-    public endNear: boolean = false;
+    public counterS: number = 0;
+    
+    @Input()
+    public paused: boolean = false;
 
     @Input()
     public maxTime: number | undefined = undefined;
@@ -18,15 +20,18 @@ export class TimerComponent implements OnInit {
     @Input()
     public start: boolean = false;
 
+    @Input()
+    public stop: boolean = false;
+
     @Output()
     public timeOut: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-
     constructor(public TimerService: TimerService) {
         this.TimerService.time$.subscribe((time) => {
-            this.counter = Math.trunc(time);
+            this.counterS = Math.trunc(time);
             this.checkTime();
         });
+        
     }
 
     ngOnInit(): void {
@@ -41,29 +46,20 @@ export class TimerComponent implements OnInit {
 
     public clearTimer(): void {
         this.TimerService.clearTimer();
-        this.endNear = false;
     }
 
     public checkTime(): void {
-        if (this.maxTime && this.maxTime - this.counter <= 10) {
-            this.endNear = true;
-        }
-        if (this.maxTime && this.maxTime - this.counter <= 0) {
+        if (this.maxTime && this.maxTime - this.counterS <= 0) {
             this.end();
         }
-
     }
 
     public end(): void {
         this.timeOut.emit(true);
-        this.endNear = false;
     }
 
     ngOnDestroy(): void {
         this.TimerService.stop();
     }
-
-
-
 
 }
