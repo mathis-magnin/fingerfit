@@ -20,6 +20,8 @@ export class TimerComponent implements OnInit {
     @Input()
     public start: boolean = false;
 
+    @Input()
+    public stop: boolean = false;
 
     @Output()
     public timeOut: EventEmitter<boolean> = new EventEmitter<boolean>();
