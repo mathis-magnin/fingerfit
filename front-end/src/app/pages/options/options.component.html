@@ -6,7 +6,7 @@
 <main [ngClass]="{disable:showPopup}">
     <h1>Paramétrage de la partie</h1>
 
-    <app-quiz-list (closeSelection)="togglePopup()" (selectQuiz)="selectQuiz($event)" />
+    <app-quiz-list (selectQuiz)="selectQuiz($event)" />
 
     <app-single-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
         <app-checkbox />

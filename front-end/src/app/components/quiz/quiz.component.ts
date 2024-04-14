@@ -4,31 +4,23 @@ import { EventEmitter, Output } from '@angular/core';
 import { Side } from '../../../models/quiz.model';
 
 @Component({
-selector: 'app-quiz',
-templateUrl: './quiz.component.html',
-styleUrl: './quiz.component.scss'
+    selector: 'app-quiz',
+    templateUrl: './quiz.component.html',
+    styleUrl: './quiz.component.scss'
 })
 
 export class QuizComponent {
 
+    Side = Side;
+
     public showMore: boolean = false;
-    public detailsString: string ="Details"
-    public src: string = "../../../assets/left_hand.png";
-    @Input()
-    quiz: Quiz | undefined;
+    public detailsString: string = "Details";
 
-    @Output()
-    quizSelected: EventEmitter<Quiz> = new EventEmitter<Quiz>();
+    @Input() quiz: Quiz | undefined;
+    @Input() isSelected: boolean = false;
 
-    constructor() { }
+    @Output() quizSelected: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
-    ngOnInit() {
-        if (this.quiz) {
-            if (this.quiz.side === Side.RIGHT) {
-                this.src = "../../../assets/right_hand.png";
-            }
-        }
-    }
 
     quizIsChosen() {
         if (this.quiz) {

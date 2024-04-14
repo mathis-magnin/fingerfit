@@ -11,7 +11,7 @@
     </div>
     <div class=quizzes>
         <div *ngFor="let quiz of quizList">
-            <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)"></app-quiz>
+            <app-quiz [quiz]="quiz" [isSelected]="quiz == selectedQuiz" (quizSelected)="quizSelected($event)" />
         </div>
     </div>
 </div>

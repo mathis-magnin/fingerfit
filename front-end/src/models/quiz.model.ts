@@ -159,6 +159,7 @@ export interface Key {
 
 export interface Position {
     keys: Key[];
+    side: Side.LEFT | Side.RIGHT;
 }
 
 

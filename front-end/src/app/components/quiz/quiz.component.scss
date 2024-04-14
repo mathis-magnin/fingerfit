@@ -1,31 +1,57 @@
-.quiz div:first-child {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr 1fr;
-    align-items: center;
-}
-
 .quiz {
     box-shadow: 0 0 5px 0px black;
     background-color: white;
     border-radius: 0.5dvi;
     min-height: 5vh;
+    margin-top: 2vh;
     margin-left: 1vw;
     margin-right: 1vw;
-    margin-top: 2vh;
     margin-bottom: 2vh;
-    padding: 1vh;
+    padding-top: 1vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-bottom: 1vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
 }
 
-.quiz img {
-    width: 3vw;
-    height: 5vh;
+.selected {
+    box-shadow: 0px 0px 10px 5px #1dc42e;
 }
+
+
+.hand {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 20vh;
+
+    img {
+        width: 10vh;
+        height: 10vh;
+    }
+}
+
+
+.name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.chose-quiz-button {
+    justify-self: right;
+}
+
 
 :host {
     .quiz .detail-quiz-button {
         --app-button-height: 5vh;
         --app-button-width: 5vw;
-        margin-left: 10px;
         --app-button-background-color: rgb(128, 185, 203);
     }
 

@@ -18,6 +18,7 @@ export class QuizListComponent {
     public quizList: Quiz[] = [];
     public searchValue: string = '';
     public selectedSide: Side = Side.UNDEFINED;
+    public selectedQuiz: Quiz | undefined;
 
 
     constructor(public quizzesService: QuizzesService) {
@@ -27,9 +28,14 @@ export class QuizListComponent {
     }
 
 
-    quizSelected(Quiz: Quiz) {
-        this.selectQuiz.emit(Quiz);
+    ngOnInit() {
         this.quizzesService.resetQuizzes();
+    }
+
+
+    quizSelected(quiz: Quiz) {
+        this.selectedQuiz = quiz;
+        this.selectQuiz.emit(quiz);
     }
 
 
