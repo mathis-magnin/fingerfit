@@ -3,7 +3,8 @@
         <app-progress-bar [positions]="numberOfPositions" [current_position]="currentPositionNumber" />
         <app-timer [maxTime]="options.timePerQuestion" 
             [start]="this.options.timePerQuestion !== undefined || this.options.chronometer" 
-            [paused]="this.paused"
+            [paused]="this.showPopup"
+            [stop]="this.stop"
             (timeOut)="nextPosition()"
             *ngIf="options.chronometer || options.timePerQuestion"/>
     </div>
