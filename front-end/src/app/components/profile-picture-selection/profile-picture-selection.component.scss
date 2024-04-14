@@ -1,0 +1,45 @@
+.file-upload{
+    position: relative;
+    width: 10vw;
+    height: 20vh;
+}
+
+.file-upload:hover{
+    //stay the same at the end of the animation
+    animation: appear 0.5s forwards;
+}
+
+@keyframes appear{
+    100%{
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 0.4rem rgb(51, 51, 51));
+    }
+}
+
+
+.file-upload img{
+    width: 10vw;
+    height: 20vh;
+    border-radius: 50%;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.file-upload label{
+    position: absolute;
+    top:80%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-size: 1vw;
+    color:white;    
+}
+
+.file-upload input[type="file"]{
+    cursor:pointer;
+    position:absolute;
+    top:50%;
+    left:50%;
+    width: 10vw;
+    height: 20vh;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}

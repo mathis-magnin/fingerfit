@@ -2,6 +2,7 @@
 
 export interface Profile {
     name: string;
+    firstName: string;
     age: number;
-    profilePic: string;
+    profilePicture: string;
 }

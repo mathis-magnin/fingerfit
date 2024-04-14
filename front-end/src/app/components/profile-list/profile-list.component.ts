@@ -1,6 +1,6 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Profile } from '../../../models/profile.model';
-import { profilesService } from '../../../services/profiles.service';
+import { ProfilesService } from '../../../services/profiles.service';
 
 @Component({
     selector: 'app-profile-list',
@@ -18,7 +18,7 @@ export class ProfileListComponent {
 
     @Input() public redirect: string = '';
 
-    constructor(public profilesService: profilesService) {
+    constructor(public profilesService: ProfilesService) {
         this.profilesService.profiles$.subscribe((profiles) => {
             this.profiles = profiles;
             this.start = Math.floor(this.profiles.length / 2);

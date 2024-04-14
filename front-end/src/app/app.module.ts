@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, input } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +28,10 @@ import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { LoginComponent } from './components/login/login.component';
 import { PositionComponent } from './components/position/position.component';
+import { AddProfileComponent } from './components/add-profile/add-profile.component';
+import { ProfilePictureSelectionComponent } from './components/profile-picture-selection/profile-picture-selection.component';
+import { InputTextFieldComponent } from './components/input-text-field/input-text-field.component';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +61,10 @@ import { PositionComponent } from './components/position/position.component';
     ProfileListComponent,
     PopupComponent,
     LoginComponent,
-    PositionComponent
+    PositionComponent,
+    ProfilePictureSelectionComponent,
+    InputTextFieldComponent,
+    AddProfileComponent
   ],
   imports: [
     BrowserModule,

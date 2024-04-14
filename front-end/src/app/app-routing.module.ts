@@ -13,8 +13,7 @@ const routes: Routes = [
   { path: 'game', component: GameComponent },
   { path: 'congrats', component: CongratsComponent },
   { path: 'options', component: OptionsComponent },
-  { path: 'profiles', component: ProfilesComponent}
-
+  { path: 'profiles', component: ProfilesComponent },
 ];
 
 @NgModule({
