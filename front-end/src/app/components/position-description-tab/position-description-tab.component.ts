@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Order, Position, Symbol, Finger, Key, orderToString } from 'src/models/quiz.model';
+import { Order, Position, Symbol, Finger, Key, orderToString, Side } from 'src/models/quiz.model';
 import { BoxStyle } from 'src/models/style-input.model';
 
 @Component({
@@ -38,7 +38,7 @@ export class PositionDescriptionTabComponent {
         [orderToString(Order.FIFTH)]: []
     };
 
-    private position: Position = { keys: [] };
+    private positionKeys: Key[] = [];
 
     @Input()
     set createPosition(is_to_do : boolean) { // s'exécute à chaque fois que l'input change
@@ -61,13 +61,13 @@ export class PositionDescriptionTabComponent {
                 }
             }
             for(let order = Order.FIRST; order <= Order.FIFTH; order++) {
-                this.position.keys = this.position.keys.concat(this.keyDictionary[orderToString(order)]);
+                this.positionKeys = this.positionKeys.concat(this.keyDictionary[orderToString(order)]);
             }
-            this.positionDescription.emit(this.position);
+            this.positionDescription.emit(this.positionKeys);
         }
     }
 
-    @Output() public positionDescription: EventEmitter<Position> = new EventEmitter<Position>();
+    @Output() public positionDescription: EventEmitter<Key[]> = new EventEmitter<Key[]>();
 
     constructor() { }
     

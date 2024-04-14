@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Finger, Key, Position, Symbol } from 'src/models/quiz.model';
+import { Finger, Key, Position, Side, Symbol } from 'src/models/quiz.model';
 import { ButtonStyle } from 'src/models/style-input.model';
 
 @Component({
@@ -15,7 +15,7 @@ export class PositionCreationComponent {
 
     public endCreation: boolean = false;
 
-    public positionCreated: Position = { keys: [] };
+    public positionCreated: Position = { keys: [], side: Side.LEFT };
 
     constructor() {
         for (let symbol = Symbol.A; symbol <= Symbol.SPACE; symbol++) {
@@ -23,12 +23,16 @@ export class PositionCreationComponent {
         }
     }
 
+    public onSideSelected(side: Side.LEFT | Side.RIGHT): void {
+        this.positionCreated.side = side;
+    }
+
     public onCreationEnd(): void {
         this.endCreation = true;
     }
 
-    public updatePosition(position: Position): void {
-        this.positionCreated = position;
+    public updatePosition(positionKeys: Key[]): void {
+        this.positionCreated.keys = positionKeys;
         console.log(this.positionCreated);
     }
 

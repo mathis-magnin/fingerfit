@@ -1,11 +1,15 @@
 interface BoxStyleType {
     width?: string;
     backgroundColor?: string;
+    border?: string;
+    padding?: string;
 }
 
 const defaultBoxStyle: BoxStyleType = {
     width: '15vw',
-    backgroundColor: 'lightblue'
+    backgroundColor: 'lightblue',
+    border: 'none',
+    padding: '1vw'
 };
 
 export class BoxStyle {

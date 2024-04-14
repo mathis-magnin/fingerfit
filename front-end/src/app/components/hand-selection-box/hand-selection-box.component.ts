@@ -12,22 +12,41 @@ export class HandSelectionBoxComponent {
     public sideToString = sideToString;
     public sides: Side[] = [];
 
-    public selectedSide: Side = Side.LEFT;
+    public selectedSide: Side = Side.UNDEFINED;
+
+    public rightOrLeft: Side.LEFT | Side.RIGHT = Side.LEFT;
+
+    @Input() twoPossibilities: boolean = false;
 
     @Input() boxStyle: BoxStyle = new BoxStyle({});
 
     @Output() sideSelected: EventEmitter<Side> = new EventEmitter<Side>();
 
-    constructor() {
-        for (let side = Side.LEFT; side <= Side.RIGHT; side++) {
-            this.sides.push(side);
+    @Output() rightOrLeftSelected: EventEmitter<Side.LEFT | Side.RIGHT> = new EventEmitter<Side.LEFT | Side.RIGHT>();
+
+    constructor() {}
+
+    ngOnInit() {
+        if (this.twoPossibilities) {
+            for (let side = Side.LEFT; side <= Side.RIGHT; side++) {
+                this.sides.push(side);
+            }
+        }
+        else {
+            for (let side = Side.UNDEFINED; side <= Side.BOTH; side++) {
+                this.sides.push(side);
+            }
         }
     }
 
     public onSelect(s: string) {
-        this.selectedSide = stringToSide(s);
-        console.log(this.selectedSide);
-        this.sideSelected.emit(this.selectedSide);
+        if (this.twoPossibilities) {
+            this.rightOrLeftSelected.emit(this.rightOrLeft);
+        }
+        else {
+            this.selectedSide = stringToSide(s);
+            this.sideSelected.emit(this.selectedSide);
+        }
     }
 
 }

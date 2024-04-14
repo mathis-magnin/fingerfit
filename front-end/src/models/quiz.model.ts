@@ -23,7 +23,7 @@ export function sideToString(side: Side): string {
         case Side.BOTH:
             return "Deux mains";
         default:
-            return "Non défini";
+            return "Non définie";
     }
 }
 
