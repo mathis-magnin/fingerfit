@@ -1,28 +1,49 @@
-div {
-    line-height: 0;
-    font-size: 3em;
-    width: 3em;
-    border-radius: 10px;
-    box-shadow: 0 0 1px black;
-    display: flex;
-    justify-content: center;
+div{
+  position:relative;
 }
 
-.turningRed {
-    color: red;
-    animation: pulse infinite 1s;
+svg {
+  width: 8vw;
+  transform: rotateZ(-90deg);
+    
 }
 
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 3px red;
-    }
+label{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  font-weight: bold;
+}
 
-    50% {
-        box-shadow: 0 0 10px red;
-    }
 
-    100% {
-        box-shadow: 0 0 3px red;
-    }
+circle {
+  fill: none;
+  stroke-width: 15;
+  stroke: #3bf711;
+  stroke-dasharray: 503px;
+  stroke-dashoffset: 0px;
+  animation: countdown 0s linear infinite;
+}
+
+@keyframes countdown {
+  0% {
+    stroke: #3bf711;
+  }
+  50% {
+    stroke: #dcf711;
+  }
+  75% {
+    stroke: #f78811;
+  }
+  100% {
+    stroke: #fe0000;
+    stroke-dashoffset: 503;
+  }
+}
+
+.pauseAnimation {
+  animation-play-state: paused;
+  animation:none;
 }

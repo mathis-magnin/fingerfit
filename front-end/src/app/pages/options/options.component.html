@@ -17,7 +17,7 @@
     <app-quiz-list (closeSelection)="togglePopup()" (selectQuiz)="selectQuiz($event)" />
 
     <app-button [text]="'Valider et Jouer'" (click)="switchGame()" id="play_button" />
-    <app-warning-popup *ngIf="isWarningVisible" [text]="'Veuillez selectionner un quiz'" />
+    <app-warning-popup *ngIf="isWarningVisible" [text]="currentError" />
 </main>
 
 <app-popup *ngIf="showPopup" (exit)="togglePopupLogin($event)">
