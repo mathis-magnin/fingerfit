@@ -7,16 +7,16 @@
     <app-box [boxStyle]="fingerBoxStyle">Auriculaire</app-box>
 
     <app-box [boxStyle]="boxStyle">Touche</app-box>
-    <app-key-selection-box [boxStyle]="keySelectionBoxStyle"></app-key-selection-box>
-    <app-key-selection-box [boxStyle]="keySelectionBoxStyle"></app-key-selection-box>
-    <app-key-selection-box [boxStyle]="keySelectionBoxStyle"></app-key-selection-box>
-    <app-key-selection-box [boxStyle]="keySelectionBoxStyle"></app-key-selection-box>
-    <app-key-selection-box [boxStyle]="keySelectionBoxStyle"></app-key-selection-box>
+    <app-key-selection-box [boxStyle]="selectionBoxStyle" (symbolSelected)="onThumbSymbolSelected($event)"></app-key-selection-box>
+    <app-key-selection-box [boxStyle]="selectionBoxStyle" (symbolSelected)="onIndexSymbolSelected($event)"></app-key-selection-box>
+    <app-key-selection-box [boxStyle]="selectionBoxStyle" (symbolSelected)="onMiddleSymbolSelected($event)"></app-key-selection-box>
+    <app-key-selection-box [boxStyle]="selectionBoxStyle" (symbolSelected)="onRingSymbolSelected($event)"></app-key-selection-box>
+    <app-key-selection-box [boxStyle]="selectionBoxStyle" (symbolSelected)="onPinkySymbolSelected($event)"></app-key-selection-box>
 
     <app-box [boxStyle]="boxStyle">Ordre</app-box>
-    <app-order-selection-box [boxStyle]="orderSelectionBoxStyle"></app-order-selection-box>
-    <app-order-selection-box [boxStyle]="orderSelectionBoxStyle"></app-order-selection-box>
-    <app-order-selection-box [boxStyle]="orderSelectionBoxStyle"></app-order-selection-box>
-    <app-order-selection-box [boxStyle]="orderSelectionBoxStyle"></app-order-selection-box>
-    <app-order-selection-box [boxStyle]="orderSelectionBoxStyle"></app-order-selection-box>
+    <app-order-selection-box [boxStyle]="selectionBoxStyle" (orderSelected)="onThumbOrderSelected($event)"></app-order-selection-box>
+    <app-order-selection-box [boxStyle]="selectionBoxStyle" (orderSelected)="onIndexOrderSelected($event)"></app-order-selection-box>
+    <app-order-selection-box [boxStyle]="selectionBoxStyle" (orderSelected)="onMiddleOrderSelected($event)"></app-order-selection-box>
+    <app-order-selection-box [boxStyle]="selectionBoxStyle" (orderSelected)="onRingOrderSelected($event)"></app-order-selection-box>
+    <app-order-selection-box [boxStyle]="selectionBoxStyle" (orderSelected)="onPinkyOrderSelected($event)"></app-order-selection-box>
 </div>

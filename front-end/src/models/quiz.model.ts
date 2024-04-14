@@ -7,6 +7,11 @@ export enum Finger {
     PINKY
 }
 
+export enum Side {
+    LEFT,
+    RIGHT
+}
+
 export enum Symbol {
     UNDEFINED = -1,
     A,
@@ -40,11 +45,6 @@ export enum Symbol {
     SLASH,
     SECTION_MARK,
     SPACE
-}
-
-export enum Side {
-    LEFT,
-    RIGHT
 }
 
 export function symbolToString(symbol: Symbol): string {
@@ -133,6 +133,7 @@ export function stringToSymbol(s: string): Symbol {
         case "§":
             return Symbol.SECTION_MARK;
         case " ":
+        case "ESPACE":
             return Symbol.SPACE;
         default:
             return Symbol.UNDEFINED;
@@ -162,6 +163,23 @@ export function orderToString(order: Order): string {
             return "5";
         default:
             return "Non travaillé";
+    }
+}
+
+export function stringToOrder(o: string): Order {
+    switch (o) {
+        case "1":
+            return Order.FIRST;
+        case "2":
+            return Order.SECOND;
+        case "3":
+            return Order.THIRD;
+        case "4":
+            return Order.FOURTH;
+        case "5":
+            return Order.FIFTH;
+        default:
+            return Order.NOT_WORKED;
     }
 }
 
