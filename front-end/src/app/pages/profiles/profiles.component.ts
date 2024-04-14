@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { profilesService } from 'src/services/profiles.service';
 
 @Component({
   selector: 'app-profiles',
@@ -8,8 +7,10 @@ import { profilesService } from 'src/services/profiles.service';
 })
 
 export class ProfilesComponent {
-  constructor() { }
 
+  public profilToAdd: boolean = false;
+  
+  constructor() { }
   ngOnInit(): void {
   }
 

@@ -1,4 +1,4 @@
-import { Component, Output, OnInit } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-profile-picture-selection',
@@ -8,8 +8,10 @@ import { Component, Output, OnInit } from '@angular/core';
 
 export class ProfilePictureSelectionComponent implements OnInit {
 
+    public selectedProfilePicture: File | null = null;
     @Output()
-    public selectedProfilePicture: File | null=null;
+    public profilePicture: EventEmitter<string> = new EventEmitter<string>();
+    
     public imgURL: string="../../../assets/default-profile-picture.png";
     constructor() { }
 
@@ -17,11 +19,13 @@ export class ProfilePictureSelectionComponent implements OnInit {
 
     onUpload(event: any): void {
         this.selectedProfilePicture = event.target.files[0];
+        console.log(this.selectedProfilePicture);
         if (this.selectedProfilePicture) {
             const reader = new FileReader();
             reader.onload = () => {
                 const imageData = reader.result as string;
                 this.imgURL = imageData;
+                this.profilePicture.emit(this.imgURL);
             };
             reader.readAsDataURL(this.selectedProfilePicture);
         }

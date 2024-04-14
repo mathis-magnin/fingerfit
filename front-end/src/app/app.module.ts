@@ -27,7 +27,7 @@ import { ProfileListComponent } from './components/profile-list/profile-list.com
 import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { LoginComponent } from './components/login/login.component';
-import { AddProfileComponent } from './pages/add-profile/add-profile.component';
+import { AddProfileComponent } from './components/add-profile/add-profile.component';
 import { ProfilePictureSelectionComponent } from './components/profile-picture-selection/profile-picture-selection.component';
 import { InputTextFieldComponent } from './components/input-text-field/input-text-field.component';
 
@@ -38,7 +38,6 @@ import { InputTextFieldComponent } from './components/input-text-field/input-tex
     OptionsComponent,
     CongratsComponent,
     ProfilesComponent,
-    AddProfileComponent,
 
     AppComponent,
     ProgressBarComponent,
@@ -61,7 +60,8 @@ import { InputTextFieldComponent } from './components/input-text-field/input-tex
     PopupComponent,
     LoginComponent,
     ProfilePictureSelectionComponent,
-    InputTextFieldComponent
+    InputTextFieldComponent,
+    AddProfileComponent,
   ],
   imports: [
     BrowserModule,

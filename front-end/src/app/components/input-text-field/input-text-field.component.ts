@@ -1,4 +1,4 @@
-import { Component, Output, OnInit, Input } from '@angular/core';
+import { Component, Output, OnInit, Input, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-input-text-field',
@@ -9,9 +9,10 @@ import { Component, Output, OnInit, Input } from '@angular/core';
 export class InputTextFieldComponent implements OnInit {
     @Input()
     public label?: string;
-
-    @Output()
     public value: string = '';
+    @Output()
+    public valueChange = new EventEmitter<string>();
+    
     constructor() { }
 
     ngOnInit(): void { }
@@ -19,5 +20,6 @@ export class InputTextFieldComponent implements OnInit {
 
     updateValue(event: any): void {
         this.value = event.target.value;
+        this.valueChange.emit(this.value);
     }
 }
