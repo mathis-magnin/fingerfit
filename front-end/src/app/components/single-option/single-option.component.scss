@@ -1,21 +1,20 @@
-label{
+label {
     font-size: 1.5em;
     margin-right: 1vw;
     font-weight: bold;
 }
 
-label + *{
+label+* {
     display: flex;
     justify-content: right;
     align-items: center;
 }
 
-.single-option{
+.single-option {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin:1.5vw;
-    padding:1vw;
-    border-bottom: 1px solid black;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    border-bottom: 1px solid gray;
     width: 50vw;
-    margin-left: 25vw;
 }

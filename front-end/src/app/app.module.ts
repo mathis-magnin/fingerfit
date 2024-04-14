@@ -12,7 +12,7 @@ import { KeyComponent } from './components/key/key.component'
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import { ButtonComponent } from './components/button/button.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
-import { CustomCheckboxComponent } from './components/custom-checkbox/custom-checkbox.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { ExitButtonComponent } from './components/exit-button/exit-button.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { WarningPopupComponent } from './components/warning-popup/warning-popup.component';
@@ -27,9 +27,11 @@ import { ProfileListComponent } from './components/profile-list/profile-list.com
 import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { LoginComponent } from './components/login/login.component';
+import { PositionComponent } from './components/position/position.component';
 import { AddProfileComponent } from './components/add-profile/add-profile.component';
 import { ProfilePictureSelectionComponent } from './components/profile-picture-selection/profile-picture-selection.component';
 import { InputTextFieldComponent } from './components/input-text-field/input-text-field.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +48,7 @@ import { InputTextFieldComponent } from './components/input-text-field/input-tex
     KeyboardComponent,
     ButtonComponent,
     ExitButtonComponent,
-    CustomCheckboxComponent,
+    CheckboxComponent,
     QuizComponent,
     QuizListComponent,
     WarningPopupComponent,
@@ -59,9 +61,10 @@ import { InputTextFieldComponent } from './components/input-text-field/input-tex
     ProfileListComponent,
     PopupComponent,
     LoginComponent,
+    PositionComponent,
     ProfilePictureSelectionComponent,
     InputTextFieldComponent,
-    AddProfileComponent,
+    AddProfileComponent
   ],
   imports: [
     BrowserModule,

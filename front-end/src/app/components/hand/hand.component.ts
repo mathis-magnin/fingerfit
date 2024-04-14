@@ -9,7 +9,7 @@ import { Finger, Key, Side } from 'src/models/quiz.model';
 export class HandComponent {
 
     Side = Side;
-    @Input() public side: Side = Side.RIGHT;
+    @Input() public side: Side.LEFT | Side.RIGHT = Side.RIGHT;
 
     @Input() public keysToPress: Key[] = [];
 

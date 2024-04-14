@@ -4,10 +4,10 @@
     align-items: center;
     min-width: 2em;
     min-height: 1em;
-    padding-top:0.75vh;
-    padding-bottom:0.75vh;
+    padding-top: 0.75vh;
+    padding-bottom: 0.75vh;
     border: none;
-    border-radius:var(--app-button-border-radius, 5px);
+    border-radius: var(--app-button-border-radius, 5px);
     cursor: pointer;
     background-color: var(--app-button-background-color, #1dc42e);
     font-size: var(--app-button-font-size, 1vw);
@@ -15,22 +15,23 @@
     line-height: 0px;
     height: var(--app-button-height);
     width: var(--app-button-width);
+
     .button-text {
         color: white;
     }
 
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
         transition-duration: 0.5s;
     }
 
     &:active {
-        transform: scale(0.9);
+        transform: scale(0.95);
         transition-duration: 0.1s;
         opacity: 0.5;
     }
 
-    img{
+    img {
         max-width: 4vw;
         max-height: 3vh;
     }

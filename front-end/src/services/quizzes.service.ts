@@ -13,7 +13,7 @@ export class QuizzesService {
 
     constructor() { }
 
-    public filterQuizzes(side: Side | undefined, searchValue: string): void {
+    public filterQuizzes(side: Side, searchValue: string): void {
         let filteredQuizzes: Quiz[] = QUIZ_LIST;
 
         if (searchValue.trim() !== '') {
@@ -21,7 +21,7 @@ export class QuizzesService {
             filteredQuizzes = filteredQuizzes.filter(quiz => quiz.name.toLowerCase().includes(searchTerm));
         }
 
-        if (side!== undefined) {
+        if (side !== Side.UNDEFINED) {
             filteredQuizzes = filteredQuizzes.filter(quiz => quiz.side === side);
         }
         this.quizzes$.next(filteredQuizzes);
