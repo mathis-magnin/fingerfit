@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { GameComponent } from './pages/game/game.component';
 import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { HandComponent } from './components/hand/hand.component';
 import { KeyComponent } from './components/key/key.component'
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
@@ -35,6 +36,7 @@ import { LoginComponent } from './components/login/login.component';
     OptionsComponent,
     CongratsComponent,
     ProfilesComponent,
+    StatisticsComponent,
 
     AppComponent,
     ProgressBarComponent,

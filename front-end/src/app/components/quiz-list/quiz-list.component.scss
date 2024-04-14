@@ -4,8 +4,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width:40vw;
-    height: 60vh;
+    height: var(--app-quiz-list-height, 60vh);
+    width: var(--app-quiz-list-width, 40vw);
 }
 
 .quiz-list .quizzes{

@@ -5,6 +5,7 @@ import { GameComponent } from './pages/game/game.component';
 import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { ProfilesComponent } from './pages/profiles/profiles.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'game', component: GameComponent },
   { path: 'congrats', component: CongratsComponent },
   { path: 'options', component: OptionsComponent },
-  { path: 'profiles', component: ProfilesComponent}
+  { path: 'profiles', component: ProfilesComponent},
+  { path: 'statistics', component: StatisticsComponent}
 
 ];
 
