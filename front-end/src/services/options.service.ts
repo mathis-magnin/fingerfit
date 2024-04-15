@@ -16,11 +16,14 @@ export class OptionsService {
             side: Side.RIGHT
         });
 
+
     constructor() { }
+
 
     public selectQuiz(quiz: Quiz): void {
         this.options$.next({ ...this.options$.value, quiz });
     }
+
 
     public setChronometer(set: boolean): void {
         if (set)
@@ -29,9 +32,11 @@ export class OptionsService {
             this.options$.next({ ...this.options$.value, chronometer: false });
     }
 
+
     public setTime(time: number): void {
         this.options$.next({ ...this.options$.value, timePerQuestion: time });
     }
+
 
     public setTimer(set: boolean): void {
         if (!set)
@@ -39,6 +44,7 @@ export class OptionsService {
         else
             this.options$.next({ ...this.options$.value, timePerQuestion: 20 });
     }
+
 
     public checkOptions(): boolean {
         if (this.options$.value.quiz) {
@@ -49,9 +55,11 @@ export class OptionsService {
         }
     }
 
+
     public setHand(side: Side): void {
         this.options$.next({ ...this.options$.value, side });
     }
+
 
     public clearOptions(): void {
         this.options$.next({

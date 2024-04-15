@@ -3,12 +3,12 @@ import { Quiz } from '../../../models/quiz.model';
 import { EventEmitter, Output } from '@angular/core';
 import { Side } from '../../../models/quiz.model';
 
+
 @Component({
     selector: 'app-quiz',
     templateUrl: './quiz.component.html',
     styleUrl: './quiz.component.scss'
 })
-
 export class QuizComponent {
 
     Side = Side;
@@ -28,7 +28,7 @@ export class QuizComponent {
         }
     }
 
-    showMoreInfo() {
+    toggleMoreInfo() {
         this.showMore = !this.showMore;
         if (this.showMore) {
             this.detailsString = "Cacher";
