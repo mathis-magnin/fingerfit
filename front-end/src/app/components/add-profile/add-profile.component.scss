@@ -28,11 +28,3 @@ app-input-text-field{
     align-items: center;
     grid-column: 3;
 }
-
-:host{
-    app-button{
-        --app-button-width: 10vw;
-        --app-button-height: 5vh;
-        margin: 2vh;
-    }
-}

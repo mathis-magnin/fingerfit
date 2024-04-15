@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Profile } from 'src/models/profile.model';
 import { ProfilesService } from '../../../services/profiles.service';
+import { ButtonStyle } from 'src/models/style-input.model';
 
 @Component({
   selector: 'app-add-profile',
@@ -18,6 +19,7 @@ export class AddProfileComponent {
     profilePicture: '',
   }
 
+  public addButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh',margin:"1vw"});
   @Output()
   exit:EventEmitter<void> = new EventEmitter<void>();
     

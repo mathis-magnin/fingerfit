@@ -6,6 +6,6 @@
         <app-input-text-field [label]="'Prénom'" (valueChange)="setFirstName($event)"/>
         <app-input-text-field [label]="'Age'" (valueChange)="setAge($event)"/>
     </div>
-    <app-button [text]="'Enregister le profil'" (click)="checkAndApply()"></app-button>
+    <app-button [text]="'Enregister le profil'" (click)="checkAndApply()" [buttonStyle]="addButtonStyle"></app-button>
     <app-warning-popup *ngIf="warningVisible" [text]="'Veuillez remplir tout les champs'"/>
 </section>
