@@ -22,9 +22,9 @@
     </div>
 </div>
 <div class="profile-options">
-    <app-button [picture]="'../../../assets/option.png'"/>
-    <app-button [text]="'Jouer'" (click)="checkProfileSelected()"/>
-    <app-button [picture]="'../../../assets/stats.png'"/>
+    <app-button [buttonStyle]="firstAndLastButtonStyle" [picture]="'../../../assets/option.png'"/>
+    <app-button [buttonStyle]="middleButtonStyle" [text]="'Jouer'" (click)="checkProfileSelected()"/>
+    <app-button [buttonStyle]="firstAndLastButtonStyle" [routerLink]="'/statistics'" [picture]="'../../../assets/stats.png'"/>
 </div>
 <div class="popup">
     <app-warning-popup *ngIf="warning" [text]="'Veuillez selectionner un profil'"></app-warning-popup>

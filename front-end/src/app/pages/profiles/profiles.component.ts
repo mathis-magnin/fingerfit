@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ButtonStyle } from 'src/models/style-input.model';
 
 @Component({
   selector: 'app-profiles',
@@ -10,8 +11,10 @@ export class ProfilesComponent {
 
   public profilToAdd: boolean = false;
   
-  constructor() { }
-  ngOnInit(): void {
-  }
+  public addButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
+
+  constructor() {}
+
+  ngOnInit(): void {}
 
 }

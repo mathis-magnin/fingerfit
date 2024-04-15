@@ -1,5 +1,6 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Profile } from '../../../models/profile.model';
+import { ButtonStyle } from 'src/models/style-input.model';
 import { ProfilesService } from '../../../services/profiles.service';
 import { Router } from '@angular/router';
 import { PlayerService } from 'src/services/player.service';
@@ -21,6 +22,8 @@ export class ProfileListComponent {
     public warning: boolean = false;
 
     @Input() public redirect: string = '';
+    @Input() public firstAndLastButtonStyle: ButtonStyle = new ButtonStyle({ width: '3vw', height: '6vh', backgroundColor: 'rgb(167, 165, 165)', borderRadius: '50%' });
+    @Input() public middleButtonStyle: ButtonStyle = new ButtonStyle({ width: '8vw', height: '6vh' });
 
     constructor(public profilesService: ProfilesService,private router: Router,private playerService: PlayerService) {
         this.profilesService.profiles$.subscribe((profiles) => {

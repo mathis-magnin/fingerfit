@@ -1,5 +1,5 @@
 <a [routerLink]="link" class="button-link"> 
-    <button class="button" (click)="onClick()">
+    <button [ngStyle]="buttonStyle.getStyle()" class="button" (click)="onClick()">
             <div class="button-picture">
                 <img [src]="picture">
             </div>

@@ -5,12 +5,17 @@ label {
 }
 
 
-label+* {
-    display: flex;
-    justify-content: right;
+.filter {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
     align-items: center;
 }
 
+.searchInput {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
 
 .quiz-list {
     display: grid;
@@ -30,24 +35,11 @@ label+* {
 }
 
 
-input,
-select {
+input {
     text-align: center;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid black;
     width: 10vw;
-}
-
-
-input {
     margin-right: 20px;
-}
-
-
-:host {
-    .quiz-list {
-        --app-button-width: 10vw;
-        --app-button-height: 5vh;
-    }
 }

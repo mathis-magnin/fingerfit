@@ -99,20 +99,6 @@
     height: 29.4vh;
 }
 
-:host{
-    .profile-options app-button:first-child, .profile-options app-button:last-child{
-        --app-button-background-color:rgb(167, 165, 165);
-        --app-button-border-radius: 50%;
-        --app-button-width: 3vw;
-        --app-button-height: 6vh;
-    }
-
-    .profile-options app-button:nth-child(2){
-        --app-button-width: 8vw;
-        --app-button-height: 6vh;
-    }
-}
-
 .popup{
     display: flex;
     justify-content: center;
