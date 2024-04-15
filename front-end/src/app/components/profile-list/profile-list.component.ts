@@ -2,6 +2,7 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Profile } from '../../../models/profile.model';
 import { ProfilesService } from '../../../services/profiles.service';
 import { Router } from '@angular/router';
+import { PlayerService } from 'src/services/player.service';
 
 @Component({
     selector: 'app-profile-list',
@@ -21,7 +22,7 @@ export class ProfileListComponent {
 
     @Input() public redirect: string = '';
 
-    constructor(public profilesService: ProfilesService,private router: Router) {
+    constructor(public profilesService: ProfilesService,private router: Router,private playerService: PlayerService) {
         this.profilesService.profiles$.subscribe((profiles) => {
             this.profiles = profiles;
             this.start = Math.floor(this.profiles.length / 2);
@@ -91,6 +92,7 @@ export class ProfileListComponent {
             this.warning = true;
         }
         else {
+            this.playerService.setPlayer(this.currentProfile);
             this.router.navigate([this.redirect]);
         }
     }
