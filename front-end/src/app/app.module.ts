@@ -1,5 +1,6 @@
 import { NgModule, input } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { PositionComponent } from './components/position/position.component';
 import { AddProfileComponent } from './components/add-profile/add-profile.component';
 import { ProfilePictureSelectionComponent } from './components/profile-picture-selection/profile-picture-selection.component';
 import { InputTextFieldComponent } from './components/input-text-field/input-text-field.component';
+import { GraphicComponent } from './components/graphic/graphic.component';
 
 
 @NgModule({
@@ -66,11 +68,13 @@ import { InputTextFieldComponent } from './components/input-text-field/input-tex
     PositionComponent,
     ProfilePictureSelectionComponent,
     InputTextFieldComponent,
-    AddProfileComponent
+    AddProfileComponent,
+    GraphicComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

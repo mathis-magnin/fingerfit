@@ -13,6 +13,9 @@ header app-exit-button {
 
 main {
     margin-top: 10vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
 }
 
 :host {
