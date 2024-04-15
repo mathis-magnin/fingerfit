@@ -38,6 +38,8 @@ export class ProfileListComponent {
     }
 
     public profilesShownInit() {
+        this.hasLeftNeighbor = true;
+        this.hasRightNeighbor = true;
         if (this.profiles.length > 3) {
             this.showProfiles = [this.profiles[this.start - 1], this.profiles[this.start], this.profiles[this.start + 1]];
         }
@@ -46,6 +48,10 @@ export class ProfileListComponent {
             if (this.profiles.length === 1) {
                 this.hasLeftNeighbor = false;
                 this.hasRightNeighbor = false;
+            }
+            if(this.profiles.length === 2) {
+                this.hasRightNeighbor = false;
+                this.hasLeftNeighbor = true;
             }
         }
     }
@@ -86,6 +92,7 @@ export class ProfileListComponent {
         console.log(event.target.value);
         this.profilesService.filterProfiles(event.target.value);
         this.profilesShownInit();
+
     }
 
     public checkProfileSelected(): void {

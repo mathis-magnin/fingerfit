@@ -31,6 +31,7 @@ interface ButtonStyleType {
     fontSize?: string;
     backgroundColor?: string;
     borderRadius?: string;
+    margin?: string;
 }
 
 const defaultButtonStyle: ButtonStyleType = {
@@ -38,7 +39,8 @@ const defaultButtonStyle: ButtonStyleType = {
     height: 'fit-content',
     fontSize: '1vw',
     backgroundColor: '#1dc42e',
-    borderRadius: '5px'
+    borderRadius: '5px',
+    margin: '0',
 };
 
 export class ButtonStyle {
