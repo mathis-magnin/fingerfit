@@ -20,10 +20,13 @@ export class GameComponent {
     side: Side.RIGHT,
   };
 
+  private oneByOneMode: boolean = false; /* sera dans Options plus tard */
+
   public currentPositionNumber: number = 1;
   public numberOfPositions: number = 0;
   public showPopup: boolean = false;
   public position: Position = this.positionService.position$.value;
+  public keysShown: Key[] = this.position.keys;
   public isCorrect: boolean = false;
   public stop: boolean = false;
 
