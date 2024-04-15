@@ -5,7 +5,7 @@ import { GameComponent } from './pages/game/game.component';
 import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { ProfilesComponent } from './pages/profiles/profiles.component';
-
+import { PositionCreationComponent } from './pages/position-creation/position-creation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,6 +14,8 @@ const routes: Routes = [
   { path: 'congrats', component: CongratsComponent },
   { path: 'options', component: OptionsComponent },
   { path: 'profiles', component: ProfilesComponent },
+  { path: 'position-creation', component: PositionCreationComponent },
+  { path: 'profiles', component: ProfilesComponent }
 ];
 
 @NgModule({

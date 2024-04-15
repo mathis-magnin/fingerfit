@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { OptionsService } from '../../../services/options.service';
+import { ButtonStyle } from 'src/models/style-input.model';
 
 @Component({
     selector: 'app-exit-button',
@@ -17,6 +18,9 @@ export class ExitButtonComponent implements OnInit {
 
     @Input()
     public exitFunction?: () => void;
+
+    @Input()
+    public buttonStyle: ButtonStyle = new ButtonStyle({width: '2.5vw', backgroundColor: 'red'});
 
     constructor(public optionsService:OptionsService) { }
 

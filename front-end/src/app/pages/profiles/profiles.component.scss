@@ -24,11 +24,3 @@ main{
 main app-button{
     margin-bottom: 5vh;
 }
-
-
-:host{
-    main{
-        --app-button-width: 10vw;
-        --app-button-height: 5vh;
-    }
-}

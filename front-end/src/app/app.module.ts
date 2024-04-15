@@ -7,6 +7,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { GameComponent } from './pages/game/game.component';
 import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
+import { PositionCreationComponent } from './pages/position-creation/position-creation.component';
+import { ProfilesComponent } from './pages/profiles/profiles.component';
+
 import { HandComponent } from './components/hand/hand.component';
 import { KeyComponent } from './components/key/key.component'
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
@@ -24,14 +27,17 @@ import { SuperHandComponent } from './components/super-hand/super-hand.component
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileListComponent } from './components/profile-list/profile-list.component';
-import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { LoginComponent } from './components/login/login.component';
 import { PositionComponent } from './components/position/position.component';
 import { AddProfileComponent } from './components/add-profile/add-profile.component';
 import { ProfilePictureSelectionComponent } from './components/profile-picture-selection/profile-picture-selection.component';
 import { InputTextFieldComponent } from './components/input-text-field/input-text-field.component';
-
+import { BoxComponent } from './components/box/box.component';
+import { KeySelectionBoxComponent } from './components/key-selection-box/key-selection-box.component';
+import { OrderSelectionBoxComponent } from './components/order-selection-box/order-selection-box.component';
+import { PositionDescriptionTabComponent } from './components/position-description-tab/position-description-tab.component';
+import { HandSelectionBoxComponent } from './components/hand-selection-box/hand-selection-box.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +46,7 @@ import { InputTextFieldComponent } from './components/input-text-field/input-tex
     OptionsComponent,
     CongratsComponent,
     ProfilesComponent,
+    PositionCreationComponent,
 
     AppComponent,
     ProgressBarComponent,
@@ -56,7 +63,6 @@ import { InputTextFieldComponent } from './components/input-text-field/input-tex
     TimerComponent,
     QuizDetailsComponent,
     ConfettiComponent,
-    SuperHandComponent,
     ProfileComponent,
     ProfileListComponent,
     PopupComponent,
@@ -64,7 +70,13 @@ import { InputTextFieldComponent } from './components/input-text-field/input-tex
     PositionComponent,
     ProfilePictureSelectionComponent,
     InputTextFieldComponent,
-    AddProfileComponent
+    AddProfileComponent,
+    SuperHandComponent,
+    BoxComponent,
+    KeySelectionBoxComponent,
+    OrderSelectionBoxComponent,
+    PositionDescriptionTabComponent,
+    HandSelectionBoxComponent
   ],
   imports: [
     BrowserModule,

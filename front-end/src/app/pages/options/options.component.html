@@ -20,7 +20,7 @@
 
     <div class="validate">
         <app-warning-popup *ngIf="isWarningVisible" [text]="currentError" />
-        <app-button [text]="'Valider et Jouer'" (click)="switchGame()" id="play_button" />
+        <app-button [text]="'Valider et Jouer'" [buttonStyle]="playButtonStyle" (click)="switchGame()" id="play_button" />
     </div>
 </main>
 

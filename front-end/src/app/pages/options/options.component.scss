@@ -38,19 +38,7 @@ app-single-option input[type="number"] {
     align-items: center;
 }
 
-
-:host {
-    #play_button {
-        --app-button-width: 10vw;
-        --app-button-height: 5vh;
-    }
-
-    .grey {
-        --app-button-background-color: grey;
-    }
-}
-
-.disable {
+.disable{
     pointer-events: none;
     filter: blur(50px);
 }
