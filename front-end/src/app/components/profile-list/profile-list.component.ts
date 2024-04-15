@@ -1,6 +1,8 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Profile } from '../../../models/profile.model';
 import { ProfilesService } from '../../../services/profiles.service';
+import { Router } from '@angular/router';
+import { PlayerService } from 'src/services/player.service';
 
 @Component({
     selector: 'app-profile-list',
@@ -15,14 +17,17 @@ export class ProfileListComponent {
     public start: number = 0;
     public profiles: Profile[] = [];
     public showProfiles: Profile[] = [];
+    public currentProfile: Profile | undefined;
+    public warning: boolean = false;
 
     @Input() public redirect: string = '';
 
-    constructor(public profilesService: ProfilesService) {
+    constructor(public profilesService: ProfilesService,private router: Router,private playerService: PlayerService) {
         this.profilesService.profiles$.subscribe((profiles) => {
             this.profiles = profiles;
             this.start = Math.floor(this.profiles.length / 2);
         });
+        this.currentProfile = this.profiles[this.start];
     }
 
     ngOnInit(): void {
@@ -78,5 +83,17 @@ export class ProfileListComponent {
         console.log(event.target.value);
         this.profilesService.filterProfiles(event.target.value);
         this.profilesShownInit();
+    }
+
+    public checkProfileSelected(): void {
+        this.currentProfile = this.profiles[this.start];
+        console.log(this.currentProfile);
+        if (this.currentProfile===undefined) {
+            this.warning = true;
+        }
+        else {
+            this.playerService.setPlayer(this.currentProfile);
+            this.router.navigate([this.redirect]);
+        }
     }
 }

@@ -22,4 +22,4 @@ export const PROFILE_MIKE: Profile = {
     profilePicture: 'assets/main-logo.ico'
 };
 
-export const PROFILE_LIST: Profile[] = [PROFILE_DOE, PROFILE_SMITH, PROFILE_MIKE, PROFILE_DOE, PROFILE_SMITH];
+export const PROFILE_LIST: Profile[] = [PROFILE_DOE, PROFILE_SMITH, PROFILE_MIKE];
