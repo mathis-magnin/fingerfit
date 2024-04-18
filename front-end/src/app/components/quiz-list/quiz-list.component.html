@@ -2,7 +2,7 @@
     <h3>Sélectionnez un quiz</h3>
     <div class="filter">
         <input class="searchInput" type="text" placeholder="Rechercher un quiz" (input)="onSearch($event)"/>
-        <app-hand-selection-box [boxStyle]="selectionBoxStyle" (sideSelected)="onSelect($event)"></app-hand-selection-box>
+        <app-side-selection-box [boxStyle]="selectionBoxStyle" (sideSelected)="onSelect($event)"></app-side-selection-box>
     </div>
     <div class=quizzes>
         <div *ngFor="let quiz of quizList">

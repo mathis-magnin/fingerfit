@@ -3,11 +3,11 @@ import { Side, sideToString, stringToSide } from 'src/models/quiz.model';
 import { BoxStyle } from 'src/models/style-input.model';
 
 @Component({
-    selector: 'app-hand-selection-box',
-    templateUrl: './hand-selection-box.component.html',
-    styleUrls: ['./hand-selection-box.component.scss']
+    selector: 'app-side-selection-box',
+    templateUrl: './side-selection-box.component.html',
+    styleUrls: ['./side-selection-box.component.scss']
 })
-export class HandSelectionBoxComponent {
+export class SideSelectionBoxComponent {
 
     public sideToString = sideToString;
     public sides: Side[] = [];
