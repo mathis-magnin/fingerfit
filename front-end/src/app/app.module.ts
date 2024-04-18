@@ -1,5 +1,6 @@
 import { NgModule, input } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,8 +8,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { GameComponent } from './pages/game/game.component';
 import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { PositionCreationComponent } from './pages/position-creation/position-creation.component';
 import { ProfilesComponent } from './pages/profiles/profiles.component';
+
 
 import { HandComponent } from './components/hand/hand.component';
 import { KeyComponent } from './components/key/key.component'
@@ -33,6 +36,7 @@ import { PositionComponent } from './components/position/position.component';
 import { AddProfileComponent } from './components/add-profile/add-profile.component';
 import { ProfilePictureSelectionComponent } from './components/profile-picture-selection/profile-picture-selection.component';
 import { InputTextFieldComponent } from './components/input-text-field/input-text-field.component';
+import { GraphicComponent } from './components/graphic/graphic.component';
 import { BoxComponent } from './components/box/box.component';
 import { KeySelectionBoxComponent } from './components/key-selection-box/key-selection-box.component';
 import { OrderSelectionBoxComponent } from './components/order-selection-box/order-selection-box.component';
@@ -46,6 +50,7 @@ import { HandSelectionBoxComponent } from './components/hand-selection-box/hand-
     OptionsComponent,
     CongratsComponent,
     ProfilesComponent,
+    StatisticsComponent,
     PositionCreationComponent,
 
     AppComponent,
@@ -71,6 +76,7 @@ import { HandSelectionBoxComponent } from './components/hand-selection-box/hand-
     ProfilePictureSelectionComponent,
     InputTextFieldComponent,
     AddProfileComponent,
+    GraphicComponent,
     SuperHandComponent,
     BoxComponent,
     KeySelectionBoxComponent,
@@ -81,6 +87,7 @@ import { HandSelectionBoxComponent } from './components/hand-selection-box/hand-
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,27 @@
+#logo {
+    position: fixed;
+    top: 1vh;
+    left: 1vw;
+    width: 5vw;
+}
+
+header app-exit-button {
+    position: fixed;
+    top: 1vh;
+    right: 1vw;
+}
+
+main {
+    margin-top: 10vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    
+}
+
+:host {
+    --app-quiz-list-height: 65vh;
+    --app-quiz-list-width: 40vw;
+}

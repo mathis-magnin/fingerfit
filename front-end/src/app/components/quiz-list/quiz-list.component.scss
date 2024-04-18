@@ -26,7 +26,7 @@ label {
 
 .quizzes {
     overflow-y: scroll;
-    height: 40vh;
+    height: var(--app-quiz-list-height, 40vh);
     grid-column: 1 / 3;
 }
 
