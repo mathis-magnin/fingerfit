@@ -13,7 +13,6 @@ export class OptionsService {
             chronometer: false,
             timePerQuestion: undefined,
             quiz: undefined,
-            side: Side.RIGHT
         });
 
     constructor() { }
@@ -48,17 +47,16 @@ export class OptionsService {
             return false;
         }
     }
-
+/*
     public setHand(side: Side): void {
         this.options$.next({ ...this.options$.value, side });
     }
-
+*/
     public clearOptions(): void {
         this.options$.next({
             chronometer: false,
             timePerQuestion: undefined,
             quiz: undefined,
-            side: Side.RIGHT
         });
     }
 }

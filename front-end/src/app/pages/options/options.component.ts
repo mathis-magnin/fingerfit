@@ -80,7 +80,6 @@ export class OptionsComponent {
 
   public selectQuiz(quiz: Quiz): void {
     this.optionsService.selectQuiz(quiz);
-    this.optionsService.setHand(quiz.side);
   }
 
   public togglePopupLogin(exit: boolean): void {

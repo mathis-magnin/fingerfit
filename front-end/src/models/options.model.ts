@@ -6,5 +6,4 @@ export interface Options {
     chronometer: boolean;
     timePerQuestion: number | undefined;
     quiz: Quiz | undefined;
-    side: Side;
 }

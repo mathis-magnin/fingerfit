@@ -17,7 +17,6 @@ export class GameComponent {
     timePerQuestion: undefined,
     chronometer: false,
     quiz: undefined,
-    side: Side.RIGHT,
   };
 
   private oneByOneMode: boolean = false; /* sera dans Options plus tard */
@@ -56,6 +55,13 @@ export class GameComponent {
 
   ngOnInit(): void {
     this.statsService.clearAnswers();
+
+    if(this.oneByOneMode) {
+      this.keysShown = [this.position.keys[0]];
+    }
+    else {
+      this.keysShown = this.position.keys;
+    }
   }
 
   public nextPosition(): void {
