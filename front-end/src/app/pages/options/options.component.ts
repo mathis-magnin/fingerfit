@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { OptionsService } from 'src/services/options.service';
-import { Options } from 'src/models/options.model';
+import { Options, GameMode } from 'src/models/options.model';
 import { Quiz } from 'src/models/quiz.model';
-import { ButtonStyle } from 'src/models/style-input.model';
+import { BoxStyle, ButtonStyle } from 'src/models/style-input.model';
 
 @Component({
   selector: 'app-options',
@@ -20,6 +20,7 @@ export class OptionsComponent {
   public timeWaitingValue: number = 20;
   public currentError: string = '';
 
+  public boxStyle: BoxStyle = new BoxStyle({});
   public selectButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
   public playButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh' });
 
@@ -45,6 +46,10 @@ export class OptionsComponent {
     else {
       this.optionsService.setChronometer(false);
     }
+  }
+
+  public setGameMode(gm: GameMode): void {
+    this.optionsService.setGameMode(gm);
   }
 
   public setTime(time: string): void {

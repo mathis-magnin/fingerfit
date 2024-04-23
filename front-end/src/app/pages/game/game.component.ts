@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { OptionsService } from '../../../services/options.service';
-import { Options } from '../../../models/options.model';
+import { Options, GameMode } from '../../../models/options.model';
 import { PositionService } from '../../../services/position.service';
-import { Key, Side, Position } from 'src/models/quiz.model';
+import { Key, Position } from 'src/models/quiz.model';
 import { Router } from '@angular/router';
 import { StatsService } from 'src/services/stats.service';
 
@@ -17,15 +17,15 @@ export class GameComponent {
     timePerQuestion: undefined,
     chronometer: false,
     quiz: undefined,
+    gameMode: GameMode.ALL_AT_ONCE,
   };
-
-  private oneByOneMode: boolean = false; /* sera dans Options plus tard */
 
   public currentPositionNumber: number = 1;
   public numberOfPositions: number = 0;
   public showPopup: boolean = false;
   public position: Position = this.positionService.position$.value;
   public keysShown: Key[] = this.position.keys;
+  public currentKeyIndex: number = 0;
   public isCorrect: boolean = false;
   public stop: boolean = false;
 
@@ -49,43 +49,53 @@ export class GameComponent {
     this.positionService.position$.subscribe(
       (position) => {
         this.position = position;
+        switch (this.options.gameMode) {
+          case GameMode.ONE_BY_ONE:
+            this.currentKeyIndex = 0;
+            this.keysShown = [this.position.keys[this.currentKeyIndex]];
+            break;
+          default /* case GameMode.ALL_AT_ONCE */:
+            this.keysShown = this.position.keys;
+            break;
+        }
       }
     );
   }
 
   ngOnInit(): void {
     this.statsService.clearAnswers();
-
-    if(this.oneByOneMode) {
-      this.keysShown = [this.position.keys[0]];
-    }
-    else {
-      this.keysShown = this.position.keys;
-    }
   }
 
   public nextPosition(): void {
-    if (this.showPopup) {
+    if (this.showPopup) { 
       return;
     }
 
-    this.statsService.addAnswer({ time: this.positionService.TimerService.count, correct: this.isCorrect })
-    if (!this.positionService.nextPosition()) {
-      this.endGame();
+    if (this.options.gameMode === GameMode.ONE_BY_ONE && this.currentKeyIndex < (this.position.keys.length - 1)) {
+      console.log('One by one mode: next key');
+      this.currentKeyIndex++;
+      this.keysShown = [this.position.keys[this.currentKeyIndex]];
+      console.log('keysShown: ', this.keysShown);
     }
     else {
-      if (this.isCorrect) {
-        this.stop = true;
-        console.log('animate');
-        this.animate().then(() => {
-          console.log('animate end');
-          this.isCorrect = false;
-          this.positionService.positionStart(true);
-          this.stop = false;
-        });
+      this.statsService.addAnswer({ time: this.positionService.TimerService.count, correct: this.isCorrect });
+      if (!this.positionService.nextPosition()) {
+        this.endGame();
       }
       else {
-        this.positionService.positionStart(true);
+        if (this.isCorrect) {
+          this.stop = true;
+          console.log('animate');
+          this.animate().then(() => {
+            console.log('animate end');
+            this.isCorrect = false;
+            this.positionService.positionStart(true);
+            this.stop = false;
+          });
+        }
+        else {
+          this.positionService.positionStart(true);
+        }
       }
     }
   }
@@ -95,7 +105,7 @@ export class GameComponent {
   }
 
   public isAnswerCorrect(correct: boolean): void {
-    if (correct && !this.showPopup) {
+    if (correct && !this.showPopup && !(this.options.gameMode === GameMode.ONE_BY_ONE && this.currentKeyIndex < (this.position.keys.length - 1))) {
       this.isCorrect = true;
     }
   }
