@@ -18,6 +18,10 @@
             (change)="setTime(numberInput.value)" />
     </app-single-option>
 
+    <app-single-option [caption]="'Mode de jeu'">
+        <app-game-mode-selection-box [boxStyle]="boxStyle" (gameModeSelected)="setGameMode($event)" />
+    </app-single-option>
+
     <div class="validate">
         <app-warning-popup *ngIf="isWarningVisible" [text]="currentError" />
         <app-button [text]="'Valider et Jouer'" [buttonStyle]="playButtonStyle" (click)="switchGame()" id="play_button" />

@@ -9,8 +9,8 @@
 </header>
 
 <main *ngIf="!isCorrect" [ngClass]="{disable:showPopup}">
-    <app-hand [keysToPress]="position.keys" [side]="position.side" />
-    <app-keyboard [keysToPress]="position.keys" (nextPosition)="nextPosition()" (isCorrect)="isAnswerCorrect($event)" />
+    <app-hand [keysToPress]="keysShown" [side]="position.side" />
+    <app-keyboard [keysToPress]="keysShown" (nextPosition)="nextPosition()" (isCorrect)="isAnswerCorrect($event)" />
 </main>
 
 <app-popup *ngIf="showPopup" (exit)="togglePopup($event)">

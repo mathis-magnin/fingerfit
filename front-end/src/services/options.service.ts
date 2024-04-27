@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Options } from '../models/options.model';
-import { Quiz, Side } from '../models/quiz.model';
+import { Options, GameMode } from '../models/options.model';
+import { Quiz } from '../models/quiz.model';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +13,7 @@ export class OptionsService {
             chronometer: false,
             timePerQuestion: undefined,
             quiz: undefined,
-            side: Side.RIGHT
+            gameMode: GameMode.ALL_AT_ONCE,
         });
 
     constructor() { }
@@ -40,6 +40,10 @@ export class OptionsService {
             this.options$.next({ ...this.options$.value, timePerQuestion: 20 });
     }
 
+    public setGameMode(gm: GameMode): void {
+        this.options$.next({ ...this.options$.value, gameMode: gm });
+    }
+
     public checkOptions(): boolean {
         if (this.options$.value.quiz) {
             return true;
@@ -49,16 +53,12 @@ export class OptionsService {
         }
     }
 
-    public setHand(side: Side): void {
-        this.options$.next({ ...this.options$.value, side });
-    }
-
     public clearOptions(): void {
         this.options$.next({
             chronometer: false,
             timePerQuestion: undefined,
             quiz: undefined,
-            side: Side.RIGHT
+            gameMode: GameMode.ALL_AT_ONCE,
         });
     }
 }
