@@ -1,9 +1,9 @@
 <div class="quiz-list">
-    <h3>Sélectionnez un quiz</h3>
-    <div class="filter">
-        <label for="filter">Filtrer :</label>
-        <input class="searchInput" type="text" placeholder="Rechercher un quiz" (input)="onSearch($event)"/>
-        <app-hand-selection-box [boxStyle]="selectionBoxStyle" (sideSelected)="onSelect($event)"></app-hand-selection-box>
+    <label>Sélectionner un ensemble de positions</label>
+    <div>
+        <input type="text" placeholder="Rechercher un ensemble" (input)="onSearch($event)" />
+        <app-hand-selection-box [boxStyle]="selectionBoxStyle"
+            (sideSelected)="onSelect($event)"></app-hand-selection-box>
     </div>
     <div class=quizzes>
         <div *ngFor="let quiz of quizList">
