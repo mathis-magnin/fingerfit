@@ -1,49 +1,14 @@
-label {
-    font-size: 1.5em;
-    margin-right: 1vw;
-    font-weight: bold;
-}
-
-
-label+* {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-}
-
-
-.quiz-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 50vw;
+input {
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-right: 20px;
 }
 
 
 .quizzes {
     overflow-y: scroll;
-    height: 40vh;
-    grid-column: 1 / 3;
-}
-
-
-input,
-select {
-    text-align: center;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid black;
-    width: 10vw;
-}
-
-
-input {
-    margin-right: 20px;
-}
-
-
-:host {
-    .quiz-list {
-        --app-button-width: 10vw;
-        --app-button-height: 5vh;
-    }
+    height: 50vh;
+    margin-top: 2vh;
 }

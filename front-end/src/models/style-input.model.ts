@@ -55,3 +55,14 @@ export class ButtonStyle {
         return this.buttonStyle;
     }
 }
+
+
+export interface HandStyle {
+    width: string;
+    height: string;
+}
+
+
+export interface keyStyle {
+    fontSize: string;
+}

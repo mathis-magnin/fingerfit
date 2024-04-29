@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Finger, Key, Side } from 'src/models/quiz.model';
+import { HandStyle } from 'src/models/style-input.model';
 
 @Component({
     selector: 'app-hand',
@@ -12,6 +13,8 @@ export class HandComponent {
     @Input() public side: Side.LEFT | Side.RIGHT = Side.RIGHT;
 
     @Input() public keysToPress: Key[] = [];
+
+    @Input() public handStyle: HandStyle = { width: "30vh", height: "30vh" };
 
     Finger = Finger;
     public fingers: boolean[] = [];

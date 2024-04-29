@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Quiz } from '../../../models/quiz.model';
-import { EventEmitter, Output } from '@angular/core';
-import { Side } from '../../../models/quiz.model';
+import { Position, Side, Symbol } from 'src/models/quiz.model';
+import { HandStyle, keyStyle } from 'src/models/style-input.model';
+
 
 @Component({
     selector: 'app-position',
@@ -11,37 +11,15 @@ import { Side } from '../../../models/quiz.model';
 
 export class PositionComponent {
 
-    public showMore: boolean = false;
-    public detailsString: string = "Details"
-    public src: string = "../../../assets/left_hand.png";
-    @Input()
-    quiz: Quiz | undefined;
+    Symbol = Symbol;
+    @Input() public position: Position = { keys: [], side: Side.LEFT };
 
-    @Output()
-    quizSelected: EventEmitter<Quiz> = new EventEmitter<Quiz>();
+    public handStyle: HandStyle = { width: "10vh", height: "10vh" };
+    public keyStyle: keyStyle = { fontSize: "1.5em" }
 
     constructor() { }
 
     ngOnInit() {
-        if (this.quiz) {
-            if (this.quiz.side === Side.RIGHT) {
-                this.src = "../../../assets/right_hand.png";
-            }
-        }
     }
 
-    quizIsChosen() {
-        if (this.quiz) {
-            this.quizSelected.emit(this.quiz);
-        }
-    }
-
-    showMoreInfo() {
-        this.showMore = !this.showMore;
-        if (this.showMore) {
-            this.detailsString = "Cacher";
-        } else {
-            this.detailsString = "Details";
-        }
-    }
 }
