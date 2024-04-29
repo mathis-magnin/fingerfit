@@ -15,10 +15,6 @@ label+* {
 .quiz-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-top: 1px solid gray;
-    padding-top: 4vh;
-    padding-bottom: 4vh;
-    border-bottom: 1px solid gray;
     width: 50vw;
 }
 

@@ -6,11 +6,23 @@
 <main [ngClass]="{disable:showPopup}">
     <h1>Paramétrage de la partie</h1>
 
+    <hr />
+
+    <app-single-option [caption]="'Mode de jeu'">
+        <app-game-mode-selection-box [boxStyle]="boxStyle" (gameModeSelected)="setGameMode($event)" />
+    </app-single-option>
+
+    <hr />
+
     <app-quiz-list (selectQuiz)="selectQuiz($event)" />
+
+    <hr />
 
     <app-single-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
         <app-checkbox />
     </app-single-option>
+
+    <hr />
 
     <app-single-option [caption]="'Définir un temps par position de main'">
         <app-checkbox (change)="switchTimer($event)" />
@@ -18,13 +30,12 @@
             (change)="setTime(numberInput.value)" />
     </app-single-option>
 
-    <app-single-option [caption]="'Mode de jeu'">
-        <app-game-mode-selection-box [boxStyle]="boxStyle" (gameModeSelected)="setGameMode($event)" />
-    </app-single-option>
+    <hr />
 
     <div class="validate">
         <app-warning-popup *ngIf="isWarningVisible" [text]="currentError" />
-        <app-button [text]="'Valider et Jouer'" [buttonStyle]="playButtonStyle" (click)="switchGame()" id="play_button" />
+        <app-button [text]="'Valider et Jouer'" [buttonStyle]="playButtonStyle" (click)="switchGame()"
+            id="play_button" />
     </div>
 </main>
 
