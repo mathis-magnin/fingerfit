@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { QuizzesService } from '../../../services/quizzes.service';
 import { Quiz, Side } from '../../../models/quiz.model';
 import { BoxStyle } from 'src/models/style-input.model';
@@ -10,6 +10,8 @@ import { BoxStyle } from 'src/models/style-input.model';
     styleUrls: ['./quiz-list.component.scss']
 })
 export class QuizListComponent {
+
+    @Input() separator: boolean = true;
 
     @Output() selectQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 

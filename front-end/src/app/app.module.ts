@@ -42,6 +42,8 @@ import { KeySelectionBoxComponent } from './components/key-selection-box/key-sel
 import { OrderSelectionBoxComponent } from './components/order-selection-box/order-selection-box.component';
 import { PositionDescriptionTabComponent } from './components/position-description-tab/position-description-tab.component';
 import { HandSelectionBoxComponent } from './components/hand-selection-box/hand-selection-box.component';
+import { ProfileOptionsComponent } from './pages/profile-options/profile-options.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { HandSelectionBoxComponent } from './components/hand-selection-box/hand-
     ProfilesComponent,
     StatisticsComponent,
     PositionCreationComponent,
+    ProfileOptionsComponent,
 
     AppComponent,
     ProgressBarComponent,
@@ -82,7 +85,8 @@ import { HandSelectionBoxComponent } from './components/hand-selection-box/hand-
     KeySelectionBoxComponent,
     OrderSelectionBoxComponent,
     PositionDescriptionTabComponent,
-    HandSelectionBoxComponent
+    HandSelectionBoxComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
