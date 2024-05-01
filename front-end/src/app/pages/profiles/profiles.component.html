@@ -4,6 +4,6 @@
 </header>
 <main class="profiles">
     <app-button [buttonStyle]="addButtonStyle" [text]="'Ajouter un membre'" (click)="profilToAdd=true"></app-button>
-    <app-profile-list [redirect]="'/options'"/>
+    <app-profile-list/>
 </main>
 <app-popup *ngIf="profilToAdd" (exit)="profilToAdd=false"><app-add-profile (exit)="profilToAdd=false"/></app-popup>

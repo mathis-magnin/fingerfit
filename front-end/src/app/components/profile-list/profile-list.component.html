@@ -22,8 +22,8 @@
     </div>
 </div>
 <div class="profile-options">
-    <app-button [buttonStyle]="firstAndLastButtonStyle" [routerLink]="'/profile-options'" [picture]="'../../../assets/option.png'"/>
-    <app-button [buttonStyle]="middleButtonStyle" [text]="'Jouer'" (click)="checkProfileSelected()"/>
+    <app-button [buttonStyle]="firstAndLastButtonStyle" [routerLink]="'/profile-options'" [picture]="'../../../assets/option.png'" (click)="checkProfileSelected('/profile-options')"/>
+    <app-button [buttonStyle]="middleButtonStyle" [text]="'Jouer'" (click)="checkProfileSelected('./options')"/>
     <app-button [buttonStyle]="firstAndLastButtonStyle" [routerLink]="'/statistics'" [picture]="'../../../assets/stats.png'"/>
 </div>
 <div class="popup">

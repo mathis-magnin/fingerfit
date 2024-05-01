@@ -44,6 +44,7 @@ import { PositionDescriptionTabComponent } from './components/position-descripti
 import { HandSelectionBoxComponent } from './components/hand-selection-box/hand-selection-box.component';
 import { ProfileOptionsComponent } from './pages/profile-options/profile-options.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { InfoProfileComponent } from './components/profile-info/profil-info.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     OrderSelectionBoxComponent,
     PositionDescriptionTabComponent,
     HandSelectionBoxComponent,
-    NavbarComponent
+    NavbarComponent,
+    InfoProfileComponent
   ],
   imports: [
     BrowserModule,

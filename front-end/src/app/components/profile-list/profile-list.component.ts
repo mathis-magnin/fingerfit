@@ -21,7 +21,6 @@ export class ProfileListComponent {
     public currentProfile: Profile | undefined;
     public warning: boolean = false;
 
-    @Input() public redirect: string = '';
     @Input() public firstAndLastButtonStyle: ButtonStyle = new ButtonStyle({ width: '3vw', height: '6vh', backgroundColor: 'rgb(167, 165, 165)', borderRadius: '50%' });
     @Input() public middleButtonStyle: ButtonStyle = new ButtonStyle({ width: '8vw', height: '6vh' });
 
@@ -95,7 +94,7 @@ export class ProfileListComponent {
 
     }
 
-    public checkProfileSelected(): void {
+    public checkProfileSelected(redirect:string): void {
         this.currentProfile = this.profiles[this.start];
         console.log(this.currentProfile);
         if (this.currentProfile===undefined) {
@@ -103,7 +102,7 @@ export class ProfileListComponent {
         }
         else {
             this.playerService.setPlayer(this.currentProfile);
-            this.router.navigate([this.redirect]);
+            this.router.navigate([redirect]);
         }
     }
 }
