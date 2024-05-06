@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { OptionsService } from 'src/services/options.service';
-import { Options } from 'src/models/options.model';
+import { Options, GameMode } from 'src/models/options.model';
 import { Quiz } from 'src/models/quiz.model';
+import { BoxStyle, ButtonStyle } from 'src/models/style-input.model';
 
 @Component({
   selector: 'app-options',
@@ -15,6 +16,13 @@ export class OptionsComponent {
   public isPopupVisible: boolean = false;
   public numberValue: number = 0;
   public isWarningVisible: boolean = false;
+  public showPopup: boolean = false;
+  public timeWaitingValue: number = 20;
+  public currentError: string = '';
+
+  public boxStyle: BoxStyle = new BoxStyle({});
+  public selectButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
+  public playButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh' });
 
   constructor(private router: Router, public optionsService: OptionsService) {
     this.optionsService.options$.subscribe((options) => {
@@ -40,16 +48,21 @@ export class OptionsComponent {
     }
   }
 
+  public setGameMode(gm: GameMode): void {
+    this.optionsService.setGameMode(gm);
+  }
+
   public setTime(time: string): void {
-    const numberValue = parseFloat(time);
-    if (this.options?.timePerQuestion != 0 && numberValue > 0) {
-      this.optionsService.setTime(numberValue);
+    this.timeWaitingValue = parseFloat(time);
+    if (this.options?.timePerQuestion && this.timeWaitingValue > 0) {
+      this.optionsService.setTime(this.timeWaitingValue);
     }
   }
 
   public switchTimer(event: any): void {
     if (event.target.checked) {
       this.optionsService.setTimer(true);
+      this.optionsService.setTime(this.timeWaitingValue);
     }
     else {
       this.optionsService.setTimer(false);
@@ -57,16 +70,24 @@ export class OptionsComponent {
   }
 
   public switchGame(): void {
-    if (this.optionsService.checkOptions()) {
+    if (this.optionsService.checkOptions() && (this.timeWaitingValue > 0 || this.options?.timePerQuestion === undefined)) {
       this.router.navigateByUrl('/game');
     }
+    else if (this.timeWaitingValue <= 0) {
+      this.currentError = 'Veuillez entrer un nombre positif pour le temps de réponse';
+      this.isWarningVisible = true;
+    }
     else {
+      this.currentError = 'Veuillez sélectionner un quiz';
       this.isWarningVisible = true;
     }
   }
 
   public selectQuiz(quiz: Quiz): void {
     this.optionsService.selectQuiz(quiz);
-    this.optionsService.setHand(quiz.side);
+  }
+
+  public togglePopupLogin(exit: boolean): void {
+    this.showPopup = !exit;
   }
 }

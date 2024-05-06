@@ -1,0 +1,36 @@
+<header>
+    <img src="./assets/main-logo.ico" id="logo" />
+    <app-exit-button [link]="'/home'" />
+</header>
+
+<main class="position_creation">
+
+    <h1>Création d'une position de main</h1>
+
+    <section class="global_option">
+
+        <div class="position_quiz">
+            <label class="option_type">Quiz dans lequel ajouter la position:</label>
+            <app-quiz-list></app-quiz-list>
+        </div>
+
+        <div class="position_hand">
+            <label class="option_type">Main travaillée:</label>
+            <app-side-selection-box [twoPossibilities]="true" (rightOrLeftSelected)="onSideSelected($event)"></app-side-selection-box>
+        </div>
+
+        <div class="description_tab">
+            <label class="option_type">Description de la position:</label>
+            <app-position-description-tab [createPosition]="endCreation" (positionDescription)="updatePosition($event)"></app-position-description-tab>
+        </div>
+
+        <div class="keyboard">
+            <app-keyboard [keysToPress]="allKeysInRed"></app-keyboard>
+        </div>
+
+        <div class="validation_button">
+            <app-button [buttonStyle]="buttonStyle" [text]="'Valider'" (buttonClicked)="onCreationEnd()"></app-button>
+        </div>
+
+    </section>
+</main>

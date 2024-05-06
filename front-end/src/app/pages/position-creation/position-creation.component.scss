@@ -1,0 +1,62 @@
+#logo {
+    position: fixed;
+    top: 1vh;
+    left: 1vw;
+    width: 5vw;
+}
+
+header app-exit-button {
+    position: fixed;
+    top: 1vh;
+    right: 1vw;
+}
+
+.position_creation {
+    margin-top: 10vh;
+
+    h1 {
+        text-align: center;
+    }
+
+    .global_option {
+        margin-top: 5vh;
+
+        .option_type {
+            font-size: 1.5rem;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 1.25vw;
+            padding-bottom: 1.25vw;
+            width: 97.5vw;
+        }
+
+        .position_quiz label {
+            width: 15vw;
+            margin-right: 1.25vw;
+        }
+
+        .position_hand label {
+            margin-right: 1.25vw;
+        }
+
+        .description_tab {
+            flex-direction: column;
+
+            label {
+                margin-bottom: 1.25vh;
+            }
+        }
+
+        .keyboard {
+            flex-direction: column;
+
+            label {
+                margin-bottom: 1.25vh;
+            }
+        }
+    }
+}

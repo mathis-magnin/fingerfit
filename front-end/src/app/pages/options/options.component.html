@@ -1,26 +1,44 @@
-<header>
-    <img src="./assets/main-logo.ico" id="logo" />
-    <app-exit-button [link]="'/home'" />
+<header [ngClass]="{disable:showPopup}">
+    <img src="./assets/main-logo.ico" />
+    <app-exit-button (click)="togglePopupLogin(false)" />
 </header>
-<main>
-    <h1>Options de la partie</h1>
 
-    <section class="options">
-        <app-single-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
-            <app-custom-checkbox />
-        </app-single-option>
+<main [ngClass]="{disable:showPopup}">
+    <h1>Paramétrage de la partie</h1>
 
-        <app-single-option [caption]="'Définir un temps par position de main'">
-            <app-custom-checkbox (change)="switchTimer($event)" />
-            <input type="number" placeholder="{{options?.timePerQuestion}}sec" min="1" #numberInput
-                (change)="setTime(numberInput.value)" />
-        </app-single-option>
+    <hr />
 
-        <app-single-option [caption]="'Position des mains à travailler'">
-            <app-button (click)="togglePopup()" [text]="'Selectionner'" />
-            <app-quiz-list id="popup" *ngIf="isPopupVisible" (exit)="togglePopup()" (closeSelection)="togglePopup()" (selectQuiz)="selectQuiz($event)"/>
-        </app-single-option>
-    </section>
-    <app-button id="play-button" [text]="'Valider et Jouer'" (click)="switchGame()" id="play-button" />
-    <app-warning-popup *ngIf="isWarningVisible" [text]="'Veulliez selectionner un quiz'" />
+    <app-single-option [caption]="'Mode de jeu'">
+        <app-game-mode-selection-box [boxStyle]="boxStyle" (gameModeSelected)="setGameMode($event)" />
+    </app-single-option>
+
+    <hr />
+
+    <app-quiz-list (selectQuiz)="selectQuiz($event)" />
+
+    <hr />
+
+    <app-single-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
+        <app-checkbox />
+    </app-single-option>
+
+    <hr />
+
+    <app-single-option [caption]="'Définir un temps par position de main'">
+        <app-checkbox (change)="switchTimer($event)" />
+        <input type="number" placeholder="{{options?.timePerQuestion}}sec" min="1" #numberInput
+            (change)="setTime(numberInput.value)" />
+    </app-single-option>
+
+    <hr />
+
+    <div class="validate">
+        <app-warning-popup *ngIf="isWarningVisible" [text]="currentError" />
+        <app-button [text]="'Valider et Jouer'" [buttonStyle]="playButtonStyle" (click)="switchGame()"
+            id="play_button" />
+    </div>
 </main>
+
+<app-popup *ngIf="showPopup" (exit)="togglePopupLogin($event)">
+    <app-login />
+</app-popup>

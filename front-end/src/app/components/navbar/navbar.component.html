@@ -1,0 +1,12 @@
+<nav>
+    <ul>
+        <ng-container *ngFor="let item of navItems,let i=index">
+            <li *ngIf="i==default" [routerLink]="item.url" [style.background-color]="'rgba(78, 78, 78, 0.5)'" [style.width]="100/navItems.length+'%'">
+                {{item.name}}
+            </li>
+            <li *ngIf="i!=default" [routerLink]="item.url" [style.width]="100/navItems.length+'%'">
+                {{item.name}}
+            </li>
+        </ng-container>
+    </ul>
+</nav>

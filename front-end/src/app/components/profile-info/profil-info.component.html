@@ -1,0 +1,19 @@
+<section class="info">
+    <div class="form" [ngClass]="{'gray':!editMode}">
+        <app-profile-picture-selection [imgURL]="this.newPicture" [isDisabled]="!editMode" (profilePicture)="setProfilePicture($event)"/>
+        <app-input-text-field [label]="'Nom'" [isDisabled]="!editMode" [preset]="this.newName" (valueChange)="setName($event)"/>
+        <app-input-text-field [label]="'Prénom'" [isDisabled]="!editMode" [preset]="this.newFirstName" (valueChange)="setFirstName($event)"/>
+        <app-input-text-field [label]="'Age'" [isDisabled]="!editMode" [preset]="this.newAge?.toString()" (valueChange)="newAge" (valueChange)="setAge($event)"/>
+    </div>
+    <div class="edit-info">
+        <app-button [text]="editText" [buttonStyle]="addButtonStyle" (click)="triggerPopup()"></app-button>
+        <app-popup *ngIf="showPopup" (exit)="showPopup=false">
+            <div>
+                <p>Voulez-vous vraiment modifier ce profil ?</p>
+                <app-button [text]="'Oui'" [buttonStyle]="addButtonStyle" (click)="confirmEdit()"></app-button>
+            </div>
+        </app-popup>
+        <app-exit-button *ngIf="editMode" (click)="exitEditMode()"></app-exit-button>
+    </div>
+</section>
+    

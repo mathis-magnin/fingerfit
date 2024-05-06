@@ -9,7 +9,7 @@ interface Confetti {
 @Component({
     selector: 'app-confetti',
     templateUrl: './confetti.component.html',
-    styleUrls: ['./confetti.component.css']
+    styleUrls: ['./confetti.component.scss']
 })
 export class ConfettiComponent {
     confettis: Confetti[] = [];

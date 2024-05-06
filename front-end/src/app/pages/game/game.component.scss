@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
+    align-items: center;
     position: fixed;
     top: 1vh;
     left: 1vw;
@@ -11,14 +12,22 @@
     }
 }
 
+
 app-exit-button {
     position: fixed;
     top: 1vh;
     right: 1vw;
 }
 
+
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+
+.disable {
+    pointer-events: none;
+    filter: blur(50px);
 }

@@ -7,6 +7,39 @@ export enum Finger {
     PINKY
 }
 
+export enum Side {
+    UNDEFINED = -1,
+    LEFT,
+    RIGHT,
+    BOTH
+}
+
+export function sideToString(side: Side): string {
+    switch (side) {
+        case Side.LEFT:
+            return "Main gauche";
+        case Side.RIGHT:
+            return "Main droite";
+        case Side.BOTH:
+            return "Deux mains";
+        default:
+            return "Non définie";
+    }
+}
+
+export function stringToSide(s: string): Side {
+    switch (s) {
+        case "Main gauche":
+            return Side.LEFT;
+        case "Main droite":
+            return Side.RIGHT;
+        case "Deux mains":
+            return Side.BOTH;
+        default:
+            return Side.UNDEFINED;
+    }
+}
+
 export enum Symbol {
     UNDEFINED = -1,
     A,
@@ -42,11 +75,6 @@ export enum Symbol {
     SPACE
 }
 
-export enum Side {
-    LEFT,
-    RIGHT
-}
-
 export function symbolToString(symbol: Symbol): string {
     switch (symbol) {
         case Symbol.UNDEFINED:
@@ -65,6 +93,7 @@ export function symbolToString(symbol: Symbol): string {
             return Symbol[symbol];
     }
 }
+
 
 export function stringToSymbol(s: string): Symbol {
     switch (s) {
@@ -133,25 +162,74 @@ export function stringToSymbol(s: string): Symbol {
         case "§":
             return Symbol.SECTION_MARK;
         case " ":
+        case "ESPACE":
             return Symbol.SPACE;
         default:
             return Symbol.UNDEFINED;
     }
 }
 
+export enum Order {
+    NOT_WORKED = -1,
+    FIRST,
+    SECOND,
+    THIRD,
+    FOURTH,
+    FIFTH
+}
+
+export function orderToString(order: Order): string {
+    switch (order) {
+        case Order.FIRST:
+            return "1";
+        case Order.SECOND:
+            return "2";
+        case Order.THIRD:
+            return "3";
+        case Order.FOURTH:
+            return "4";
+        case Order.FIFTH:
+            return "5";
+        default:
+            return "Non travaillé";
+    }
+}
+
+export function stringToOrder(o: string): Order {
+    switch (o) {
+        case "1":
+            return Order.FIRST;
+        case "2":
+            return Order.SECOND;
+        case "3":
+            return Order.THIRD;
+        case "4":
+            return Order.FOURTH;
+        case "5":
+            return Order.FIFTH;
+        default:
+            return Order.NOT_WORKED;
+    }
+}
+
+
 export interface IsSymbolPressed {
     symbol: Symbol;
     isPressed: boolean;
 }
+
 
 export interface Key {
     symbol: Symbol;
     finger: Finger;
 }
 
+
 export interface Position {
     keys: Key[];
+    side: Side.LEFT | Side.RIGHT;
 }
+
 
 export interface Quiz {
     name: string;
