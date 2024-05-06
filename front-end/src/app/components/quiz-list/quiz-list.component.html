@@ -1,12 +1,9 @@
-<div class="quiz-list">
-    <h3>Sélectionnez un quiz</h3>
-    <div class="filter">
-        <input class="searchInput" type="text" placeholder="Rechercher un quiz" (input)="onSearch($event)"/>
-        <app-side-selection-box [boxStyle]="selectionBoxStyle" (sideSelected)="onSelect($event)"></app-side-selection-box>
-    </div>
-    <div class=quizzes>
-        <div *ngFor="let quiz of quizList">
-            <app-quiz [quiz]="quiz" [isSelected]="quiz == selectedQuiz" (quizSelected)="quizSelected($event)" />
-        </div>
-    </div>
+<app-single-option [caption]="'Sélectionnez un quiz'">
+    <input type="text" placeholder="Rechercher un quiz" (input)="onSearch($event)" />
+    <app-side-selection-box [boxStyle]="selectionBoxStyle" (sideSelected)="onSelect($event)"></app-side-selection-box>
+</app-single-option>
+
+<div class=quizzes>
+    <app-quiz *ngFor="let quiz of quizList" [quiz]="quiz" [isSelected]="quiz == selectedQuiz"
+        (quizSelected)="quizSelected($event)" />
 </div>

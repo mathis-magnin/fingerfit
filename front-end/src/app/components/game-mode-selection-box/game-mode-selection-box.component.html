@@ -1,6 +1,3 @@
-<app-box [boxStyle]="boxStyle" class="game_mode_selection_box">
-    <select class="game_mode_selection" #selectedGameMode (change)="onSelect(selectedGameMode.value)">
-<!-- <option value="">--Choisir le mode de jeu--</option> -->
-        <option *ngFor="let gm of gameModes">{{gameModeToString(gm)}}</option>
-    </select>
-</app-box>
+<select class="game_mode_selection" #selectedGameMode (change)="onSelect(selectedGameMode.value)">
+    <option *ngFor="let gm of gameModes">{{gameModeToString(gm)}}</option>
+</select>

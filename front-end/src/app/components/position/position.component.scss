@@ -1,12 +1,19 @@
 .position {
-    box-shadow: 0 0 5px 0px black;
-    background-color: white;
-    border-radius: 0.5dvi;
-    width: 35vw;
-    min-height: 5vh;
-    margin: 2vh;
-    padding: 1vh;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    width: 45vw;
+}
 
+
+.hand {
+    display: flex;
+    justify-content: center;
+    width: 20vh;
+}
+
+
+.keys {
+    display: flex;
+    justify-content: space-between;
 }
