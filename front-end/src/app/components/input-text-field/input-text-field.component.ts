@@ -9,6 +9,9 @@ import { Component, Output, OnInit, Input, EventEmitter } from '@angular/core';
 export class InputTextFieldComponent implements OnInit {
     @Input()
     public label?: string;
+    @Input() isDisabled: boolean = false;
+    @Input() preset?: string;
+    
     public value: string = '';
     @Output()
     public valueChange = new EventEmitter<string>();

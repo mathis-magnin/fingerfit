@@ -40,6 +40,9 @@ import { BoxComponent } from './components/box/box.component';
 import { KeySelectionBoxComponent } from './components/key-selection-box/key-selection-box.component';
 import { OrderSelectionBoxComponent } from './components/order-selection-box/order-selection-box.component';
 import { PositionDescriptionTabComponent } from './components/position-description-tab/position-description-tab.component';
+import { ProfileOptionsComponent } from './pages/profile-options/profile-options.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { InfoProfileComponent } from './components/profile-info/profil-info.component';
 import { SideSelectionBoxComponent } from './components/side-selection-box/side-selection-box.component';
 import { GameModeSelectionBoxComponent } from './components/game-mode-selection-box/game-mode-selection-box.component';
 
@@ -52,6 +55,7 @@ import { GameModeSelectionBoxComponent } from './components/game-mode-selection-
     ProfilesComponent,
     StatisticsComponent,
     PositionCreationComponent,
+    ProfileOptionsComponent,
 
     AppComponent,
     ProgressBarComponent,
@@ -81,6 +85,8 @@ import { GameModeSelectionBoxComponent } from './components/game-mode-selection-
     KeySelectionBoxComponent,
     OrderSelectionBoxComponent,
     PositionDescriptionTabComponent,
+    NavbarComponent,
+    InfoProfileComponent,
     SideSelectionBoxComponent,
     GameModeSelectionBoxComponent
   ],

@@ -1,0 +1,25 @@
+header app-exit-button {
+    position: absolute;
+    top: 12vh;
+    right: 1vw;
+}
+
+h1{
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+
+
+app-single-option input[type="number"] {
+    margin-left: 1vw;
+    width: 3vw;
+    height: 5vh;
+}
+
+.preset{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

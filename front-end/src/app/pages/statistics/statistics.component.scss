@@ -1,18 +1,11 @@
-#logo {
-    position: fixed;
-    top: 1vh;
-    left: 1vw;
-    width: 5vw;
-}
-
 header app-exit-button {
-    position: fixed;
-    top: 1vh;
+    position: absolute;
+    top: 12vh;
     right: 1vw;
 }
 
 main {
-    margin-top: 10vh;
+
     margin-left: 1vw;
     margin-right: 1vw;
     display: grid;
