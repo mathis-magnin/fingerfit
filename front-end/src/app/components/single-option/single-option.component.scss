@@ -4,17 +4,17 @@ label {
     font-weight: bold;
 }
 
+
 label+* {
     display: flex;
     justify-content: right;
     align-items: center;
 }
 
+
 .single-option {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding-top: 4vh;
-    padding-bottom: 4vh;
-    border-bottom: 1px solid gray;
+    align-items: center;
     width: 50vw;
 }

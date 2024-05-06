@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { Finger, IsSymbolPressed, Symbol, stringToSymbol, symbolToString } from '../../../models/quiz.model';
+import { keyStyle } from 'src/models/style-input.model';
 
 @Component({
     selector: 'app-key',
@@ -8,11 +9,13 @@ import { Finger, IsSymbolPressed, Symbol, stringToSymbol, symbolToString } from 
 })
 export class KeyComponent {
 
+    @Input() keyStyle: keyStyle = { fontSize: "3em" }
+
     Symbol = Symbol;
     symbolToString = symbolToString;
     @Input() public symbol: Symbol = Symbol.UNDEFINED;
 
-    Finger = Finger; // To use enum in html
+    Finger = Finger;
     @Input() public finger: Finger = Finger.UNDEFINED;
 
     public isDown: IsSymbolPressed = { symbol: this.symbol, isPressed: false };

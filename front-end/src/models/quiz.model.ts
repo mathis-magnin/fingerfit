@@ -175,7 +175,7 @@ export enum Order {
     SECOND,
     THIRD,
     FOURTH,
-    FIFTH    
+    FIFTH
 }
 
 export function orderToString(order: Order): string {

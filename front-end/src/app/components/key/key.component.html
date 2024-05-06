@@ -1,4 +1,4 @@
-<button class="key"
+<button class="key" [ngStyle]="keyStyle"
     [ngClass]="{pressed: isDown.isPressed, space_key: symbol == Symbol.SPACE, undef: (finger == Finger.UNDEFINED), thumb: (finger == Finger.THUMB), index: (finger == Finger.INDEX), middle: (finger == Finger.MIDDLE), ring: (finger == Finger.RING), pinky: (finger == Finger.PINKY)}">
     {{symbolToString(symbol)}}
 </button>

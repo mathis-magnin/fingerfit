@@ -1,0 +1,3 @@
+<select class="game_mode_selection" #selectedGameMode (change)="onSelect(selectedGameMode.value)">
+    <option *ngFor="let gm of gameModes">{{gameModeToString(gm)}}</option>
+</select>

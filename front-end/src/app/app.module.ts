@@ -24,7 +24,6 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { WarningPopupComponent } from './components/warning-popup/warning-popup.component';
 import { SingleOptionComponent } from './components/single-option/single-option.component';
 import { TimerComponent } from './components/timer/timer.component';
-import { QuizDetailsComponent } from './components/quiz-details/quiz-details.component';
 import { ConfettiComponent } from './components/confetti/confetti.component';
 import { SuperHandComponent } from './components/super-hand/super-hand.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
@@ -41,10 +40,11 @@ import { BoxComponent } from './components/box/box.component';
 import { KeySelectionBoxComponent } from './components/key-selection-box/key-selection-box.component';
 import { OrderSelectionBoxComponent } from './components/order-selection-box/order-selection-box.component';
 import { PositionDescriptionTabComponent } from './components/position-description-tab/position-description-tab.component';
-import { HandSelectionBoxComponent } from './components/hand-selection-box/hand-selection-box.component';
 import { ProfileOptionsComponent } from './pages/profile-options/profile-options.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InfoProfileComponent } from './components/profile-info/profil-info.component';
+import { SideSelectionBoxComponent } from './components/side-selection-box/side-selection-box.component';
+import { GameModeSelectionBoxComponent } from './components/game-mode-selection-box/game-mode-selection-box.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +70,6 @@ import { InfoProfileComponent } from './components/profile-info/profil-info.comp
     WarningPopupComponent,
     SingleOptionComponent,
     TimerComponent,
-    QuizDetailsComponent,
     ConfettiComponent,
     ProfileComponent,
     ProfileListComponent,
@@ -86,9 +85,10 @@ import { InfoProfileComponent } from './components/profile-info/profil-info.comp
     KeySelectionBoxComponent,
     OrderSelectionBoxComponent,
     PositionDescriptionTabComponent,
-    HandSelectionBoxComponent,
     NavbarComponent,
-    InfoProfileComponent
+    InfoProfileComponent,
+    SideSelectionBoxComponent,
+    GameModeSelectionBoxComponent
   ],
   imports: [
     BrowserModule,
