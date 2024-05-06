@@ -1,13 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Side, sideToString, stringToSide } from 'src/models/quiz.model';
-import { BoxStyle } from 'src/models/style-input.model';
 
 @Component({
-    selector: 'app-side-selection-box',
-    templateUrl: './side-selection-box.component.html',
-    styleUrls: ['./side-selection-box.component.scss']
+    selector: 'app-side-selection',
+    templateUrl: './side-selection.component.html',
+    styleUrls: ['./side-selection.component.scss']
 })
-export class SideSelectionBoxComponent {
+export class SideSelectionComponent {
 
     public sideToString = sideToString;
     public sides: Side[] = [];
@@ -17,8 +16,6 @@ export class SideSelectionBoxComponent {
     public rightOrLeft: Side.LEFT | Side.RIGHT = Side.LEFT;
 
     @Input() twoPossibilities: boolean = false;
-
-    @Input() boxStyle: BoxStyle = new BoxStyle({});
 
     @Output() sideSelected: EventEmitter<Side> = new EventEmitter<Side>();
 

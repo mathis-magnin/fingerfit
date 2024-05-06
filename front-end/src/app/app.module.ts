@@ -40,8 +40,8 @@ import { BoxComponent } from './components/box/box.component';
 import { KeySelectionBoxComponent } from './components/key-selection-box/key-selection-box.component';
 import { OrderSelectionBoxComponent } from './components/order-selection-box/order-selection-box.component';
 import { PositionDescriptionTabComponent } from './components/position-description-tab/position-description-tab.component';
-import { SideSelectionBoxComponent } from './components/side-selection-box/side-selection-box.component';
-import { GameModeSelectionBoxComponent } from './components/game-mode-selection-box/game-mode-selection-box.component';
+import { SideSelectionComponent } from './components/side-selection/side-selection.component';
+import { GameModeSelectionComponent } from './components/game-mode-selection/game-mode-selection.component';
 
 @NgModule({
   declarations: [
@@ -81,8 +81,8 @@ import { GameModeSelectionBoxComponent } from './components/game-mode-selection-
     KeySelectionBoxComponent,
     OrderSelectionBoxComponent,
     PositionDescriptionTabComponent,
-    SideSelectionBoxComponent,
-    GameModeSelectionBoxComponent
+    SideSelectionComponent,
+    GameModeSelectionComponent
   ],
   imports: [
     BrowserModule,

@@ -63,6 +63,6 @@ export interface HandStyle {
 }
 
 
-export interface keyStyle {
+export interface KeyStyle {
     fontSize: string;
 }

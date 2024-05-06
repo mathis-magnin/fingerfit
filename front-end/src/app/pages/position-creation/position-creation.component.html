@@ -9,14 +9,9 @@
 
     <section class="global_option">
 
-        <div class="position_quiz">
-            <label class="option_type">Quiz dans lequel ajouter la position:</label>
-            <app-quiz-list></app-quiz-list>
-        </div>
-
         <div class="position_hand">
             <label class="option_type">Main travaillée:</label>
-            <app-side-selection-box [twoPossibilities]="true" (rightOrLeftSelected)="onSideSelected($event)"></app-side-selection-box>
+            <app-side-selection [twoPossibilities]="true" (rightOrLeftSelected)="onSideSelected($event)"></app-side-selection>
         </div>
 
         <div class="description_tab">
@@ -25,7 +20,7 @@
         </div>
 
         <div class="keyboard">
-            <app-keyboard [keysToPress]="allKeysInRed"></app-keyboard>
+            <app-keyboard [keyStyle]="keyStyle" [keysToPress]="allKeysInRed"></app-keyboard>
         </div>
 
         <div class="validation_button">

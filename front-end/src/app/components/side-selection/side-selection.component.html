@@ -1,0 +1,3 @@
+<select class="side_selection" #selectedSide (change)="onSelect(selectedSide.value)">
+    <option *ngFor="let s of sides">{{sideToString(s)}}</option>
+</select>

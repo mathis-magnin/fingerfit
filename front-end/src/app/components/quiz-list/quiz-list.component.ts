@@ -18,8 +18,6 @@ export class QuizListComponent {
     public selectedSide: Side = Side.UNDEFINED;
     public selectedQuiz: Quiz | undefined;
 
-    public selectionBoxStyle: BoxStyle = new BoxStyle({width: '10vw', border: '1px solid black', padding: '10px', backgroundColor: 'white'});
-
     constructor(public quizzesService: QuizzesService) {
         this.quizzesService.quizzes$.subscribe((quizList) => {
             this.quizList = quizList;

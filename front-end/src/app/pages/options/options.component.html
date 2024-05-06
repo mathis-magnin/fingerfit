@@ -8,13 +8,13 @@
 
     <hr />
 
-    <app-single-option [caption]="'Mode de jeu'">
-        <app-game-mode-selection-box [boxStyle]="boxStyle" (gameModeSelected)="setGameMode($event)" />
-    </app-single-option>
+    <app-quiz-list (selectQuiz)="selectQuiz($event)" />
 
     <hr />
 
-    <app-quiz-list (selectQuiz)="selectQuiz($event)" />
+    <app-single-option [caption]="'Mode de jeu'">
+        <app-game-mode-selection (gameModeSelected)="setGameMode($event)" />
+    </app-single-option>
 
     <hr />
 
