@@ -3,5 +3,20 @@
     <app-exit-button [routerLink]="'/profiles'"/>
 </header>
 <main>
+    <h1>Information du profil</h1>
     <app-profil-info/>
+    <h1>Préconfiguration des parties</h1>
+
+    <div class="preset">
+        <app-single-option [caption]="'Afficher le chronomètre'">
+            <app-checkbox />
+        </app-single-option>
+
+        <app-single-option [caption]="'Définir un temps par position de main'">
+            <app-checkbox/>
+            <input type="number" placeholder="sec" min="1" #numberInput />
+        </app-single-option>
+    </div>
+    
+
 </main>

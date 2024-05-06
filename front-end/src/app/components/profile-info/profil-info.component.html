@@ -1,5 +1,4 @@
 <section class="info">
-    <h1>Information du profil</h1>
     <div class="form" [ngClass]="{'gray':!editMode}">
         <app-profile-picture-selection [imgURL]="this.newPicture" [isDisabled]="!editMode" (profilePicture)="setProfilePicture($event)"/>
         <app-input-text-field [label]="'Nom'" [isDisabled]="!editMode" [preset]="this.newName" (valueChange)="setName($event)"/>
