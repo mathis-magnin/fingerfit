@@ -43,8 +43,8 @@ import { PositionDescriptionTabComponent } from './components/position-descripti
 import { ProfileOptionsComponent } from './pages/profile-options/profile-options.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InfoProfileComponent } from './components/profile-info/profil-info.component';
-import { SideSelectionBoxComponent } from './components/side-selection-box/side-selection-box.component';
-import { GameModeSelectionBoxComponent } from './components/game-mode-selection-box/game-mode-selection-box.component';
+import { SideSelectionComponent } from './components/side-selection/side-selection.component';
+import { GameModeSelectionComponent } from './components/game-mode-selection/game-mode-selection.component';
 
 @NgModule({
   declarations: [
@@ -87,8 +87,8 @@ import { GameModeSelectionBoxComponent } from './components/game-mode-selection-
     PositionDescriptionTabComponent,
     NavbarComponent,
     InfoProfileComponent,
-    SideSelectionBoxComponent,
-    GameModeSelectionBoxComponent
+    SideSelectionComponent,
+    GameModeSelectionComponent
   ],
   imports: [
     BrowserModule,

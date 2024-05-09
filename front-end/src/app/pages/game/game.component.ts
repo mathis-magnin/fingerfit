@@ -5,6 +5,7 @@ import { PositionService } from '../../../services/position.service';
 import { Key, Position } from 'src/models/quiz.model';
 import { Router } from '@angular/router';
 import { StatsService } from 'src/services/stats.service';
+import { HandStyle } from 'src/models/style-input.model';
 
 @Component({
   selector: 'app-game',
@@ -19,6 +20,8 @@ export class GameComponent {
     quiz: undefined,
     gameMode: GameMode.ALL_AT_ONCE,
   };
+
+  public handStyle: HandStyle = { width: '25vh', height: '25vh' };
 
   public currentPositionNumber: number = 1;
   public numberOfPositions: number = 0;

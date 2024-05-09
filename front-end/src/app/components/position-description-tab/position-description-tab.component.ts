@@ -10,9 +10,9 @@ import { BoxStyle } from 'src/models/style-input.model';
 
 export class PositionDescriptionTabComponent {
 
-    public boxStyle: BoxStyle = new BoxStyle({ width: '5vw', backgroundColor: 'cornflowerblue' });
-    public fingerBoxStyle: BoxStyle = new BoxStyle({ width: '10vw', backgroundColor: 'lightblue' });
-    public selectionBoxStyle: BoxStyle = new BoxStyle({ width: '10vw', backgroundColor: 'antiquewhite' });
+    public boxStyle: BoxStyle = new BoxStyle({ width: '3.75vw', backgroundColor: 'cornflowerblue' });
+    public fingerBoxStyle: BoxStyle = new BoxStyle({ width: '7.5vw', backgroundColor: 'lightblue' });
+    public selectionBoxStyle: BoxStyle = new BoxStyle({ width: '7.5vw', backgroundColor: 'antiquewhite' });
 
     private thumbKey: Key = { symbol: Symbol.UNDEFINED, finger: Finger.THUMB };
     private thumbOrder: Order = Order.NOT_WORKED;

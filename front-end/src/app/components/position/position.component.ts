@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Position, Side, Symbol } from 'src/models/quiz.model';
-import { HandStyle, keyStyle } from 'src/models/style-input.model';
+import { HandStyle, KeyStyle } from 'src/models/style-input.model';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class PositionComponent {
     @Input() public position: Position = { keys: [], side: Side.LEFT };
 
     public handStyle: HandStyle = { width: "10vh", height: "10vh" };
-    public keyStyle: keyStyle = { fontSize: "1.5em" }
+    public keyStyle: KeyStyle = { fontSize: "1.5em" }
 
     constructor() { }
 
