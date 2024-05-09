@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Finger, Key, Position, Side, Symbol } from 'src/models/quiz.model';
-import { ButtonStyle } from 'src/models/style-input.model';
-import { KeyStyle } from 'src/models/style-input.model';
+import { ButtonStyle, KeyboardStyle } from 'src/models/style-input.model';
 
 @Component({
     selector: 'app-position-creation',
@@ -10,7 +9,7 @@ import { KeyStyle } from 'src/models/style-input.model';
 })
 export class PositionCreationComponent {
 
-    @Input() public keyStyle: KeyStyle = { fontSize: '1em' };
+    @Input() public keyboardStyle: KeyboardStyle = new KeyboardStyle(1.5);
 
     public allKeysInRed: Key[] = [];
 
