@@ -1,0 +1,43 @@
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form{
+    display: grid;
+    grid-template-columns: 1fr 2fr 3fr 1fr;
+}
+
+app-profile-picture-selection{
+    justify-self: center;
+    grid-column: 2;
+    grid-row: 1 / 3;
+    
+}
+
+app-input-text-field{
+    //top and bottom margin
+    margin:1vh;
+    justify-self: center;
+    align-items: center;
+    grid-column: 3;
+}
+
+.edit-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2vh;
+}
+
+.gray{
+    filter: grayscale(100%);
+}
+
+app-popup div{
+    padding: 30px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,4 +1,4 @@
 <div class="text-field">
     <label for="input">{{label}}</label>
-    <input type="text" placeholder="{{label}}" (input)="updateValue($event)">
+    <input type="text" placeholder="{{label}}" (input)="updateValue($event)" [disabled]="isDisabled" [value]="preset"   >
 </div>

@@ -1,4 +1,4 @@
-import { Component, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter,Input } from '@angular/core';
 
 @Component({
     selector: 'app-profile-picture-selection',
@@ -8,12 +8,15 @@ import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 
 export class ProfilePictureSelectionComponent implements OnInit {
 
+    @Input() isDisabled: boolean = false;
+    @Input() imgURL?: string = "../../../assets/default-profile-picture.png";
     public selectedProfilePicture: File | null = null;
     @Output()
     public profilePicture: EventEmitter<string> = new EventEmitter<string>();
     
-    public imgURL: string="../../../assets/default-profile-picture.png";
-    constructor() { }
+    constructor() { 
+
+    }
 
     ngOnInit(): void { }
 
