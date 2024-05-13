@@ -1,5 +1,3 @@
-
-
 export interface Profile {
     name: string;
     firstName: string;

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Finger, Key, Position, Side, Symbol } from 'src/models/quiz.model';
+import { Position, Side } from 'src/models/position.model';
+import { Key, Finger, Symbol } from 'src/models/key.model';
 import { ButtonStyle, KeyboardStyle } from 'src/models/style-input.model';
 
 @Component({

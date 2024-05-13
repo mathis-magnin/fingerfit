@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
-import { Finger, IsSymbolPressed, Symbol, stringToSymbol, symbolToString } from '../../../models/quiz.model';
+import { IsSymbolPressed } from '../../../models/quiz.model';
+import { Finger, symbolToString, stringToSymbol, Symbol } from '../../../models/key.model';
 import { KeyStyle } from 'src/models/style-input.model';
 
 @Component({

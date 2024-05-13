@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { QuizzesService } from '../../../services/quizzes.service';
-import { Quiz, Side } from '../../../models/quiz.model';
+import { Quiz } from '../../../models/quiz.model';
+import { Side } from '../../../models/position.model';
 import { BoxStyle } from 'src/models/style-input.model';
 
 

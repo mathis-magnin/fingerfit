@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Symbol, stringToSymbol, symbolToString } from 'src/models/quiz.model';
+import { Symbol, stringToSymbol, symbolToString } from 'src/models/key.model';
 import { BoxStyle } from 'src/models/style-input.model';
 
 @Component({

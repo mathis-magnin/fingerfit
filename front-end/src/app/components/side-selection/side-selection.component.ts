@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Side, sideToString, stringToSide } from 'src/models/quiz.model';
+import { Side, sideToString, stringToSide } from 'src/models/position.model';
 
 @Component({
     selector: 'app-side-selection',
@@ -17,6 +17,8 @@ export class SideSelectionComponent {
 
     @Input() twoPossibilities: boolean = false;
 
+    @Input() threePossibilities: boolean = false;
+
     @Output() sideSelected: EventEmitter<Side> = new EventEmitter<Side>();
 
     @Output() rightOrLeftSelected: EventEmitter<Side.LEFT | Side.RIGHT> = new EventEmitter<Side.LEFT | Side.RIGHT>();
@@ -26,6 +28,11 @@ export class SideSelectionComponent {
     ngOnInit() {
         if (this.twoPossibilities) {
             for (let side = Side.LEFT; side <= Side.RIGHT; side++) {
+                this.sides.push(side);
+            }
+        }
+        else if (this.threePossibilities) {
+            for (let side = Side.UNDEFINED; side <= Side.RIGHT; side++) {
                 this.sides.push(side);
             }
         }
