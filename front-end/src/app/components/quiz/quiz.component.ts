@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
 import { EventEmitter, Output } from '@angular/core';
-import { Side } from '../../../models/quiz.model';
+import { Side } from '../../../models/position.model';
 import { ButtonStyle } from 'src/models/style-input.model';
 
 @Component({
