@@ -1,9 +1,9 @@
 <header>
-    <app-navbar [default]="1"/>
-    <app-exit-button [routerLink]="'/profiles'"/>
+    <app-navbar [default]="1" />
+    <app-exit-button [routerLink]="'/profiles'" />
 </header>
 
 <main class="statistics">
-    <app-quiz-list class="stats-quiz-list" [separator]="false"/>
-    <app-graphic class="stats-chart"/>
+    <app-quiz-list class="stats-quiz-list" [quizListStyle]="quizListStyle" />
+    <app-graphic class="stats-chart" />
 </main>

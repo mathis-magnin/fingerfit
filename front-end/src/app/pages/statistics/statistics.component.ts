@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { QuizListStyle } from 'src/models/style-input.model';
 
 @Component({
   selector: 'app-statistics',
@@ -7,5 +8,8 @@ import { Component } from '@angular/core';
 })
 
 export class StatisticsComponent {
-    constructor() { }
+
+  public quizListStyle: QuizListStyle = { height: "75vh" };
+
+  constructor() { }
 }

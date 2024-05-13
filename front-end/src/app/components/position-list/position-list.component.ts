@@ -1,17 +1,17 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { QuizzesService } from '../../../services/quizzes.service';
 import { Quiz, Side } from '../../../models/quiz.model';
-import { BoxStyle, QuizListStyle } from 'src/models/style-input.model';
+import { BoxStyle } from 'src/models/style-input.model';
 
 
 @Component({
-    selector: 'app-quiz-list',
-    templateUrl: './quiz-list.component.html',
-    styleUrls: ['./quiz-list.component.scss']
+    selector: 'app-position-list',
+    templateUrl: './position-list.component.html',
+    styleUrls: ['./position-list.component.scss']
 })
-export class QuizListComponent {
+export class PositionListComponent {
 
-    @Input() quizListStyle: QuizListStyle = { height: "50vh" }
+    @Input() separator: boolean = true;
 
     @Output() selectQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 

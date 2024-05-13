@@ -1,3 +1,6 @@
+import { Query } from "@angular/core";
+import { QuizListComponent } from "src/app/components/quiz-list/quiz-list.component";
+
 interface BoxStyleType {
     width?: string;
     backgroundColor?: string;
@@ -67,6 +70,7 @@ export interface KeyStyle {
     fontSize: string;
 }
 
+
 interface KeyboardStyleType {
     rowGap: string;
 }
@@ -87,4 +91,9 @@ export class KeyboardStyle {
     public getKeyboardStyle(): KeyboardStyleType {
         return this.keyboardStyle;
     }
+}
+
+
+export interface QuizListStyle {
+    height: string;
 }

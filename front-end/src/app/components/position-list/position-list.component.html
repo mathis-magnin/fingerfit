@@ -1,9 +1,9 @@
-<app-single-option [caption]="'Sélectionnez un quiz'">
-    <input type="text" placeholder="Rechercher un quiz" (input)="onSearch($event)" />
+<app-single-option [caption]="'Sélectionnez une position'">
+    <input type="text" placeholder="Rechercher une position" (input)="onSearch($event)" />
     <app-side-selection (sideSelected)="onSelect($event)"></app-side-selection>
 </app-single-option>
 
-<div [ngStyle]="quizListStyle" class=quizzes>
+<div class=positions>
     <app-quiz *ngFor="let quiz of quizList" [quiz]="quiz" [isSelected]="quiz == selectedQuiz"
         (quizSelected)="quizSelected($event)" />
 </div>

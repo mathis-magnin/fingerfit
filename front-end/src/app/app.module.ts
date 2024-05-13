@@ -45,6 +45,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { InfoProfileComponent } from './components/profile-info/profil-info.component';
 import { SideSelectionComponent } from './components/side-selection/side-selection.component';
 import { GameModeSelectionComponent } from './components/game-mode-selection/game-mode-selection.component';
+import { PositionListComponent } from './components/position-list/position-list.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { GameModeSelectionComponent } from './components/game-mode-selection/gam
     NavbarComponent,
     InfoProfileComponent,
     SideSelectionComponent,
-    GameModeSelectionComponent
+    GameModeSelectionComponent,
+    PositionListComponent
   ],
   imports: [
     BrowserModule,

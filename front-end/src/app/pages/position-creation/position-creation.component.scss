@@ -1,57 +1,56 @@
-#logo {
-    position: fixed;
-    top: 1vh;
-    left: 1vw;
-    width: 5vw;
-}
-
-header app-exit-button {
-    position: fixed;
-    top: 1vh;
-    right: 1vw;
-}
-
-.position_creation {
-    margin-top: 10vh;
-
-    h1 {
-        text-align: center;
+header {
+    img {
+        position: fixed;
+        top: 1vh;
+        left: 1vw;
+        width: 5vw;
     }
 
-    .global_option {
-        margin-top: 5vh;
-
-        .option_type {
-            font-size: 1.5rem;
-        }
-
-        div {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-top: 1.25vw;
-            padding-bottom: 1.25vw;
-            width: 97.5vw;
-        }
-
-        .position_hand label {
-            margin-right: 1.25vw;
-        }
-
-        .description_tab {
-            flex-direction: column;
-
-            label {
-                margin-bottom: 1.25vh;
-            }
-        }
-
-        .keyboard {
-            flex-direction: column;
-
-            label {
-                margin-bottom: 1.25vh;
-            }
-        }
+    app-exit-button {
+        position: fixed;
+        top: 1vh;
+        right: 1vw;
     }
+}
+
+
+main {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    height: 100vh;
+}
+
+
+app-quiz-list {
+    margin-right: 1vw;
+}
+
+
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: inherit;
+}
+
+
+label {
+    font-size: 1.5rem;
+}
+
+
+hr {
+    width: 100%;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid gray;
 }

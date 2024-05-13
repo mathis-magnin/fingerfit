@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Finger, Key, Position, Side, Symbol } from 'src/models/quiz.model';
-import { ButtonStyle, KeyboardStyle } from 'src/models/style-input.model';
+import { ButtonStyle, KeyboardStyle, QuizListStyle } from 'src/models/style-input.model';
 
 @Component({
     selector: 'app-position-creation',
@@ -9,7 +9,7 @@ import { ButtonStyle, KeyboardStyle } from 'src/models/style-input.model';
 })
 export class PositionCreationComponent {
 
-    @Input() public keyboardStyle: KeyboardStyle = new KeyboardStyle(1.5);
+    @Input() public keyboardStyle: KeyboardStyle = new KeyboardStyle(1.75);
 
     public allKeysInRed: Key[] = [];
 
@@ -18,6 +18,8 @@ export class PositionCreationComponent {
     public endCreation: boolean = false;
 
     public positionCreated: Position = { keys: [], side: Side.LEFT };
+
+    public quizListStyle: QuizListStyle = { height: "80vh" };
 
     constructor() {
         for (let symbol = Symbol.A; symbol <= Symbol.SPACE; symbol++) {
