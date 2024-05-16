@@ -11,7 +11,7 @@ import { BoxStyle, QuizListStyle } from 'src/models/style-input.model';
 })
 export class QuizListComponent {
 
-    @Input() quizListStyle: QuizListStyle = { height: "50vh" }
+    @Input() quizListStyle: QuizListStyle = { height: "60vh" }
 
     @Output() selectQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 

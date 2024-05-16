@@ -19,14 +19,14 @@ main {
     margin-bottom: 1vh;
     margin-left: 1vw;
     margin-right: 1vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
 
-app-quiz-list {
+app-position-list {
     margin-right: 1vw;
 }
 

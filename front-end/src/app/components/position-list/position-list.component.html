@@ -3,7 +3,7 @@
     <app-side-selection (sideSelected)="onSelect($event)"></app-side-selection>
 </app-single-option>
 
-<div class=positions>
-    <app-quiz *ngFor="let quiz of quizList" [quiz]="quiz" [isSelected]="quiz == selectedQuiz"
-        (quizSelected)="quizSelected($event)" />
+<div [ngStyle]="positionListStyle" class=quizzes>
+    <app-position-list-item *ngFor="let position of this.positionList" [position]="position"
+        [isSelected]="position == selectedPosition" (positionSelected)="quizSelected($event)" />
 </div>

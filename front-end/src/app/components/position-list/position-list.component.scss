@@ -12,24 +12,6 @@ label {
     align-items: center;
 }
 
-.searchInput {
-    grid-column-start: 1;
-    grid-column-end: 2;
-}
-
-.quiz-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 4vh;
-    padding-bottom: 4vh;
-    width: 50vw;
-}
-
-.separator {
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
-}
-
 
 input {
     text-align: center;
@@ -40,8 +22,7 @@ input {
 }
 
 
-.positions {
+.quizzes {
     overflow-y: scroll;
-    height: 50vh;
     margin-top: 2vh;
 }

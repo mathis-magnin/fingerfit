@@ -218,6 +218,21 @@ export const FIFTH_POSITION_LEFT: Position = {
     side: Side.LEFT
 };
 
+
+export const POSITION_LIST: Position[] = [
+    FIRST_POSITION_RIGHT,
+    SECOND_POSITION_RIGHT,
+    THIRD_POSITION_RIGHT,
+    FOURTH_POSITION_RIGHT,
+
+    FIRST_POSITION_LEFT,
+    SECOND_POSITION_LEFT,
+    THIRD_POSITION_LEFT,
+    FOURTH_POSITION_LEFT,
+    FIFTH_POSITION_LEFT,
+]
+
+
 export const QUIZ_LIST: Quiz[] = [
     {
         name: 'Quiz 1',

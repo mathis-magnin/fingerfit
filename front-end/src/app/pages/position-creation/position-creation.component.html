@@ -1,14 +1,25 @@
+<!--
 <header>
     <img src="./assets/main-logo.ico" id="logo" />
     <app-exit-button [link]="'/home'" />
 </header>
+-->
 
 <main>
 
-    <app-quiz-list [quizListStyle]="quizListStyle" />
-
     <section>
-        <app-single-option [caption]="'Main travaillée'"><app-side-selection [twoPossibilities]="true"
+        <app-single-option [caption]="'Créer une position'">
+            <app-button [text]="'Créer'" [buttonStyle]="createButtonStyle" (buttonClicked)="creation()" />
+        </app-single-option>
+
+        <hr />
+
+        <app-position-list [positionListStyle]="positionListStyle" (positionSelected)="modification()" />
+    </section>
+
+    <section *ngIf="create || modify">
+        <app-single-option [caption]="'Main travaillée'">
+            <app-side-selection [twoPossibilities]="true"
                 (rightOrLeftSelected)="onSideSelected($event)"></app-side-selection>
         </app-single-option>
 
@@ -21,6 +32,6 @@
         <app-keyboard [keyboardStyle]="keyboardStyle" [keysToPress]="allKeysInRed"></app-keyboard>
 
 
-        <app-button [buttonStyle]="buttonStyle" [text]="'Valider'" (buttonClicked)="onCreationEnd()"></app-button>
+        <app-button [buttonStyle]="buttonStyle" [text]="'Valider'" (buttonClicked)="validate()"></app-button>
     </section>
 </main>

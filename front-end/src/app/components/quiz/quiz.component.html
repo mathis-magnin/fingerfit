@@ -1,4 +1,4 @@
-<div class="quiz" *ngIf="quiz" [ngClass]="{selected: isSelected}">
+<div class="quiz" *ngIf="quiz" [ngClass]="{selected: isSelected}" (click)="quizIsChosen()">
     <div class="hand">
         <img src="assets/left_hand.png" *ngIf="(quiz.side == Side.LEFT) || (quiz.side == Side.BOTH)">
         <img src="assets/right_hand.png" *ngIf="(quiz.side == Side.RIGHT) || (quiz.side == Side.BOTH)">
@@ -9,7 +9,7 @@
     <div class="name">
         <app-button class="detail-quiz-button" [buttonStyle]="detailButtonStyle" [text]="detailsString"
             (click)="showMoreInfo()"></app-button>
-        <app-button class="chose-quiz-button" [buttonStyle]="choseButtonStyle" [text]="'choisir'"
+        <app-button class="chose-quiz-button" [buttonStyle]="choseButtonStyle" [text]="'Choisir'"
             (click)="quizIsChosen()"></app-button>
     </div>
 
