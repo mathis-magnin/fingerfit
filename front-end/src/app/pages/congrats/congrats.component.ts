@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { StatsService } from 'src/services/stats.service';
 import { ButtonStyle } from 'src/models/style-input.model';
+import { NavbarItem } from 'src/models/navbar.model';
 
 @Component({
   selector: 'app-congrats',
@@ -8,6 +9,10 @@ import { ButtonStyle } from 'src/models/style-input.model';
   styleUrls: ['./congrats.component.scss']
 })
 export class CongratsComponent {
+  public currentPageIndex: number = 0;
+  public navItems: NavbarItem[] = [{ name: 'Félicitations !', url: '/congrats' }];
+  public exitButtonLink: string = '/options';
+
   public showPopup: boolean = false;
 
   public replayButtonStyle: ButtonStyle = new ButtonStyle({ width: '8vw', height: '8vh', fontSize: '2vw' });

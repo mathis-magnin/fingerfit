@@ -1,12 +1,8 @@
 <header>
-    <img src="./assets/main-logo.ico" id="logo" />
-    <app-exit-button [link]="'/home'" />
+    <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems" [exitButtonLink]="exitButtonLink"></app-navbar>
 </header>
 
 <main class="position_creation">
-
-    <h1>Création d'une position de main</h1>
-
     <section class="global_option">
 
         <div class="position_hand">

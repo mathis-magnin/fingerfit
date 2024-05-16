@@ -1,12 +1,11 @@
 <header>
-    <app-navbar [default]="0"></app-navbar>
-    <app-exit-button [routerLink]="'/profiles'"/>
+    <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems" [exitButtonLink]="exitButtonLink"></app-navbar>
 </header>
 <main>
-    <h1>Information du profil</h1>
+    <h1>Informations du profil</h1>
     <app-profil-info/>
-    <h1>Préconfiguration des parties</h1>
 
+    <h1>Préconfiguration des parties</h1>
     <div class="preset">
         <app-single-option [caption]="'Afficher le chronomètre'">
             <app-checkbox />
@@ -17,6 +16,4 @@
             <input type="number" placeholder="sec" min="1" #numberInput />
         </app-single-option>
     </div>
-    
-
 </main>

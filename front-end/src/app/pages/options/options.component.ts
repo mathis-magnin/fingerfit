@@ -4,6 +4,7 @@ import { OptionsService } from 'src/services/options.service';
 import { Options, GameMode } from 'src/models/options.model';
 import { Quiz } from 'src/models/quiz.model';
 import { BoxStyle, ButtonStyle } from 'src/models/style-input.model';
+import { NavbarItem } from 'src/models/navbar.model';
 
 @Component({
   selector: 'app-options',
@@ -11,6 +12,10 @@ import { BoxStyle, ButtonStyle } from 'src/models/style-input.model';
   styleUrls: ['./options.component.scss']
 })
 export class OptionsComponent {
+
+  public currentPageIndex: number = 0;
+  public navItems: NavbarItem[] = [{ name: 'Paramétrage de la partie', url: '/options' }];
+  public exitButtonLink: string = '/profiles';
 
   public options: Options | undefined;
   public isPopupVisible: boolean = false;
