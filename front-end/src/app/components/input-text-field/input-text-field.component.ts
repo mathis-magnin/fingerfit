@@ -11,6 +11,7 @@ export class InputTextFieldComponent implements OnInit {
     public label?: string;
     @Input() isDisabled: boolean = false;
     @Input() preset?: string;
+    @Input() type?:string;
     
     public value: string = '';
     @Output()

@@ -1,5 +1,6 @@
 <header>
     <app-navbar [default]="0"></app-navbar>
+    <app-button class="delete" [picture]="'../../assets/delete.png'" (buttonClicked)="showPopup()" [buttonStyle]="buttonStyle"></app-button>
     <app-exit-button [routerLink]="'/profiles'"/>
 </header>
 <main>
@@ -18,5 +19,11 @@
         </app-single-option>
     </div>
     
-
+    <app-popup *ngIf="popupVisible" class="confirm-popup" (exit)="showPopup()">
+        <p>Êtes-vous sûr de vouloir supprimer ce profil ?</p>
+        <div>
+            <app-button [text]="'Annuler'" (buttonClicked)="showPopup()" [buttonStyle]="buttonCancelStyle"></app-button>
+            <app-button [text]="'Supprimer'" (buttonClicked)="deleteUser()" [buttonStyle]="buttonAcceptStyle"></app-button>
+        </div>
+    </app-popup>
 </main>

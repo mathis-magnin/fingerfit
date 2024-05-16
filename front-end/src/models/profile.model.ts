@@ -3,4 +3,5 @@ export interface Profile {
     firstName: string;
     age: number;
     profilePicture: string;
+    id: number;
 }
