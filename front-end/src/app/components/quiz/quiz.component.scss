@@ -1,49 +1,31 @@
 .quiz {
-    box-shadow: 0 0 5px 0px black;
-    background-color: white;
-    border-radius: 0.5dvi;
-    min-height: 5vh;
-    margin-top: 2vh;
-    margin-left: 1vw;
-    margin-right: 1vw;
-    margin-bottom: 2vh;
-    padding-top: 1vh;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    padding-bottom: 1vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
 }
 
-.selected {
-    box-shadow: 0px 0px 10px 5px #1dc42e;
-}
-
 
 .hand {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 20vh;
-
     img {
         width: 10vh;
         height: 10vh;
+        opacity: 0.25;
+    }
+
+    .side {
+        opacity: 1;
     }
 }
 
 
 .name {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+    font-size: 1.5em;
+    margin-right: 1vw;
+    justify-self: center;
 }
 
 
-.chose-quiz-button {
+.position_number {
     justify-self: right;
 }
 

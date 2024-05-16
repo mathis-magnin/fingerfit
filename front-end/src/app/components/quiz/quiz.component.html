@@ -1,19 +1,17 @@
-<div class="quiz" *ngIf="quiz" [ngClass]="{selected: isSelected}" (click)="quizIsChosen()">
+<div class="quiz" *ngIf="quiz">
     <div class="hand">
-        <img src="assets/left_hand.png" *ngIf="(quiz.side == Side.LEFT) || (quiz.side == Side.BOTH)">
-        <img src="assets/right_hand.png" *ngIf="(quiz.side == Side.RIGHT) || (quiz.side == Side.BOTH)">
+        <img src="assets/left_hand.png" [ngClass]="{side: (quiz.side == Side.LEFT) || (quiz.side == Side.BOTH)}">
+        <img src="assets/right_hand.png" [ngClass]="{side: (quiz.side == Side.RIGHT) || (quiz.side == Side.BOTH)}">
     </div>
 
-    <p><b>{{quiz.name}}</b> <br> {{this.quiz.positions.length}} positions</p>
+    <label class="name">{{quiz.name}}</label>
 
-    <div class="name">
-        <app-button class="detail-quiz-button" [buttonStyle]="detailButtonStyle" [text]="detailsString"
-            (click)="showMoreInfo()"></app-button>
-        <app-button class="chose-quiz-button" [buttonStyle]="choseButtonStyle" [text]="'Choisir'"
-            (click)="quizIsChosen()"></app-button>
+    <div class="position_number">
+        <label *ngIf="this.quiz.positions.length == 1">{{this.quiz.positions.length}} position</label>
+        <label *ngIf="this.quiz.positions.length > 1">{{this.quiz.positions.length}} positions</label>
     </div>
 
-    <div class="details" *ngIf="showMore">
+    <div class="details" *ngIf="showDetails">
         <ng-container *ngFor="let position of this.quiz.positions">
             <hr />
             <app-position [position]="position" />

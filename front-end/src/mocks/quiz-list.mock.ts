@@ -269,4 +269,9 @@ export const QUIZ_LIST: Quiz[] = [
         positions: [FIRST_POSITION_LEFT, SECOND_POSITION_RIGHT, THIRD_POSITION_RIGHT, FOURTH_POSITION_LEFT],
         side: Side.BOTH
     },
+    {
+        name: 'Une seule position',
+        positions: [FIRST_POSITION_RIGHT],
+        side: Side.RIGHT
+    }
 ];

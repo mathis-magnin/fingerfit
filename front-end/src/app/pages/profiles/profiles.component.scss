@@ -1,9 +1,10 @@
-header img{
+header img {
     position: fixed;
     top: 1vh;
     left: 1vw;
     width: 5vw;
 }
+
 
 app-exit-button {
     position: fixed;
@@ -12,7 +13,7 @@ app-exit-button {
 }
 
 
-main{
+main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,6 +22,7 @@ main{
     width: 100vw;
 }
 
-main app-button{
+
+main app-button {
     margin-bottom: 5vh;
 }

@@ -1,8 +1,0 @@
-<div class="quiz" *ngIf="position" [ngClass]="{selected: isSelected}">
-
-    <app-position [position]="position" [handStyle]="handStyle" [keyStyle]="keyStyle" />
-
-    <app-button class="chose-quiz-button" [buttonStyle]="choseButtonStyle" [text]="'Sélectionner'"
-        (click)="choosePosition()" />
-
-</div>

@@ -4,6 +4,8 @@
 </app-single-option>
 
 <div [ngStyle]="quizListStyle" class=quizzes>
-    <app-quiz *ngFor="let quiz of quizList" [quiz]="quiz" [isSelected]="quiz == selectedQuiz"
-        (quizSelected)="quizSelected($event)" />
+    <app-list-item *ngFor="let quiz of quizList" [isSelected]="quiz == selectedQuiz" [item]="quiz"
+        (itemSelected)="quizSelected($event)">
+        <app-quiz [quiz]="quiz" [showDetails]="quiz == selectedQuiz" />
+    </app-list-item>
 </div>
