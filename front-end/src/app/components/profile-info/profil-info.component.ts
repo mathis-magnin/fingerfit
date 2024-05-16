@@ -22,6 +22,8 @@ export class InfoProfileComponent {
   public newAge?: number;
 
   public showPopup: boolean = false;
+  public errorMsg: string = "Remplissez tous les champs correctement";
+  public warningVisible: boolean = false;
 
   public addButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', margin: "1vw" });
 
@@ -37,6 +39,16 @@ export class InfoProfileComponent {
   }
 
   public triggerPopup(): void {
+    if (this.newName === '' || this.newFirstName === '' || !this.newAge || !this.newPicture) {
+      this.errorMsg = "Remplissez tous les champs correctement";
+      this.warningVisible = true;
+      return;
+    }
+    if (isNaN(this.newAge) || this.newAge <= 0) {
+      this.errorMsg = "L'âge doit être un nombre supérieur à 0";
+      this.warningVisible = true;
+      return;
+    }
     if(this.editMode){
       this.showPopup = true;
     }
@@ -80,6 +92,7 @@ export class InfoProfileComponent {
       this.profile.name = this.newName || this.profile.name;
       this.profile.firstName = this.newFirstName || this.profile.firstName;
       this.profile.profilePicture = this.newPicture || this.profile.profilePicture;
+      this.playerService.updateProfile(this.profile);
     }
   }
 

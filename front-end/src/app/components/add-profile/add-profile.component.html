@@ -4,8 +4,8 @@
         <app-profile-picture-selection (profilePicture)="setProfilePicture($event)"/>
         <app-input-text-field [label]="'Nom'" (valueChange)="setName($event)"/>
         <app-input-text-field [label]="'Prénom'" (valueChange)="setFirstName($event)"/>
-        <app-input-text-field [label]="'Age'" (valueChange)="setAge($event)"/>
+        <app-input-text-field [label]="'Age'" (valueChange)="setAge($event)" [type]="'number'"/>
     </div>
     <app-button [text]="'Enregister le profil'" (click)="checkAndApply()" [buttonStyle]="addButtonStyle"></app-button>
-    <app-warning-popup *ngIf="warningVisible" [text]="'Veuillez remplir tout les champs'"/>
+    <app-warning-popup *ngIf="warningVisible" [text]="errorMsg"/>
 </section>
