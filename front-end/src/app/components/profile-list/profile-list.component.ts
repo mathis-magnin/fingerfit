@@ -28,12 +28,12 @@ export class ProfileListComponent {
         this.profilesService.profiles$.subscribe((profiles) => {
             this.profiles = profiles;
             this.start = Math.floor(this.profiles.length / 2);
+            this.currentProfile = this.profiles[this.start];
+            this.profilesShownInit();
         });
-        this.currentProfile = this.profiles[this.start];
     }
 
     ngOnInit(): void {
-        this.profilesShownInit();
     }
 
     public profilesShownInit() {
@@ -105,4 +105,5 @@ export class ProfileListComponent {
             this.router.navigate([redirect]);
         }
     }
+
 }

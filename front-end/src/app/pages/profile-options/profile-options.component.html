@@ -16,4 +16,12 @@
             <input type="number" placeholder="sec" min="1" #numberInput />
         </app-single-option>
     </div>
+    
+    <app-popup *ngIf="popupVisible" class="confirm-popup" (exit)="showPopup()">
+        <p>Êtes-vous sûr de vouloir supprimer ce profil ?</p>
+        <div>
+            <app-button [text]="'Annuler'" (buttonClicked)="showPopup()" [buttonStyle]="buttonCancelStyle"></app-button>
+            <app-button [text]="'Supprimer'" (buttonClicked)="deleteUser()" [buttonStyle]="buttonAcceptStyle"></app-button>
+        </div>
+    </app-popup>
 </main>

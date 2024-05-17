@@ -15,5 +15,6 @@
         </app-popup>
         <app-exit-button *ngIf="editMode" (click)="exitEditMode()"></app-exit-button>
     </div>
+    <app-warning-popup *ngIf="warningVisible" [text]="errorMsg"/>
 </section>
     
