@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Position, Side } from 'src/models/position.model';
 import { Key, Finger, Symbol } from 'src/models/key.model';
 import { ButtonStyle, KeyboardStyle } from 'src/models/style-input.model';
+import { NavbarItem } from 'src/models/navbar.model';
 
 @Component({
     selector: 'app-position-creation',
@@ -10,7 +11,11 @@ import { ButtonStyle, KeyboardStyle } from 'src/models/style-input.model';
 })
 export class PositionCreationComponent {
 
-    @Input() public keyboardStyle: KeyboardStyle = new KeyboardStyle(1.5);
+    public currentPageIndex: number = 0;
+    public navItems: NavbarItem[] = [{ name: 'Gestion des positions de main', url: '/position-creation' }];
+    public exitButtonLink: string = '/profiles';
+
+    public keyboardStyle: KeyboardStyle = new KeyboardStyle(1.5);
 
     public allKeysInRed: Key[] = [];
 

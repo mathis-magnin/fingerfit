@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NavbarItem, navbarProfileOptionsStatistics } from 'src/models/navbar.model';
 import { ButtonStyle } from 'src/models/style-input.model';
 import { PlayerService } from 'src/services/player.service';
 import { Router } from '@angular/router';
@@ -11,6 +12,13 @@ import { ProfilesService } from 'src/services/profiles.service';
 })
   
 export class ProfileOptionsComponent {
+
+  public currentPageIndex: number = 0;
+
+  public navItems: NavbarItem[] = navbarProfileOptionsStatistics;
+
+  public exitButtonLink: string = '/profiles';
+
   public buttonStyle: ButtonStyle = new ButtonStyle({ backgroundColor: '#ff0000' });
   public buttonCancelStyle: ButtonStyle = new ButtonStyle({ backgroundColor: '#ff0000',  height: '5vh'});
   public buttonAcceptStyle: ButtonStyle = new ButtonStyle({ height: '5vh'});

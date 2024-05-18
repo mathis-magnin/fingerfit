@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavbarItem, navbarProfileOptionsStatistics } from 'src/models/navbar.model';
 
 @Component({
   selector: 'app-statistics',
@@ -7,5 +8,13 @@ import { Component } from '@angular/core';
 })
 
 export class StatisticsComponent {
-    constructor() { }
+
+  public currentPageIndex: number = 1;
+
+  public navItems: NavbarItem[] = navbarProfileOptionsStatistics;
+
+  public exitButtonLink: string = '/profiles';
+
+  constructor() { }
+
 }
