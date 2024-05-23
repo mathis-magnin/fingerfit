@@ -1,6 +1,7 @@
 import { NgModule, input } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,6 +46,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { InfoProfileComponent } from './components/profile-info/profil-info.component';
 import { SideSelectionComponent } from './components/side-selection/side-selection.component';
 import { GameModeSelectionComponent } from './components/game-mode-selection/game-mode-selection.component';
+import { profilePictureComponent } from './components/profile-picture/profile-picture.component';
 
 @NgModule({
   declarations: [
@@ -88,12 +90,15 @@ import { GameModeSelectionComponent } from './components/game-mode-selection/gam
     NavbarComponent,
     InfoProfileComponent,
     SideSelectionComponent,
-    GameModeSelectionComponent
+    GameModeSelectionComponent,
+    profilePictureComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    BrowserAnimationsModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

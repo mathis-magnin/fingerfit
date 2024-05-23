@@ -1,5 +1,6 @@
 <header>
     <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems" [exitButtonLink]="exitButtonLink"></app-navbar>
+    <app-button class="delete" [picture]="'../../assets/delete.png'" (buttonClicked)="showPopup()" [buttonStyle]="buttonStyle"></app-button>
 </header>
 <main>
     <h1>Informations du profil</h1>
