@@ -1,10 +1,12 @@
 <section class="add">
     <h1>Ajouter un profil</h1>
-    <div class="form">
+    <div class="fields">
         <app-profile-picture-selection (profilePicture)="setProfilePicture($event)"/>
-        <app-input-text-field [label]="'Nom'" (valueChange)="setName($event)"/>
-        <app-input-text-field [label]="'Prénom'" (valueChange)="setFirstName($event)"/>
-        <app-input-text-field [label]="'Age'" (valueChange)="setAge($event)" [type]="'number'"/>
+        <div class="form">
+            <app-input-text-field [label]="'Nom'" (valueChange)="setName($event)"/>
+            <app-input-text-field [label]="'Prénom'" (valueChange)="setFirstName($event)"/>
+            <app-input-text-field [label]="'Age'" (valueChange)="setAge($event)" [type]="'number'"/>
+        </div>
     </div>
     <app-button [text]="'Enregister le profil'" (click)="checkAndApply()" [buttonStyle]="addButtonStyle"></app-button>
     <app-warning-popup *ngIf="warningVisible" [text]="errorMsg"/>

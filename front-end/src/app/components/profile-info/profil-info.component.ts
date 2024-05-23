@@ -24,7 +24,7 @@ export class InfoProfileComponent {
   public showPopup: boolean = false;
   public errorMsg: string = "Remplissez tous les champs correctement";
   public warningVisible: boolean = false;
-
+  public closePictures: boolean = false;
   public addButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', margin: "1vw" });
 
   public constructor(public playerService: PlayerService, public changeDetector: ChangeDetectorRef) { 
@@ -39,17 +39,21 @@ export class InfoProfileComponent {
   }
 
   public triggerPopup(): void {
+    this.closePictures=false;
     if (this.newName === '' || this.newFirstName === '' || !this.newAge || !this.newPicture) {
+      this.closePictures=true;
       this.errorMsg = "Remplissez tous les champs correctement";
       this.warningVisible = true;
       return;
     }
     if (isNaN(this.newAge) || this.newAge <= 0) {
+      this.closePictures=true;
       this.errorMsg = "L'âge doit être un nombre supérieur à 0";
       this.warningVisible = true;
       return;
     }
-    if(this.editMode){
+    if (this.editMode) {
+      this.closePictures=true;
       this.showPopup = true;
     }
     else {
@@ -59,6 +63,7 @@ export class InfoProfileComponent {
   }
 
   public exitEditMode(): void {
+    this.closePictures=true;
     this.editMode = false;
     this.editText = "Modifier";
     this.resetInput();
