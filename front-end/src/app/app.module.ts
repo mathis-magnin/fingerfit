@@ -17,7 +17,6 @@ import { HandComponent } from './components/hand/hand.component';
 import { KeyComponent } from './components/key/key.component'
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import { ButtonComponent } from './components/button/button.component';
-import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { ExitButtonComponent } from './components/exit-button/exit-button.component';
 import { QuizComponent } from './components/quiz/quiz.component';
@@ -45,8 +44,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { InfoProfileComponent } from './components/profile-info/profil-info.component';
 import { SideSelectionComponent } from './components/side-selection/side-selection.component';
 import { GameModeSelectionComponent } from './components/game-mode-selection/game-mode-selection.component';
-import { PositionListComponent } from './components/position-list/position-list.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
+import { ListComponent } from './components/list/list.component';
+import { SelectorComponent } from './components/selector/selector.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,6 @@ import { ListItemComponent } from './components/list-item/list-item.component';
     ExitButtonComponent,
     CheckboxComponent,
     QuizComponent,
-    QuizListComponent,
     WarningPopupComponent,
     SingleOptionComponent,
     TimerComponent,
@@ -91,8 +90,9 @@ import { ListItemComponent } from './components/list-item/list-item.component';
     InfoProfileComponent,
     SideSelectionComponent,
     GameModeSelectionComponent,
-    PositionListComponent,
-    ListItemComponent
+    ListItemComponent,
+    ListComponent,
+    SelectorComponent
   ],
   imports: [
     BrowserModule,

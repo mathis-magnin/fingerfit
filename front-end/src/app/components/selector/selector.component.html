@@ -1,0 +1,6 @@
+<select #selectedOption (change)="select(selectedOption.value)">
+    <ng-container *ngFor="let option of options">
+        <option selected *ngIf="option == defaultOption">{{option}}</option>
+        <option *ngIf="option != defaultOption">{{option}}</option>
+    </ng-container>
+</select>

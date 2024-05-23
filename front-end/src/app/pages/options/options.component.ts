@@ -2,8 +2,10 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { OptionsService } from 'src/services/options.service';
 import { Options, GameMode } from 'src/models/options.model';
-import { Quiz } from 'src/models/quiz.model';
+import { Quiz, Side, sideToString, stringToSide } from 'src/models/quiz.model';
 import { BoxStyle, ButtonStyle } from 'src/models/style-input.model';
+import { PositionsService } from 'src/services/positions.service';
+import { QuizzesService } from 'src/services/quizzes.service';
 
 @Component({
   selector: 'app-options',
@@ -20,19 +22,40 @@ export class OptionsComponent {
   public timeWaitingValue: number = 20;
   public currentError: string = '';
 
+  public quizList: Quiz[] = [];
+  public filters: string[] = ["Filtrer", sideToString(Side.LEFT), sideToString(Side.RIGHT), sideToString(Side.BOTH)];
+  public side: Side = Side.UNDEFINED;
+  public search: string = '';
+
   public boxStyle: BoxStyle = new BoxStyle({});
-  public selectButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
   public playButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh' });
 
-  constructor(private router: Router, public optionsService: OptionsService) {
+  constructor(private router: Router, public optionsService: OptionsService, public quizzesService: QuizzesService) {
     this.optionsService.options$.subscribe((options) => {
       this.options = options;
     });
+
+    this.quizzesService.quizzes$.subscribe((quizList) => {
+      this.quizList = quizList;
+    })
   }
+
 
   ngOnInit(): void {
     this.optionsService.clearOptions();
+    this.quizzesService.resetQuizzes();
   }
+
+
+  searchQuizzes(value: string) {
+    this.quizzesService.filterQuizzes(this.side, this.search = value);
+  }
+
+
+  filterQuizzes(side: string) {
+    this.quizzesService.filterQuizzes(this.side = stringToSide(side), this.search)
+  }
+
 
   public togglePopup(): void {
     this.isPopupVisible = !this.isPopupVisible;

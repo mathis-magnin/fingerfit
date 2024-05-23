@@ -1,0 +1,9 @@
+<app-single-option [caption]="text">
+    <input type="text" placeholder="Rechercher" (input)="search($event)" />
+    <app-selector [options]="filters" [defaultOption]="defaultFilter" (selectedOption)="filter($event)" />
+</app-single-option>
+
+<div [ngStyle]="style" class=items>
+    <app-list-item *ngFor="let item of this.items" [isSelected]="selectedOnes.includes(item)" [item]="item"
+        (selectedItem)="select($event)" />
+</div>

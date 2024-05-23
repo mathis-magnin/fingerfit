@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Position, Quiz, Side } from '../models/quiz.model';
+import { Position, Quiz, Side, stringToSymbol, symbolToString } from '../models/quiz.model';
 import { POSITION_LIST } from '../mocks/quiz-list.mock';
 
 
@@ -13,13 +13,28 @@ export class PositionsService {
 
     constructor() { }
 
-    public filterQuizzes(side: Side, searchValue: string): void {
-        let filteredPositions: Position[] = POSITION_LIST;
+    public filterPositions(side: Side, searchValue: string): void {
+        let filteredPositions: Position[] = [];
 
-        // if (searchValue.trim() !== '') {
-        //     const searchTerm = searchValue.toLowerCase();
-        //     filteredPositions = filteredPositions.filter(quiz => quiz.name.toLowerCase().includes(searchTerm));
-        // }
+        const searchTerm = searchValue.toLowerCase();
+
+        for (let i = 0; i < POSITION_LIST.length; i++) {
+            let name: string = '';
+            for (var key of POSITION_LIST[i].keys) {
+                name = name.concat((symbolToString(key.symbol) == "ESPACE") ? " " : symbolToString(key.symbol));
+            }
+            name = name.toLowerCase();
+
+            let include: boolean = true;
+            for (var char of searchTerm) {
+                if (!name.includes(char)) {
+                    include = false;
+                }
+            }
+            if (include) {
+                filteredPositions.push(POSITION_LIST[i]);
+            }
+        }
 
         if (side !== Side.UNDEFINED) {
             filteredPositions = filteredPositions.filter(position => position.side === side);

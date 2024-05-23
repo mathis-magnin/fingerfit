@@ -11,10 +11,11 @@ export class ListItemComponent {
     @Input() isSelected: boolean = false;
     @Input() item: any = undefined;
 
-    @Output() itemSelected: EventEmitter<any> = new EventEmitter<any>();
+    @Output() selectedItem: EventEmitter<any> = new EventEmitter<any>();
 
-    selected() {
-        this.itemSelected.emit(this.item);
+
+    clicked() {
+        this.selectedItem.emit(this.item);
     }
 
 }

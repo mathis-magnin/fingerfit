@@ -4,6 +4,7 @@
 </header>
 
 <main class="statistics">
-    <app-quiz-list class="stats-quiz-list" [quizListStyle]="quizListStyle" />
+    <app-list [style]="listStyle" [items]="positionList" [multipleChoice]="true" [text]="'Modifier une position'"
+        [filters]="filters" (searchValue)="searchPositions($event)" (selectedFilter)="filterPositions($event)" />
     <app-graphic class="stats-chart" />
 </main>

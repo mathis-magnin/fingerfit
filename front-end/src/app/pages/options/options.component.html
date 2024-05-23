@@ -9,7 +9,9 @@
     <div class="option">
         <hr />
 
-        <app-quiz-list (selectQuiz)="selectQuiz($event)" />
+        <app-list [items]="quizList" [text]="'Sélectionner un quiz'" [filters]="filters"
+            (selectedItems)="selectQuiz($event[0])" (searchValue)="searchQuizzes($event)"
+            (selectedFilter)="filterQuizzes($event)" />
 
         <hr />
 

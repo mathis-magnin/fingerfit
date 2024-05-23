@@ -1,6 +1,3 @@
-import { Query } from "@angular/core";
-import { QuizListComponent } from "src/app/components/quiz-list/quiz-list.component";
-
 interface BoxStyleType {
     width?: string;
     backgroundColor?: string;
@@ -99,6 +96,6 @@ export interface QuizListStyle {
 }
 
 
-export interface PositionListStyle {
+export interface ListStyle {
     height: string;
 }
