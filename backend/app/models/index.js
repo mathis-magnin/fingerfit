@@ -1,5 +1,5 @@
-// const YourModel = require('./your-model.model.js')
+const Statistics = require('./statistics.model.js')
 
 module.exports = {
-  // YourModel,
+  Statistics,
 }
