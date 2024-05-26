@@ -1,6 +1,5 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { first } from 'rxjs';
-import { Position, Quiz, Side, sideToString } from 'src/models/quiz.model';
+import { Side, sideToString } from 'src/models/position.model';
 import { ListStyle } from 'src/models/style-input.model';
 
 

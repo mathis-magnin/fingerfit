@@ -1,6 +1,6 @@
 <header [ngClass]="{disable:showPopup}">
-    <img src="./assets/main-logo.ico" />
-    <app-exit-button (click)="togglePopupLogin(false)" />
+    <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems"
+        [exitButtonLink]="exitButtonLink"></app-navbar>
 </header>
 
 <main [ngClass]="{disable:showPopup}">

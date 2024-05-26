@@ -1,5 +1,8 @@
-<div class="file-upload">
-    <img src="{{this.imgURL}}" alt="profile-picture">
-    <label *ngIf="!selectedProfilePicture"  for="file-upload">Selectionner</label>
-    <input type="file" class="uploader" accept="image/*" (change)="onUpload($event)" [disabled]="isDisabled"/>
+<div class="profile-picture-selection">
+  <div *ngIf="displayChoice" class="choice" @fade>
+    <div *ngFor="let img of profilePictures" class="profile-picture">
+      <app-profile-picture [imgURL]="img" (imgClicked)="selectProfilePicture(img)"/>
+    </div>
+  </div>
+  <app-profile-picture *ngIf="!displayChoice" [imgURL]="imgURL?imgURL:randomProfilePicture" (imgClicked)="changeProfilePicture()"/>
 </div>

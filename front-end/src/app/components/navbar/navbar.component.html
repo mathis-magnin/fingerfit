@@ -1,12 +1,20 @@
-<nav>
-    <ul>
+<nav class="navigation_bar">
+    <div class="logo">
+        <img src="./assets/main-logo.ico" alt="logo" />
+    </div>
+
+    <ul class="navigation">
         <ng-container *ngFor="let item of navItems,let i=index">
-            <li *ngIf="i==default" [routerLink]="item.url" [style.background-color]="'rgba(78, 78, 78, 0.5)'" [style.width]="100/navItems.length+'%'">
+            <li *ngIf="i==currentPageIndex" [routerLink]="item.url" [style.background-color]="'rgba(78, 78, 78, 0.5)'" [style.width]="100/navItems.length+'%'">
                 {{item.name}}
             </li>
-            <li *ngIf="i!=default" [routerLink]="item.url" [style.width]="100/navItems.length+'%'">
+            <li *ngIf="i!=currentPageIndex" [routerLink]="item.url" [style.width]="100/navItems.length+'%'">
                 {{item.name}}
             </li>
         </ng-container>
     </ul>
+
+    <div class="exit_button">
+        <app-exit-button [routerLink]="exitButtonLink"/>
+    </div>
 </nav>

@@ -1,21 +1,5 @@
-header {
-    img {
-        position: fixed;
-        top: 1vh;
-        left: 1vw;
-        width: 5vw;
-    }
-
-    app-exit-button {
-        position: fixed;
-        top: 1vh;
-        right: 1vw;
-    }
-}
-
-
 main {
-    margin-top: 1vh;
+    margin-top: 5vh;
     margin-bottom: 10vh;
     display: flex;
     flex-direction: column;

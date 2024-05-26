@@ -44,6 +44,8 @@ import { SelectorComponent } from './components/selector/selector.component';
 import { ListComponent } from './components/list/list.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { OptionComponent } from './components/option/option.component';
+import { profilePictureComponent } from './components/profile-picture/profile-picture.component';
+
 
 @NgModule({
   declarations: [
@@ -86,7 +88,8 @@ import { OptionComponent } from './components/option/option.component';
     ListComponent,
     ListItemComponent,
     SelectorComponent,
-    OptionComponent
+    OptionComponent,
+    profilePictureComponent
   ],
   imports: [
     BrowserModule,

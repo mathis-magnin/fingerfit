@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Finger, Key, Position, Side, Symbol, sideToString, stringToSide, symbolToString } from 'src/models/quiz.model';
+import { Key, Symbol, Finger } from 'src/models/key.model';
+import { NavbarItem } from 'src/models/navbar.model';
+import { Position, Side, sideToString, stringToSide } from 'src/models/position.model';
 import { ButtonStyle, KeyboardStyle, ListStyle } from 'src/models/style-input.model';
 import { PositionsService } from 'src/services/positions.service';
 
@@ -11,6 +13,9 @@ import { PositionsService } from 'src/services/positions.service';
 export class PositionCreationComponent {
 
     /* Styles and components variables */
+    public currentPageIndex: number = 0;
+    public navItems: NavbarItem[] = [{ name: 'Gestion des positions de main', url: '/position-creation' }];
+    public exitButtonLink: string = '/profiles';
 
     public positionList: Position[] = [];
     public positionListStyle: ListStyle = { height: "70vh" };

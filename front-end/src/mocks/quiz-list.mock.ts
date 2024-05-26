@@ -1,4 +1,6 @@
-import { Finger, Symbol, Position, Quiz, Side } from '../models/quiz.model';
+import { Quiz } from '../models/quiz.model';
+import { Position, Side } from '../models/position.model';
+import { Symbol, Finger } from '../models/key.model';
 
 export const FIRST_POSITION_RIGHT: Position = {
     keys: [

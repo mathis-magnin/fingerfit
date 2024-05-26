@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { OptionsService } from 'src/services/options.service';
 import { Options, GameMode, gameModeToString, stringToGameMode } from 'src/models/options.model';
-import { Quiz, Side, sideToString, stringToSide } from 'src/models/quiz.model';
 import { BoxStyle, ButtonStyle } from 'src/models/style-input.model';
-import { PositionsService } from 'src/services/positions.service';
+import { NavbarItem } from 'src/models/navbar.model';
+import { Quiz } from 'src/models/quiz.model';
+import { Side, stringToSide } from 'src/models/position.model';
 import { QuizzesService } from 'src/services/quizzes.service';
 
 @Component({
@@ -13,6 +14,10 @@ import { QuizzesService } from 'src/services/quizzes.service';
   styleUrls: ['./options.component.scss']
 })
 export class OptionsComponent {
+
+  public currentPageIndex: number = 0;
+  public navItems: NavbarItem[] = [{ name: 'Paramétrage de la partie', url: '/options' }];
+  public exitButtonLink: string = '/profiles';
 
   public options: Options | undefined;
   public isPopupVisible: boolean = false;

@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Order, Position, Symbol, Finger, Key, orderToString, Side, symbolToString, stringToOrder, stringToSymbol, fingerToString } from 'src/models/quiz.model';
+import { Finger, Key, Symbol, fingerToString, stringToSymbol, symbolToString } from 'src/models/key.model';
+import { Order, orderToString, stringToOrder } from 'src/models/quiz.model';
 import { BoxStyle } from 'src/models/style-input.model';
 
 @Component({

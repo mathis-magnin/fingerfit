@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Position, Quiz, Side, stringToSymbol, symbolToString } from '../models/quiz.model';
 import { POSITION_LIST } from '../mocks/quiz-list.mock';
+import { Position, Side } from 'src/models/position.model';
+import { symbolToString } from 'src/models/key.model';
 
 
 @Injectable({

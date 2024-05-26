@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
-import { Side } from '../../../models/quiz.model';
+import { Side } from '../../../models/position.model';
 
 @Component({
     selector: 'app-quiz',

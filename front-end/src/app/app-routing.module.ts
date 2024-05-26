@@ -8,6 +8,7 @@ import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { PositionCreationComponent } from './pages/position-creation/position-creation.component';
 import { ProfileOptionsComponent } from './pages/profile-options/profile-options.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,7 +23,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), HttpClientModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

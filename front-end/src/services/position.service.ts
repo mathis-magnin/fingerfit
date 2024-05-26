@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Position } from '../models/quiz.model';
+import { Position } from '../models/position.model';
 import { BehaviorSubject } from 'rxjs';
 import { QuizService } from './quiz.service';
 import { TimerService } from './timer.service';

@@ -1,6 +1,5 @@
 <header>
-    <app-navbar [default]="1" />
-    <app-exit-button [routerLink]="'/profiles'" />
+    <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems" [exitButtonLink]="exitButtonLink" />
 </header>
 
 <main class="statistics">

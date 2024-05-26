@@ -1,12 +1,14 @@
 <header>
-    <app-navbar [default]="0"></app-navbar>
-    <app-exit-button [routerLink]="'/profiles'" />
+    <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems"
+        [exitButtonLink]="exitButtonLink"></app-navbar>
+    <app-button class="delete" [picture]="'../../assets/delete.png'" (buttonClicked)="showPopup()"
+        [buttonStyle]="buttonStyle"></app-button>
 </header>
 <main>
-    <h1>Information du profil</h1>
+    <h1>Informations du profil</h1>
     <app-profil-info />
-    <h1>Préconfiguration des parties</h1>
 
+    <h1>Préconfiguration des parties</h1>
     <div class="preset">
         <app-option [caption]="'Afficher le chronomètre'">
             <app-checkbox />
@@ -18,5 +20,12 @@
         </app-option>
     </div>
 
-
+    <app-popup *ngIf="popupVisible" class="confirm-popup" (exit)="showPopup()">
+        <p>Êtes-vous sûr de vouloir supprimer ce profil ?</p>
+        <div>
+            <app-button [text]="'Annuler'" (buttonClicked)="showPopup()" [buttonStyle]="buttonCancelStyle"></app-button>
+            <app-button [text]="'Supprimer'" (buttonClicked)="deleteUser()"
+                [buttonStyle]="buttonAcceptStyle"></app-button>
+        </div>
+    </app-popup>
 </main>

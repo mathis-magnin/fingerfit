@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Position, Side, sideToString, stringToSide } from 'src/models/quiz.model';
+import { NavbarItem, navbarProfileOptionsStatistics } from 'src/models/navbar.model';
+import { Position, Side, stringToSide } from 'src/models/position.model';
 import { ListStyle } from 'src/models/style-input.model';
 import { PositionsService } from 'src/services/positions.service';
 
@@ -10,11 +11,14 @@ import { PositionsService } from 'src/services/positions.service';
 })
 
 export class StatisticsComponent {
-
   public listStyle: ListStyle = { height: "75vh" };
   public positionList: Position[] = [];
   public side: Side = Side.UNDEFINED;
   public search: string = "";
+
+  public currentPageIndex: number = 1;
+  public navItems: NavbarItem[] = navbarProfileOptionsStatistics;
+  public exitButtonLink: string = '/profiles';
 
   constructor(public positionsService: PositionsService) {
     this.positionsService.positions$.subscribe((positionList) => {

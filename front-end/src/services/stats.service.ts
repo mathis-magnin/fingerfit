@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Answer } from 'src/models/answer.model';
-import { ANSWERS } from 'src/mocks/answers.mock';
 
 @Injectable({
     providedIn: 'root'
