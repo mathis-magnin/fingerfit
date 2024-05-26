@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { OptionsService } from 'src/services/options.service';
-import { Options, GameMode } from 'src/models/options.model';
+import { Options, GameMode, gameModeToString, stringToGameMode } from 'src/models/options.model';
 import { Quiz, Side, sideToString, stringToSide } from 'src/models/quiz.model';
 import { BoxStyle, ButtonStyle } from 'src/models/style-input.model';
 import { PositionsService } from 'src/services/positions.service';
@@ -21,9 +21,9 @@ export class OptionsComponent {
   public showPopup: boolean = false;
   public timeWaitingValue: number = 20;
   public currentError: string = '';
+  public gameModes: string[] = [];
 
   public quizList: Quiz[] = [];
-  public filters: string[] = ["Filtrer", sideToString(Side.LEFT), sideToString(Side.RIGHT), sideToString(Side.BOTH)];
   public side: Side = Side.UNDEFINED;
   public search: string = '';
 
@@ -38,6 +38,10 @@ export class OptionsComponent {
     this.quizzesService.quizzes$.subscribe((quizList) => {
       this.quizList = quizList;
     })
+
+    for (let gameMode = GameMode.ALL_AT_ONCE; gameMode <= GameMode.ONE_BY_ONE; gameMode++) {
+      this.gameModes.push(gameModeToString(gameMode));
+    }
   }
 
 
@@ -71,8 +75,8 @@ export class OptionsComponent {
     }
   }
 
-  public setGameMode(gm: GameMode): void {
-    this.optionsService.setGameMode(gm);
+  public setGameMode(gameMode: string): void {
+    this.optionsService.setGameMode(stringToGameMode(gameMode));
   }
 
   public setTime(time: string): void {

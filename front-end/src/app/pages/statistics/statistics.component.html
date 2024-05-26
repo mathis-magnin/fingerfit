@@ -4,7 +4,8 @@
 </header>
 
 <main class="statistics">
-    <app-list [style]="listStyle" [items]="positionList" [multipleChoice]="true" [text]="'Modifier une position'"
-        [filters]="filters" (searchValue)="searchPositions($event)" (selectedFilter)="filterPositions($event)" />
+    <app-list [style]="listStyle" [items]="positionList" [multipleChoice]="true"
+        [text]="'Sélectionnez une ou plusieurs position(s)'" (searchValue)="searchPositions($event)"
+        (selectedFilter)="filterPositions($event)" />
     <app-graphic class="stats-chart" />
 </main>

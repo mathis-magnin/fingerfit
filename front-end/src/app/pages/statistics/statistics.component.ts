@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Position, Side, sideToString, stringToSide } from 'src/models/quiz.model';
-import { QuizListStyle } from 'src/models/style-input.model';
+import { ListStyle } from 'src/models/style-input.model';
 import { PositionsService } from 'src/services/positions.service';
 
 @Component({
@@ -11,9 +11,8 @@ import { PositionsService } from 'src/services/positions.service';
 
 export class StatisticsComponent {
 
-  public listStyle: QuizListStyle = { height: "75vh" };
+  public listStyle: ListStyle = { height: "75vh" };
   public positionList: Position[] = [];
-  public filters: string[] = ["Filtrer", sideToString(Side.LEFT), sideToString(Side.RIGHT)];
   public side: Side = Side.UNDEFINED;
   public search: string = "";
 

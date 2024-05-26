@@ -1,9 +1,13 @@
-<app-single-option [caption]="text">
+<app-option [caption]="text">
     <input type="text" placeholder="Rechercher" (input)="search($event)" />
-    <app-selector [options]="filters" [defaultOption]="defaultFilter" (selectedOption)="filter($event)" />
-</app-single-option>
+    <app-selector [options]="filters" (selectedOption)="filter($event)" />
+</app-option>
 
 <div [ngStyle]="style" class=items>
-    <app-list-item *ngFor="let item of this.items" [isSelected]="selectedOnes.includes(item)" [item]="item"
+    <div *ngIf="ones.length == 0" class="empty">
+        <p>Aucun élément correspondant...</p>
+        <img src="../../../assets/not-found.png" alt="logo" />
+    </div>
+    <app-list-item *ngFor="let item of ones" [isSelected]="selectedOnes.includes(item)" [item]="item"
         (selectedItem)="select($event)" />
 </div>

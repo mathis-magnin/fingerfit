@@ -1,32 +1,34 @@
 <main>
-
-    <section>
-        <app-single-option [caption]="'Créer une position'">
+    <section class="choice" *ngIf="!manage">
+        <app-option [caption]="'Créer une position'">
             <app-button [text]="'Créer'" [buttonStyle]="createButtonStyle" (buttonClicked)="creation()" />
-        </app-single-option>
+        </app-option>
 
         <hr />
 
-        <app-list [items]="positionList" [text]="'Modifier une position'" [filters]="filters"
-            (selectedItems)="modification($event[0])" (searchValue)="searchPositions($event)"
-            (selectedFilter)="filterPositions($event)" />
+        <app-list [items]="positionList" [text]="'Modifier une position'" (selectedItems)="modification($event[0])"
+            (searchValue)="searchPositions($event)" (selectedFilter)="filterPositions($event)" />
     </section>
 
-    <section *ngIf="create || modify">
-        <app-single-option [caption]="'Main travaillée'">
-            <app-side-selection [twoPossibilities]="true"
-                (rightOrLeftSelected)="onSideSelected($event)"></app-side-selection>
-        </app-single-option>
+    <section class="manage" *ngIf="manage">
+        <app-option [caption]="'Main travaillée'">
+            <app-selector [options]="sidePossibilities" [defaultOption]="sideToString(position.side)"
+                (selectedOption)="updateSide($event)" />
+        </app-option>
 
         <hr />
 
-        <label class="option_type">Description de la position :</label>
-        <app-position-description-tab [createPosition]="endCreation"
-            (positionDescription)="updatePosition($event)"></app-position-description-tab>
+        <app-option [caption]="'Description de la position'"></app-option>
 
-        <app-keyboard [keyboardStyle]="keyboardStyle" [keysToPress]="allKeysInRed"></app-keyboard>
+        <app-position-description-tab [keys]="position.keys"
+            (keysDescribed)="updateKeys($event)"></app-position-description-tab>
 
+        <app-keyboard [keyboardStyle]="keyboardStyle" [keysToPress]="allKeysInRed" />
 
-        <app-button [buttonStyle]="buttonStyle" [text]="'Valider'" (buttonClicked)="validate()"></app-button>
+        <hr />
+
+        <div class="validate" *ngIf="manage">
+            <app-button [buttonStyle]="buttonStyle" [text]="'Valider'" (buttonClicked)="validate()" />
+        </div>
     </section>
 </main>

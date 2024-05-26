@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { Position, Quiz } from 'src/models/quiz.model';
+import { first } from 'rxjs';
+import { Position, Quiz, Side, sideToString } from 'src/models/quiz.model';
 import { ListStyle } from 'src/models/style-input.model';
 
 
@@ -10,14 +11,23 @@ import { ListStyle } from 'src/models/style-input.model';
 })
 export class ListComponent {
 
-    @Input() public style: ListStyle = { height: "60vh" };
+    public firstInitialization: boolean = true;
+    public ones: any[] = [];
+    public filters: string[] = [];
 
-    @Input() public items: (Quiz | Position)[] = [];
-    @Input() public selectedOnes: (Quiz | Position)[] = [];
+
+    @Input() public style: ListStyle = { height: "60vh" };
+    @Input() set items(items: any[]) {
+        if (this.firstInitialization && (0 < items.length)) {
+            this.filters = (items[0].keys) ? ["Filtrer", sideToString(Side.LEFT), sideToString(Side.RIGHT)] : ["Filtrer", sideToString(Side.LEFT), sideToString(Side.RIGHT), sideToString(Side.BOTH)];
+            this.firstInitialization = false;
+        }
+        this.ones = items;
+    }
+    @Input() public selectedOnes: any[] = [];
     @Input() public multipleChoice: boolean = false;
     @Input() public text: string = "Sélectionner un élément";
-    @Input() public filters: string[] = [];
-    @Input() public defaultFilter: string = "";
+
 
     @Output() public selectedItems: EventEmitter<any[]> = new EventEmitter<any[]>();
     @Output() public selectedFilter: EventEmitter<string> = new EventEmitter<string>();
@@ -35,7 +45,7 @@ export class ListComponent {
 
 
     select(item: any) {
-        /* Removing the item from the list if he was already selected */
+        /* Removing the item from the list if it was already selected */
         for (let i = 0; i < this.selectedOnes.length; i++) {
             if (this.selectedOnes[i] == item) {
                 this.selectedOnes.splice(i, 1);
@@ -48,6 +58,7 @@ export class ListComponent {
         if (this.multipleChoice) {
             this.selectedOnes.push(item);
         }
+        /* Replacing the item from the list */
         else {
             this.selectedOnes = [item];
         }

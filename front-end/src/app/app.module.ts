@@ -1,4 +1,4 @@
-import { NgModule, input } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
@@ -21,7 +21,6 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { ExitButtonComponent } from './components/exit-button/exit-button.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { WarningPopupComponent } from './components/warning-popup/warning-popup.component';
-import { SingleOptionComponent } from './components/single-option/single-option.component';
 import { TimerComponent } from './components/timer/timer.component';
 import { ConfettiComponent } from './components/confetti/confetti.component';
 import { SuperHandComponent } from './components/super-hand/super-hand.component';
@@ -36,17 +35,14 @@ import { ProfilePictureSelectionComponent } from './components/profile-picture-s
 import { InputTextFieldComponent } from './components/input-text-field/input-text-field.component';
 import { GraphicComponent } from './components/graphic/graphic.component';
 import { BoxComponent } from './components/box/box.component';
-import { KeySelectionBoxComponent } from './components/key-selection-box/key-selection-box.component';
-import { OrderSelectionBoxComponent } from './components/order-selection-box/order-selection-box.component';
 import { PositionDescriptionTabComponent } from './components/position-description-tab/position-description-tab.component';
 import { ProfileOptionsComponent } from './pages/profile-options/profile-options.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InfoProfileComponent } from './components/profile-info/profil-info.component';
-import { SideSelectionComponent } from './components/side-selection/side-selection.component';
-import { GameModeSelectionComponent } from './components/game-mode-selection/game-mode-selection.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { ListComponent } from './components/list/list.component';
 import { SelectorComponent } from './components/selector/selector.component';
+import { OptionComponent } from './components/option/option.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +55,7 @@ import { SelectorComponent } from './components/selector/selector.component';
     PositionCreationComponent,
     ProfileOptionsComponent,
 
+    OptionComponent,
     AppComponent,
     ProgressBarComponent,
     HandComponent,
@@ -69,7 +66,6 @@ import { SelectorComponent } from './components/selector/selector.component';
     CheckboxComponent,
     QuizComponent,
     WarningPopupComponent,
-    SingleOptionComponent,
     TimerComponent,
     ConfettiComponent,
     ProfileComponent,
@@ -83,13 +79,9 @@ import { SelectorComponent } from './components/selector/selector.component';
     GraphicComponent,
     SuperHandComponent,
     BoxComponent,
-    KeySelectionBoxComponent,
-    OrderSelectionBoxComponent,
     PositionDescriptionTabComponent,
     NavbarComponent,
     InfoProfileComponent,
-    SideSelectionComponent,
-    GameModeSelectionComponent,
     ListItemComponent,
     ListComponent,
     SelectorComponent

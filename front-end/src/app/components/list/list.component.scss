@@ -26,3 +26,17 @@ input {
     overflow-y: scroll;
     margin-top: 2vh;
 }
+
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    font-size: 1.5em;
+
+    img {
+        height: 30vh;
+    }
+}

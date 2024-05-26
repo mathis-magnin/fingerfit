@@ -91,11 +91,6 @@ export class KeyboardStyle {
 }
 
 
-export interface QuizListStyle {
-    height: string;
-}
-
-
 export interface ListStyle {
     height: string;
 }

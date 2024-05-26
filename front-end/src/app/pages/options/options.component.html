@@ -9,29 +9,28 @@
     <div class="option">
         <hr />
 
-        <app-list [items]="quizList" [text]="'Sélectionner un quiz'" [filters]="filters"
-            (selectedItems)="selectQuiz($event[0])" (searchValue)="searchQuizzes($event)"
-            (selectedFilter)="filterQuizzes($event)" />
+        <app-list [items]="quizList" [text]="'Sélectionner un quiz'" (selectedItems)="selectQuiz($event[0])"
+            (searchValue)="searchQuizzes($event)" (selectedFilter)="filterQuizzes($event)" />
 
         <hr />
 
-        <app-single-option [caption]="'Mode de jeu'">
-            <app-game-mode-selection (gameModeSelected)="setGameMode($event)" />
-        </app-single-option>
+        <app-option [caption]="'Mode de jeu'">
+            <app-selector [options]="gameModes" (selectedOption)="setGameMode($event)" />
+        </app-option>
 
         <hr />
 
-        <app-single-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
+        <app-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
             <app-checkbox />
-        </app-single-option>
+        </app-option>
 
         <hr />
 
-        <app-single-option [caption]="'Définir un temps par position de main'">
+        <app-option [caption]="'Définir un temps par position de main'">
             <app-checkbox (change)="switchTimer($event)" />
             <input type="number" placeholder="{{options?.timePerQuestion}}sec" min="1" #numberInput
                 (change)="setTime(numberInput.value)" />
-        </app-single-option>
+        </app-option>
 
         <hr />
     </div>
