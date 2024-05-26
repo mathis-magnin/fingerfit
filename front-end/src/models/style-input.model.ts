@@ -63,6 +63,28 @@ export interface HandStyle {
 }
 
 
-export interface keyStyle {
+export interface KeyStyle {
     fontSize: string;
+}
+
+interface KeyboardStyleType {
+    rowGap: string;
+}
+
+export class KeyboardStyle {
+    private keyStyle: KeyStyle;
+    private keyboardStyle: KeyboardStyleType;
+
+    constructor(fontSize: number) {
+        this.keyStyle = { fontSize: String(fontSize) + 'em' };
+        this.keyboardStyle = { rowGap: String(fontSize / 2) + 'em' };
+    }
+
+    public getKeyStyle(): KeyStyle {
+        return this.keyStyle;
+    }
+
+    public getKeyboardStyle(): KeyboardStyleType {
+        return this.keyboardStyle;
+    }
 }

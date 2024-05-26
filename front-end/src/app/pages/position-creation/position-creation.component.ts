@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { Finger, Key, Position, Side, Symbol } from 'src/models/quiz.model';
-import { ButtonStyle } from 'src/models/style-input.model';
+import { Component, Input } from '@angular/core';
+import { Position, Side } from 'src/models/position.model';
+import { Key, Finger, Symbol } from 'src/models/key.model';
+import { ButtonStyle, KeyboardStyle } from 'src/models/style-input.model';
+import { NavbarItem } from 'src/models/navbar.model';
 
 @Component({
     selector: 'app-position-creation',
@@ -8,6 +10,12 @@ import { ButtonStyle } from 'src/models/style-input.model';
     styleUrls: ['./position-creation.component.scss']
 })
 export class PositionCreationComponent {
+
+    public currentPageIndex: number = 0;
+    public navItems: NavbarItem[] = [{ name: 'Gestion des positions de main', url: '/position-creation' }];
+    public exitButtonLink: string = '/profiles';
+
+    public keyboardStyle: KeyboardStyle = new KeyboardStyle(1.5);
 
     public allKeysInRed: Key[] = [];
 

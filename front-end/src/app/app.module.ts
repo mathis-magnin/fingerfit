@@ -1,6 +1,7 @@
 import { NgModule, input } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,8 +41,12 @@ import { BoxComponent } from './components/box/box.component';
 import { KeySelectionBoxComponent } from './components/key-selection-box/key-selection-box.component';
 import { OrderSelectionBoxComponent } from './components/order-selection-box/order-selection-box.component';
 import { PositionDescriptionTabComponent } from './components/position-description-tab/position-description-tab.component';
-import { SideSelectionBoxComponent } from './components/side-selection-box/side-selection-box.component';
-import { GameModeSelectionBoxComponent } from './components/game-mode-selection-box/game-mode-selection-box.component';
+import { ProfileOptionsComponent } from './pages/profile-options/profile-options.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { InfoProfileComponent } from './components/profile-info/profil-info.component';
+import { SideSelectionComponent } from './components/side-selection/side-selection.component';
+import { GameModeSelectionComponent } from './components/game-mode-selection/game-mode-selection.component';
+import { profilePictureComponent } from './components/profile-picture/profile-picture.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +57,7 @@ import { GameModeSelectionBoxComponent } from './components/game-mode-selection-
     ProfilesComponent,
     StatisticsComponent,
     PositionCreationComponent,
+    ProfileOptionsComponent,
 
     AppComponent,
     ProgressBarComponent,
@@ -81,13 +87,18 @@ import { GameModeSelectionBoxComponent } from './components/game-mode-selection-
     KeySelectionBoxComponent,
     OrderSelectionBoxComponent,
     PositionDescriptionTabComponent,
-    SideSelectionBoxComponent,
-    GameModeSelectionBoxComponent
+    NavbarComponent,
+    InfoProfileComponent,
+    SideSelectionComponent,
+    GameModeSelectionComponent,
+    profilePictureComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    BrowserAnimationsModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

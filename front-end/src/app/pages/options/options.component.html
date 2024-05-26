@@ -1,20 +1,16 @@
 <header [ngClass]="{disable:showPopup}">
-    <img src="./assets/main-logo.ico" />
-    <app-exit-button (click)="togglePopupLogin(false)" />
+    <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems" [exitButtonLink]="exitButtonLink"></app-navbar>
 </header>
 
 <main [ngClass]="{disable:showPopup}">
-    <h1>Paramétrage de la partie</h1>
+    
+    <app-quiz-list (selectQuiz)="selectQuiz($event)" />
 
     <hr />
 
     <app-single-option [caption]="'Mode de jeu'">
-        <app-game-mode-selection-box [boxStyle]="boxStyle" (gameModeSelected)="setGameMode($event)" />
+        <app-game-mode-selection (gameModeSelected)="setGameMode($event)" />
     </app-single-option>
-
-    <hr />
-
-    <app-quiz-list (selectQuiz)="selectQuiz($event)" />
 
     <hr />
 

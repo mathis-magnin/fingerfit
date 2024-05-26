@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Order, Position, Symbol, Finger, Key, orderToString, Side } from 'src/models/quiz.model';
+import { Order, orderToString } from 'src/models/quiz.model';
+import { Symbol, Finger, Key } from 'src/models/key.model';
 import { BoxStyle } from 'src/models/style-input.model';
 
 @Component({
@@ -10,9 +11,9 @@ import { BoxStyle } from 'src/models/style-input.model';
 
 export class PositionDescriptionTabComponent {
 
-    public boxStyle: BoxStyle = new BoxStyle({ width: '5vw', backgroundColor: 'cornflowerblue' });
-    public fingerBoxStyle: BoxStyle = new BoxStyle({ width: '10vw', backgroundColor: 'lightblue' });
-    public selectionBoxStyle: BoxStyle = new BoxStyle({ width: '10vw', backgroundColor: 'antiquewhite' });
+    public boxStyle: BoxStyle = new BoxStyle({ width: '3.75vw', backgroundColor: 'cornflowerblue' });
+    public fingerBoxStyle: BoxStyle = new BoxStyle({ width: '7.5vw', backgroundColor: 'lightblue' });
+    public selectionBoxStyle: BoxStyle = new BoxStyle({ width: '7.5vw', backgroundColor: 'antiquewhite' });
 
     private thumbKey: Key = { symbol: Symbol.UNDEFINED, finger: Finger.THUMB };
     private thumbOrder: Order = Order.NOT_WORKED;

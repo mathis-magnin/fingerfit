@@ -1,9 +1,8 @@
 <header>
-    <img src="./assets/main-logo.ico" id="logo" />
-    <app-exit-button [link]="'/profiles'"/>
+    <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems" [exitButtonLink]="exitButtonLink"/>
 </header>
 
 <main class="statistics">
-    <app-quiz-list class="stats-quiz-list"/>
+    <app-quiz-list class="stats-quiz-list" />
     <app-graphic class="stats-chart"/>
 </main>

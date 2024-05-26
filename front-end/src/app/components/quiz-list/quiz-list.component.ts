@@ -1,8 +1,7 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { QuizzesService } from '../../../services/quizzes.service';
-import { Quiz, Side } from '../../../models/quiz.model';
-import { BoxStyle } from 'src/models/style-input.model';
-
+import { Quiz } from '../../../models/quiz.model';
+import { Side } from '../../../models/position.model';
 
 @Component({
     selector: 'app-quiz-list',
@@ -17,8 +16,6 @@ export class QuizListComponent {
     public searchValue: string = '';
     public selectedSide: Side = Side.UNDEFINED;
     public selectedQuiz: Quiz | undefined;
-
-    public selectionBoxStyle: BoxStyle = new BoxStyle({width: '10vw', border: '1px solid black', padding: '10px', backgroundColor: 'white'});
 
     constructor(public quizzesService: QuizzesService) {
         this.quizzesService.quizzes$.subscribe((quizList) => {

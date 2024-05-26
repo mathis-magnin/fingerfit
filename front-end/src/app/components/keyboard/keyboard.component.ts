@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Finger, Symbol, Key, IsSymbolPressed, Position } from 'src/models/quiz.model';
+import { IsSymbolPressed } from 'src/models/quiz.model';
+import { Finger, Symbol, Key } from 'src/models/key.model';
+import { KeyboardStyle } from 'src/models/style-input.model';
 
 @Component({
     selector: 'app-keyboard',
@@ -14,6 +16,8 @@ export class KeyboardComponent {
     public keys: Key[] = [];
 
     @Input() public keysToPress: Key[] = [];
+
+    @Input() public keyboardStyle: KeyboardStyle = new KeyboardStyle(3);
 
     private symbolsPressed: Symbol[] = [];
 

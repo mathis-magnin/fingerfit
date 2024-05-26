@@ -1,0 +1,56 @@
+.info h1{
+    font-size: 2.5vw;
+    margin: 2vh;
+}
+
+.form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 2vh;
+
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vh 5vw 2vh 5vw;
+}
+
+.fields{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-evenly
+}
+
+app-profile-picture-selection{
+    margin-right: 4vw;
+}
+
+app-input-text-field{
+    //top and bottom margin
+    margin:1vh;
+    justify-self: center;
+    align-items: center;
+}
+
+.edit-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2vh;
+}
+
+.gray{
+    filter: grayscale(100%);
+}
+
+app-popup div{
+    padding: 30px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

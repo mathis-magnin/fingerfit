@@ -4,7 +4,7 @@
 <div class=profile-list>
     <ng-container *ngIf="(showProfiles.length==0)">
         <div class="not-found">
-            <p>aucun profil correspondant...</p>
+            <p>Aucun profil correspondant...</p>
             <img src="../../../assets/not-found.png" alt="logo"/>
         </div>
     </ng-container>
@@ -22,9 +22,9 @@
     </div>
 </div>
 <div class="profile-options">
-    <app-button [buttonStyle]="firstAndLastButtonStyle" [picture]="'../../../assets/option.png'"/>
-    <app-button [buttonStyle]="middleButtonStyle" [text]="'Jouer'" (click)="checkProfileSelected()"/>
-    <app-button [buttonStyle]="firstAndLastButtonStyle" [routerLink]="'/statistics'" [picture]="'../../../assets/stats.png'"/>
+    <app-button [buttonStyle]="firstAndLastButtonStyle" [picture]="'../../../assets/option.png'" (click)="checkProfileSelected('/profile-options')" />
+    <app-button [buttonStyle]="middleButtonStyle" [text]="'Jouer'" (click)="checkProfileSelected('./options')"/>
+    <app-button [buttonStyle]="firstAndLastButtonStyle"  [picture]="'../../../assets/stats.png'" (click)="checkProfileSelected('/statistics')"/>
 </div>
 <div class="popup">
     <app-warning-popup *ngIf="warning" [text]="'Veuillez selectionner un profil'"></app-warning-popup>
