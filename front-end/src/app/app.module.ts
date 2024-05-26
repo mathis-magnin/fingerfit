@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,9 +40,9 @@ import { PositionDescriptionTabComponent } from './components/position-descripti
 import { ProfileOptionsComponent } from './pages/profile-options/profile-options.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InfoProfileComponent } from './components/profile-info/profil-info.component';
-import { ListItemComponent } from './components/list-item/list-item.component';
-import { ListComponent } from './components/list/list.component';
 import { SelectorComponent } from './components/selector/selector.component';
+import { ListComponent } from './components/list/list.component';
+import { ListItemComponent } from './components/list-item/list-item.component';
 import { OptionComponent } from './components/option/option.component';
 
 @NgModule({
@@ -55,7 +56,6 @@ import { OptionComponent } from './components/option/option.component';
     PositionCreationComponent,
     ProfileOptionsComponent,
 
-    OptionComponent,
     AppComponent,
     ProgressBarComponent,
     HandComponent,
@@ -82,14 +82,17 @@ import { OptionComponent } from './components/option/option.component';
     PositionDescriptionTabComponent,
     NavbarComponent,
     InfoProfileComponent,
-    ListItemComponent,
+    SelectorComponent,
     ListComponent,
-    SelectorComponent
+    ListItemComponent,
+    SelectorComponent,
+    OptionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

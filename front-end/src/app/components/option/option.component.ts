@@ -8,8 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export class OptionComponent implements OnInit {
 
-    @Input()
-    public caption: string = "ceci est une description";
+    @Input() public caption: string = "ceci est une description";
     constructor() { }
 
     ngOnInit(): void { }
