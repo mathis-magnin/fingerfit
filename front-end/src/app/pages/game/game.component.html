@@ -9,7 +9,7 @@
 </header>
 
 <main *ngIf="!isCorrect" [ngClass]="{disable:showPopup}">
-    <app-hand [handStyle]="handStyle" [keysToPress]="keysShown" [side]="position.side" />
+    <app-hands [handsStyle]="handsStyle" [keysToPress]="keysShown" [side]="position.side" />
     <app-keyboard [keysToPress]="keysShown" (nextPosition)="nextPosition()" (isCorrect)="isAnswerCorrect($event)" />
 </main>
 

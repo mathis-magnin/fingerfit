@@ -1,5 +1,5 @@
 <div class="position">
-    <app-hand [handStyle]="handStyle" [keysToPress]="position.keys" [side]="position.side" />
+    <app-hands [handsStyle]="handsStyle" [keysToPress]="position.keys" [side]="position.side" />
     <div class="keys">
         <app-key *ngFor="let key of position.keys" [keyStyle]="keyStyle" [symbol]="key.symbol" [finger]="key.finger"
             [ngClass]="{'space': key.symbol == Symbol.SPACE}" />

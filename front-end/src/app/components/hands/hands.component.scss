@@ -1,3 +1,16 @@
+.hands {
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+    height: fit-content;
+}
+
+
+.opacity {
+    opacity: 0.25;
+}
+
+
 .positionned {
     position: relative;
 }

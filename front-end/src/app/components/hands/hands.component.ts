@@ -1,21 +1,21 @@
 import { Component, Input } from '@angular/core';
 import { Side } from 'src/models/position.model';
 import { Finger, Key } from 'src/models/key.model';
-import { HandStyle } from 'src/models/style-input.model';
+import { HandsStyle } from 'src/models/style-input.model';
 
 @Component({
-    selector: 'app-hand',
-    templateUrl: './hand.component.html',
-    styleUrl: './hand.component.scss'
+    selector: 'app-hands',
+    templateUrl: './hands.component.html',
+    styleUrl: './hands.component.scss'
 })
-export class HandComponent {
+export class HandsComponent {
 
     Side = Side;
-    @Input() public side: Side.LEFT | Side.RIGHT = Side.RIGHT;
+    @Input() public side: Side = Side.RIGHT;
 
     @Input() public keysToPress: Key[] = [];
 
-    @Input() public handStyle: HandStyle = { width: "30vh", height: "30vh" };
+    @Input() public handsStyle: HandsStyle = { width: "30vh", height: "30vh" };
 
     Finger = Finger;
     public fingers: boolean[] = [];
