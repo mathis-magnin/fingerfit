@@ -1,7 +1,6 @@
 import { Position, Side } from "./position.model";
 import { Symbol } from "./key.model";
 
-
 export enum Order {
     NOT_WORKED = -1,
     FIRST,

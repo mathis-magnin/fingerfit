@@ -46,7 +46,6 @@ import { ListItemComponent } from './components/list-item/list-item.component';
 import { OptionComponent } from './components/option/option.component';
 import { profilePictureComponent } from './components/profile-picture/profile-picture.component';
 
-
 @NgModule({
   declarations: [
     HomeComponent,

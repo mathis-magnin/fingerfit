@@ -28,12 +28,15 @@
         <app-position-description-tab [keys]="position.keys"
             (keysDescribed)="updateKeys($event)"></app-position-description-tab>
 
-        <app-keyboard [keyboardStyle]="keyboardStyle" [keysToPress]="allKeysInRed" />
+        <app-keyboard [keyboardStyle]="keyboardStyle" [keysToPress]="allKeysInPurple" />
 
         <hr />
 
-        <div class="validate" *ngIf="manage">
-            <app-button [buttonStyle]="buttonStyle" [text]="'Valider'" (buttonClicked)="validate()" />
+        <div class="buttons" *ngIf="manage">
+            <app-button class="cancle" [buttonStyle]="cancelButtonStyle" [text]="'Annuler'"
+                (buttonClicked)="cancel()" />
+            <app-button class="validate" [buttonStyle]="validateButtonStyle" [text]="'Valider'"
+                (buttonClicked)="validate()" />
         </div>
     </section>
 </main>

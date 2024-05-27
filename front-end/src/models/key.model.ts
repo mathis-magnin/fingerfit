@@ -174,6 +174,7 @@ export function stringToSymbol(s: string): Symbol {
     }
 }
 
+
 export interface Key {
     symbol: Symbol;
     finger: Finger;

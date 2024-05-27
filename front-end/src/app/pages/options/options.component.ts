@@ -4,8 +4,8 @@ import { OptionsService } from 'src/services/options.service';
 import { Options, GameMode, gameModeToString, stringToGameMode } from 'src/models/options.model';
 import { BoxStyle, ButtonStyle } from 'src/models/style-input.model';
 import { NavbarItem } from 'src/models/navbar.model';
-import { Quiz } from 'src/models/quiz.model';
 import { Side, stringToSide } from 'src/models/position.model';
+import { Quiz } from 'src/models/quiz.model';
 import { QuizzesService } from 'src/services/quizzes.service';
 
 @Component({

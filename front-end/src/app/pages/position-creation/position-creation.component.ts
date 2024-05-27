@@ -23,9 +23,10 @@ export class PositionCreationComponent {
     public listSide: Side = Side.UNDEFINED;
 
     public keyboardStyle: KeyboardStyle = new KeyboardStyle(1.75);
-    public allKeysInRed: Key[] = [];
+    public allKeysInPurple: Key[] = [];
 
-    public buttonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh' });
+    public validateButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh' });
+    public cancelButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh', backgroundColor: "red" });
     public createButtonStyle: ButtonStyle = new ButtonStyle({ width: '7.5vw', height: '5vh' });
 
 
@@ -49,7 +50,7 @@ export class PositionCreationComponent {
         });
 
         for (let symbol = Symbol.A; symbol <= Symbol.SPACE; symbol++) {
-            this.allKeysInRed.push({ symbol: symbol, finger: Finger.THUMB })
+            this.allKeysInPurple.push({ symbol: symbol, finger: Finger.INDEX })
         }
     }
 
@@ -91,6 +92,11 @@ export class PositionCreationComponent {
     public updateKeys(keys: Key[]) {
         console.log(keys);
         this.positionModified.keys = keys;
+    }
+
+
+    public cancel() {
+        this.manage = false;
     }
 
 
