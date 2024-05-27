@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Order, orderToString } from 'src/models/quiz.model';
-import { Symbol, Finger, Key } from 'src/models/key.model';
+import { Finger, Key, Symbol, fingerToString, stringToSymbol, symbolToString } from 'src/models/key.model';
+import { Order, orderToString, stringToOrder } from 'src/models/quiz.model';
 import { BoxStyle } from 'src/models/style-input.model';
 
 @Component({
@@ -11,105 +11,106 @@ import { BoxStyle } from 'src/models/style-input.model';
 
 export class PositionDescriptionTabComponent {
 
-    public boxStyle: BoxStyle = new BoxStyle({ width: '3.75vw', backgroundColor: 'cornflowerblue' });
-    public fingerBoxStyle: BoxStyle = new BoxStyle({ width: '7.5vw', backgroundColor: 'lightblue' });
-    public selectionBoxStyle: BoxStyle = new BoxStyle({ width: '7.5vw', backgroundColor: 'antiquewhite' });
+    @Input() set keys(keys: Key[]) {
+        /* Reinitialize all */
+        for (let i = 0; i < 5; i++) {
+            this.symbolsDefaultValueOnFinger[i] = symbolToString(i);
+            this.ordersDefaultValueOnFinger[i] = orderToString(Order.NOT_WORKED);
+            this.orderOnFinger[i] = Order.NOT_WORKED;
+            this.symbolOnFinger[i] = i;
+        }
 
-    private thumbKey: Key = { symbol: Symbol.UNDEFINED, finger: Finger.THUMB };
-    private thumbOrder: Order = Order.NOT_WORKED;
+        /* Updating all */
+        for (let i = 0; i < keys.length; i++) {
+            this.symbolOnFinger[keys[i].finger] = keys[i].symbol;
+            this.orderOnFinger[keys[i].finger] = i;
 
-    private indexKey: Key = { symbol: Symbol.UNDEFINED, finger: Finger.INDEX };
-    private indexOrder: Order = Order.NOT_WORKED;
-
-    private middleKey: Key = { symbol: Symbol.UNDEFINED, finger: Finger.MIDDLE };
-    private middleOrder: Order = Order.NOT_WORKED;
-
-    private ringKey: Key = { symbol: Symbol.UNDEFINED, finger: Finger.RING };
-    private ringOrder: Order = Order.NOT_WORKED;
-
-    private pinkyKey: Key = { symbol: Symbol.UNDEFINED, finger: Finger.PINKY };
-    private pinkyOrder: Order = Order.NOT_WORKED;
-
-    private keyDictionary: { [id: string]: Key[] } = {
-        [orderToString(Order.NOT_WORKED)]: [],
-        [orderToString(Order.FIRST)]: [],
-        [orderToString(Order.SECOND)]: [],
-        [orderToString(Order.THIRD)]: [],
-        [orderToString(Order.FOURTH)]: [],
-        [orderToString(Order.FIFTH)]: []
+            this.symbolsDefaultValueOnFinger[keys[i].finger] = symbolToString(keys[i].symbol);
+            this.ordersDefaultValueOnFinger[keys[i].finger] = orderToString(i);
+        }
+        this.updateSelectors();
     };
 
-    private positionKeys: Key[] = [];
+    @Output() public keysDescribed: EventEmitter<Key[]> = new EventEmitter<Key[]>();
 
-    @Input()
-    set createPosition(is_to_do : boolean) { // s'exécute à chaque fois que l'input change
-        if (is_to_do) {
-            for(let order = Order.NOT_WORKED; order <= Order.FIFTH; order++) {
-                if(this.thumbOrder === order) {
-                    this.keyDictionary[orderToString(order)].push(this.thumbKey);
-                }
-                if(this.indexOrder === order) {
-                    this.keyDictionary[orderToString(order)].push(this.indexKey);
-                }
-                if(this.middleOrder === order) {
-                    this.keyDictionary[orderToString(order)].push(this.middleKey);
-                }
-                if(this.ringOrder === order) {
-                    this.keyDictionary[orderToString(order)].push(this.ringKey);
-                }
-                if(this.pinkyOrder === order) {
-                    this.keyDictionary[orderToString(order)].push(this.pinkyKey);
-                }
-            }
-            for(let order = Order.FIRST; order <= Order.FIFTH; order++) {
-                this.positionKeys = this.positionKeys.concat(this.keyDictionary[orderToString(order)]);
-            }
-            this.positionDescription.emit(this.positionKeys);
+    Order = Order;
+    fingerToString = fingerToString;
+    public fingers: Finger[] = [];
+    public labelBoxStyle: BoxStyle = new BoxStyle({ width: '3.75vw', backgroundColor: 'cornflowerblue' });
+    public fingerBoxStyle: BoxStyle = new BoxStyle({ width: '7.5vw', backgroundColor: 'lightblue' });
+    public selectorBoxStyle: BoxStyle = new BoxStyle({ width: '7.5vw', backgroundColor: 'antiquewhite' });
+
+    public symbolOnFinger: Symbol[] = [];
+    public symbolsDefaultValueOnFinger: string[] = [];
+    public symbolsPossibilitiesOnFinger: string[][] = [];
+
+    public orderOnFinger: Order[] = []
+    public ordersDefaultValueOnFinger: string[] = [];
+    public ordersPossibilitiesOnFinger: string[][] = [];
+
+
+    constructor() {
+        for (let finger = Finger.THUMB; finger <= Finger.PINKY; finger++) {
+            this.fingers.push(finger);
+        }
+
+        for (let i = 0; i < 5; i++) {
+            this.symbolsDefaultValueOnFinger.push(symbolToString(i));
+            this.ordersDefaultValueOnFinger.push(orderToString(Order.NOT_WORKED));
+            this.symbolsPossibilitiesOnFinger.push([]);
+            this.ordersPossibilitiesOnFinger.push([]);
+            this.orderOnFinger.push(Order.NOT_WORKED);
+            this.symbolOnFinger.push(i);
         }
     }
 
-    @Output() public positionDescription: EventEmitter<Key[]> = new EventEmitter<Key[]>();
 
-    constructor() { }
-    
-    public onThumbSymbolSelected(symbol: Symbol) {
-        this.thumbKey = { symbol: symbol, finger: Finger.THUMB };
+    public updateSelectors() {
+        this.symbolsPossibilitiesOnFinger = [[], [], [], [], []];
+        this.ordersPossibilitiesOnFinger = [[], [], [], [], []];
+
+        for (let finger = Finger.THUMB; finger <= Finger.PINKY; finger++) {
+            /* Symbols possibilities */
+            for (let symbol = Symbol.A; symbol <= Symbol.SPACE; symbol++) {
+                if ((this.symbolOnFinger[finger] == symbol) || !this.symbolOnFinger.includes(symbol)) {
+                    this.symbolsPossibilitiesOnFinger[finger].push(symbolToString(symbol));
+                }
+            }
+
+            /* Orders possibilities */
+            for (let order = Order.NOT_WORKED; order <= Order.FIFTH; order++) {
+                if ((order == Order.NOT_WORKED) || (this.orderOnFinger[finger] == order) || !this.orderOnFinger.includes(order)) {
+                    this.ordersPossibilitiesOnFinger[finger].push(orderToString(order));
+                }
+            }
+        }
     }
 
-    public onThumbOrderSelected(order: Order) {
-        this.thumbOrder = order;
+
+    public emit() {
+        let keysToEmit: Key[] = [];
+        for (let order = Order.FIRST; order <= Order.FIFTH; order++) {
+            for (let finger = Finger.THUMB; finger <= Finger.PINKY; finger++) {
+                if (this.orderOnFinger[finger] == order) {
+                    keysToEmit.push({ symbol: this.symbolOnFinger[finger], finger: finger });
+                }
+            }
+        }
+        this.keysDescribed.emit(keysToEmit);
     }
 
-    public onIndexSymbolSelected(symbol: Symbol) {
-        this.indexKey = { symbol: symbol, finger: Finger.INDEX };
+
+    public updateOrder(finger: Finger, order: string) {
+        this.orderOnFinger[finger] = stringToOrder(order);
+        this.emit();
+        this.updateSelectors();
     }
 
-    public onIndexOrderSelected(order: Order) {
-        this.indexOrder = order;
-    }
 
-    public onMiddleSymbolSelected(symbol: Symbol) {
-        this.middleKey = { symbol: symbol, finger: Finger.MIDDLE };
-    }
-
-    public onMiddleOrderSelected(order: Order) {
-        this.middleOrder = order;
-    }
-
-    public onRingSymbolSelected(symbol: Symbol) {
-        this.ringKey = { symbol: symbol, finger: Finger.RING };
-    }
-
-    public onRingOrderSelected(order: Order) {
-        this.ringOrder = order;
-    }
-
-    public onPinkySymbolSelected(symbol: Symbol) {
-        this.pinkyKey = { symbol: symbol, finger: Finger.PINKY };
-    }
-
-    public onPinkyOrderSelected(order: Order) {
-        this.pinkyOrder = order;
+    public updateSymbol(finger: Finger, symbol: string) {
+        this.symbolOnFinger[finger] = stringToSymbol(symbol);
+        this.emit();
+        this.updateSelectors();
     }
 
 }

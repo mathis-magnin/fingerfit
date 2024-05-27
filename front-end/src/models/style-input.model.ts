@@ -67,6 +67,7 @@ export interface KeyStyle {
     fontSize: string;
 }
 
+
 interface KeyboardStyleType {
     rowGap: string;
 }
@@ -87,4 +88,9 @@ export class KeyboardStyle {
     public getKeyboardStyle(): KeyboardStyleType {
         return this.keyboardStyle;
     }
+}
+
+
+export interface ListStyle {
+    height: string;
 }

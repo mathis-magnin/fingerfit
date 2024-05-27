@@ -10,6 +10,7 @@ export enum Order {
     FIFTH
 }
 
+
 export function orderToString(order: Order): string {
     switch (order) {
         case Order.FIRST:
@@ -26,6 +27,7 @@ export function orderToString(order: Order): string {
             return "Non travaillé";
     }
 }
+
 
 export function stringToOrder(o: string): Order {
     switch (o) {

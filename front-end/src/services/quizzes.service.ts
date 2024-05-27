@@ -32,5 +32,3 @@ export class QuizzesService {
         this.quizzes$.next(QUIZ_LIST);
     }
 }
-
-
