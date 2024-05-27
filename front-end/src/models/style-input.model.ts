@@ -57,7 +57,7 @@ export class ButtonStyle {
 }
 
 
-export interface HandStyle {
+export interface HandsStyle {
     width: string;
     height: string;
 }

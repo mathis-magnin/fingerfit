@@ -1,0 +1,18 @@
+<div class="hands">
+    <div class="positionned" class="symmetrical" [ngStyle]="handsStyle" [ngClass]="{opacity: side == Side.RIGHT}">
+        <img src="assets/right_hand.png" class="hand" />
+        <ng-container *ngIf="side == Side.LEFT">
+            <ng-container *ngFor="let highlight of fingers; index as finger">
+                <img *ngIf="highlight" src="assets/{{Finger[finger]}}.png" class="hand" />
+            </ng-container>
+        </ng-container>
+    </div>
+    <div class="positionned" [ngStyle]="handsStyle" [ngClass]="{opacity: side == Side.LEFT}">
+        <img src="assets/right_hand.png" class="hand" />
+        <ng-container *ngIf="side == Side.RIGHT">
+            <ng-container *ngFor="let highlight of fingers; index as finger">
+                <img *ngIf="highlight" src="assets/{{Finger[finger]}}.png" class="hand" />
+            </ng-container>
+        </ng-container>
+    </div>
+</div>

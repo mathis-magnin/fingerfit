@@ -14,7 +14,7 @@ import { PositionCreationComponent } from './pages/position-creation/position-cr
 import { ProfilesComponent } from './pages/profiles/profiles.component';
 
 
-import { HandComponent } from './components/hand/hand.component';
+import { HandsComponent } from './components/hand/hands.component';
 import { KeyComponent } from './components/key/key.component'
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import { ButtonComponent } from './components/button/button.component';
@@ -59,7 +59,7 @@ import { profilePictureComponent } from './components/profile-picture/profile-pi
 
     AppComponent,
     ProgressBarComponent,
-    HandComponent,
+    HandsComponent,
     KeyComponent,
     KeyboardComponent,
     ButtonComponent,
