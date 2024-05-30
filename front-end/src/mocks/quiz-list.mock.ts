@@ -21,7 +21,8 @@ export const FIRST_POSITION_RIGHT: Position = {
             finger: Finger.RING
         }
     ],
-    side: Side.RIGHT
+    side: Side.RIGHT,
+    id: 0
 };
 
 export const SECOND_POSITION_RIGHT: Position = {
@@ -47,7 +48,8 @@ export const SECOND_POSITION_RIGHT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.RIGHT
+    side: Side.RIGHT,
+    id: 1
 };
 
 export const THIRD_POSITION_RIGHT: Position = {
@@ -73,7 +75,8 @@ export const THIRD_POSITION_RIGHT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.RIGHT
+    side: Side.RIGHT,
+    id: 2
 };
 
 export const FOURTH_POSITION_RIGHT: Position = {
@@ -99,7 +102,8 @@ export const FOURTH_POSITION_RIGHT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.RIGHT
+    side: Side.RIGHT,
+    id: 3
 };
 
 export const FIRST_POSITION_LEFT: Position = {
@@ -125,7 +129,8 @@ export const FIRST_POSITION_LEFT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.LEFT
+    side: Side.LEFT,
+    id: 4
 };
 
 export const SECOND_POSITION_LEFT: Position = {
@@ -151,7 +156,8 @@ export const SECOND_POSITION_LEFT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.LEFT
+    side: Side.LEFT,
+    id: 5
 };
 
 export const THIRD_POSITION_LEFT: Position = {
@@ -173,7 +179,8 @@ export const THIRD_POSITION_LEFT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.LEFT
+    side: Side.LEFT,
+    id: 6
 };
 
 export const FOURTH_POSITION_LEFT: Position = {
@@ -195,7 +202,8 @@ export const FOURTH_POSITION_LEFT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.LEFT
+    side: Side.LEFT,
+    id: 7
 };
 
 export const FIFTH_POSITION_LEFT: Position = {
@@ -217,7 +225,8 @@ export const FIFTH_POSITION_LEFT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.LEFT
+    side: Side.LEFT,
+    id: 8
 };
 
 

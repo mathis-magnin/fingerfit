@@ -39,4 +39,5 @@ export function stringToSide(s: string): Side {
 export interface Position {
     keys: Key[];
     side: Side.LEFT | Side.RIGHT;
+    id: number;
 }

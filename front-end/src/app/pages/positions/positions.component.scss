@@ -44,19 +44,61 @@ app-position-description-tab {
     margin-bottom: 4vh;
 }
 
+.explainations {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    width: 50vw;
+}
+
 
 .buttons {
     position: sticky;
     bottom: 1vh;
     display: flex;
-    align-items: center;
-    align-self: center;
-
-    .cancel {
-        margin-right: 5vw;
-    }
+    justify-content: space-evenly;
+    align-items: end;
 
     .validate {
-        margin-left: 5vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
+}
+
+.confirm-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.confirm-popup div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2vh;
+}
+
+
+.confirm-popup p {
+    margin-top: 7vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+
+.confirm-popup h1 {
+    font-size: 1.5rem;
+}
+
+
+.confirm-popup div app-button {
+    margin: 0 1vw;
 }

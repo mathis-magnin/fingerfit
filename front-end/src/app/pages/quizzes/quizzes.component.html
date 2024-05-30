@@ -38,10 +38,13 @@
             </div>
         </div>
 
-        <app-popup *ngIf="popUp" class="pop_up" (exit)="hidePopUp()">
+        <app-popup *ngIf="popUp" class="confirm-popup" (exit)="hidePopUp()">
+            <p>Êtes-vous sûr de vouloir supprimer ce profil ?</p>
             <div>
-                <p>Êtes-vous sûr de vouloir supprimer ce quiz ?</p>
-                <app-button [buttonStyle]="validateButtonStyle" [text]="'Oui'" (buttonClicked)="delete()" />
+                <app-button [text]="'Annuler'" (buttonClicked)="hidePopUp()"
+                    [buttonStyle]="cancelButtonStyle"></app-button>
+                <app-button [text]="'Supprimer'" (buttonClicked)="delete()"
+                    [buttonStyle]="validateButtonStyle"></app-button>
             </div>
         </app-popup>
     </section>

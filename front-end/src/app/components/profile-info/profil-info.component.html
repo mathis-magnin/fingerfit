@@ -13,10 +13,13 @@
     </div>
     <div class="edit-info">
         <app-button [text]="editText" [buttonStyle]="addButtonStyle" (click)="triggerPopup()"></app-button>
-        <app-popup *ngIf="showPopup" (exit)="showPopup=false">
+        <app-popup *ngIf="showPopup" class="confirm-popup" (exit)="showPopup=false">
+            <p>Voulez-vous vraiment modifier ce profil ?</p>
             <div>
-                <p>Voulez-vous vraiment modifier ce profil ?</p>
-                <app-button [text]="'Oui'" [buttonStyle]="addButtonStyle" (click)="confirmEdit()"></app-button>
+                <app-button [text]="'Annuler'" (buttonClicked)="showPopup=false"
+                    [buttonStyle]="cancelButtonStyle"></app-button>
+                <app-button [text]="'Modifier'" (buttonClicked)="confirmEdit()"
+                    [buttonStyle]="addButtonStyle"></app-button>
             </div>
         </app-popup>
         <app-exit-button *ngIf="editMode" (click)="exitEditMode()"></app-exit-button>
