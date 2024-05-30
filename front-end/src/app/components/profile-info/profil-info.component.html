@@ -1,10 +1,14 @@
 <section class="info">
     <div class="form" [ngClass]="{'gray':!editMode}">
-        <app-profile-picture-selection [imgURL]="this.newPicture" [closeSelection]="closePictures" [isDisabled]="!editMode" (profilePicture)="setProfilePicture($event)"/>
+        <app-profile-picture-selection [imgURL]="this.newPicture" [closeSelection]="closePictures"
+            [isDisabled]="!editMode" (profilePicture)="setProfilePicture($event)" />
         <div>
-            <app-input-text-field [label]="'Nom'" [isDisabled]="!editMode" [preset]="this.newName" (valueChange)="setName($event)"/>
-            <app-input-text-field [label]="'Prénom'" [isDisabled]="!editMode" [preset]="this.newFirstName" (valueChange)="setFirstName($event)"/>
-            <app-input-text-field [label]="'Age'" [isDisabled]="!editMode" [preset]="this.newAge?.toString()" (valueChange)="newAge" (valueChange)="setAge($event)"/>
+            <app-input-text-field [label]="'Nom'" [isDisabled]="!editMode" [preset]="this.newName"
+                (valueChange)="setName($event)" />
+            <app-input-text-field [label]="'Prénom'" [isDisabled]="!editMode" [preset]="this.newFirstName"
+                (valueChange)="setFirstName($event)" />
+            <app-input-text-field [label]="'Age'" [isDisabled]="!editMode" [preset]="this.newAge?.toString()"
+                (valueChange)="newAge" (valueChange)="setAge($event)" />
         </div>
     </div>
     <div class="edit-info">
@@ -17,6 +21,5 @@
         </app-popup>
         <app-exit-button *ngIf="editMode" (click)="exitEditMode()"></app-exit-button>
     </div>
-    <app-warning-popup *ngIf="warningVisible" [text]="errorMsg"/>
+    <app-warning-popup *ngIf="warningVisible" [text]="errorMsg" />
 </section>
-    

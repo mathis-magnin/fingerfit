@@ -4,11 +4,11 @@
     right: 1vw;
 }
 
-h1{
+
+h1 {
     font-size: 2.5rem;
     text-align: center;
 }
-
 
 
 app-single-option input[type="number"] {
@@ -17,23 +17,25 @@ app-single-option input[type="number"] {
     height: 5vh;
 }
 
-.preset{
+
+.preset {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.confirm-popup{
+
+.confirm-popup {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-
 }
 
-.confirm-popup div{
+
+.confirm-popup div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -41,16 +43,19 @@ app-single-option input[type="number"] {
     margin-bottom: 2vh;
 }
 
-.confirm-popup p{
+
+.confirm-popup p {
     margin-top: 7vh;
     margin-left: 1vw;
     margin-right: 1vw;
 }
 
-.confirm-popup h1{
+
+.confirm-popup h1 {
     font-size: 1.5rem;
 }
 
-.confirm-popup div app-button{
+
+.confirm-popup div app-button {
     margin: 0 1vw;
 }

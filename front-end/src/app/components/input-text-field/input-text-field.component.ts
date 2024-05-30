@@ -11,16 +11,16 @@ export class InputTextFieldComponent implements OnInit {
     public label?: string;
     @Input() isDisabled: boolean = false;
     @Input() preset?: string;
-    @Input() type?:string;
-    
+    @Input() type?: string;
+
     public value: string = '';
     @Output()
     public valueChange = new EventEmitter<string>();
-    
+
     constructor() { }
 
     ngOnInit(): void { }
-    
+
 
     updateValue(event: any): void {
         this.value = event.target.value;
