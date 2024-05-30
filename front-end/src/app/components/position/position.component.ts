@@ -13,7 +13,7 @@ import { HandStyle, KeyStyle } from 'src/models/style-input.model';
 export class PositionComponent {
 
     Symbol = Symbol;
-    @Input() public position: Position = { keys: [], side: Side.LEFT };
+    @Input() public position: Position = { keys: [], side: Side.LEFT, id: 0 };
 
     @Input() public handStyle: HandStyle = { width: "10vh", height: "10vh" };
     @Input() public keyStyle: KeyStyle = { fontSize: "1.5em" }

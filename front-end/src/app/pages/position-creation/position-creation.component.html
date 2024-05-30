@@ -33,10 +33,12 @@
         <hr />
 
         <div class="buttons" *ngIf="manage">
-            <app-button class="cancle" [buttonStyle]="cancelButtonStyle" [text]="'Annuler'"
+            <app-button *ngIf="buttonText === 'Modifier'" class="delete" [buttonStyle]="deleteButtonStyle" [text]="'Supprimer'"
+                (buttonClicked)="deletePosition()" />
+            <app-button class="cancel" [buttonStyle]="cancelButtonStyle" [text]="'Annuler'"
                 (buttonClicked)="cancel()" />
-            <app-button class="validate" [buttonStyle]="validateButtonStyle" [text]="'Valider'"
-                (buttonClicked)="validate()" />
+            <app-button class="validate" [buttonStyle]="validateButtonStyle" [text]="buttonText"
+                (buttonClicked)="validateChanges()" />
         </div>
     </section>
 </main>

@@ -26,8 +26,14 @@ export class PositionCreationComponent {
     public allKeysInPurple: Key[] = [];
 
     public validateButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh' });
-    public cancelButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh', backgroundColor: "red" });
+    public deleteButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh', backgroundColor: "red" });
+    public cancelButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh', backgroundColor: "grey" });
     public createButtonStyle: ButtonStyle = new ButtonStyle({ width: '7.5vw', height: '5vh' });
+
+    public buttonText: string = 'Créer';
+
+    public isWarningVisible: boolean = false;
+    public currentError: string = "";
 
 
     /* Position creation variables */
@@ -37,8 +43,8 @@ export class PositionCreationComponent {
 
     public manage: boolean = false;
 
-    public position: Position = { keys: [], side: Side.LEFT };
-    public positionModified: Position = { keys: [], side: Side.LEFT };
+    public position: Position = { keys: [], side: Side.LEFT, id: 0 };
+    public positionModified: Position = { keys: [], side: Side.LEFT, id: 0 };
     public sidePossibilities: string[] = [sideToString(Side.LEFT), sideToString(Side.RIGHT)];
 
 
@@ -70,39 +76,65 @@ export class PositionCreationComponent {
     /* Position creation or modification */
 
     public creation() {
+        this.buttonText = 'Créer';
         this.manage = true;
-        this.position = { keys: [], side: Side.LEFT };
+        this.position = { keys: [], side: Side.LEFT, id: 0 };
     }
 
 
     public modification(position: Position) {
         if (position) {
+            this.buttonText = 'Modifier';
             this.manage = true;
             this.position.keys = position.keys;
             this.position.side = position.side;
+            this.position.id = position.id;
+        }
+        else {
+            /* Ce n'est pas censé arriver. */
         }
     }
 
 
     public updateSide(side: string) {
         this.positionModified.side = (stringToSide(side) == Side.LEFT) ? Side.LEFT : Side.RIGHT;
+        this.positionModified.id = this.position.id;
     }
 
 
     public updateKeys(keys: Key[]) {
         console.log(keys);
         this.positionModified.keys = keys;
+        this.positionModified.id = this.position.id;
     }
 
 
     public cancel() {
         this.manage = false;
+        this.positionModified = { keys: [], side: Side.LEFT, id: 0 };
     }
 
-
-    public validate() {
+    public deletePosition() {
+        this.positionsService.deletePosition(this.position);
         this.manage = false;
-        /* Appeller le service pour enregistrer positionModified */
+        this.positionModified = { keys: [], side: Side.LEFT, id: 0 };
+    }
+
+    public validateChanges() {
+        if (this.positionModified.keys.length != 0) {
+            if(this.buttonText == 'Créer') {
+                this.positionsService.addPosition(this.positionModified);
+            }
+            else {
+                this.positionsService.updatePosition(this.positionModified);
+            }
+            this.manage = false;
+            this.positionModified = { keys: [], side: Side.LEFT, id: 0 };
+        }          
+        else {
+            this.currentError = "La position doit faire travailler au moins un doigt.";
+            this.isWarningVisible = true;
+        }
     }
 
 }

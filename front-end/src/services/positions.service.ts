@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { POSITION_LIST } from '../mocks/quiz-list.mock';
 import { Position, Side } from 'src/models/position.model';
 import { symbolToString } from 'src/models/key.model';
+import { HttpClient } from '@angular/common/http';
+import { serverUrl, httpOptionsBase } from '../configs/server.config';
 
 
 @Injectable({
@@ -10,18 +11,30 @@ import { symbolToString } from 'src/models/key.model';
 })
 export class PositionsService {
 
-    public positions$: BehaviorSubject<Position[]> = new BehaviorSubject(POSITION_LIST);
+    private positions: Position[] = [];
+    public positions$: BehaviorSubject<Position[]> = new BehaviorSubject(this.positions);
+    private positionUrl = serverUrl + '/positions';
+    private httpOptions = httpOptionsBase;
 
-    constructor() { }
+    constructor(private http: HttpClient) {
+        this.fetchPositions();
+    }
+
+    public fetchPositions(): void {
+        this.http.get<Position[]>(this.positionUrl).subscribe((positionList) => {
+            this.positions = positionList;
+            this.positions$.next(this.positions);
+        });
+    }
 
     public filterPositions(side: Side, searchValue: string): void {
         let filteredPositions: Position[] = [];
 
         const searchTerm = searchValue.toLowerCase();
 
-        for (let i = 0; i < POSITION_LIST.length; i++) {
+        for (let i = 0; i < this.positions.length; i++) {
             let name: string = '';
-            for (var key of POSITION_LIST[i].keys) {
+            for (var key of this.positions[i].keys) {
                 name = name.concat((symbolToString(key.symbol) == "ESPACE") ? " " : symbolToString(key.symbol));
             }
             name = name.toLowerCase();
@@ -33,7 +46,7 @@ export class PositionsService {
                 }
             }
             if (include) {
-                filteredPositions.push(POSITION_LIST[i]);
+                filteredPositions.push(this.positions[i]);
             }
         }
 
@@ -44,6 +57,25 @@ export class PositionsService {
     }
 
     public resetQuizzes(): void {
-        this.positions$.next(POSITION_LIST);
+        this.positions$.next(this.positions);
     }
+
+    public addPosition(position: Position): void {
+        this.http.post<Position>(this.positionUrl, position, this.httpOptions).subscribe(() => {
+            this.fetchPositions();
+        });
+    }
+
+    public updatePosition(position: Position): void {
+        this.http.put<Position>(this.positionUrl + '/' + position.id, position).subscribe(() => {
+            this.fetchPositions();
+        });
+    }
+
+    public deletePosition(position: Position): void {
+        this.http.delete<Position>(this.positionUrl + '/' + position.id).subscribe(() => {
+            this.fetchPositions();
+        })
+    }
+
 }
