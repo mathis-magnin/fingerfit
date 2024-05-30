@@ -87,7 +87,7 @@ export class GameComponent {
         this.endGame();
       }
       else {
-        if (this.isCorrect) {
+        if (this.isCorrect && (this.currentPositionNumber - 1 === Math.floor(this.numberOfPositions / 2))) {
           this.stop = true;
           console.log('animate');
           this.animate().then(() => {
@@ -98,6 +98,7 @@ export class GameComponent {
           });
         }
         else {
+          this.isCorrect = false;
           this.positionService.positionStart(true);
         }
       }

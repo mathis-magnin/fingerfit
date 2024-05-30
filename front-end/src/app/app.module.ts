@@ -24,7 +24,6 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { WarningPopupComponent } from './components/warning-popup/warning-popup.component';
 import { TimerComponent } from './components/timer/timer.component';
 import { ConfettiComponent } from './components/confetti/confetti.component';
-import { SuperHandComponent } from './components/super-hand/super-hand.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileListComponent } from './components/profile-list/profile-list.component';
@@ -46,6 +45,7 @@ import { ListItemComponent } from './components/list-item/list-item.component';
 import { OptionComponent } from './components/option/option.component';
 import { profilePictureComponent } from './components/profile-picture/profile-picture.component';
 import { HandsComponent } from './components/hands/hands.component';
+import { CongratCharacterComponent } from './components/congrat-character/congrat-character.component';
 
 
 
@@ -82,7 +82,7 @@ import { HandsComponent } from './components/hands/hands.component';
     InputTextFieldComponent,
     AddProfileComponent,
     GraphicComponent,
-    SuperHandComponent,
+    CongratCharacterComponent,
     BoxComponent,
     PositionDescriptionTabComponent,
     NavbarComponent,
