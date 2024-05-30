@@ -6,7 +6,7 @@ import { Position } from '../../../models/position.model';
 import { Key } from '../../../models/key.model';
 import { Router } from '@angular/router';
 import { StatsService } from 'src/services/stats.service';
-import { HandStyle } from 'src/models/style-input.model';
+import { HandsStyle } from 'src/models/style-input.model';
 
 @Component({
   selector: 'app-game',
@@ -22,7 +22,7 @@ export class GameComponent {
     gameMode: GameMode.ALL_AT_ONCE,
   };
 
-  public handStyle: HandStyle = { width: '25vh', height: '25vh' };
+  public handsStyle: HandsStyle = { width: '30vh', height: '30vh' };
 
   public currentPositionNumber: number = 1;
   public numberOfPositions: number = 0;
@@ -71,7 +71,7 @@ export class GameComponent {
   }
 
   public nextPosition(): void {
-    if (this.showPopup) { 
+    if (this.showPopup) {
       return;
     }
 
@@ -125,7 +125,7 @@ export class GameComponent {
   public togglePopup(exit: boolean): void {
     this.showPopup = !exit;
     if (exit) {
-  
+
       this.positionService.positionStart();
     }
     else {

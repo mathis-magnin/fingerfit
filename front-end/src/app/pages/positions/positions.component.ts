@@ -6,16 +6,16 @@ import { ButtonStyle, KeyboardStyle, ListStyle } from 'src/models/style-input.mo
 import { PositionsService } from 'src/services/positions.service';
 
 @Component({
-    selector: 'app-position-creation',
-    templateUrl: './position-creation.component.html',
-    styleUrls: ['./position-creation.component.scss']
+    selector: 'app-positions',
+    templateUrl: './positions.component.html',
+    styleUrls: ['./positions.component.scss']
 })
-export class PositionCreationComponent {
+export class PositionsComponent {
 
     /* Styles and components variables */
-    public currentPageIndex: number = 0;
-    public navItems: NavbarItem[] = [{ name: 'Gestion des positions de main', url: '/position-creation' }];
-    public exitButtonLink: string = '/profiles';
+    public currentPageIndex: number = 2;
+    public navItems: NavbarItem[] = [{ name: 'Profils', url: '/profiles' }, { name: 'Quiz', url: '/quizzes' }, { name: 'Positions', url: '/positions' }];
+    public exitButtonLink: string = '/home';
 
     public positionList: Position[] = [];
     public positionListStyle: ListStyle = { height: "70vh" };
@@ -25,9 +25,9 @@ export class PositionCreationComponent {
     public keyboardStyle: KeyboardStyle = new KeyboardStyle(1.75);
     public allKeysInPurple: Key[] = [];
 
-    public validateButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh' });
-    public deleteButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh', backgroundColor: "red" });
-    public cancelButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh', backgroundColor: "grey" });
+    public validateButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
+    public deleteButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', backgroundColor: "red" });
+    public cancelButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', backgroundColor: "grey" });
     public createButtonStyle: ButtonStyle = new ButtonStyle({ width: '7.5vw', height: '5vh' });
 
     public buttonText: string = 'Créer';
@@ -83,16 +83,11 @@ export class PositionCreationComponent {
 
 
     public modification(position: Position) {
-        if (position) {
-            this.buttonText = 'Modifier';
-            this.manage = true;
-            this.position.keys = position.keys;
-            this.position.side = position.side;
-            this.position.id = position.id;
-        }
-        else {
-            /* Ce n'est pas censé arriver. */
-        }
+        this.buttonText = 'Modifier';
+        this.manage = true;
+        this.position.keys = position.keys;
+        this.position.side = position.side;
+        this.position.id = position.id;
     }
 
 

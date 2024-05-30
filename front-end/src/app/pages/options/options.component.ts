@@ -33,7 +33,7 @@ export class OptionsComponent {
   public search: string = '';
 
   public boxStyle: BoxStyle = new BoxStyle({});
-  public playButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh' });
+  public playButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
 
   constructor(private router: Router, public optionsService: OptionsService, public quizzesService: QuizzesService) {
     this.optionsService.options$.subscribe((options) => {

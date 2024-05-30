@@ -10,11 +10,11 @@ import { GameComponent } from './pages/game/game.component';
 import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
-import { PositionCreationComponent } from './pages/position-creation/position-creation.component';
+import { PositionsComponent } from './pages/positions/positions.component';
 import { ProfilesComponent } from './pages/profiles/profiles.component';
+import { QuizzesComponent } from './pages/quizzes/quizzes.component';
 
 
-import { HandComponent } from './components/hand/hand.component';
 import { KeyComponent } from './components/key/key.component'
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import { ButtonComponent } from './components/button/button.component';
@@ -45,6 +45,9 @@ import { ListComponent } from './components/list/list.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { OptionComponent } from './components/option/option.component';
 import { profilePictureComponent } from './components/profile-picture/profile-picture.component';
+import { HandsComponent } from './components/hands/hands.component';
+
+
 
 @NgModule({
   declarations: [
@@ -54,12 +57,13 @@ import { profilePictureComponent } from './components/profile-picture/profile-pi
     CongratsComponent,
     ProfilesComponent,
     StatisticsComponent,
-    PositionCreationComponent,
+    PositionsComponent,
+    QuizzesComponent,
     ProfileOptionsComponent,
 
     AppComponent,
     ProgressBarComponent,
-    HandComponent,
+    HandsComponent,
     KeyComponent,
     KeyboardComponent,
     ButtonComponent,
