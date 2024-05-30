@@ -1,0 +1,62 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 50vw;
+    height: 90vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+
+.manage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50vw;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
+
+
+hr {
+    width: 100%;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid gray;
+}
+
+
+app-position-description-tab {
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
+
+
+.buttons {
+    position: sticky;
+    bottom: 1vh;
+    display: flex;
+    align-items: center;
+    align-self: center;
+
+    .cancel {
+        margin-right: 5vw;
+    }
+
+    .validate {
+        margin-left: 5vw;
+    }
+}

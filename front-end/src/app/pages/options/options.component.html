@@ -4,10 +4,7 @@
 </header>
 
 <main [ngClass]="{disable:showPopup}">
-    <h1>Paramétrage de la partie</h1>
-
     <div class="option">
-        <hr />
 
         <app-list [items]="quizList" [text]="'Sélectionner un quiz'" (selectedItems)="selectQuiz($event[0])"
             (searchValue)="searchQuizzes($event)" (selectedFilter)="filterQuizzes($event)" />

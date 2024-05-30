@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 //NOT SECURED ! WILL BE CHANGED WHEN BACKEND WILL BE IMPLEMENTED
 export class LoginService {
 
-    public password$: BehaviorSubject<string> = new BehaviorSubject("demoPS6");
+    public password$: BehaviorSubject<string> = new BehaviorSubject("admin");
 
-    constructor() {}
+    constructor() { }
 }
