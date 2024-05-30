@@ -32,8 +32,10 @@ export class PositionsComponent {
 
     public buttonText: string = 'Créer';
 
-    public isWarningVisible: boolean = false;
+    public emptyPositionWarning: boolean = false;
+    public validPositionWarning: boolean = false;
     public currentError: string = "";
+    public popupVisible: boolean = false;
 
 
     /* Position creation variables */
@@ -75,6 +77,10 @@ export class PositionsComponent {
 
     /* Position creation or modification */
 
+    public showPopup(): void {
+        this.popupVisible = !this.popupVisible;
+    }
+
     public creation() {
         this.buttonText = 'Créer';
         this.manage = true;
@@ -99,6 +105,8 @@ export class PositionsComponent {
 
     public updateKeys(keys: Key[]) {
         console.log(keys);
+        this.validPositionWarning = true;
+        this.currentError = "N\'oubliez pas de tester la position avant de la valider.";
         this.positionModified.keys = keys;
         this.positionModified.id = this.position.id;
     }
@@ -106,12 +114,17 @@ export class PositionsComponent {
 
     public cancel() {
         this.manage = false;
+        this.emptyPositionWarning = false;
+        this.validPositionWarning = false;
         this.positionModified = { keys: [], side: Side.LEFT, id: 0 };
     }
 
     public deletePosition() {
         this.positionsService.deletePosition(this.position);
+        this.showPopup();
         this.manage = false;
+        this.emptyPositionWarning = false;
+        this.validPositionWarning = false;
         this.positionModified = { keys: [], side: Side.LEFT, id: 0 };
     }
 
@@ -124,11 +137,13 @@ export class PositionsComponent {
                 this.positionsService.updatePosition(this.positionModified);
             }
             this.manage = false;
+            this.emptyPositionWarning = false;
+            this.validPositionWarning = false;
             this.positionModified = { keys: [], side: Side.LEFT, id: 0 };
         }          
         else {
             this.currentError = "La position doit faire travailler au moins un doigt.";
-            this.isWarningVisible = true;
+            this.emptyPositionWarning = true;
         }
     }
 

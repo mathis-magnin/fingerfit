@@ -26,6 +26,7 @@ export class InfoProfileComponent {
   public warningVisible: boolean = false;
   public closePictures: boolean = false;
   public addButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', margin: "1vw" });
+  public cancelButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', margin: "1vw", backgroundColor: "grey" });
 
   public constructor(public playerService: PlayerService, public changeDetector: ChangeDetectorRef) {
     playerService.player$.subscribe((player) => {
