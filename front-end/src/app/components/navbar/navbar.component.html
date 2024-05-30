@@ -1,10 +1,11 @@
-<nav class="navigation_bar">
-    <div class="logo">
-        <img src="./assets/main-logo.ico" alt="logo" />
-    </div>
+<div class="space-taken"></div>
+<nav class="navigation-bar">
+
+    <img class="logo" src="./assets/main-logo.ico" alt="logo" />
 
     <ul class="navigation">
         <ng-container *ngFor="let item of navItems,let i=index">
+            <div class="separator"></div>
             <li *ngIf="i==currentPageIndex" [routerLink]="item.url" [style.background-color]="'rgba(78, 78, 78, 0.5)'" [style.width]="100/navItems.length+'%'">
                 {{item.name}}
             </li>
@@ -12,9 +13,9 @@
                 {{item.name}}
             </li>
         </ng-container>
+        <div class="separator"></div>
     </ul>
 
-    <div class="exit_button">
-        <app-exit-button [routerLink]="exitButtonLink"/>
-    </div>
+
+    <app-exit-button class="exit-button" [routerLink]="exitButtonLink"/>
 </nav>
