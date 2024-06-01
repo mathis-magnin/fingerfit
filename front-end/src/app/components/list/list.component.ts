@@ -12,6 +12,7 @@ export class ListComponent {
 
     public firstInitialization: boolean = true;
     public ones: any[] = [];
+    public selectedOnes: any[] = [];
     public filters: string[] = [];
 
 
@@ -23,7 +24,15 @@ export class ListComponent {
         }
         this.ones = items;
     }
-    @Input() public selectedOnes: any[] = [];
+    @Input() set alreadySelectedItems(items: any[]) {
+        /* Avoiding giving items that are not in the list */
+        this.selectedOnes = [];
+        for (let item of this.ones) {
+            if (items.find((e) => (e.id === item.id))) {
+                this.selectedOnes.push(item);
+            }
+        }
+    }
     @Input() public multipleChoice: boolean = false;
     @Input() public text: string = "Sélectionner un élément";
 

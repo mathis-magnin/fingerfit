@@ -28,8 +28,8 @@
         <app-position-description-tab [keys]="position.keys"
             (keysDescribed)="updateKeys($event)"></app-position-description-tab>
 
-        <app-warning-popup *ngIf="validPositionWarning" class="explainations" [text]="currentError"/>
-<!--
+        <app-warning-popup *ngIf="validPositionWarning" class="explainations" [text]="currentError" />
+        <!--
         <p class="explainations">
             Appuyez en même temps sur l'ensemble des touches concernées par la position pour
             vérifier qu'elles son détectées simultanément par votre clavier.
@@ -45,8 +45,7 @@
         <div class="buttons" *ngIf="manage">
             <app-button *ngIf="buttonText === 'Modifier'" [buttonStyle]="deleteButtonStyle" [text]="'Supprimer'"
                 (buttonClicked)="showPopup()" />
-            <app-button [buttonStyle]="cancelButtonStyle" [text]="'Annuler'"
-                (buttonClicked)="cancel()" />
+            <app-button [buttonStyle]="cancelButtonStyle" [text]="'Annuler'" (buttonClicked)="cancel()" />
             <div class="validate">
                 <app-warning-popup *ngIf="emptyPositionWarning" [text]="currentError" />
                 <app-button [buttonStyle]="validateButtonStyle" [text]="buttonText"
@@ -55,7 +54,7 @@
         </div>
 
         <app-popup *ngIf="popupVisible" class="confirm-popup" (exit)="showPopup()">
-            <p>Êtes-vous sûr de vouloir supprimer ce profil ?</p>
+            <p>Êtes-vous sûr de vouloir supprimer cette position ?</p>
             <div>
                 <app-button [text]="'Annuler'" (buttonClicked)="showPopup()"
                     [buttonStyle]="cancelButtonStyle"></app-button>

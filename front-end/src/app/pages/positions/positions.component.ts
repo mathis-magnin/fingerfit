@@ -106,7 +106,7 @@ export class PositionsComponent {
     public updateKeys(keys: Key[]) {
         console.log(keys);
         this.validPositionWarning = true;
-        this.currentError = "N\'oubliez pas de tester la position avant de la valider.";
+        this.currentError = "N\'oubliez pas de tester la position avant de la valider";
         this.positionModified.keys = keys;
         this.positionModified.id = this.position.id;
     }
@@ -130,7 +130,7 @@ export class PositionsComponent {
 
     public validateChanges() {
         if (this.positionModified.keys.length != 0) {
-            if(this.buttonText == 'Créer') {
+            if (this.buttonText == 'Créer') {
                 this.positionsService.addPosition(this.positionModified);
             }
             else {
@@ -140,9 +140,9 @@ export class PositionsComponent {
             this.emptyPositionWarning = false;
             this.validPositionWarning = false;
             this.positionModified = { keys: [], side: Side.LEFT, id: 0 };
-        }          
+        }
         else {
-            this.currentError = "La position doit faire travailler au moins un doigt.";
+            this.currentError = "La position doit faire travailler au moins un doigt";
             this.emptyPositionWarning = true;
         }
     }
