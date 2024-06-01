@@ -4,6 +4,7 @@ import { Position, Side } from 'src/models/position.model';
 import { symbolToString } from 'src/models/key.model';
 import { HttpClient } from '@angular/common/http';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
+import { QuizzesService } from './quizzes.service';
 
 
 @Injectable({
@@ -16,9 +17,11 @@ export class PositionsService {
     private positionUrl = serverUrl + '/positions';
     private httpOptions = httpOptionsBase;
 
-    constructor(private http: HttpClient) {
+
+    constructor(private http: HttpClient, private quizzesService: QuizzesService) {
         this.fetchPositions();
     }
+
 
     public fetchPositions(): void {
         this.http.get<Position[]>(this.positionUrl).subscribe((positionList) => {
@@ -26,6 +29,7 @@ export class PositionsService {
             this.positions$.next(this.positions);
         });
     }
+
 
     public filterPositions(side: Side, searchValue: string): void {
         let filteredPositions: Position[] = [];
@@ -56,9 +60,11 @@ export class PositionsService {
         this.positions$.next(filteredPositions);
     }
 
-    public resetQuizzes(): void {
+
+    public resetPositions(): void {
         this.positions$.next(this.positions);
     }
+
 
     public addPosition(position: Position): void {
         this.http.post<Position>(this.positionUrl, position, this.httpOptions).subscribe(() => {
@@ -66,15 +72,19 @@ export class PositionsService {
         });
     }
 
+
     public updatePosition(position: Position): void {
         this.http.put<Position>(this.positionUrl + '/' + position.id, position).subscribe(() => {
             this.fetchPositions();
+            this.quizzesService.fetchQuizzes();
         });
     }
+
 
     public deletePosition(position: Position): void {
         this.http.delete<Position>(this.positionUrl + '/' + position.id).subscribe(() => {
             this.fetchPositions();
+            this.quizzesService.removePositionFromQuizzes(position);
         })
     }
 

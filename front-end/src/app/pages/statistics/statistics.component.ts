@@ -28,7 +28,7 @@ export class StatisticsComponent {
 
 
   ngOnInit(): void {
-    this.positionsService.resetQuizzes();
+    this.positionsService.resetPositions();
   }
 
 

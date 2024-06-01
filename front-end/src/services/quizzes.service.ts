@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Side } from '../models/position.model';
+import { Position, Side } from '../models/position.model';
 import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { HttpClient } from '@angular/common/http';
@@ -61,6 +61,33 @@ export class QuizzesService {
         this.http.delete<QuizBack>(this.QuizUrl + '/' + quiz.id).subscribe(() => {
             this.fetchQuizzes();
         })
+    }
+
+
+    public removePositionFromQuizzes(position: Position) {
+        /* Find quizzes to update */
+        let quizzesToUpdate: Quiz[] = [];
+        for (let quiz of this.quizzes) {
+            if (quiz.positions.find((p) => (p.id === position.id))) {
+                quizzesToUpdate.push(quiz);
+            }
+        }
+
+        /* Update quizzes */
+        for (let quiz of quizzesToUpdate) {
+            for (let i = 0; i < quiz.positions.length; i++) {
+                if (quiz.positions[i].id === position.id) {
+                    quiz.positions.splice(i, 1);
+                    break;
+                }
+            }
+            if (0 < quiz.positions.length) {
+                this.updateQuiz(quiz);
+            }
+            else {
+                this.deleteQuiz(quiz);
+            }
+        }
     }
 
 
