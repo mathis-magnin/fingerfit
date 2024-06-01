@@ -1,0 +1,75 @@
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { serverUrl, httpOptionsBase } from 'src/configs/server.config';
+import { HttpClient } from '@angular/common/http';
+import { Statistic } from 'src/models/statistic.model';
+import { Answer } from 'src/models/answer.model';
+import { PlayerService } from './player.service';
+import { Profile } from 'src/models/profile.model';
+
+@Injectable({
+    providedIn: 'root'
+})
+
+export class StatisticService {
+
+    public statistic$: BehaviorSubject<Statistic | undefined> = new BehaviorSubject<Statistic | undefined>(undefined);
+    private player?: Profile;
+    public statisticUrl = serverUrl;
+    private httpOptions = httpOptionsBase;
+
+    constructor(private http: HttpClient, private playerService: PlayerService) { 
+        this.playerService.player$.subscribe((player) => {
+            this.player = player;
+        });
+    }
+
+    public fetchStat(positionId: number): void {
+        console.log("FETCHING STATISTIC");
+        console.log(this.player?.id);
+        this.http.get<Statistic[]>(this.statisticUrl + '/?positionId=' + positionId + '&userId=' + this.player?.id).subscribe((statistics) => {
+            this.statistic$.next(statistics[0]);
+            console.log("J'AI BIEN RECUPERE LA STATISTIQUE")
+            console.log(statistics[0]);
+        });
+    }
+
+    public updateUrl(): void {
+        this.statisticUrl = serverUrl + '/users/' + this.player?.id + '/statistics';
+    }
+
+    public updateStat(answer: Answer): void {
+        const statistic = this.statistic$.value;
+        if (statistic && statistic.id !== undefined) {
+            console.log(statistic);
+            let newStat: Statistic = {
+                averageTime: (statistic.averageTime * statistic.nbData + answer.time) / (statistic.nbData + 1),
+                accuracy: (statistic.nbData * statistic.accuracy + (answer.correct ? 1 : 0)) / (statistic.nbData + 1),
+                nbData: statistic.nbData + 1,
+                positionId: statistic.positionId,
+                userId: statistic.userId,
+                id : statistic.id,
+            }
+            this.http.put<Statistic>(this.statisticUrl + '/' + statistic.id, newStat, this.httpOptions).subscribe(() => {
+                this.fetchStat(statistic.positionId);
+            });
+        } else {
+            if (statistic === undefined) {
+                console.log("statistic is undefined");
+            } else {
+                console.log("WTFFF ????");
+            }
+            let newStat: Statistic = {
+                averageTime: answer.time,
+                accuracy: answer.correct ? 1 : 0,
+                nbData: 1,
+                positionId: 999,
+                userId: this.player ? this.player.id : 0,
+                id : 0,
+            }
+            this.http.post<Statistic>(this.statisticUrl, newStat, this.httpOptions).subscribe(() => {
+                this.fetchStat(999);
+            });
+        }
+    }
+}

@@ -5,8 +5,9 @@ import { PositionService } from '../../../services/position.service';
 import { Position } from '../../../models/position.model';
 import { Key } from '../../../models/key.model';
 import { Router } from '@angular/router';
-import { StatsService } from 'src/services/stats.service';
+import { AnswersService } from 'src/services/answers.service';
 import { HandStyle } from 'src/models/style-input.model';
+import { StatisticService } from 'src/services/statistic.service';
 
 @Component({
   selector: 'app-game',
@@ -33,7 +34,7 @@ export class GameComponent {
   public isCorrect: boolean = false;
   public stop: boolean = false;
 
-  constructor(public optionsService: OptionsService, public positionService: PositionService, public statsService: StatsService, private router: Router) {
+  constructor(public optionsService: OptionsService, public positionService: PositionService, public answersService: AnswersService, private router: Router, private statisticService: StatisticService) {
     this.optionsService.options$.subscribe((options) => {
       this.options = options;
     });
@@ -67,7 +68,8 @@ export class GameComponent {
   }
 
   ngOnInit(): void {
-    this.statsService.clearAnswers();
+    this.answersService.clearAnswers();
+    this.statisticService.fetchStat(999);
   }
 
   public nextPosition(): void {
@@ -82,7 +84,10 @@ export class GameComponent {
       console.log('keysShown: ', this.keysShown);
     }
     else {
-      this.statsService.addAnswer({ time: this.positionService.TimerService.count, correct: this.isCorrect });
+      this.answersService.addAnswer({ time: this.positionService.TimerService.count, correct: this.isCorrect });
+      console.log(this.statisticService.statisticUrl);
+      //this.statisticService.getStat(this.position.id).updateStat({ time: this.positionService.TimerService.count, correct: this.isCorrect});
+      this.statisticService.updateStat({ time: this.positionService.TimerService.count, correct: this.isCorrect});
       if (!this.positionService.nextPosition()) {
         this.endGame();
       }
