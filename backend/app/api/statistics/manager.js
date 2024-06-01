@@ -1,2 +1,0 @@
-const {Statistics} = require('../../models')
-
