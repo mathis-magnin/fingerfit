@@ -22,7 +22,7 @@
                     [buttonStyle]="addButtonStyle"></app-button>
             </div>
         </app-popup>
-        <app-exit-button *ngIf="editMode" (click)="exitEditMode()"></app-exit-button>
+        <app-exit-button *ngIf="editMode" (click)="exitEditMode()" />
     </div>
     <app-warning-popup *ngIf="warningVisible" [text]="errorMsg" />
 </section>

@@ -42,8 +42,8 @@ export class QuizzesComponent {
     public positionListResearch: string = '';
     public positionListSide: Side = Side.UNDEFINED;
 
-    public quiz: Quiz = { name: "", positions: [], side: Side.BOTH };
-    public quizModified: Quiz = { name: "", positions: [], side: Side.BOTH };
+    public quiz: Quiz = { id: 0, name: "", positions: [], side: Side.BOTH };
+    public quizModified: Quiz = { id: 0, name: "", positions: [], side: Side.BOTH };
 
 
     /* Constructor */
@@ -89,14 +89,14 @@ export class QuizzesComponent {
         this.popUp = false;
         this.warning = "";
 
-        this.quiz = { name: "", positions: [], side: Side.BOTH };
-        this.quizModified = { name: "", positions: [], side: Side.BOTH };
+        this.quiz = { id: 0, name: "", positions: [], side: Side.BOTH };
+        this.quizModified = { id: 0, name: "", positions: [], side: Side.BOTH };
     }
 
 
     public creation(): void {
         this.manage = true;
-        this.quiz = { name: "", positions: [], side: Side.BOTH };
+        this.quiz = { id: 0, name: "", positions: [], side: Side.BOTH };
     }
 
 
@@ -104,6 +104,7 @@ export class QuizzesComponent {
         if (quiz) {
             this.manage = true;
             this.modify = true;
+            this.quiz.id = quiz.id;
             this.quiz.name = quiz.name;
             this.quiz.positions = quiz.positions;
             this.quiz.side = quiz.side
@@ -145,16 +146,20 @@ export class QuizzesComponent {
 
 
     public delete(): void {
+        this.quizzesServices.deleteQuiz(this.quiz);
         this.reset();
     }
 
 
     public validate(): void {
-        console.log(this.quizModified);
         this.warning = (this.quizModified.name == "") ? ((this.quizModified.positions.length <= 0) ? "Veuillez remplir les champs" : "Veuillez nommer le quiz") : ((this.quizModified.positions.length <= 0) ? "Veuillez sélectionner au moins une position" : "");
-        console.log(this.warning);
         if (this.warning == "") {
-            /* Appeller le service pour enregistrer positionModified */
+            if (this.modify) {
+                this.quizzesServices.updateQuiz(this.quizModified);
+            }
+            else {
+                this.quizzesServices.createQuiz(this.quizModified)
+            }
             this.reset();
         }
     }

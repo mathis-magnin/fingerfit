@@ -23,7 +23,7 @@
         <hr />
 
         <app-list [items]="positionList" [multipleChoice]="true" [text]="'Sélectionner des positions'"
-            [selectedOnes]="quiz.positions" (selectedItems)="updatePositions($event)"
+            [alreadySelectedItems]="quiz.positions" (selectedItems)="updatePositions($event)"
             (searchValue)="searchPositions($event)" (selectedFilter)="filterPositions($event)" />
 
         <hr />
@@ -34,12 +34,13 @@
             <app-button [buttonStyle]="cancelButtonStyle" [text]="'Annuler'" (buttonClicked)="reset()" />
             <div class="validate">
                 <app-warning-popup *ngIf="warning != ''" [text]="warning" />
-                <app-button [buttonStyle]="validateButtonStyle" [text]="'Valider'" (buttonClicked)="validate()" />
+                <app-button [buttonStyle]="validateButtonStyle" [text]="(modify) ? 'Modifier' : 'Créer'"
+                    (buttonClicked)="validate()" />
             </div>
         </div>
 
         <app-popup *ngIf="popUp" class="confirm-popup" (exit)="hidePopUp()">
-            <p>Êtes-vous sûr de vouloir supprimer ce profil ?</p>
+            <p>Êtes-vous sûr de vouloir supprimer ce quiz ?</p>
             <div>
                 <app-button [text]="'Annuler'" (buttonClicked)="hidePopUp()"
                     [buttonStyle]="cancelButtonStyle"></app-button>

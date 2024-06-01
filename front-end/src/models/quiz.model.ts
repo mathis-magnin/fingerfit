@@ -54,6 +54,7 @@ export interface IsSymbolPressed {
 
 
 export interface Quiz {
+    id: number;
     name: string;
     positions: Position[];
     side: Side;
