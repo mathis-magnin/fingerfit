@@ -18,15 +18,15 @@
         <hr />
 
         <app-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
-            <app-checkbox />
+            <app-checkbox [checked]="this.chronometer"/>
         </app-option>
 
         <hr />
 
         <app-option [caption]="'Définir un temps par position de main'">
-            <app-checkbox (change)="switchTimer($event)" />
+            <app-checkbox (change)="switchTimer($event)" [checked]="this.timePerQuestion!=0" />
             <input type="number" placeholder="{{options?.timePerQuestion}}sec" min="1" #numberInput
-                (change)="setTime(numberInput.value)" />
+                (change)="setTime(numberInput.value)" [value]="timePerQuestion"/>
         </app-option>
 
         <hr />

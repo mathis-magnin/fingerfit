@@ -7,6 +7,7 @@ import { NavbarItem } from 'src/models/navbar.model';
 import { Side, stringToSide } from 'src/models/position.model';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizzesService } from 'src/services/quizzes.service';
+import { PlayerService } from 'src/services/player.service';
 
 @Component({
   selector: 'app-options',
@@ -35,7 +36,10 @@ export class OptionsComponent {
   public boxStyle: BoxStyle = new BoxStyle({});
   public playButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
 
-  constructor(private router: Router, public optionsService: OptionsService, public quizzesService: QuizzesService) {
+  public chronometer: boolean = false;
+  public timePerQuestion: number = 20;
+
+  constructor(private router: Router, public optionsService: OptionsService, public quizzesService: QuizzesService,public playerService: PlayerService) {
     this.optionsService.options$.subscribe((options) => {
       this.options = options;
     });
@@ -43,6 +47,13 @@ export class OptionsComponent {
     this.quizzesService.quizzes$.subscribe((quizList) => {
       this.quizList = quizList;
     })
+
+    this.playerService.player$.subscribe((player) => {
+      if (player) {
+        this.chronometer = player.chronometer;
+        this.timePerQuestion = player.timePerQuestion;
+      }
+    });
 
     for (let gameMode = GameMode.ALL_AT_ONCE; gameMode <= GameMode.ONE_BY_ONE; gameMode++) {
       this.gameModes.push(gameModeToString(gameMode));
@@ -53,6 +64,9 @@ export class OptionsComponent {
   ngOnInit(): void {
     this.optionsService.clearOptions();
     this.quizzesService.resetQuizzes();
+    this.setTime(this.timePerQuestion.toString());
+    this.switchChronometer({ target: { checked: this.chronometer } });
+    this.switchTimer({ target: { checked: this.timePerQuestion!=0 } });
   }
 
 

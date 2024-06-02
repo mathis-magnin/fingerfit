@@ -14,10 +14,14 @@ h1 {
 }
 
 
-app-single-option input[type="number"] {
+app-option input[type="number"] {
     margin-left: 1vw;
     width: 3vw;
     height: 5vh;
+}
+
+app-option:last-child{
+    margin-bottom: 10vh;
 }
 
 
@@ -61,4 +65,12 @@ app-single-option input[type="number"] {
 
 .confirm-popup div app-button {
     margin: 0 1vw;
+}
+
+.preset{
+    display: grid
+}
+
+.preset app-option{
+    padding: 2vh;
 }

@@ -3,5 +3,7 @@ export interface Profile {
     firstName: string;
     age: number;
     profilePicture: string;
+    chronometer: boolean;
+    timePerQuestion: number;
     id: number;
 }
