@@ -30,12 +30,8 @@ export class PositionsComponent {
     public cancelButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', backgroundColor: "grey" });
     public createButtonStyle: ButtonStyle = new ButtonStyle({ width: '7.5vw', height: '5vh' });
 
-    public buttonText: string = 'Créer';
-
-    public emptyPositionWarning: boolean = false;
-    public validPositionWarning: boolean = false;
-    public currentError: string = "";
-    public popupVisible: boolean = false;
+    public warning: string = "";
+    public popUp: boolean = false;
 
 
     /* Position creation variables */
@@ -44,6 +40,7 @@ export class PositionsComponent {
     sideToString = sideToString;
 
     public manage: boolean = false;
+    public update: boolean = false;
 
     public position: Position = { keys: [], side: Side.LEFT, id: 0 };
     public positionModified: Position = { keys: [], side: Side.LEFT, id: 0 };
@@ -77,73 +74,67 @@ export class PositionsComponent {
 
     /* Position creation or modification */
 
-    public showPopup(): void {
-        this.popupVisible = !this.popupVisible;
+    public reset(): void {
+        this.manage = false;
+        this.update = false;
+        this.popUp = false;
+        this.warning = "";
+
+        this.position = { keys: [], side: Side.LEFT, id: 0 };
+        this.positionModified = { keys: [], side: Side.LEFT, id: 0 };
+        this.positionsService.resetPositions();
     }
 
+
     public creation() {
-        this.buttonText = 'Créer';
         this.manage = true;
         this.position = { keys: [], side: Side.LEFT, id: 0 };
     }
 
 
     public modification(position: Position) {
-        this.buttonText = 'Modifier';
-        this.manage = true;
-        this.position.keys = position.keys;
-        this.position.side = position.side;
-        this.position.id = position.id;
+        if (position) {
+            this.manage = true;
+            this.update = true;
+            this.position.keys = position.keys;
+            this.position.side = position.side;
+            this.position.id = position.id;
+            this.positionModified = this.position;
+        }
     }
 
 
     public updateSide(side: string) {
         this.positionModified.side = (stringToSide(side) == Side.LEFT) ? Side.LEFT : Side.RIGHT;
-        this.positionModified.id = this.position.id;
     }
 
 
     public updateKeys(keys: Key[]) {
-        console.log(keys);
-        this.validPositionWarning = true;
-        this.currentError = "N\'oubliez pas de tester la position avant de la valider";
         this.positionModified.keys = keys;
-        this.positionModified.id = this.position.id;
     }
 
 
-    public cancel() {
-        this.manage = false;
-        this.emptyPositionWarning = false;
-        this.validPositionWarning = false;
-        this.positionModified = { keys: [], side: Side.LEFT, id: 0 };
+    public showPopup(): void {
+        this.popUp = !this.popUp;
     }
+
 
     public deletePosition() {
         this.positionsService.deletePosition(this.position);
-        this.showPopup();
-        this.manage = false;
-        this.emptyPositionWarning = false;
-        this.validPositionWarning = false;
-        this.positionModified = { keys: [], side: Side.LEFT, id: 0 };
+        this.reset();
     }
 
+
     public validateChanges() {
-        if (this.positionModified.keys.length != 0) {
-            if (this.buttonText == 'Créer') {
-                this.positionsService.addPosition(this.positionModified);
-            }
-            else {
+        this.warning = (this.positionModified.keys.length == 0) ? "La position doit faire travailler au moins un doigt" : "";
+        if (this.warning == "") {
+            if (this.update) {
                 this.positionsService.updatePosition(this.positionModified);
             }
-            this.manage = false;
-            this.emptyPositionWarning = false;
-            this.validPositionWarning = false;
-            this.positionModified = { keys: [], side: Side.LEFT, id: 0 };
-        }
-        else {
-            this.currentError = "La position doit faire travailler au moins un doigt";
-            this.emptyPositionWarning = true;
+            else {
+                this.positionsService.addPosition(this.positionModified);
+            }
+            this.reset();
         }
     }
 

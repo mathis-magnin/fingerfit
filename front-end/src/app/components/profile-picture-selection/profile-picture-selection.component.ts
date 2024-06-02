@@ -30,8 +30,11 @@ export class ProfilePictureSelectionComponent implements OnInit {
     }
 
     ngOnInit(): void { 
-        if(!this.imgURL)
+        if(!this.imgURL){
             this.randomProfilePicture = this.selectRandomProfilePicture();
+            this.imgURL = this.randomProfilePicture;
+            this.profilePicture.emit(this.imgURL);
+        }
     }
     
     ngOnChanges(): void {

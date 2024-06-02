@@ -13,18 +13,21 @@
     <h1>Préconfiguration des parties</h1>
     <div class="preset">
         <app-option [caption]="'Afficher le chronomètre'">
-            <app-checkbox />
+            <app-checkbox (change)="switchChronometer($event)" [checked]="chronometer" />
         </app-option>
 
+        <hr />
+
         <app-option [caption]="'Définir un temps par position de main'">
-            <app-checkbox />
-            <input type="number" placeholder="sec" min="1" #numberInput />
+            <app-checkbox (change)="switchTimer($event)" [checked]="timeWaitingValue!=0" />
+            <input type="number" placeholder="{{this.timeWaitingValue}}sec" min="1" #numberInput
+                [value]="this.timeWaitingValue" (change)="setTime(numberInput.value)" />
         </app-option>
     </div>
 
     <app-popup *ngIf="popupVisible" class="confirm-popup" (exit)="showPopup()">
         <p>Êtes-vous sûr de vouloir supprimer ce profil ?</p>
-        <div>
+        <div class="preset">
             <app-button [text]="'Annuler'" (buttonClicked)="showPopup()" [buttonStyle]="buttonCancelStyle"></app-button>
             <app-button [text]="'Supprimer'" (buttonClicked)="deleteUser()"
                 [buttonStyle]="buttonAcceptStyle"></app-button>
