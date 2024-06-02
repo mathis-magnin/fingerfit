@@ -29,12 +29,12 @@
         <hr />
 
         <div class="buttons">
-            <app-button *ngIf="modify" [buttonStyle]="deleteButtonStyle" [text]="'Supprimer'"
+            <app-button *ngIf="update" [buttonStyle]="deleteButtonStyle" [text]="'Supprimer'"
                 (buttonClicked)="showPopUp()" />
             <app-button [buttonStyle]="cancelButtonStyle" [text]="'Annuler'" (buttonClicked)="reset()" />
             <div class="validate">
                 <app-warning-popup *ngIf="warning != ''" [text]="warning" />
-                <app-button [buttonStyle]="validateButtonStyle" [text]="(modify) ? 'Modifier' : 'Créer'"
+                <app-button [buttonStyle]="validateButtonStyle" [text]="(update) ? 'Modifier' : 'Créer'"
                     (buttonClicked)="validate()" />
             </div>
         </div>

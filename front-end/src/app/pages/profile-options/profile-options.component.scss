@@ -1,7 +1,6 @@
-
-.profile{
+.profile {
     display: flex;
-    align-items:top;
+    align-items: top;
     justify-content: center;
     margin-top: 5vh;
 }
@@ -20,7 +19,7 @@ app-option input[type="number"] {
     height: 5vh;
 }
 
-app-option:last-child{
+app-option:last-child {
     margin-bottom: 10vh;
 }
 
@@ -67,10 +66,21 @@ app-option:last-child{
     margin: 0 1vw;
 }
 
-.preset{
+.preset {
     display: grid
 }
 
-.preset app-option{
+.preset app-option {
     padding: 2vh;
+}
+
+
+hr {
+    width: 100%;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid gray;
 }

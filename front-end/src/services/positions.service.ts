@@ -76,7 +76,7 @@ export class PositionsService {
     public updatePosition(position: Position): void {
         this.http.put<Position>(this.positionUrl + '/' + position.id, position).subscribe(() => {
             this.fetchPositions();
-            this.quizzesService.fetchQuizzes();
+            this.quizzesService.updatePositionFromQuizzes(position);
         });
     }
 

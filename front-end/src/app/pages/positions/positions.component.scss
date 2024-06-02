@@ -44,14 +44,23 @@ app-position-description-tab {
     margin-bottom: 4vh;
 }
 
+
 .explainations {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 4vh;
     margin-bottom: 4vh;
     width: 50vw;
+}
+
+
+app-keyboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4vh;
 }
 
 
