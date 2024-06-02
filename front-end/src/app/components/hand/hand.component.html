@@ -1,6 +1,0 @@
-<div class="positionned" [ngStyle]="handStyle" [ngClass]="{symmetrical: side == Side.LEFT}">
-    <img src="assets/right_hand.png" class="hand" />
-    <ng-container *ngFor="let highlight of fingers; index as finger">
-        <img *ngIf="highlight" src="assets/{{Finger[finger]}}.png" class="hand" />
-    </ng-container>
-</div>

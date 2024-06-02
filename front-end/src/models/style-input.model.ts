@@ -57,7 +57,7 @@ export class ButtonStyle {
 }
 
 
-export interface HandStyle {
+export interface HandsStyle {
     width: string;
     height: string;
 }
@@ -66,6 +66,7 @@ export interface HandStyle {
 export interface KeyStyle {
     fontSize: string;
 }
+
 
 interface KeyboardStyleType {
     rowGap: string;
@@ -87,4 +88,9 @@ export class KeyboardStyle {
     public getKeyboardStyle(): KeyboardStyleType {
         return this.keyboardStyle;
     }
+}
+
+
+export interface ListStyle {
+    height: string;
 }

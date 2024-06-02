@@ -21,7 +21,8 @@ export const FIRST_POSITION_RIGHT: Position = {
             finger: Finger.RING
         }
     ],
-    side: Side.RIGHT
+    side: Side.RIGHT,
+    id: 0
 };
 
 export const SECOND_POSITION_RIGHT: Position = {
@@ -47,7 +48,8 @@ export const SECOND_POSITION_RIGHT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.RIGHT
+    side: Side.RIGHT,
+    id: 1
 };
 
 export const THIRD_POSITION_RIGHT: Position = {
@@ -73,7 +75,8 @@ export const THIRD_POSITION_RIGHT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.RIGHT
+    side: Side.RIGHT,
+    id: 2
 };
 
 export const FOURTH_POSITION_RIGHT: Position = {
@@ -99,7 +102,8 @@ export const FOURTH_POSITION_RIGHT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.RIGHT
+    side: Side.RIGHT,
+    id: 3
 };
 
 export const FIRST_POSITION_LEFT: Position = {
@@ -125,7 +129,8 @@ export const FIRST_POSITION_LEFT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.LEFT
+    side: Side.LEFT,
+    id: 4
 };
 
 export const SECOND_POSITION_LEFT: Position = {
@@ -151,7 +156,8 @@ export const SECOND_POSITION_LEFT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.LEFT
+    side: Side.LEFT,
+    id: 5
 };
 
 export const THIRD_POSITION_LEFT: Position = {
@@ -173,7 +179,8 @@ export const THIRD_POSITION_LEFT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.LEFT
+    side: Side.LEFT,
+    id: 6
 };
 
 export const FOURTH_POSITION_LEFT: Position = {
@@ -195,7 +202,8 @@ export const FOURTH_POSITION_LEFT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.LEFT
+    side: Side.LEFT,
+    id: 7
 };
 
 export const FIFTH_POSITION_LEFT: Position = {
@@ -217,43 +225,72 @@ export const FIFTH_POSITION_LEFT: Position = {
             finger: Finger.INDEX
         }
     ],
-    side: Side.LEFT
+    side: Side.LEFT,
+    id: 8
 };
+
+
+export const POSITION_LIST: Position[] = [
+    FIRST_POSITION_RIGHT,
+    SECOND_POSITION_RIGHT,
+    THIRD_POSITION_RIGHT,
+    FOURTH_POSITION_RIGHT,
+
+    FIRST_POSITION_LEFT,
+    SECOND_POSITION_LEFT,
+    THIRD_POSITION_LEFT,
+    FOURTH_POSITION_LEFT,
+    FIFTH_POSITION_LEFT,
+]
+
 
 export const QUIZ_LIST: Quiz[] = [
     {
+        id: 0,
         name: 'Quiz 1',
         positions: [FIRST_POSITION_RIGHT, SECOND_POSITION_RIGHT, THIRD_POSITION_RIGHT],
         side: Side.RIGHT
     },
     {
+        id: 1,
         name: 'Quiz 2',
         positions: [SECOND_POSITION_LEFT, FOURTH_POSITION_LEFT],
         side: Side.LEFT
     },
     {
+        id: 2,
         name: 'Quiz 3',
         positions: [FIRST_POSITION_LEFT, FOURTH_POSITION_LEFT, THIRD_POSITION_LEFT, SECOND_POSITION_LEFT],
         side: Side.LEFT
     },
     {
+        id: 3,
         name: 'Quiz 4',
         positions: [FIFTH_POSITION_LEFT, THIRD_POSITION_LEFT, SECOND_POSITION_LEFT, FIRST_POSITION_LEFT],
         side: Side.LEFT
     },
     {
+        id: 4,
         name: 'Quiz 5',
         positions: [SECOND_POSITION_RIGHT, FIRST_POSITION_RIGHT, THIRD_POSITION_RIGHT, FOURTH_POSITION_RIGHT],
         side: Side.RIGHT
     },
     {
+        id: 5,
         name: 'Quiz 6',
         positions: [FIRST_POSITION_LEFT, SECOND_POSITION_LEFT, THIRD_POSITION_LEFT, FOURTH_POSITION_LEFT, FIFTH_POSITION_LEFT],
         side: Side.LEFT
     },
     {
+        id: 6,
         name: 'Quiz 7',
         positions: [FIRST_POSITION_LEFT, SECOND_POSITION_RIGHT, THIRD_POSITION_RIGHT, FOURTH_POSITION_LEFT],
         side: Side.BOTH
     },
+    {
+        id: 7,
+        name: 'Une seule position',
+        positions: [FIRST_POSITION_RIGHT],
+        side: Side.RIGHT
+    }
 ];

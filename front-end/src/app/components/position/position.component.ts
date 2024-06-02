@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Position, Side } from 'src/models/position.model';
 import { Symbol } from 'src/models/key.model';
-import { HandStyle, KeyStyle } from 'src/models/style-input.model';
+import { HandsStyle, KeyStyle } from 'src/models/style-input.model';
 
 
 @Component({
@@ -13,10 +13,10 @@ import { HandStyle, KeyStyle } from 'src/models/style-input.model';
 export class PositionComponent {
 
     Symbol = Symbol;
-    @Input() public position: Position = { keys: [], side: Side.LEFT };
+    @Input() public position: Position = { keys: [], side: Side.LEFT, id: 0 };
 
-    public handStyle: HandStyle = { width: "10vh", height: "10vh" };
-    public keyStyle: KeyStyle = { fontSize: "1.5em" }
+    @Input() public handsStyle: HandsStyle = { width: "10vh", height: "10vh" };
+    @Input() public keyStyle: KeyStyle = { fontSize: "1.5em" }
 
     constructor() { }
 

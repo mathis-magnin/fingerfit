@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { OptionsService } from 'src/services/options.service';
-import { Options, GameMode } from 'src/models/options.model';
-import { Quiz } from 'src/models/quiz.model';
+import { Options, GameMode, gameModeToString, stringToGameMode } from 'src/models/options.model';
 import { BoxStyle, ButtonStyle } from 'src/models/style-input.model';
 import { NavbarItem } from 'src/models/navbar.model';
+import { Side, stringToSide } from 'src/models/position.model';
+import { Quiz } from 'src/models/quiz.model';
+import { QuizzesService } from 'src/services/quizzes.service';
 
 @Component({
   selector: 'app-options',
@@ -24,20 +26,45 @@ export class OptionsComponent {
   public showPopup: boolean = false;
   public timeWaitingValue: number = 20;
   public currentError: string = '';
+  public gameModes: string[] = [];
+
+  public quizList: Quiz[] = [];
+  public side: Side = Side.UNDEFINED;
+  public search: string = '';
 
   public boxStyle: BoxStyle = new BoxStyle({});
-  public selectButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
-  public playButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '10vh' });
+  public playButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
 
-  constructor(private router: Router, public optionsService: OptionsService) {
+  constructor(private router: Router, public optionsService: OptionsService, public quizzesService: QuizzesService) {
     this.optionsService.options$.subscribe((options) => {
       this.options = options;
     });
+
+    this.quizzesService.quizzes$.subscribe((quizList) => {
+      this.quizList = quizList;
+    })
+
+    for (let gameMode = GameMode.ALL_AT_ONCE; gameMode <= GameMode.ONE_BY_ONE; gameMode++) {
+      this.gameModes.push(gameModeToString(gameMode));
+    }
   }
+
 
   ngOnInit(): void {
     this.optionsService.clearOptions();
+    this.quizzesService.resetQuizzes();
   }
+
+
+  searchQuizzes(value: string) {
+    this.quizzesService.filterQuizzes(this.side, this.search = value);
+  }
+
+
+  filterQuizzes(side: string) {
+    this.quizzesService.filterQuizzes(this.side = stringToSide(side), this.search)
+  }
+
 
   public togglePopup(): void {
     this.isPopupVisible = !this.isPopupVisible;
@@ -53,8 +80,8 @@ export class OptionsComponent {
     }
   }
 
-  public setGameMode(gm: GameMode): void {
-    this.optionsService.setGameMode(gm);
+  public setGameMode(gameMode: string): void {
+    this.optionsService.setGameMode(stringToGameMode(gameMode));
   }
 
   public setTime(time: string): void {

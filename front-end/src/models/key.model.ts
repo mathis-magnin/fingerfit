@@ -7,6 +7,43 @@ export enum Finger {
     PINKY
 }
 
+
+export function fingerToString(finger: Finger): string {
+    switch (finger) {
+        case Finger.THUMB:
+            return "Pouce";
+        case Finger.INDEX:
+            return "Index";
+        case Finger.MIDDLE:
+            return "Majeur";
+        case Finger.RING:
+            return "Annulaire";
+        case Finger.PINKY:
+            return "Auriculaire";
+        default:
+            return "Indéfini";
+    }
+}
+
+
+export function stringToFinger(str: string) {
+    switch (str) {
+        case "Pouce":
+            return Finger.THUMB;
+        case "Index":
+            return Finger.INDEX;
+        case "Majeur":
+            return Finger.MIDDLE;
+        case "Annulaire":
+            return Finger.RING;
+        case "Auriculaire":
+            return Finger.PINKY;
+        default:
+            return Finger.UNDEFINED;
+    }
+}
+
+
 export enum Symbol {
     UNDEFINED = -1,
     A,
@@ -41,6 +78,7 @@ export enum Symbol {
     SECTION_MARK,
     SPACE
 }
+
 
 export function symbolToString(symbol: Symbol): string {
     switch (symbol) {
@@ -135,6 +173,7 @@ export function stringToSymbol(s: string): Symbol {
             return Symbol.UNDEFINED;
     }
 }
+
 
 export interface Key {
     symbol: Symbol;

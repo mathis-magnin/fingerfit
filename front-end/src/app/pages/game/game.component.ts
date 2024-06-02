@@ -6,8 +6,8 @@ import { Position } from '../../../models/position.model';
 import { Key } from '../../../models/key.model';
 import { Router } from '@angular/router';
 import { AnswersService } from 'src/services/answers.service';
-import { HandStyle } from 'src/models/style-input.model';
 import { StatisticService } from 'src/services/statistic.service';
+import { HandsStyle } from 'src/models/style-input.model';
 
 @Component({
   selector: 'app-game',
@@ -23,7 +23,7 @@ export class GameComponent {
     gameMode: GameMode.ALL_AT_ONCE,
   };
 
-  public handStyle: HandStyle = { width: '25vh', height: '25vh' };
+  public handsStyle: HandsStyle = { width: '30vh', height: '30vh' };
 
   public currentPositionNumber: number = 1;
   public numberOfPositions: number = 0;
@@ -73,7 +73,7 @@ export class GameComponent {
   }
 
   public nextPosition(): void {
-    if (this.showPopup) { 
+    if (this.showPopup) {
       return;
     }
 
@@ -92,7 +92,7 @@ export class GameComponent {
         this.endGame();
       }
       else {
-        if (this.isCorrect) {
+        if (this.isCorrect && (this.currentPositionNumber - 1 === Math.floor(this.numberOfPositions / 2))) {
           this.stop = true;
           console.log('animate');
           this.animate().then(() => {
@@ -103,6 +103,7 @@ export class GameComponent {
           });
         }
         else {
+          this.isCorrect = false;
           this.positionService.positionStart(true);
         }
       }
@@ -130,7 +131,7 @@ export class GameComponent {
   public togglePopup(exit: boolean): void {
     this.showPopup = !exit;
     if (exit) {
-  
+
       this.positionService.positionStart();
     }
     else {

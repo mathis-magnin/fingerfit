@@ -7,6 +7,7 @@ export enum Side {
     BOTH
 }
 
+
 export function sideToString(side: Side): string {
     switch (side) {
         case Side.LEFT:
@@ -19,6 +20,7 @@ export function sideToString(side: Side): string {
             return "Non définie";
     }
 }
+
 
 export function stringToSide(s: string): Side {
     switch (s) {
@@ -33,7 +35,9 @@ export function stringToSide(s: string): Side {
     }
 }
 
+
 export interface Position {
     keys: Key[];
     side: Side.LEFT | Side.RIGHT;
+    id: number;
 }

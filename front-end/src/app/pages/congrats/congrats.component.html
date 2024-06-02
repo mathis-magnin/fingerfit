@@ -1,10 +1,8 @@
 <app-confetti></app-confetti>
-<header [ngClass]="{disable:showPopup}">
-    <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems" [exitButtonLink]="exitButtonLink"></app-navbar>
-</header>
 
 <main [ngClass]="{disable:showPopup}">
     <h1 id="congrats-title">
+        Félicitations !
         <img src="./assets/partying-face-emoji.png" id="congrats-emoji" alt="party-emoji" />
     </h1>
     <h1 id="congrats-message">Tu as reussi {{getCorrectPercentage()}}% des positions !</h1>
