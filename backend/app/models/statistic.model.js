@@ -3,6 +3,7 @@ const BaseModel = require('../utils/base-model.js')
 
 module.exports = new BaseModel('Statistic', {
   averageTime: Joi.number().required(),
+  times: Joi.array().required(),
   accuracy: Joi.number().required(),
   nbData: Joi.number().required(),
   positionId: Joi.number().required(),

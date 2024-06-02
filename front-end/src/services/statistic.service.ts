@@ -6,6 +6,8 @@ import { Statistic } from 'src/models/statistic.model';
 import { Answer } from 'src/models/answer.model';
 import { PlayerService } from './player.service';
 import { Profile } from 'src/models/profile.model';
+import { Position } from 'src/models/position.model';
+import { PositionService } from './position.service';
 
 @Injectable({
     providedIn: 'root'
@@ -15,19 +17,24 @@ export class StatisticService {
 
     public statistic$: BehaviorSubject<Statistic | undefined> = new BehaviorSubject<Statistic | undefined>(undefined);
     private player?: Profile;
+    private position?: Position;
     public statisticUrl = serverUrl;
     private httpOptions = httpOptionsBase;
 
-    constructor(private http: HttpClient, private playerService: PlayerService) { 
+    constructor(private http: HttpClient, private playerService: PlayerService, private positionService: PositionService) { 
         this.playerService.player$.subscribe((player) => {
             this.player = player;
         });
+        this.positionService.position$.subscribe((position) => {
+            this.position = position;
+        });
     }
 
-    public fetchStat(positionId: number): void {
+    public fetchStat(): void {
         console.log("FETCHING STATISTIC");
         console.log(this.player?.id);
-        this.http.get<Statistic[]>(this.statisticUrl + '/?positionId=' + positionId + '&userId=' + this.player?.id).subscribe((statistics) => {
+        console.log(this.position?.id);
+        this.http.get<Statistic[]>(this.statisticUrl + '/?positionId=' + this.position?.id + '&userId=' + this.player?.id).subscribe((statistics) => {
             this.statistic$.next(statistics[0]);
             console.log("J'AI BIEN RECUPERE LA STATISTIQUE")
             console.log(statistics[0]);
@@ -44,6 +51,7 @@ export class StatisticService {
             console.log(statistic);
             let newStat: Statistic = {
                 averageTime: (statistic.averageTime * statistic.nbData + answer.time) / (statistic.nbData + 1),
+                times: statistic.times.concat([answer.time]),
                 accuracy: (statistic.nbData * statistic.accuracy + (answer.correct ? 1 : 0)) / (statistic.nbData + 1),
                 nbData: statistic.nbData + 1,
                 positionId: statistic.positionId,
@@ -51,7 +59,7 @@ export class StatisticService {
                 id : statistic.id,
             }
             this.http.put<Statistic>(this.statisticUrl + '/' + statistic.id, newStat, this.httpOptions).subscribe(() => {
-                this.fetchStat(statistic.positionId);
+                this.fetchStat();
             });
         } else {
             if (statistic === undefined) {
@@ -61,14 +69,15 @@ export class StatisticService {
             }
             let newStat: Statistic = {
                 averageTime: answer.time,
+                times: [answer.time],
                 accuracy: answer.correct ? 1 : 0,
                 nbData: 1,
-                positionId: 999,
+                positionId: this.position ? this.position.id : 0,
                 userId: this.player ? this.player.id : 0,
                 id : 0,
             }
             this.http.post<Statistic>(this.statisticUrl, newStat, this.httpOptions).subscribe(() => {
-                this.fetchStat(999);
+                this.fetchStat();
             });
         }
     }

@@ -69,7 +69,7 @@ export class GameComponent {
 
   ngOnInit(): void {
     this.answersService.clearAnswers();
-    this.statisticService.fetchStat(999);
+    this.statisticService.fetchStat();
   }
 
   public nextPosition(): void {
@@ -86,7 +86,6 @@ export class GameComponent {
     else {
       this.answersService.addAnswer({ time: this.positionService.TimerService.count, correct: this.isCorrect });
       console.log(this.statisticService.statisticUrl);
-      //this.statisticService.getStat(this.position.id).updateStat({ time: this.positionService.TimerService.count, correct: this.isCorrect});
       this.statisticService.updateStat({ time: this.positionService.TimerService.count, correct: this.isCorrect});
       if (!this.positionService.nextPosition()) {
         this.endGame();
