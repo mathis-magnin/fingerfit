@@ -34,7 +34,7 @@ export class QuizzesComponent {
     Side = Side;
 
     public manage: boolean = false;
-    public modify: boolean = false;
+    public update: boolean = false;
     public popUp: boolean = false;
     public warning: string = "";
 
@@ -85,12 +85,13 @@ export class QuizzesComponent {
 
     public reset(): void {
         this.manage = false;
-        this.modify = false;
+        this.update = false;
         this.popUp = false;
         this.warning = "";
 
         this.quiz = { id: 0, name: "", positions: [], side: Side.BOTH };
         this.quizModified = { id: 0, name: "", positions: [], side: Side.BOTH };
+        this.quizzesServices.resetQuizzes();
     }
 
 
@@ -103,7 +104,7 @@ export class QuizzesComponent {
     public modification(quiz: Quiz): void {
         if (quiz) {
             this.manage = true;
-            this.modify = true;
+            this.update = true;
             this.quiz.id = quiz.id;
             this.quiz.name = quiz.name;
             this.quiz.positions = quiz.positions;
@@ -120,9 +121,9 @@ export class QuizzesComponent {
 
     public updatePositions(positions: Position[]): void {
         this.quizModified.positions = positions;
-        this.quizModified.side = Side.BOTH;
 
         /* Define side of the quiz */
+        this.quizModified.side = Side.BOTH;
         if (0 < positions.length) {
             this.quizModified.side = positions[0].side;
             for (let position of positions) {
@@ -154,7 +155,7 @@ export class QuizzesComponent {
     public validate(): void {
         this.warning = (this.quizModified.name == "") ? ((this.quizModified.positions.length <= 0) ? "Veuillez remplir les champs" : "Veuillez nommer le quiz") : ((this.quizModified.positions.length <= 0) ? "Veuillez sélectionner au moins une position" : "");
         if (this.warning == "") {
-            if (this.modify) {
+            if (this.update) {
                 this.quizzesServices.updateQuiz(this.quizModified);
             }
             else {
