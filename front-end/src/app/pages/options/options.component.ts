@@ -64,9 +64,14 @@ export class OptionsComponent {
   ngOnInit(): void {
     this.optionsService.clearOptions();
     this.quizzesService.resetQuizzes();
-    this.setTime(this.timePerQuestion.toString());
-    this.switchChronometer({ target: { checked: this.chronometer } });
-    this.switchTimer({ target: { checked: this.timePerQuestion!=0 } });
+    if (this.chronometer) {
+      this.optionsService.setChronometer(true);
+    }
+    if (this.timePerQuestion != 0) {
+      this.setTime(this.timePerQuestion.toString());
+      this.switchTimer({ target: { checked: this.timePerQuestion != 0 } });
+    }
+    
   }
 
 
