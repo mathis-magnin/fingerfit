@@ -17,7 +17,9 @@ export class AddProfileComponent {
     firstName: '',
     age: 0,
     profilePicture: '',
-    id: 0
+    id: 0,
+    chronometer: false,
+    timePerQuestion: 0,
   }
   public errorMsg:string  = "Remplissez tous les champs correctement";
   public addButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh',margin:"1vw"});

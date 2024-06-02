@@ -24,12 +24,14 @@ export class PlayerService {
             this.player$.next(updatedProfile);
         });
     }
+    
 
-    public deleteProfile(callback:()=>void): void {
+    public deleteProfile(): void {
         this.http.delete<Profile>(this.userUrl + '/' + this.player$.value?.id, ).subscribe((deletedProfile) => {
             this.player$.next(deletedProfile);
-            callback();
         });
     }
+
+
 
 }

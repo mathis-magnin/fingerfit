@@ -34,6 +34,7 @@ export class ProfileListComponent {
     }
 
     ngOnInit(): void {
+        this.profilesService.fetchProfiles();
     }
 
     public profilesShownInit() {
