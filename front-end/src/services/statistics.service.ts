@@ -35,7 +35,7 @@ export class StatisticsService {
     public fetchStatistics(): void {
         this.http.get<Statistic[]>(this.statisticsUrl + "/?userId=" + this.player?.id).subscribe((statisticList) => {
             this.statistics = statisticList;
-            this.statistics$.next(this.statistics);
+            this.statistics$.next([]);
         });
     }
 
