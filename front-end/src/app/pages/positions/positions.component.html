@@ -28,7 +28,7 @@
         <app-position-description-tab [keys]="position.keys"
             (keysDescribed)="updateKeys($event)"></app-position-description-tab>
 
-        <app-warning-popup *ngIf="validPositionWarning" class="explainations" [text]="currentError" />
+        <app-warning-popup class="explainations" [text]="'N\'oubliez pas de tester la position avant de la valider'" />
         <!--
         <p class="explainations">
             Appuyez en même temps sur l'ensemble des touches concernées par la position pour
@@ -43,17 +43,17 @@
         <hr />
 
         <div class="buttons" *ngIf="manage">
-            <app-button *ngIf="buttonText === 'Modifier'" [buttonStyle]="deleteButtonStyle" [text]="'Supprimer'"
+            <app-button *ngIf="update" [buttonStyle]="deleteButtonStyle" [text]="'Supprimer'"
                 (buttonClicked)="showPopup()" />
-            <app-button [buttonStyle]="cancelButtonStyle" [text]="'Annuler'" (buttonClicked)="cancel()" />
+            <app-button [buttonStyle]="cancelButtonStyle" [text]="'Annuler'" (buttonClicked)="reset()" />
             <div class="validate">
-                <app-warning-popup *ngIf="emptyPositionWarning" [text]="currentError" />
-                <app-button [buttonStyle]="validateButtonStyle" [text]="buttonText"
+                <app-warning-popup *ngIf="warning != ''" [text]="warning" />
+                <app-button [buttonStyle]="validateButtonStyle" [text]="(update) ? 'Modifer' : 'Créer'"
                     (buttonClicked)="validateChanges()" />
             </div>
         </div>
 
-        <app-popup *ngIf="popupVisible" class="confirm-popup" (exit)="showPopup()">
+        <app-popup *ngIf="popUp" class="confirm-popup" (exit)="showPopup()">
             <p>Êtes-vous sûr de vouloir supprimer cette position ?</p>
             <div>
                 <app-button [text]="'Annuler'" (buttonClicked)="showPopup()"

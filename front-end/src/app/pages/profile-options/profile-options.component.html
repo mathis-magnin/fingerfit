@@ -13,12 +13,15 @@
     <h1>Préconfiguration des parties</h1>
     <div class="preset">
         <app-option [caption]="'Afficher le chronomètre'">
-            <app-checkbox (change)="switchChronometer($event)" [checked]="chronometer"/>
+            <app-checkbox (change)="switchChronometer($event)" [checked]="chronometer" />
         </app-option>
 
+        <hr />
+
         <app-option [caption]="'Définir un temps par position de main'">
-            <app-checkbox (change)="switchTimer($event)" [checked]="timeWaitingValue!=0"/>
-            <input type="number" placeholder="{{this.timeWaitingValue}}sec" min="1" #numberInput [value]="this.timeWaitingValue" (change)="setTime(numberInput.value)"/>
+            <app-checkbox (change)="switchTimer($event)" [checked]="timeWaitingValue!=0" />
+            <input type="number" placeholder="{{this.timeWaitingValue}}sec" min="1" #numberInput
+                [value]="this.timeWaitingValue" (change)="setTime(numberInput.value)" />
         </app-option>
     </div>
 

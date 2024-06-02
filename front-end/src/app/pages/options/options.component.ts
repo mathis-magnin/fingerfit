@@ -32,6 +32,7 @@ export class OptionsComponent {
   public quizList: Quiz[] = [];
   public side: Side = Side.UNDEFINED;
   public search: string = '';
+  public selectedQuiz?: Quiz;
 
   public boxStyle: BoxStyle = new BoxStyle({});
   public playButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
@@ -39,7 +40,7 @@ export class OptionsComponent {
   public chronometer: boolean = false;
   public timePerQuestion: number = 20;
 
-  constructor(private router: Router, public optionsService: OptionsService, public quizzesService: QuizzesService,public playerService: PlayerService) {
+  constructor(private router: Router, public optionsService: OptionsService, public quizzesService: QuizzesService, public playerService: PlayerService) {
     this.optionsService.options$.subscribe((options) => {
       this.options = options;
     });
@@ -66,7 +67,7 @@ export class OptionsComponent {
     this.quizzesService.resetQuizzes();
     this.setTime(this.timePerQuestion.toString());
     this.switchChronometer({ target: { checked: this.chronometer } });
-    this.switchTimer({ target: { checked: this.timePerQuestion!=0 } });
+    this.switchTimer({ target: { checked: this.timePerQuestion != 0 } });
   }
 
 
@@ -119,17 +120,18 @@ export class OptionsComponent {
     if (this.optionsService.checkOptions() && (this.timeWaitingValue > 0 || this.options?.timePerQuestion === undefined)) {
       this.router.navigateByUrl('/game');
     }
-    else if (this.timeWaitingValue <= 0) {
-      this.currentError = 'Veuillez entrer un nombre positif pour le temps de réponse';
+    else if (!this.selectedQuiz) {
+      this.currentError = 'Veuillez sélectionner un quiz';
       this.isWarningVisible = true;
     }
-    else {
-      this.currentError = 'Veuillez sélectionner un quiz';
+    else if (this.timeWaitingValue <= 0) {
+      this.currentError = 'Veuillez entrer un nombre positif pour le temps de réponse';
       this.isWarningVisible = true;
     }
   }
 
   public selectQuiz(quiz: Quiz): void {
+    this.selectedQuiz = quiz;
     this.optionsService.selectQuiz(quiz);
   }
 

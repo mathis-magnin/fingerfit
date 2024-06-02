@@ -2,17 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Position, Side } from '../models/position.model';
 import { Quiz } from '../models/quiz.model';
-import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { HttpClient } from '@angular/common/http';
 import { httpOptionsBase, serverUrl } from 'src/configs/server.config';
-
-
-export interface QuizBack {
-    id: number;
-    name: string;
-    positions: number[];
-    side: Side;
-}
 
 
 @Injectable({
@@ -36,7 +27,6 @@ export class QuizzesService {
 
     public fetchQuizzes(): void {
         this.http.get<Quiz[]>(this.QuizUrl).subscribe((quizList) => {
-            console.log(quizList);
             this.quizzes = quizList;
             this.quizzes$.next(this.quizzes);
         });
@@ -44,23 +34,40 @@ export class QuizzesService {
 
 
     public createQuiz(quiz: Quiz): void {
-        this.http.post<QuizBack>(this.QuizUrl, quiz, this.httpOptions).subscribe(() => {
+        this.http.post<Quiz>(this.QuizUrl, quiz, this.httpOptions).subscribe(() => {
             this.fetchQuizzes();
         });
     }
 
 
     public updateQuiz(quiz: Quiz): void {
-        this.http.put<QuizBack>(this.QuizUrl + '/' + quiz.id, quiz).subscribe(() => {
+        this.http.put<Quiz>(this.QuizUrl + '/' + quiz.id, quiz).subscribe(() => {
             this.fetchQuizzes();
         });
     }
 
 
     public deleteQuiz(quiz: Quiz): void {
-        this.http.delete<QuizBack>(this.QuizUrl + '/' + quiz.id).subscribe(() => {
+        this.http.delete<Quiz>(this.QuizUrl + '/' + quiz.id).subscribe(() => {
             this.fetchQuizzes();
         })
+    }
+
+
+    public updatePositionFromQuizzes(position: Position) {
+        for (let quiz of this.quizzes) {
+            if (quiz.positions.find((p) => (p.id === position.id))) {
+                quiz.side = position.side;
+                for (let quizPosition of quiz.positions) {
+                    if ((quizPosition.id !== position.id) && (quiz.side != quizPosition.side)) {
+                        quiz.side = Side.BOTH;
+                        break;
+                    }
+                }
+                console.log(quiz);
+                this.updateQuiz(quiz);
+            }
+        }
     }
 
 
@@ -73,7 +80,7 @@ export class QuizzesService {
             }
         }
 
-        /* Update quizzes */
+        /* Removing position from quizzes */
         for (let quiz of quizzesToUpdate) {
             for (let i = 0; i < quiz.positions.length; i++) {
                 if (quiz.positions[i].id === position.id) {
