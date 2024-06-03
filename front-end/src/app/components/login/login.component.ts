@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LoginService } from 'src/services/login.service';
 import { Router } from '@angular/router';
 import { ButtonStyle } from 'src/models/style-input.model';
@@ -10,6 +10,7 @@ import { ButtonStyle } from 'src/models/style-input.model';
 })
 
 export class LoginComponent implements OnInit {
+    @ViewChild('passwordInput') inputElement!: ElementRef; 
 
     public password: string = "";
     public passwordInput: string = "";
@@ -27,6 +28,10 @@ export class LoginComponent implements OnInit {
     
     ngOnInit(): void { 
     }
+
+    ngAfterViewInit() {
+        this.inputElement.nativeElement.focus();
+    }
     
     public onPasswordChange(event: any): void {
         console.log(event.target.value);
@@ -39,6 +44,10 @@ export class LoginComponent implements OnInit {
                 }
             });
         }
+    } 
+
+    public focusInput(): void {
+        document.getElementById('passwordInput')
     }
 
     public tryLogin(): void {
