@@ -1,9 +1,12 @@
 const { Router } = require('express')
+const StatisticsRouter = require('./statistics')
 
 const { User } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
 
 const router = new Router()
+
+router.use('/:userId/statistics', StatisticsRouter)
 
 router.get('/', (req, res) => {
   try {

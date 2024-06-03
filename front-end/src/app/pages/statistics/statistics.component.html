@@ -5,6 +5,6 @@
 <main class="statistics">
     <app-list [style]="listStyle" [items]="positionList" [multipleChoice]="true"
         [text]="'Sélectionnez une ou plusieurs position(s)'" (searchValue)="searchPositions($event)"
-        (selectedFilter)="filterPositions($event)" />
-    <app-graphic class="stats-chart" />
+        (selectedFilter)="filterPositions($event)" (selectedItems)="filterStatistics($event)" />
+    <app-graphic class="stats-chart" [items]="statisticList"/>
 </main>

@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { serverUrl, httpOptionsBase } from 'src/configs/server.config';
 import { Answer } from 'src/models/answer.model';
 
 @Injectable({
     providedIn: 'root'
 })
-export class StatsService {
+export class AnswersService {
 
     private answers: Answer[] = [];
     public answers$: BehaviorSubject<Answer[]> = new BehaviorSubject<Answer[]>([]);
+    private statisticsUrl = serverUrl + '/statistics';
+    private httpOptions = httpOptionsBase;
 
     constructor() { }
 
