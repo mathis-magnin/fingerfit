@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Options } from '../models/options.model';
-import { Quiz } from '../models/quiz.model';
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +8,7 @@ export class TimerService {
 
     public timer: any;
     public stopTime: number = 0;
-    public startTime: number=0;
+    public startTime: number = 0;
     public count = 0;
     public time$: BehaviorSubject<number> = new BehaviorSubject(this.count);
     constructor() {
