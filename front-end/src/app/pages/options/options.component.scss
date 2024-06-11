@@ -1,30 +1,19 @@
-header {
-    img {
-        position: fixed;
-        top: 1vh;
-        left: 1vw;
-        width: 5vw;
-    }
-
-    app-exit-button {
-        position: fixed;
-        top: 1vh;
-        right: 1vw;
-    }
-}
-
-
 main {
-    margin-top: 1vh;
-    margin-bottom: 10vh;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 
-hr {
+.option {
     width: 50vw;
+}
+
+
+hr {
+    width: 100%;
     margin-top: 4vh;
     margin-bottom: 4vh;
     border-top: 0px;
@@ -34,15 +23,25 @@ hr {
 }
 
 
-app-single-option input[type="number"] {
+app-option input[type="number"] {
     margin-left: 1vw;
     width: 3vw;
     height: 5vh;
 }
 
 
+input {
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-left: 20px;
+    width: 5vw;
+}
+
+
 .validate {
-    position: fixed;
+    position: sticky;
     bottom: 1vh;
     display: flex;
     flex-direction: column;

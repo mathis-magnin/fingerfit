@@ -6,8 +6,10 @@ import { CongratsComponent } from './pages/congrats/congrats.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
-import { PositionCreationComponent } from './pages/position-creation/position-creation.component';
+import { PositionsComponent } from './pages/positions/positions.component';
 import { ProfileOptionsComponent } from './pages/profile-options/profile-options.component';
+import { HttpClientModule } from '@angular/common/http';
+import { QuizzesComponent } from './pages/quizzes/quizzes.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -15,14 +17,15 @@ const routes: Routes = [
   { path: 'game', component: GameComponent },
   { path: 'congrats', component: CongratsComponent },
   { path: 'options', component: OptionsComponent },
-  { path: 'statistics', component: StatisticsComponent},
-  { path: 'position-creation', component: PositionCreationComponent },
+  { path: 'statistics', component: StatisticsComponent },
+  { path: 'positions', component: PositionsComponent },
+  { path: 'quizzes', component: QuizzesComponent },
   { path: 'profiles', component: ProfilesComponent },
-  { path: 'profile-options', component: ProfileOptionsComponent}
+  { path: 'profile-options', component: ProfileOptionsComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), HttpClientModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -6,5 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./checkbox.component.scss'],
 })
 export class CheckboxComponent {
+  @Input()
+  public checked: boolean = false;
   constructor() {}
 }

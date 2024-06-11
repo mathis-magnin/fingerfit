@@ -1,12 +1,21 @@
-<nav>
-    <ul>
+<div class="space-taken"></div>
+<nav class="navigation-bar">
+
+    <img class="logo" src="./assets/main-logo.ico" alt="logo" />
+
+    <ul class="navigation">
         <ng-container *ngFor="let item of navItems,let i=index">
-            <li *ngIf="i==default" [routerLink]="item.url" [style.background-color]="'rgba(78, 78, 78, 0.5)'" [style.width]="100/navItems.length+'%'">
+            <div class="separator" [ngClass]="{'disable-sep':this.navItems.length==1}"></div>
+            <li *ngIf="i==currentPageIndex" [ngClass]="{'colored':this.navItems.length!=1}" [routerLink]="item.url" [style.width]="100/navItems.length+'%'">
                 {{item.name}}
             </li>
-            <li *ngIf="i!=default" [routerLink]="item.url" [style.width]="100/navItems.length+'%'">
+            <li *ngIf="i!=currentPageIndex" [routerLink]="item.url" [style.width]="100/navItems.length+'%'">
                 {{item.name}}
             </li>
         </ng-container>
+        <div class="separator" [ngClass]="{'disable-sep':this.navItems.length==1}"></div>
     </ul>
+
+
+    <app-exit-button class="exit-button" [routerLink]="exitButtonLink"/>
 </nav>

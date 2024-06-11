@@ -1,0 +1,52 @@
+<header>
+    <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems"
+        [exitButtonLink]="exitButtonLink"></app-navbar>
+</header>
+
+<main>
+    <section class="choice" *ngIf="!manage">
+        <app-option [caption]="'Créer un quiz'">
+            <app-button [text]="'Créer'" [buttonStyle]="createButtonStyle" (buttonClicked)="creation()" />
+        </app-option>
+
+        <hr />
+
+        <app-list [items]="quizList" [text]="'Modifier un quiz'" (selectedItems)="modification($event[0])"
+            (searchValue)="searchQuizzes($event)" (selectedFilter)="filterQuizzes($event)" />
+    </section>
+
+    <section class="manage" *ngIf="manage">
+        <app-option [caption]="'Nom du quiz'">
+            <input type="text" placeholder="Nom du quiz" [value]="quiz.name" (input)="updateName($event)" />
+        </app-option>
+
+        <hr />
+
+        <app-list [items]="positionList" [multipleChoice]="true" [text]="'Sélectionner des positions'"
+            [alreadySelectedItems]="quiz.positions" (selectedItems)="updatePositions($event)"
+            (searchValue)="searchPositions($event)" (selectedFilter)="filterPositions($event)" />
+
+        <hr />
+
+        <div class="buttons">
+            <app-button *ngIf="update" [buttonStyle]="deleteButtonStyle" [text]="'Supprimer'"
+                (buttonClicked)="showPopUp()" />
+            <app-button [buttonStyle]="cancelButtonStyle" [text]="'Annuler'" (buttonClicked)="reset()" />
+            <div class="validate">
+                <app-warning-popup *ngIf="warning != ''" [text]="warning" />
+                <app-button [buttonStyle]="validateButtonStyle" [text]="(update) ? 'Modifier' : 'Créer'"
+                    (buttonClicked)="validate()" />
+            </div>
+        </div>
+
+        <app-popup *ngIf="popUp" class="confirm-popup" (exit)="hidePopUp()">
+            <p>Êtes-vous sûr de vouloir supprimer ce quiz ?</p>
+            <div>
+                <app-button [text]="'Annuler'" (buttonClicked)="hidePopUp()"
+                    [buttonStyle]="cancelButtonStyle"></app-button>
+                <app-button [text]="'Supprimer'" (buttonClicked)="delete()"
+                    [buttonStyle]="validateButtonStyle"></app-button>
+            </div>
+        </app-popup>
+    </section>
+</main>

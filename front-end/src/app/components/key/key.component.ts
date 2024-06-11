@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
-import { Finger, IsSymbolPressed, Symbol, stringToSymbol, symbolToString } from '../../../models/quiz.model';
-import { keyStyle } from 'src/models/style-input.model';
+import { IsSymbolPressed } from '../../../models/quiz.model';
+import { Finger, symbolToString, stringToSymbol, Symbol } from '../../../models/key.model';
+import { KeyStyle } from 'src/models/style-input.model';
 
 @Component({
     selector: 'app-key',
@@ -9,7 +10,7 @@ import { keyStyle } from 'src/models/style-input.model';
 })
 export class KeyComponent {
 
-    @Input() keyStyle: keyStyle = { fontSize: "3em" }
+    @Input() keyStyle: KeyStyle = { fontSize: "3em" }
 
     Symbol = Symbol;
     symbolToString = symbolToString;

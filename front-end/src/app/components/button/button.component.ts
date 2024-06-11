@@ -7,7 +7,6 @@ import { ButtonStyle } from 'src/models/style-input.model';
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss']
 })
-
 export class ButtonComponent implements OnInit {
 
     @Input()
@@ -26,11 +25,11 @@ export class ButtonComponent implements OnInit {
     buttonClicked: EventEmitter<void> = new EventEmitter<void>();
 
     constructor() { }
-    
+
     ngOnInit(): void { }
 
     onClick(): void {
         this.buttonClicked.emit();
     }
-    
+
 }

@@ -1,22 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-export interface Item {
-    name: string;
-    url: string;
-}
+import { NavbarItem } from 'src/models/navbar.model';
 
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss']
 })
-    
-
 export class NavbarComponent implements OnInit {
 
-    @Input() public default: number = 0;
+    @Input() public currentPageIndex: number = 0;
 
-    public navItems: Item[] = [{ name: 'options du profil', url: '/profile-options' }, { name: 'statistiques', url: '/statistics' }]; 
+    @Input() public navItems: NavbarItem[] = [{ name: 'Home', url: '/home' }]; 
+
+    @Input() public exitButtonLink: string = '/home';
 
     constructor() {}
 

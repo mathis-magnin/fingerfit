@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Phéolet",
+    "firstName": "Lucas",
+    "age": "12",
+    "profilePicture": "../../../assets/profile-character/character7.png",
+    "id": 1717344805006,
+    "chronometer": false,
+    "timePerQuestion": 0
+  },
+  {
+    "name": "Camain",
+    "firstName": "Vanessa",
+    "age": "37",
+    "profilePicture": "../../../assets/profile-character/character6.png",
+    "id": 1717344826327,
+    "chronometer": false,
+    "timePerQuestion": 0
+  },
+  {
+    "name": "Enfant",
+    "firstName": "Ethan",
+    "age": "10",
+    "profilePicture": "../../../assets/profile-character/character7.png",
+    "id": 1717397868995,
+    "chronometer": false,
+    "timePerQuestion": 0
+  }
+]

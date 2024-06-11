@@ -8,8 +8,8 @@ import { PlayerService } from 'src/services/player.service';
   templateUrl: './profil-info.component.html',
   styleUrls: ['./profil-info.component.scss']
 })
-  
-  
+
+
 export class InfoProfileComponent {
 
   @Input() profile: Profile | undefined;
@@ -22,10 +22,13 @@ export class InfoProfileComponent {
   public newAge?: number;
 
   public showPopup: boolean = false;
-
+  public errorMsg: string = "Remplissez tous les champs correctement";
+  public warningVisible: boolean = false;
+  public closePictures: boolean = false;
   public addButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', margin: "1vw" });
+  public cancelButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', margin: "1vw", backgroundColor: "grey" });
 
-  public constructor(public playerService: PlayerService, public changeDetector: ChangeDetectorRef) { 
+  public constructor(public playerService: PlayerService, public changeDetector: ChangeDetectorRef) {
     playerService.player$.subscribe((player) => {
       this.profile = player;
     });
@@ -37,7 +40,21 @@ export class InfoProfileComponent {
   }
 
   public triggerPopup(): void {
-    if(this.editMode){
+    this.closePictures = false;
+    if (this.newName === '' || this.newFirstName === '' || !this.newAge || !this.newPicture) {
+      this.closePictures = true;
+      this.errorMsg = "Remplissez tous les champs correctement";
+      this.warningVisible = true;
+      return;
+    }
+    if (isNaN(this.newAge) || this.newAge <= 0) {
+      this.closePictures = true;
+      this.errorMsg = "L'âge doit être un nombre supérieur à 0";
+      this.warningVisible = true;
+      return;
+    }
+    if (this.editMode) {
+      this.closePictures = true;
       this.showPopup = true;
     }
     else {
@@ -47,6 +64,7 @@ export class InfoProfileComponent {
   }
 
   public exitEditMode(): void {
+    this.closePictures = true;
     this.editMode = false;
     this.editText = "Modifier";
     this.resetInput();
@@ -67,12 +85,12 @@ export class InfoProfileComponent {
   setAge(event: any): void {
     this.newAge = event;
   }
-  
+
   public confirmEdit(): void {
     this.updatePlayer();
     this.exitEditMode();
   }
-  
+
   public updatePlayer(): void {
     this.showPopup = false;
     if (this.profile) {
@@ -80,6 +98,7 @@ export class InfoProfileComponent {
       this.profile.name = this.newName || this.profile.name;
       this.profile.firstName = this.newFirstName || this.profile.firstName;
       this.profile.profilePicture = this.newPicture || this.profile.profilePicture;
+      this.playerService.updateProfile(this.profile);
     }
   }
 

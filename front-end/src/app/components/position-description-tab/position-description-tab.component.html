@@ -1,22 +1,25 @@
 <div class="position_description_tab">
-    <app-box [boxStyle]="boxStyle">Doigt</app-box>
-    <app-box [boxStyle]="fingerBoxStyle">Pouce</app-box>
-    <app-box [boxStyle]="fingerBoxStyle">Index</app-box>
-    <app-box [boxStyle]="fingerBoxStyle">Majeur</app-box>
-    <app-box [boxStyle]="fingerBoxStyle">Annulaire</app-box>
-    <app-box [boxStyle]="fingerBoxStyle">Auriculaire</app-box>
+    <div>
+        <app-box [boxStyle]="labelBoxStyle">Doigt</app-box>
+        <app-box [boxStyle]="labelBoxStyle">Ordre</app-box>
+        <app-box [boxStyle]="labelBoxStyle">Touche</app-box>
+    </div>
 
-    <app-box [boxStyle]="boxStyle">Touche</app-box>
-    <app-key-selection-box [boxStyle]="selectionBoxStyle" (symbolSelected)="onThumbSymbolSelected($event)"></app-key-selection-box>
-    <app-key-selection-box [boxStyle]="selectionBoxStyle" (symbolSelected)="onIndexSymbolSelected($event)"></app-key-selection-box>
-    <app-key-selection-box [boxStyle]="selectionBoxStyle" (symbolSelected)="onMiddleSymbolSelected($event)"></app-key-selection-box>
-    <app-key-selection-box [boxStyle]="selectionBoxStyle" (symbolSelected)="onRingSymbolSelected($event)"></app-key-selection-box>
-    <app-key-selection-box [boxStyle]="selectionBoxStyle" (symbolSelected)="onPinkySymbolSelected($event)"></app-key-selection-box>
+    <ng-container *ngFor="let finger of fingers">
+        <div [ngClass]="{not_worked: orderOnFinger[finger] == Order.NOT_WORKED}">
+            <app-box [boxStyle]="fingerBoxStyle">{{fingerToString(finger)}}</app-box>
 
-    <app-box [boxStyle]="boxStyle">Ordre</app-box>
-    <app-order-selection-box [boxStyle]="selectionBoxStyle" (orderSelected)="onThumbOrderSelected($event)"></app-order-selection-box>
-    <app-order-selection-box [boxStyle]="selectionBoxStyle" (orderSelected)="onIndexOrderSelected($event)"></app-order-selection-box>
-    <app-order-selection-box [boxStyle]="selectionBoxStyle" (orderSelected)="onMiddleOrderSelected($event)"></app-order-selection-box>
-    <app-order-selection-box [boxStyle]="selectionBoxStyle" (orderSelected)="onRingOrderSelected($event)"></app-order-selection-box>
-    <app-order-selection-box [boxStyle]="selectionBoxStyle" (orderSelected)="onPinkyOrderSelected($event)"></app-order-selection-box>
+            <app-box [boxStyle]="selectorBoxStyle">
+                <app-selector [options]="ordersPossibilitiesOnFinger[finger]"
+                    [defaultOption]="ordersDefaultValueOnFinger[finger]"
+                    (selectedOption)="updateOrder(finger, $event)" />
+            </app-box>
+
+            <app-box [boxStyle]="selectorBoxStyle">
+                <app-selector [options]="symbolsPossibilitiesOnFinger[finger]"
+                    [defaultOption]="symbolsDefaultValueOnFinger[finger]"
+                    (selectedOption)="updateSymbol(finger, $event)" />
+            </app-box>
+        </div>
+    </ng-container>
 </div>

@@ -1,25 +1,86 @@
-header app-exit-button {
-    position: absolute;
-    top: 12vh;
-    right: 1vw;
+.profile {
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    margin-top: 5vh;
 }
 
-h1{
+
+
+h1 {
     font-size: 2.5rem;
     text-align: center;
 }
 
 
-
-app-single-option input[type="number"] {
+app-option input[type="number"] {
     margin-left: 1vw;
     width: 3vw;
     height: 5vh;
 }
 
-.preset{
+app-option:last-child {
+    margin-bottom: 10vh;
+}
+
+
+.preset {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+
+.confirm-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.confirm-popup div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2vh;
+}
+
+
+.confirm-popup p {
+    margin-top: 7vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+
+.confirm-popup h1 {
+    font-size: 1.5rem;
+}
+
+
+.confirm-popup div app-button {
+    margin: 0 1vw;
+}
+
+.preset {
+    display: grid
+}
+
+.preset app-option {
+    padding: 2vh;
+}
+
+
+hr {
+    width: 100%;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid gray;
 }

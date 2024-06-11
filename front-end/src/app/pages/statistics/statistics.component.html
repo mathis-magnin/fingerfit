@@ -1,14 +1,10 @@
 <header>
-<<<<<<< HEAD
-    <app-navbar [default]="1"/>
-    <app-exit-button [routerLink]="'/profiles'"/>
-=======
-    <img src="./assets/main-logo.ico" id="logo" />
-    <app-exit-button [link]="'/profiles'"/>
->>>>>>> develop
+    <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems" [exitButtonLink]="exitButtonLink" />
 </header>
 
 <main class="statistics">
-    <app-quiz-list class="stats-quiz-list" [separator]="false"/>
-    <app-graphic class="stats-chart"/>
+    <app-list [style]="listStyle" [items]="positionList" [multipleChoice]="true"
+        [text]="'Sélectionnez une ou plusieurs position(s)'" (searchValue)="searchPositions($event)"
+        (selectedFilter)="filterPositions($event)" (selectedItems)="filterStatistics($event)" />
+    <app-graphic class="stats-chart" [items]="statisticList"/>
 </main>

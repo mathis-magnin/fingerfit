@@ -17,8 +17,11 @@ export class AddProfileComponent {
     firstName: '',
     age: 0,
     profilePicture: '',
+    id: 0,
+    chronometer: false,
+    timePerQuestion: 0,
   }
-
+  public errorMsg:string  = "Remplissez tous les champs correctement";
   public addButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh',margin:"1vw"});
   @Output()
   exit:EventEmitter<void> = new EventEmitter<void>();
@@ -49,12 +52,18 @@ export class AddProfileComponent {
   
 
   public checkAndApply(): void {
-    if (this.profile.name !== '' && this.profile.firstName !== '' && this.profile.age !== 0 && this.profile.profilePicture !== '') {
+    if (this.profile.name !== '' && this.profile.firstName !== '' && !isNaN(this.profile.age) && this.profile.age > 0 &&  this.profile.profilePicture !== '') {
       this.profileService.addProfile(this.profile);
       this.exit.emit(); 
     }
+    else if (isNaN(this.profile.age) || this.profile.age <= 0) {
+      this.errorMsg = "L'âge doit être un nombre supérieur à 0";
+      this.warningVisible = true;
+    }
     else {
+      this.errorMsg = "Remplissez tous les champs correctement";
       this.warningVisible = true;
     }
   }
+  
 }

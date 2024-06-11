@@ -1,36 +1,36 @@
 <header [ngClass]="{disable:showPopup}">
-    <img src="./assets/main-logo.ico" />
-    <app-exit-button (click)="togglePopupLogin(false)" />
+    <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems"
+        [exitButtonLink]="exitButtonLink"></app-navbar>
 </header>
 
 <main [ngClass]="{disable:showPopup}">
-    <h1>Paramétrage de la partie</h1>
+    <div class="option">
 
-    <hr />
+        <app-list [items]="quizList" [text]="'Sélectionner un quiz'" (selectedItems)="selectQuiz($event[0])"
+            (searchValue)="searchQuizzes($event)" (selectedFilter)="filterQuizzes($event)" />
 
-    <app-single-option [caption]="'Mode de jeu'">
-        <app-game-mode-selection-box [boxStyle]="boxStyle" (gameModeSelected)="setGameMode($event)" />
-    </app-single-option>
+        <hr />
 
-    <hr />
+        <app-option [caption]="'Mode de jeu'">
+            <app-selector [options]="gameModes" (selectedOption)="setGameMode($event)" />
+        </app-option>
 
-    <app-quiz-list (selectQuiz)="selectQuiz($event)" />
+        <hr />
 
-    <hr />
+        <app-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
+            <app-checkbox [checked]="this.chronometer"/>
+        </app-option>
 
-    <app-single-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
-        <app-checkbox />
-    </app-single-option>
+        <hr />
 
-    <hr />
+        <app-option [caption]="'Définir un temps par position de main'">
+            <app-checkbox (change)="switchTimer($event)" [checked]="this.timePerQuestion!=0" />
+            <input type="number" placeholder="{{options?.timePerQuestion}}sec" min="1" #numberInput
+                (change)="setTime(numberInput.value)" [value]="timePerQuestion"/>
+        </app-option>
 
-    <app-single-option [caption]="'Définir un temps par position de main'">
-        <app-checkbox (change)="switchTimer($event)" />
-        <input type="number" placeholder="{{options?.timePerQuestion}}sec" min="1" #numberInput
-            (change)="setTime(numberInput.value)" />
-    </app-single-option>
-
-    <hr />
+        <hr />
+    </div>
 
     <div class="validate">
         <app-warning-popup *ngIf="isWarningVisible" [text]="currentError" />

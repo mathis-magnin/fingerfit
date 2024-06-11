@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Position, Side, Symbol } from 'src/models/quiz.model';
-import { HandStyle, keyStyle } from 'src/models/style-input.model';
+import { Position, Side } from 'src/models/position.model';
+import { Symbol } from 'src/models/key.model';
+import { HandsStyle, KeyStyle } from 'src/models/style-input.model';
 
 
 @Component({
@@ -12,10 +13,10 @@ import { HandStyle, keyStyle } from 'src/models/style-input.model';
 export class PositionComponent {
 
     Symbol = Symbol;
-    @Input() public position: Position = { keys: [], side: Side.LEFT };
+    @Input() public position: Position = { keys: [], side: Side.LEFT, id: 0 };
 
-    public handStyle: HandStyle = { width: "10vh", height: "10vh" };
-    public keyStyle: keyStyle = { fontSize: "1.5em" }
+    @Input() public handsStyle: HandsStyle = { width: "10vh", height: "10vh" };
+    @Input() public keyStyle: KeyStyle = { fontSize: "1.5em" }
 
     constructor() { }
 

@@ -4,6 +4,8 @@ import { ButtonStyle } from 'src/models/style-input.model';
 import { ProfilesService } from '../../../services/profiles.service';
 import { Router } from '@angular/router';
 import { PlayerService } from 'src/services/player.service';
+import { StatisticService } from 'src/services/statistic.service';
+import { StatisticsService } from 'src/services/statistics.service';
 
 @Component({
     selector: 'app-profile-list',
@@ -24,16 +26,17 @@ export class ProfileListComponent {
     @Input() public firstAndLastButtonStyle: ButtonStyle = new ButtonStyle({ width: '3vw', height: '6vh', backgroundColor: 'rgb(167, 165, 165)', borderRadius: '50%' });
     @Input() public middleButtonStyle: ButtonStyle = new ButtonStyle({ width: '8vw', height: '6vh' });
 
-    constructor(public profilesService: ProfilesService,private router: Router,private playerService: PlayerService) {
+    constructor(public profilesService: ProfilesService,private router: Router,private playerService: PlayerService, private statisticService: StatisticService, private statisticsService: StatisticsService) {
         this.profilesService.profiles$.subscribe((profiles) => {
             this.profiles = profiles;
             this.start = Math.floor(this.profiles.length / 2);
+            this.currentProfile = this.profiles[this.start];
+            this.profilesShownInit();
         });
-        this.currentProfile = this.profiles[this.start];
     }
 
     ngOnInit(): void {
-        this.profilesShownInit();
+        this.profilesService.fetchProfiles();
     }
 
     public profilesShownInit() {
@@ -102,7 +105,10 @@ export class ProfileListComponent {
         }
         else {
             this.playerService.setPlayer(this.currentProfile);
+            this.statisticService.updateUrl();
+            this.statisticsService.updateUrl();
             this.router.navigate([redirect]);
         }
     }
+
 }

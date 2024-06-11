@@ -2,9 +2,12 @@ import { Component } from '@angular/core';
 import { OptionsService } from '../../../services/options.service';
 import { Options, GameMode } from '../../../models/options.model';
 import { PositionService } from '../../../services/position.service';
-import { Key, Position } from 'src/models/quiz.model';
+import { Position } from '../../../models/position.model';
+import { Key } from '../../../models/key.model';
 import { Router } from '@angular/router';
-import { StatsService } from 'src/services/stats.service';
+import { AnswersService } from 'src/services/answers.service';
+import { StatisticService } from 'src/services/statistic.service';
+import { HandsStyle } from 'src/models/style-input.model';
 
 @Component({
   selector: 'app-game',
@@ -20,6 +23,8 @@ export class GameComponent {
     gameMode: GameMode.ALL_AT_ONCE,
   };
 
+  public handsStyle: HandsStyle = { width: '30vh', height: '30vh' };
+
   public currentPositionNumber: number = 1;
   public numberOfPositions: number = 0;
   public showPopup: boolean = false;
@@ -29,7 +34,7 @@ export class GameComponent {
   public isCorrect: boolean = false;
   public stop: boolean = false;
 
-  constructor(public optionsService: OptionsService, public positionService: PositionService, public statsService: StatsService, private router: Router) {
+  constructor(public optionsService: OptionsService, public positionService: PositionService, public answersService: AnswersService, private router: Router, private statisticService: StatisticService) {
     this.optionsService.options$.subscribe((options) => {
       this.options = options;
     });
@@ -63,11 +68,12 @@ export class GameComponent {
   }
 
   ngOnInit(): void {
-    this.statsService.clearAnswers();
+    this.answersService.clearAnswers();
+    this.statisticService.fetchStat();
   }
 
   public nextPosition(): void {
-    if (this.showPopup) { 
+    if (this.showPopup) {
       return;
     }
 
@@ -78,12 +84,14 @@ export class GameComponent {
       console.log('keysShown: ', this.keysShown);
     }
     else {
-      this.statsService.addAnswer({ time: this.positionService.TimerService.count, correct: this.isCorrect });
+      this.answersService.addAnswer({ time: this.positionService.TimerService.count, correct: this.isCorrect });
+      console.log(this.statisticService.statisticUrl);
+      this.statisticService.updateStat({ time: this.positionService.TimerService.count, correct: this.isCorrect});
       if (!this.positionService.nextPosition()) {
         this.endGame();
       }
       else {
-        if (this.isCorrect) {
+        if (this.isCorrect && (this.currentPositionNumber - 1 === Math.floor(this.numberOfPositions / 2))) {
           this.stop = true;
           console.log('animate');
           this.animate().then(() => {
@@ -94,6 +102,7 @@ export class GameComponent {
           });
         }
         else {
+          this.isCorrect = false;
           this.positionService.positionStart(true);
         }
       }
@@ -121,7 +130,7 @@ export class GameComponent {
   public togglePopup(exit: boolean): void {
     this.showPopup = !exit;
     if (exit) {
-  
+
       this.positionService.positionStart();
     }
     else {
