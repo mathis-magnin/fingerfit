@@ -31,14 +31,10 @@ main {
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
-        width: 50%;
+        width: 62.5%;
 
         app-button {
-            margin-right: 2.5vw;
-        }
-
-        app-hands {
-            margin-right: 2.5vh;
+            margin-right: 8.75vw;
         }
     }
 }
