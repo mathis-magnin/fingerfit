@@ -24,6 +24,19 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100vw;
+
+    .break_button_and_hands {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: 62.5%;
+
+        app-button {
+            margin-right: 8.75vw;
+        }
+    }
 }
 
 
@@ -37,3 +50,14 @@ app-hands {
     pointer-events: none;
     filter: blur(50px);
 }
+
+.break_popup_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5vh;
+    padding-bottom: 2.5vh;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+}	

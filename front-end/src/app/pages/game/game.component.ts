@@ -7,7 +7,7 @@ import { Key } from '../../../models/key.model';
 import { Router } from '@angular/router';
 import { AnswersService } from 'src/services/answers.service';
 import { StatisticService } from 'src/services/statistic.service';
-import { HandsStyle } from 'src/models/style-input.model';
+import { ButtonStyle, HandsStyle, KeyboardStyle } from 'src/models/style-input.model';
 
 @Component({
   selector: 'app-game',
@@ -24,10 +24,14 @@ export class GameComponent {
   };
 
   public handsStyle: HandsStyle = { width: '30vh', height: '30vh' };
+  public keyboardStyle: KeyboardStyle = new KeyboardStyle(2.5);
+  public breakButtonStyle: ButtonStyle = new ButtonStyle({ width: '8vw', height: '8vh', margin: "1vw" });
+  public breakPopupButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', margin: "1vw" });
 
   public currentPositionNumber: number = 1;
   public numberOfPositions: number = 0;
   public showPopup: boolean = false;
+  public showPopupBreak: boolean = false;
   public position: Position = this.positionService.position$.value;
   public keysShown: Key[] = this.position.keys;
   public currentKeyIndex: number = 0;
@@ -91,8 +95,8 @@ export class GameComponent {
         this.endGame();
       }
       else {
+        this.stop = true;
         if (this.isCorrect && (this.currentPositionNumber - 1 === Math.floor(this.numberOfPositions / 2))) {
-          this.stop = true;
           console.log('animate');
           this.animate().then(() => {
             console.log('animate end');
@@ -102,8 +106,14 @@ export class GameComponent {
           });
         }
         else {
+          console.log('Fonction nextPosition: pas super-hand');
           this.isCorrect = false;
-          this.positionService.positionStart(true);
+          new Promise<void>((resolve) => {
+            setTimeout(() => { resolve(); }, 1);
+          }).then(() => {
+            this.positionService.positionStart(true);
+            this.stop = false;
+          });
         }
       }
     }
@@ -130,7 +140,6 @@ export class GameComponent {
   public togglePopup(exit: boolean): void {
     this.showPopup = !exit;
     if (exit) {
-
       this.positionService.positionStart();
     }
     else {
@@ -143,4 +152,15 @@ export class GameComponent {
       console.log('end near');
     }
   }
+
+  public takeBreak(): void {
+    this.positionService.positionStop();
+    this.showPopupBreak = true;
+  }
+
+  public endBreak(): void {
+    this.showPopupBreak = false;
+    this.positionService.positionStart();
+  }
+
 }
