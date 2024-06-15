@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Key, Symbol, Finger } from 'src/models/key.model';
 import { NavbarItem } from 'src/models/navbar.model';
 import { Position, Side, sideToString, stringToSide } from 'src/models/position.model';
-import { ButtonStyle, KeyboardStyle, ListStyle } from 'src/models/style-input.model';
+import { ButtonStyle, HandsStyle, KeyboardStyle, ListStyle } from 'src/models/style-input.model';
 import { PositionsService } from 'src/services/positions.service';
 
 @Component({
@@ -13,6 +13,7 @@ import { PositionsService } from 'src/services/positions.service';
 export class PositionsComponent {
 
     /* Styles and components variables */
+
     public currentPageIndex: number = 2;
     public navItems: NavbarItem[] = [{ name: 'Profils', url: '/profiles' }, { name: 'Quiz', url: '/quizzes' }, { name: 'Positions', url: '/positions' }];
     public exitButtonLink: string = '/home';
@@ -22,12 +23,12 @@ export class PositionsComponent {
     public listResearch: string = '';
     public listSide: Side = Side.UNDEFINED;
 
-    public keyboardStyle: KeyboardStyle = new KeyboardStyle(1.75);
-    public allKeysInPurple: Key[] = [];
+    public handsStyle: HandsStyle = { width: '25vh', height: '25vh' };
+    public keyboardStyle: KeyboardStyle = new KeyboardStyle(2);
 
     public validateButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
     public deleteButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', backgroundColor: "red" });
-    public cancelButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', backgroundColor: "grey" });
+    public cancelButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', backgroundColor: "black" });
     public createButtonStyle: ButtonStyle = new ButtonStyle({ width: '7.5vw', height: '5vh' });
 
     public warning: string = "";
@@ -41,6 +42,7 @@ export class PositionsComponent {
 
     public manage: boolean = false;
     public update: boolean = false;
+    public positionTest: boolean = false;
 
     public position: Position = { keys: [], side: Side.LEFT, id: 0 };
     public positionModified: Position = { keys: [], side: Side.LEFT, id: 0 };
@@ -51,12 +53,11 @@ export class PositionsComponent {
 
     constructor(public positionsService: PositionsService) {
         this.positionsService.positions$.subscribe((positionList) => {
-            this.positionList = positionList;
+            for (let i=0; i<positionList.length; i++) { // Create a deep copy the list to avoid reference problems
+                this.positionList[i] = positionList[i];
+            }
+            this.positionList.reverse(); // To have the last added position at the top of the list
         });
-
-        for (let symbol = Symbol.A; symbol <= Symbol.SPACE; symbol++) {
-            this.allKeysInPurple.push({ symbol: symbol, finger: Finger.INDEX })
-        }
     }
 
 
@@ -78,6 +79,7 @@ export class PositionsComponent {
         this.manage = false;
         this.update = false;
         this.popUp = false;
+        this.positionTest = false;
         this.warning = "";
 
         this.position = { keys: [], side: Side.LEFT, id: 0 };
@@ -126,16 +128,22 @@ export class PositionsComponent {
 
 
     public validateChanges() {
-        this.warning = (this.positionModified.keys.length == 0) ? "La position doit faire travailler au moins un doigt" : "";
-        if (this.warning == "") {
-            if (this.update) {
-                this.positionsService.updatePosition(this.positionModified);
-            }
-            else {
-                this.positionsService.addPosition(this.positionModified);
-            }
-            this.reset();
+        if (this.update) {
+            this.positionsService.updatePosition(this.positionModified);
         }
+        else {
+            this.positionsService.addPosition(this.positionModified);
+        }
+        this.reset();
+    }
+
+    public testPosition(): void {
+        this.warning = (this.positionModified.keys.length == 0) ? "La position doit faire travailler au moins un doigt" : "";
+        this.positionTest = (this.warning == "");
+    }
+
+    public stopTest(): void {
+        this.positionTest = false;
     }
 
 }
