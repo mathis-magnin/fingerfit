@@ -24,7 +24,7 @@ export class PositionsComponent {
     public listSide: Side = Side.UNDEFINED;
 
     public handsStyle: HandsStyle = { width: '25vh', height: '25vh' };
-    public keyboardStyle: KeyboardStyle = new KeyboardStyle(2);
+    public keyboardStyle: KeyboardStyle = new KeyboardStyle(2.5);
 
     public validateButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
     public deleteButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', backgroundColor: "red" });
