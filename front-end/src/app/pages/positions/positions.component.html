@@ -29,15 +29,7 @@
             (keysDescribed)="updateKeys($event)"></app-position-description-tab>
 
         <app-warning-popup class="explainations" [text]="'N\'oubliez pas de tester la position avant de la valider'" />
-        <!--
-        <p class="explainations">
-            Appuyez en même temps sur l'ensemble des touches concernées par la position pour
-            vérifier qu'elles son détectées simultanément par votre clavier.
-            <br />
-            Si toutes les touches que vous pressez ne sont pas relevées sur le clavier ci-dessous,
-            cela signifie que la position n'est pas réalisable sur votre clavier.
-        </p>
--->
+
         <app-keyboard [keyboardStyle]="keyboardStyle" [keysToPress]="allKeysInPurple" />
 
         <hr />
@@ -48,7 +40,7 @@
             <app-button [buttonStyle]="cancelButtonStyle" [text]="'Annuler'" (buttonClicked)="reset()" />
             <div class="validate">
                 <app-warning-popup *ngIf="warning != ''" [text]="warning" />
-                <app-button [buttonStyle]="validateButtonStyle" [text]="(update) ? 'Modifer' : 'Créer'"
+                <app-button [buttonStyle]="validateButtonStyle" [text]="(update) ? 'Modifier' : 'Créer'"
                     (buttonClicked)="validateChanges()" />
             </div>
         </div>
