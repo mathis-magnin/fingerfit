@@ -16,6 +16,6 @@
         <div class="separator" [ngClass]="{'disable-sep':this.navItems.length==1}"></div>
     </ul>
 
+    <app-button *ngIf="showExitButton" class="exit-button" [buttonStyle]="exitButtonStyle" [picture]="'assets/left-pointing-arrow.png'" [routerLink]="exitButtonLink"/>
 
-    <app-exit-button class="exit-button" [routerLink]="exitButtonLink"/>
 </nav>

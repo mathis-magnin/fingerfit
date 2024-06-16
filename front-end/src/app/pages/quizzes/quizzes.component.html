@@ -1,10 +1,10 @@
 <header>
     <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems"
-        [exitButtonLink]="exitButtonLink"></app-navbar>
+        [showExitButton]="false"></app-navbar>
 </header>
 
 <main>
-    <section class="choice" *ngIf="!manage">
+    <section class="choice" *ngIf="!manage && !informPopup">
         <app-option [caption]="'Créer un quiz'">
             <app-button [text]="'Créer'" [buttonStyle]="createButtonStyle" (buttonClicked)="creation()" />
         </app-option>
@@ -15,14 +15,14 @@
             (searchValue)="searchQuizzes($event)" (selectedFilter)="filterQuizzes($event)" />
     </section>
 
-    <section class="manage" *ngIf="manage">
+    <section class="manage" *ngIf="manage && !popUp">
         <app-option [caption]="'Nom du quiz'">
             <input type="text" placeholder="Nom du quiz" [value]="quiz.name" (input)="updateName($event)" />
         </app-option>
 
         <hr />
 
-        <app-list [items]="positionList" [multipleChoice]="true" [text]="'Sélectionner des positions'"
+        <app-list [style]="positionListStyle" [items]="positionList" [multipleChoice]="true" [text]="'Sélectionner la ou les position(s) composant le quiz'"
             [alreadySelectedItems]="quiz.positions" (selectedItems)="updatePositions($event)"
             (searchValue)="searchPositions($event)" (selectedFilter)="filterPositions($event)" />
 
@@ -38,15 +38,23 @@
                     (buttonClicked)="validate()" />
             </div>
         </div>
-
-        <app-popup *ngIf="popUp" class="confirm-popup" (exit)="hidePopUp()">
-            <p>Êtes-vous sûr de vouloir supprimer ce quiz ?</p>
-            <div>
-                <app-button [text]="'Annuler'" (buttonClicked)="hidePopUp()"
-                    [buttonStyle]="cancelButtonStyle"></app-button>
-                <app-button [text]="'Supprimer'" (buttonClicked)="delete()"
-                    [buttonStyle]="validateButtonStyle"></app-button>
-            </div>
-        </app-popup>
     </section>
+
+    <app-popup *ngIf="popUp" class="confirm-deletion-popup" [hideExitButton]="true">
+        <p>Êtes-vous sûr de vouloir supprimer ce quiz ?</p>
+        <div>
+            <app-button [text]="'Annuler'" (buttonClicked)="hidePopUp()"
+                [buttonStyle]="cancelButtonStyle"></app-button>
+            <app-button [text]="'Supprimer'" (buttonClicked)="delete()"
+                [buttonStyle]="validateButtonStyle"></app-button>
+        </div>
+    </app-popup>
+
+    <app-popup *ngIf="informPopup" class="inform-user-popup" [hideExitButton]="true">
+        <p>{{informPopupMessage}}</p>
+        <div>
+            <app-button [text]="'Ok'" (buttonClicked)="hideInformPopup()"
+                [buttonStyle]="validateButtonStyle"></app-button>
+        </div>
+    </app-popup>
 </main>
