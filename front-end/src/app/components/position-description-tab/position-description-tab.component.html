@@ -10,13 +10,13 @@
             <app-box [boxStyle]="fingerBoxStyle">{{fingerToString(finger)}}</app-box>
 
             <app-box [boxStyle]="selectorBoxStyle">
-                <app-selector [options]="ordersPossibilitiesOnFinger[finger]"
+                <app-selector [options]="allOrders"
                     [defaultOption]="ordersDefaultValueOnFinger[finger]"
                     (selectedOption)="updateOrder(finger, $event)" />
             </app-box>
 
             <app-box [boxStyle]="selectorBoxStyle">
-                <app-selector [options]="symbolsPossibilitiesOnFinger[finger]"
+                <app-selector [options]="allSymbols"
                     [defaultOption]="symbolsDefaultValueOnFinger[finger]"
                     (selectedOption)="updateSymbol(finger, $event)" />
             </app-box>

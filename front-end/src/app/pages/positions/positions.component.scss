@@ -45,27 +45,7 @@ app-position-description-tab {
 }
 
 
-.explainations {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 4vh;
-    width: 50vw;
-}
-
-
-app-keyboard {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 4vh;
-}
-
-
 .buttons {
-    position: sticky;
     bottom: 1vh;
     display: flex;
     justify-content: space-evenly;
@@ -110,4 +90,39 @@ app-keyboard {
 
 .confirm-popup div app-button {
     margin: 0 1vw;
+}
+
+
+.positionTest {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .positionTestHeader {
+        display: grid;
+        grid-template-columns: 1fr 1fr repeat(3, 0.33fr);
+        align-items: center;
+        justify-items: center;
+
+        app-warning-popup {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+
+        app-hands {
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+
+        app-button {
+            grid-column-start: 4;
+            grid-column-end: 5;
+        }
+    }
+
+    app-keyboard {
+        margin-top: 2.5vh;
+        margin-bottom: 2.5vh;
+    }
 }
