@@ -14,6 +14,7 @@ import { QuizzesService } from 'src/services/quizzes.service';
 export class QuizzesComponent {
 
     /* Styles and components variables */
+
     public currentPageIndex: number = 1;
     public navItems: NavbarItem[] = [{ name: 'Profils', url: '/profiles' }, { name: 'Quiz', url: '/quizzes' }, { name: 'Positions', url: '/positions' }];
     public exitButtonLink: string = '/home';
@@ -22,6 +23,8 @@ export class QuizzesComponent {
     public quizListStyle: ListStyle = { height: "70vh" };
     public quizListResearch: string = '';
     public quizListSide: Side = Side.UNDEFINED;
+
+    public positionListStyle: ListStyle = { height: "45vh" };
 
     public createButtonStyle: ButtonStyle = new ButtonStyle({ width: '7.5vw', height: '5vh' });
     public deleteButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', backgroundColor: "red" });

@@ -22,7 +22,7 @@
 
         <hr />
 
-        <app-list [items]="positionList" [multipleChoice]="true" [text]="'Sélectionner des positions'"
+        <app-list [style]="positionListStyle" [items]="positionList" [multipleChoice]="true" [text]="'Sélectionner la ou les position(s) composant le quiz'"
             [alreadySelectedItems]="quiz.positions" (selectedItems)="updatePositions($event)"
             (searchValue)="searchPositions($event)" (selectedFilter)="filterPositions($event)" />
 
