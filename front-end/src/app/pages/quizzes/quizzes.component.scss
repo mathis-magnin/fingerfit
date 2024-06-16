@@ -61,7 +61,7 @@ input {
 }
 
 
-.confirm-popup {
+.confirm-deletion-popup {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,7 +70,7 @@ input {
 }
 
 
-.confirm-popup div {
+.confirm-deletion-popup div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -79,18 +79,44 @@ input {
 }
 
 
-.confirm-popup p {
-    margin-top: 7vh;
+.confirm-deletion-popup p {
+    margin-top: 1vw;
     margin-left: 1vw;
     margin-right: 1vw;
 }
 
 
-.confirm-popup h1 {
+.confirm-deletion-popup h1 {
     font-size: 1.5rem;
 }
 
 
-.confirm-popup div app-button {
+.confirm-deletion-popup div app-button {
+    margin: 0 1vw;
+}
+
+.inform-user-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.inform-user-popup div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2vh;
+}
+
+.inform-user-popup p {
+    margin-top: 1vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.inform-user-popup app-button {
     margin: 0 1vw;
 }

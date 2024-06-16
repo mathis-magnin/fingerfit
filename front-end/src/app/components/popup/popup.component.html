@@ -1,4 +1,4 @@
 <div class="popup">
-    <app-exit-button (click)="onExit()"></app-exit-button>
+    <app-exit-button *ngIf="!hideExitButton" (click)="onExit()"></app-exit-button>
     <ng-content></ng-content>
 </div>

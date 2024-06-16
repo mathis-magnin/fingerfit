@@ -113,7 +113,7 @@ export class GameComponent {
           }).then(() => {
             this.positionService.positionStart(true);
             this.stop = false;
-          });
+          }); /* Cette promise a uniquement pour but de faire recommencer l'animation du timer */
         }
       }
     }

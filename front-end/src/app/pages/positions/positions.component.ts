@@ -16,7 +16,6 @@ export class PositionsComponent {
 
     public currentPageIndex: number = 2;
     public navItems: NavbarItem[] = [{ name: 'Profils', url: '/profiles' }, { name: 'Quiz', url: '/quizzes' }, { name: 'Positions', url: '/positions' }];
-    public exitButtonLink: string = '/home';
 
     public positionList: Position[] = [];
     public positionListStyle: ListStyle = { height: "70vh" };
@@ -43,6 +42,8 @@ export class PositionsComponent {
     public manage: boolean = false;
     public update: boolean = false;
     public positionTest: boolean = false;
+    public informPopup: boolean = false;
+    public informPopupMessage: string = "";
 
     public position: Position = { keys: [], side: Side.LEFT, id: 0 };
     public positionModified: Position = { keys: [], side: Side.LEFT, id: 0 };
@@ -53,6 +54,7 @@ export class PositionsComponent {
 
     constructor(public positionsService: PositionsService) {
         this.positionsService.positions$.subscribe((positionList) => {
+            this.positionList = [];
             for (let i=0; i<positionList.length; i++) { // Create a deep copy the list to avoid reference problems
                 this.positionList[i] = positionList[i];
             }
@@ -129,12 +131,15 @@ export class PositionsComponent {
 
     public validateChanges() {
         if (this.update) {
+            this.informPopupMessage = "La position a bien été modifiée";
             this.positionsService.updatePosition(this.positionModified);
         }
         else {
+            this.informPopupMessage = "La position a bien été ajoutée";
             this.positionsService.addPosition(this.positionModified);
         }
         this.reset();
+        this.informPopup = true;
     }
 
     public testPosition(): void {
@@ -144,6 +149,10 @@ export class PositionsComponent {
 
     public stopTest(): void {
         this.positionTest = false;
+    }
+
+    public hideInformPopup(): void {
+        this.informPopup = false;
     }
 
 }

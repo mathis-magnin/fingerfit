@@ -25,7 +25,7 @@
         </app-option>
     </div>
 
-    <app-popup *ngIf="popupVisible" class="confirm-popup" (exit)="showPopup()">
+    <app-popup *ngIf="popupVisible" class="confirm-popup" [hideExitButton]="true">
         <p>Êtes-vous sûr de vouloir supprimer ce profil ?</p>
         <div class="preset">
             <app-button [text]="'Annuler'" (buttonClicked)="showPopup()" [buttonStyle]="buttonCancelStyle"></app-button>
