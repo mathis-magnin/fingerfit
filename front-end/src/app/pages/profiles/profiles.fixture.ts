@@ -58,4 +58,16 @@ export class ProfilesFixture extends E2EComponentFixture {
     getSearchInput() {
         return this.page.getByPlaceholder('Rechercher un membre');
     }
+
+    checkAgeError() {
+        return this.page.locator('app-warning-popup', { hasText: 'L\'âge doit être un nombre supérieur à 0'});
+    }
+
+    checkFieldError() {
+        return this.page.locator('app-warning-popup', { hasText: 'Remplissez tous les champs correctement' });
+    }
+
+    cancelCreation() {
+        return this.page.locator('app-popup app-button').first().click();
+    }
 }

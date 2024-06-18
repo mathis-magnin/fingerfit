@@ -29,6 +29,5 @@ export class ProfileOptionFixture extends E2EComponentFixture {
     clickConfirm() {
         return this.getConfirm().click();
     }
-
     
 }
