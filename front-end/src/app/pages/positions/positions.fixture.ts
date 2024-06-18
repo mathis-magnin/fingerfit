@@ -13,4 +13,12 @@ export class PositionsFixture extends E2EComponentFixture {
     clickCreateButton() {
         return this.getButton('Créer').click();
     }
+
+    getTextInput(name: string) {
+        return this.page.getByPlaceholder(name);
+    }
+
+    getPosition() {
+        return this.page.locator('app-list-item').nth(0);
+    }
 }
