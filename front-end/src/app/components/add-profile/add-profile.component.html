@@ -8,6 +8,6 @@
             <app-input-text-field [label]="'Age'" (valueChange)="setAge($event)" [type]="'number'"/>
         </div>
     </div>
-    <app-button [text]="'Enregister le profil'" (click)="checkAndApply()" [buttonStyle]="addButtonStyle"></app-button>
+    <app-button [text]="'Enregistrer le profil'" (click)="checkAndApply()" [buttonStyle]="addButtonStyle"></app-button>
     <app-warning-popup *ngIf="warningVisible" [text]="errorMsg"/>
 </section>
