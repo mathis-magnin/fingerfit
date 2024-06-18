@@ -7,6 +7,8 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
 })
 export class PopupComponent {
 
+    @Input()
+    hideExitButton: boolean = false;
 
     @Output()
     exit: EventEmitter<boolean> = new EventEmitter<boolean>();

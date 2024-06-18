@@ -14,14 +14,16 @@ import { QuizzesService } from 'src/services/quizzes.service';
 export class QuizzesComponent {
 
     /* Styles and components variables */
+
     public currentPageIndex: number = 1;
     public navItems: NavbarItem[] = [{ name: 'Profils', url: '/profiles' }, { name: 'Quiz', url: '/quizzes' }, { name: 'Positions', url: '/positions' }];
-    public exitButtonLink: string = '/home';
 
     public quizList: Quiz[] = [];
     public quizListStyle: ListStyle = { height: "70vh" };
     public quizListResearch: string = '';
     public quizListSide: Side = Side.UNDEFINED;
+
+    public positionListStyle: ListStyle = { height: "45vh" };
 
     public createButtonStyle: ButtonStyle = new ButtonStyle({ width: '7.5vw', height: '5vh' });
     public deleteButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', backgroundColor: "red" });
@@ -37,6 +39,8 @@ export class QuizzesComponent {
     public update: boolean = false;
     public popUp: boolean = false;
     public warning: string = "";
+    public informPopup: boolean = false;
+    public informPopupMessage: string = "";
 
     public positionList: Position[] = [];
     public positionListResearch: string = '';
@@ -50,11 +54,19 @@ export class QuizzesComponent {
 
     constructor(public quizzesServices: QuizzesService, public positionsService: PositionsService) {
         this.quizzesServices.quizzes$.subscribe((quizList) => {
-            this.quizList = quizList;
+            this.quizList = [];
+            for (let i=0; i<quizList.length; i++) { // Create a deep copy the list to avoid reference problems
+                this.quizList[i] = quizList[i];
+            }
+            this.quizList.reverse(); // To have the last added quiz at the top of the list
         });
 
         this.positionsService.positions$.subscribe((positionList) => {
-            this.positionList = positionList;
+            this.positionList = [];
+            for (let i=0; i<positionList.length; i++) { // Create a deep copy the list to avoid reference problems
+                this.positionList[i] = positionList[i];
+            }
+            this.positionList.reverse(); // To have the last added position at the top of the list
         })
     }
 
@@ -156,13 +168,20 @@ export class QuizzesComponent {
         this.warning = (this.quizModified.name == "") ? ((this.quizModified.positions.length <= 0) ? "Veuillez remplir les champs" : "Veuillez nommer le quiz") : ((this.quizModified.positions.length <= 0) ? "Veuillez sélectionner au moins une position" : "");
         if (this.warning == "") {
             if (this.update) {
+                this.informPopupMessage = "Le quiz a bien été modifié.";
                 this.quizzesServices.updateQuiz(this.quizModified);
             }
             else {
+                this.informPopupMessage = "Le quiz a bien été créé.";
                 this.quizzesServices.createQuiz(this.quizModified)
             }
             this.reset();
+            this.informPopup = true;
         }
+    }
+
+    public hideInformPopup(): void {
+        this.informPopup = false;
     }
 
 }

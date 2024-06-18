@@ -28,7 +28,6 @@ export class PositionDescriptionTabComponent {
             this.symbolsDefaultValueOnFinger[keys[i].finger] = symbolToString(keys[i].symbol);
             this.ordersDefaultValueOnFinger[keys[i].finger] = orderToString(i);
         }
-        this.updateSelectors();
     };
 
     @Output() public keysDescribed: EventEmitter<Key[]> = new EventEmitter<Key[]>();
@@ -41,12 +40,12 @@ export class PositionDescriptionTabComponent {
     public selectorBoxStyle: BoxStyle = new BoxStyle({ width: '7.5vw', backgroundColor: 'antiquewhite' });
 
     public symbolOnFinger: Symbol[] = [];
+    public allSymbols: string[] = [];
     public symbolsDefaultValueOnFinger: string[] = [];
-    public symbolsPossibilitiesOnFinger: string[][] = [];
 
-    public orderOnFinger: Order[] = []
+    public orderOnFinger: Order[] = [];
+    public allOrders: string[] = [];
     public ordersDefaultValueOnFinger: string[] = [];
-    public ordersPossibilitiesOnFinger: string[][] = [];
 
 
     constructor() {
@@ -54,34 +53,38 @@ export class PositionDescriptionTabComponent {
             this.fingers.push(finger);
         }
 
+        for (let symbol = Symbol.A; symbol <= Symbol.SPACE; symbol++) {
+            this.allSymbols.push(symbolToString(symbol));
+        }
+
+        for (let order = Order.NOT_WORKED; order <= Order.FIFTH; order++) {
+            this.allOrders.push(orderToString(order));
+        }
+
         for (let i = 0; i < 5; i++) {
             this.symbolsDefaultValueOnFinger.push(symbolToString(i));
             this.ordersDefaultValueOnFinger.push(orderToString(Order.NOT_WORKED));
-            this.symbolsPossibilitiesOnFinger.push([]);
-            this.ordersPossibilitiesOnFinger.push([]);
             this.orderOnFinger.push(Order.NOT_WORKED);
             this.symbolOnFinger.push(i);
         }
     }
-
-
-    public updateSelectors() {
-        this.symbolsPossibilitiesOnFinger = [[], [], [], [], []];
-        this.ordersPossibilitiesOnFinger = [[], [], [], [], []];
-
-        for (let finger = Finger.THUMB; finger <= Finger.PINKY; finger++) {
-            /* Symbols possibilities */
-            for (let symbol = Symbol.A; symbol <= Symbol.SPACE; symbol++) {
-                if ((this.symbolOnFinger[finger] == symbol) || !this.symbolOnFinger.includes(symbol)) {
-                    this.symbolsPossibilitiesOnFinger[finger].push(symbolToString(symbol));
-                }
+  
+    
+    public avoidDuplicatedSymbol(finger: Finger, fingerPreviousSymbol: Symbol): void {
+        for(let f = Finger.THUMB; f <= Finger.PINKY; f++) {
+            if(f != finger && this.symbolOnFinger[f] == this.symbolOnFinger[finger]) {
+                this.symbolOnFinger[f] = fingerPreviousSymbol;
+                this.symbolsDefaultValueOnFinger[f] = symbolToString(fingerPreviousSymbol);
             }
+        }
+    }
 
-            /* Orders possibilities */
-            for (let order = Order.NOT_WORKED; order <= Order.FIFTH; order++) {
-                if ((order == Order.NOT_WORKED) || (this.orderOnFinger[finger] == order) || !this.orderOnFinger.includes(order)) {
-                    this.ordersPossibilitiesOnFinger[finger].push(orderToString(order));
-                }
+
+    public avoidDuplicatedOrder(finger: Finger, fingerPreviousOrder: Order): void {
+        for(let f = Finger.THUMB; f <= Finger.PINKY; f++) {
+            if(f != finger && this.orderOnFinger[f] == this.orderOnFinger[finger]) {
+                this.orderOnFinger[f] = fingerPreviousOrder;
+                this.ordersDefaultValueOnFinger[f] = orderToString(fingerPreviousOrder);
             }
         }
     }
@@ -101,16 +104,34 @@ export class PositionDescriptionTabComponent {
 
 
     public updateOrder(finger: Finger, order: string) {
+        let fingerPreviousOrder = this.orderOnFinger[finger];
+        if (fingerPreviousOrder == Order.NOT_WORKED) {
+            fingerPreviousOrder = Order.FIRST;
+            while (this.orderOnFinger.includes(fingerPreviousOrder)) {
+                fingerPreviousOrder++;                
+            }
+        }
         this.orderOnFinger[finger] = stringToOrder(order);
+        if (this.orderOnFinger[finger] != Order.NOT_WORKED) {
+            this.avoidDuplicatedOrder(finger, fingerPreviousOrder);
+        }
         this.emit();
-        this.updateSelectors();
     }
 
 
     public updateSymbol(finger: Finger, symbol: string) {
+        let fingerPreviousSymbol = this.symbolOnFinger[finger];
         this.symbolOnFinger[finger] = stringToSymbol(symbol);
+        if (this.orderOnFinger[finger] == Order.NOT_WORKED) {
+            let availableOrder = Order.FIRST;
+            while (this.orderOnFinger.includes(availableOrder)) {
+                availableOrder++;
+            }
+            this.ordersDefaultValueOnFinger[finger] = orderToString(availableOrder);
+            this.orderOnFinger[finger] = availableOrder;
+        }
+        this.avoidDuplicatedSymbol(finger, fingerPreviousSymbol);
         this.emit();
-        this.updateSelectors();
     }
 
 }
