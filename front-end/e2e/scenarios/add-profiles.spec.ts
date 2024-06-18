@@ -1,13 +1,14 @@
 import { test, expect } from '@playwright/test';
 import { testUrl } from 'e2e/e2e.config';
 import { ProfilesFixture } from 'src/app/pages/profiles/profiles.fixture';
-import { ProfilesService } from 'src/services/profiles.service';
+import { ProfileOptionFixture } from 'src/app/pages/profile-options/profiles.fixture';
 
 // https://playwright.dev/docs/locators
 test.describe('Ajout d\'un profil', () => {
     test('Ajout', async ({ page }) => {
     await page.goto(testUrl+'/profiles');
         const profilesComponentFixture = new ProfilesFixture(page);
+        const profileOptionComponentFixture = new ProfileOptionFixture(page);
         var count = 0;
 
         await test.step('initialisation sur la page de profil', async () => {
@@ -72,8 +73,33 @@ test.describe('Ajout d\'un profil', () => {
                 expect(newCount).toBe(count);
             }
             expect(newCount2).toBeGreaterThan(0);
+
+            await profilesComponentFixture.clickShowProfile();
+            const nameField = await profileOptionComponentFixture.getNameField();
+            expect(nameField).toBeVisible();
+            expect(nameField).toHaveValue('Doe');
+
+            const firstNameField = await profileOptionComponentFixture.getFirstnameField(); 
+            expect(firstNameField).toBeVisible();
+            expect(firstNameField).toHaveValue('John');
+
+            const ageField = await profileOptionComponentFixture.getAgeField();
+            expect(ageField).toBeVisible();
+            expect(ageField).toHaveValue('12');
+    
         });
 
+        await test.step('suppression du profil', async () => {
+            const deleteButton = await profileOptionComponentFixture.getDeleteProfileButton();
+            expect(deleteButton).toBeVisible();
+            await deleteButton.click();
+            const confirmButton = await profileOptionComponentFixture.getConfirm();
+            expect(confirmButton).toBeVisible();
+            await confirmButton.click();
+
+            const newCount = await profilesComponentFixture.getProfileListCount();
+            expect(newCount).toBe(count);
+        });
 
     });
 });
