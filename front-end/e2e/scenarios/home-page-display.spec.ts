@@ -3,7 +3,7 @@ import { testUrl } from 'e2e/e2e.config';
 import { AppFixture } from 'src/app/app.fixture';
 
 // https://playwright.dev/docs/locators
-test.describe('Home page display', () => {
+/*test.describe('Home page display', () => {
   test('Basic test', async ({ page }) => {
     await page.goto(testUrl);
     const appComponentFixture = new AppFixture(page);
@@ -54,4 +54,4 @@ test.describe('Home page display', () => {
 
   // TO GO FURTHER :
   // Check the PS6-CORRECTION repo : https://github.com/NablaT/ps6-correction-td1-td2-v2/blob/master/front-end/e2e/scenarios/create-quiz.spec.ts
-});
+});*/

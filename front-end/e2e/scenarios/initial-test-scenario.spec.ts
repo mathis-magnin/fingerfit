@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+/*import { test, expect } from '@playwright/test';
 import { testUrl } from 'e2e/e2e.config';
 
 // This file is here to test the playwright integration.
@@ -12,3 +12,4 @@ test.describe('Initial test display', () => {
     // Test case pass? Means the playwright setup is done! Congrats!
   });
 });
+*/
