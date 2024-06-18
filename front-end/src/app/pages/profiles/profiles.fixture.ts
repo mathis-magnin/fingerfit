@@ -2,6 +2,28 @@ import { E2EComponentFixture } from "e2e/e2e-component.fixture";
 
 export class ProfilesFixture extends E2EComponentFixture {
 
+    /* Search bar */
+
+    getSearchBar() {
+        return this.page.getByPlaceholder("Rechercher");
+    }
+
+    fillSearchBar(str: string) {
+        return this.getSearchBar().fill(str);
+    }
+
+
+    /* Play button */
+
+    getPlayButton() {
+        return this.page.locator("app-button", { hasText: "Jouer" });
+    }
+
+    clickPlayButton() {
+        return this.getPlayButton().click();
+    }
+
+
     getTitle() {
         return this.page.locator('app-navbar .colored');
     }
@@ -9,7 +31,7 @@ export class ProfilesFixture extends E2EComponentFixture {
     getProfiles() {
         return this.page.locator('app-profile-list')
     }
-   
+
     getProfileListCount() {
         return this.getProfiles().locator('app-profile').count();
     }
@@ -25,7 +47,7 @@ export class ProfilesFixture extends E2EComponentFixture {
     getShowProfile() {
         return this.page.locator('app-profile-list app-button').first();
     }
-    
+
 
     clickShowProfile() {
         return this.getShowProfile().click();
@@ -60,7 +82,7 @@ export class ProfilesFixture extends E2EComponentFixture {
     }
 
     checkAgeError() {
-        return this.page.locator('app-warning-popup', { hasText: 'L\'âge doit être un nombre supérieur à 0'});
+        return this.page.locator('app-warning-popup', { hasText: 'L\'âge doit être un nombre supérieur à 0' });
     }
 
     checkFieldError() {
