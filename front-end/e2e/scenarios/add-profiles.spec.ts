@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { testUrl } from 'e2e/e2e.config';
 import { ProfilesFixture } from 'src/app/pages/profiles/profiles.fixture';
+import { ProfilesService } from 'src/services/profiles.service';
 
 // https://playwright.dev/docs/locators
 test.describe('Ajout d\'un profil', () => {
@@ -25,7 +26,8 @@ test.describe('Ajout d\'un profil', () => {
 
             const addProfileButton = await profilesComponentFixture.getAddProfileButton();
             expect(addProfileButton).toBeVisible();
-
+            
+            
             
         });
 
@@ -54,11 +56,22 @@ test.describe('Ajout d\'un profil', () => {
             expect(profiles).toBeVisible();
 
             const newCount = await profilesComponentFixture.getProfileListCount();
-            if(count<=2)
-                expect(newCount).toBe(count + 1);
-            else
-                expect(newCount).toBe(count);
 
+            //recherche du profil ajouté
+            const searchInput = await profilesComponentFixture.getSearchInput();
+            expect(searchInput).toBeVisible();
+            await searchInput.fill('Doe');
+            const newCount2 = await profilesComponentFixture.getProfileListCount();
+
+
+            //affichage du profil ajouté si possible
+            if(count<=2){
+                expect(newCount).toBe(count + 1);
+            }
+            else{
+                expect(newCount).toBe(count);
+            }
+            expect(newCount2).toBeGreaterThan(0);
         });
 
 

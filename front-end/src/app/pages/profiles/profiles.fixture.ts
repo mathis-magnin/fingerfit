@@ -55,4 +55,7 @@ export class ProfilesFixture extends E2EComponentFixture {
         return this.page.locator('app-button', { hasText: 'Enregistrer le profil' }).click();
     }
 
+    getSearchInput() {
+        return this.page.getByPlaceholder('Rechercher un membre');
+    }
 }
