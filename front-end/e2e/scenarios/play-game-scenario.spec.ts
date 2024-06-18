@@ -1,84 +1,119 @@
 import { test, expect } from '@playwright/test';
 import { testUrl } from 'e2e/e2e.config';
 
+import { ProfilesFixture } from 'src/app/pages/profiles/profiles.fixture';
+import { CongratsFixture } from 'src/app/pages/congrats/congrats.fixture';
+import { OptionsFixture } from 'src/app/pages/options/options.fixture';
+import { GameFixture } from 'src/app/pages/game/game.fixture';
+
 
 test.describe("Play game scenario", () => {
     test("Basic test", async ({ page }) => {
         await page.goto(testUrl + "/profiles");
 
-        /* On prend en compte qu'il existe un profil avec lequel on peut jouer */
         await test.step("Profiles page", async () => {
-            const playButton = await page.locator("app-button", { hasText: 'Jouer' });
-            const searchProfileBar = await page.locator("input", {});
-            expect(playButton.isVisible());
-            expect(searchProfileBar.isVisible());
-            await searchProfileBar.fill("Lucas Phéolet");
-            await playButton.click();
+            const profilesFixture = new ProfilesFixture(page);
+
+            await profilesFixture.fillSearchBar("Mardé TEST");
+            await profilesFixture.clickPlayButton();
         });
 
         await test.step("Game options page", async () => {
-            const searchQuizBar = await page.getByPlaceholder("Rechercher");
-            expect(searchQuizBar.isVisible());
-            await searchQuizBar.fill("Test");
+            const optionsFixture = new OptionsFixture(page);
 
-            const quizButton = await page.locator("app-list-item").filter({ hasText: "Test" });
-            expect(quizButton.isVisible());
-            await quizButton.click();
-
-            // const gameModeSelector = await page.locator("select", { hasText: "Tous les doigts en même temps" });
-            // await gameModeSelector.selectOption("Un doigt après l'autre");
-
-            const timerbutton = await page.locator("app-option", { hasText: "Définir un temps par position de main" }).locator("app-checkbox");
-            expect(timerbutton.isVisible());
-            timerbutton.click();
-
-            const playButton = await page.locator("app-button", { hasText: 'Valider et Jouer' });
-            expect(playButton.isVisible());
-            await playButton.click();
+            await optionsFixture.SetListFilterSelector("Deux mains");
+            await optionsFixture.fillListSearchBar("Test");
+            await optionsFixture.clickListItem("Test");
+            await optionsFixture.clickChronometerbutton();
+            await optionsFixture.clickTimerButton();
+            await optionsFixture.clickPlayButton();
         });
 
         await test.step("Game page", async () => {
-            const spaceKey = await page.locator("app-key", { hasText: "ESPACE" });
-            expect(spaceKey.isVisible());
-            await page.keyboard.down('Space');
+            const gameFixture = new GameFixture(page);
 
-            const sKey = await page.locator("app-key", { hasText: "S", hasNotText: "ESPACE" });
-            expect(sKey.isVisible());
-            await page.keyboard.down('S');
+            for (let key of gameFixture.getAllKeys()) {
+                if ((key == "V") || (key == "R") || (key == "S")) {
+                    expect(gameFixture.getKey(key as string).isVisible());
+                }
+                else {
+                    expect(gameFixture.getKey(key as string).isHidden());
+                }
+            }
 
-            const rKey = await page.locator("app-key", { hasText: "R" });
-            expect(rKey.isVisible());
-            await page.keyboard.down('R');
-            await page.keyboard.down('K');
+            await page.keyboard.down("A");
 
-            await page.keyboard.up("Space");
-            await page.keyboard.up('S');
-            await page.keyboard.up('R');
-            await page.keyboard.up('K');
+            expect(gameFixture.getKey("A").isVisible());
 
-            await page.keyboard.down('C');
-            await page.keyboard.down('X');
-            await page.keyboard.down('F');
-            await page.keyboard.down('H');
-            await page.keyboard.down('Space');
+            await page.keyboard.up("A");
 
+            await page.keyboard.down("V");
+            await page.keyboard.down("R");
+            await page.keyboard.down("S");
+            await page.keyboard.up("V");
+            await page.keyboard.up("R");
+            await page.keyboard.up("S");
+
+            for (let key of gameFixture.getAllKeys()) {
+                if ((key == "C") || (key == "X") || (key == "F") || (key == "H") || (key == "Space")) {
+                    expect(gameFixture.getKey(key as string).isVisible());
+                }
+                else {
+                    expect(gameFixture.getKey(key as string).isHidden());
+                }
+            }
+
+            await page.keyboard.down("C");
+            await page.keyboard.down("X");
+
+            await gameFixture.clickPauseButton();
+
+            for (let key of gameFixture.getAllKeys()) {
+                expect(gameFixture.getKey(key as string).isHidden());
+            }
+
+            await gameFixture.clickResumePopUpButton();
+
+            for (let key of gameFixture.getAllKeys()) {
+                if ((key == "C") || (key == "X") || (key == "F") || (key == "H") || (key == "Space")) {
+                    expect(gameFixture.getKey(key as string).isVisible());
+                }
+                else {
+                    expect(gameFixture.getKey(key as string).isHidden());
+                }
+            }
+
+            await page.keyboard.down("F");
+            await page.keyboard.down("H");
+            await page.keyboard.down("Space");
             await page.keyboard.up("C");
-            await page.keyboard.up('X');
-            await page.keyboard.up('F');
-            await page.keyboard.up('H');
-            await page.keyboard.up('Space');
-        })
-
+            await page.keyboard.up("X");
+            await page.keyboard.up("F");
+            await page.keyboard.up("H");
+            await page.keyboard.up("Space");
+        });
 
         await test.step("Congrats page", async () => {
-            const leaveButton = page.locator("app-button", { hasText: "Quitter" });
-            await leaveButton.click();
+            const congratsFixture = new CongratsFixture(page);
 
-            const password = await page.getByPlaceholder("Mot de passe");
-            password.fill("admin");
+            expect(congratsFixture.getLeaveButton().isVisible());
+            expect(congratsFixture.getReplayButton().isVisible());
 
-            const connectButton = page.locator("app-button", { hasText: "Se connecter" });
-            connectButton.click();
+            expect(congratsFixture.getLeavePopUpButton().isHidden());
+            expect(congratsFixture.getPasswordPopUpInput().isHidden());
+            expect(congratsFixture.getConnectPopUpButton().isHidden());
+
+            await congratsFixture.clickLeaveButton();
+
+            expect(congratsFixture.getLeaveButton().isHidden());
+            expect(congratsFixture.getReplayButton().isHidden());
+
+            expect(congratsFixture.getLeavePopUpButton().isVisible());
+            expect(congratsFixture.getPasswordPopUpInput().isVisible());
+            expect(congratsFixture.getConnectPopUpButton().isVisible());
+
+            await congratsFixture.fillPasswordPopUpInput("admin");
+            await congratsFixture.clickConnectPopUpButton();
         });
     });
 })
