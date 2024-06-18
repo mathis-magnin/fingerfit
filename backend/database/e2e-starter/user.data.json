@@ -1,0 +1,11 @@
+[
+  {
+    "name": "TEST",
+    "firstName": "Mardé",
+    "age": "15",
+    "profilePicture": "../../../assets/profile-character/character1.png",
+    "id": 1718692850438,
+    "chronometer": false,
+    "timePerQuestion": 60
+  }
+]
