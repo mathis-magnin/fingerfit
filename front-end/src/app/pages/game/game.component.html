@@ -17,7 +17,8 @@
 <app-popup *ngIf="showPopup" (exit)="togglePopup($event)">
     <app-login />
 </app-popup>
-<app-popup class="break_popup" *ngIf="showPopupBreak" (exit)="endBreak()">
+
+<app-popup class="break_popup" *ngIf="showPopupBreak" [hideExitButton]="true">
     <div class="break_popup_content">
         <p>Une petite pause bien méritée !<br />Prêt à reprendre la partie ?</p>
         <app-button [buttonStyle]="breakPopupButtonStyle" [text]="'Reprendre'" (click)="endBreak()" />
