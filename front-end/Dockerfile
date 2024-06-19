@@ -1,4 +1,4 @@
-FROM node:20.14 as build
+FROM node:alpine3.20 as build
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ RUN npm install
 
 RUN npm run build
 
-FROM nginx:latest
+FROM nginx:1.24
 
 COPY --from=build /app/dist/front-end /usr/share/nginx/html
 COPY default.conf /etc/nginx/conf.d/default.conf
