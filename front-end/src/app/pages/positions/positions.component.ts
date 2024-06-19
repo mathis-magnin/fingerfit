@@ -131,11 +131,11 @@ export class PositionsComponent {
 
     public validateChanges() {
         if (this.update) {
-            this.informPopupMessage = "La position a bien été modifiée";
+            this.informPopupMessage = "La position a bien été modifiée.";
             this.positionsService.updatePosition(this.positionModified);
         }
         else {
-            this.informPopupMessage = "La position a bien été ajoutée";
+            this.informPopupMessage = "La position a bien été ajoutée.";
             this.positionsService.addPosition(this.positionModified);
         }
         this.reset();
@@ -145,6 +145,9 @@ export class PositionsComponent {
     public testPosition(): void {
         this.warning = (this.positionModified.keys.length == 0) ? "La position doit faire travailler au moins un doigt" : "";
         this.positionTest = (this.warning == "");
+        if(this.positionTest) {
+            this.position = this.positionModified;
+        }
     }
 
     public stopTest(): void {

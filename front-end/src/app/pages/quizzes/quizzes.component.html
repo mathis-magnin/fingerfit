@@ -5,13 +5,13 @@
 
 <main>
     <section class="choice" *ngIf="!manage && !informPopup">
-        <app-option [caption]="'Créer un quiz'">
+        <app-option [caption]="'Créer un nouveau quiz'">
             <app-button [text]="'Créer'" [buttonStyle]="createButtonStyle" (buttonClicked)="creation()" />
         </app-option>
 
         <hr />
 
-        <app-list [items]="quizList" [text]="'Modifier un quiz'" (selectedItems)="modification($event[0])"
+        <app-list [items]="quizList" [text]="'Modifier un quiz existant'" (selectedItems)="modification($event[0])"
             (searchValue)="searchQuizzes($event)" (selectedFilter)="filterQuizzes($event)" />
     </section>
 
