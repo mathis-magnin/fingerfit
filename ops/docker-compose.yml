@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  front:
+    image: ps6-front
+    build: ../front-end
+    ports:
+      - "8080:80"
+    depends_on:
+      - back
+  
+  back:
+    image: ps6-back
+    build: ../backend
+    ports:
+      - "8081:9428"
