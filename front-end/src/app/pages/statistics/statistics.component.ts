@@ -18,6 +18,7 @@ export class StatisticsComponent {
   public statisticList: Statistic[] = [];
   public side: Side = Side.UNDEFINED;
   public search: string = "";
+  public colors: string[] = [];
 
   public currentPageIndex: number = 1;
   public navItems: NavbarItem[] = navbarProfileOptionsStatistics;
@@ -51,6 +52,11 @@ export class StatisticsComponent {
   public filterStatistics(positions: Position[]) {
     this.statisticsService.filterStatistics(positions);
     console.log("statistics filterd : " + this.statisticList.length);
+  }
+
+  public updateColors(colors: string[]) {
+    console.log("couleurs reçu sur la page : " + colors);
+    this.colors = colors;
   }
 
 }
