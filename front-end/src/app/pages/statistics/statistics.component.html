@@ -4,7 +4,7 @@
 
 <main class="statistics">
     <app-list [style]="listStyle" [items]="positionList" [multipleChoice]="true"
-        [text]="'Sélectionnez une ou plusieurs position(s)'" (searchValue)="searchPositions($event)"
+        [text]="'Sélectionnez la ou les position(s) à afficher sur le graphique'" (searchValue)="searchPositions($event)"
         (selectedFilter)="filterPositions($event)" (selectedItems)="filterStatistics($event)" />
     <app-graphic class="stats-chart" [items]="statisticList"/>
 </main>
