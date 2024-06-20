@@ -26,7 +26,6 @@ export class GameComponent {
 
   public handsStyle: HandsStyle = { width: '30vh', height: '30vh' };
   public keyboardStyle: KeyboardStyle = new KeyboardStyle(2.5);
-  public breakButtonStyle: ButtonStyle = new ButtonStyle({ width: '8vw', height: '8vh', margin: "1vw" });
   public breakPopupButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', margin: "1vw" });
 
   public currentPositionNumber: number = 1;
