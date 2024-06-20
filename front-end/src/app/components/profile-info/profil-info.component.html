@@ -12,14 +12,15 @@
         </div>
     </div>
     <div class="edit-info">
-        <app-button [text]="editText" [buttonStyle]="addButtonStyle" (click)="triggerPopup()"></app-button>
-        <app-popup *ngIf="showPopup" class="confirm-popup" (exit)="showPopup=false">
-            <p>Voulez-vous vraiment modifier ce profil ?</p>
+        <app-button *ngIf="!editMode" [picture]="'../../assets/delete.png'" [buttonStyle]="deleteButtonStyle" (buttonClicked)="openConfirmDeletionPopup()" />
+        <app-button [text]="(editMode) ? 'Valider' : 'Modifier'" [buttonStyle]="modifyButtonStyle" (click)="modifyProfile()"></app-button>
+        <app-popup *ngIf="showPopup" class="confirm-popup" [hideExitButton]="true">
+            <p>{{popupMsg}}</p>
             <div>
                 <app-button [text]="'Annuler'" (buttonClicked)="showPopup=false"
                     [buttonStyle]="cancelButtonStyle"></app-button>
-                <app-button [text]="'Modifier'" (buttonClicked)="confirmEdit()"
-                    [buttonStyle]="addButtonStyle"></app-button>
+                <app-button [text]="'Confirmer'" (buttonClicked)="confirm()"
+                    [buttonStyle]="modifyButtonStyle"></app-button>
             </div>
         </app-popup>
         <app-exit-button *ngIf="editMode" (click)="exitEditMode()" />

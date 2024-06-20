@@ -5,8 +5,6 @@
 <main>
     <h1>Informations du profil</h1>
     <div class="profile">
-        <app-button class="delete" [picture]="'../../assets/delete.png'" (buttonClicked)="showPopup()"
-            [buttonStyle]="buttonStyle"/>
         <app-profil-info />
     </div>
 
@@ -24,13 +22,4 @@
                 [value]="this.timeWaitingValue" (change)="setTime(numberInput.value)" />
         </app-option>
     </div>
-
-    <app-popup *ngIf="popupVisible" class="confirm-popup" [hideExitButton]="true">
-        <p>Êtes-vous sûr de vouloir supprimer ce profil ?</p>
-        <div class="preset">
-            <app-button [text]="'Annuler'" (buttonClicked)="showPopup()" [buttonStyle]="buttonCancelStyle"></app-button>
-            <app-button [text]="'Supprimer'" (buttonClicked)="deleteUser()"
-                [buttonStyle]="buttonAcceptStyle"></app-button>
-        </div>
-    </app-popup>
 </main>

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { NavbarItem, navbarProfileOptionsStatistics } from 'src/models/navbar.model';
-import { ButtonStyle } from 'src/models/style-input.model';
 import { PlayerService } from 'src/services/player.service';
 import { Router } from '@angular/router';
 import { ProfilesService } from 'src/services/profiles.service';
@@ -16,21 +15,16 @@ import { Profile } from 'src/models/profile.model';
 export class ProfileOptionsComponent {
 
   public currentPageIndex: number = 0;
-
   public navItems: NavbarItem[] = navbarProfileOptionsStatistics;
-
   public exitButtonLink: string = '/profiles';
+
   public timeWaitingValue: number = 20;
 
-  public buttonStyle: ButtonStyle = new ButtonStyle({ backgroundColor: '#ff0000' });
-  public buttonCancelStyle: ButtonStyle = new ButtonStyle({ backgroundColor: '#ff0000',  height: '5vh'});
-  public buttonAcceptStyle: ButtonStyle = new ButtonStyle({ height: '5vh'});
-  public popupVisible: boolean = false;
   public currentProfile?: Profile;
   public chronometer: boolean = false;
 
 
-  constructor(private playerService: PlayerService, private router: Router, private profileService: ProfilesService) {
+  constructor(private playerService: PlayerService, private profileService: ProfilesService) {
     this.playerService.player$.subscribe((player) => {
       this.currentProfile = player;
       if (player){
@@ -40,15 +34,6 @@ export class ProfileOptionsComponent {
     });
   }
   
-
-  public deleteUser(): void {
-    this.playerService.deleteProfile();
-    this.router.navigate(['/profiles']);
-  }
-
-  public showPopup(): void {
-    this.popupVisible = !this.popupVisible;
-  }
 
   public switchChronometer(event: any): void {
     if (!this.currentProfile) return;
