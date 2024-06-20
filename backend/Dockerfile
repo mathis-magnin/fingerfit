@@ -1,11 +1,14 @@
-FROM node:20.14
+FROM node:alpine3.20
 
 WORKDIR /app
+
+
+RUN apk --no-cache add curl
 
 COPY package.json package-lock.json ./
 RUN npm install
 
-COPY . ./
+COPY . /app
 
 EXPOSE 9428
 
