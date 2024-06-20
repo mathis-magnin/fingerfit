@@ -84,3 +84,12 @@ hr {
     border-right: 0px;
     border-bottom: 1px solid gray;
 }
+
+
+.columns {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}

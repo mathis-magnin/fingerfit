@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Options, GameMode } from '../models/options.model';
+import { Options, GameMode, TimeMesure } from '../models/options.model';
 import { Quiz } from '../models/quiz.model';
 
 @Injectable({
@@ -10,17 +10,38 @@ export class OptionsService {
 
     public options$: BehaviorSubject<Options> =
         new BehaviorSubject<Options>({
-            chronometer: false,
-            timePerQuestion: undefined,
             quiz: undefined,
             gameMode: GameMode.ALL_AT_ONCE,
+            timeMesure: TimeMesure.NONE,
+            countdown: 20
         });
 
-    constructor() { }
 
+    public setOptions(options: Options) {
+        this.options$.next(options);
+    }
+
+
+    public clearOptions(): void {
+        this.options$.next({
+            quiz: undefined,
+            gameMode: GameMode.ALL_AT_ONCE,
+            timeMesure: TimeMesure.NONE,
+            countdown: 20
+        });
+    }
+
+
+    /*
     public selectQuiz(quiz: Quiz): void {
         this.options$.next({ ...this.options$.value, quiz });
     }
+
+
+    public setGameMode(gm: GameMode): void {
+        this.options$.next({ ...this.options$.value, gameMode: gm });
+    }
+
 
     public setChronometer(set: boolean): void {
         if (set)
@@ -40,9 +61,6 @@ export class OptionsService {
             this.options$.next({ ...this.options$.value, timePerQuestion: 20 });
     }
 
-    public setGameMode(gm: GameMode): void {
-        this.options$.next({ ...this.options$.value, gameMode: gm });
-    }
 
     public checkOptions(): boolean {
         if (this.options$.value.quiz) {
@@ -51,14 +69,6 @@ export class OptionsService {
         else {
             return false;
         }
-    }
+    } */
 
-    public clearOptions(): void {
-        this.options$.next({
-            chronometer: false,
-            timePerQuestion: undefined,
-            quiz: undefined,
-            gameMode: GameMode.ALL_AT_ONCE,
-        });
-    }
 }

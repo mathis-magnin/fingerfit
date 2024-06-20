@@ -1,9 +1,9 @@
 <header [ngClass]="{disable:showPopup || showPopupBreak}">
     <div class="timer_progress">
         <app-progress-bar [positions]="numberOfPositions" [current_position]="currentPositionNumber" />
-        <app-timer [maxTime]="options.timePerQuestion"
-            [start]="this.options.timePerQuestion !== undefined || this.options.chronometer" [paused]="this.showPopup"
-            [stop]="this.stop" (timeOut)="nextPosition()" *ngIf="options.chronometer || options.timePerQuestion" />
+        <app-timer [maxTime]="(options.timeMesure == TimeMesure.COUNTDOWN) ? options.countdown : 0"
+            [paused]="this.showPopup" [stop]="this.stop" (timeOut)="nextPosition()"
+            *ngIf="options.timeMesure != TimeMesure.NONE" />
     </div>
     <app-exit-button (click)="togglePopup(false)" />
 </header>
@@ -13,7 +13,8 @@
         <app-button [buttonStyle]="breakButtonStyle" [text]="'Faire une pause'" (click)="takeBreak()" />
         <app-hands [handsStyle]="handsStyle" [keysToPress]="keysShown" [side]="position.side" />
     </div>
-    <app-keyboard [keyboardStyle]="keyboardStyle" [keysToPress]="keysShown" (nextPosition)="nextPosition()" (isCorrect)="isAnswerCorrect($event)" />
+    <app-keyboard [keyboardStyle]="keyboardStyle" [keysToPress]="keysShown" (nextPosition)="nextPosition()"
+        (isCorrect)="isAnswerCorrect($event)" />
 </main>
 
 <app-popup *ngIf="showPopup" (exit)="togglePopup($event)">

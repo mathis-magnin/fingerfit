@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { OptionsService } from '../../../services/options.service';
-import { Options, GameMode } from '../../../models/options.model';
+import { Options, GameMode, TimeMesure } from '../../../models/options.model';
 import { PositionService } from '../../../services/position.service';
 import { Position } from '../../../models/position.model';
 import { Key } from '../../../models/key.model';
@@ -16,11 +16,12 @@ import { ButtonStyle, HandsStyle, KeyboardStyle } from 'src/models/style-input.m
 })
 export class GameComponent {
 
+  TimeMesure = TimeMesure;
   public options: Options = {
-    timePerQuestion: undefined,
-    chronometer: false,
     quiz: undefined,
     gameMode: GameMode.ALL_AT_ONCE,
+    timeMesure: TimeMesure.NONE,
+    countdown: 20
   };
 
   public handsStyle: HandsStyle = { width: '30vh', height: '30vh' };
@@ -90,7 +91,7 @@ export class GameComponent {
     else {
       this.answersService.addAnswer({ time: this.positionService.TimerService.count, correct: this.isCorrect });
       console.log(this.statisticService.statisticUrl);
-      this.statisticService.updateStat({ time: this.positionService.TimerService.count, correct: this.isCorrect});
+      this.statisticService.updateStat({ time: this.positionService.TimerService.count, correct: this.isCorrect });
       if (!this.positionService.nextPosition()) {
         this.endGame();
       }
@@ -144,12 +145,6 @@ export class GameComponent {
     }
     else {
       this.positionService.positionStop();
-    }
-  }
-
-  public endNear(event: boolean): void {
-    if (event && this.options.timePerQuestion) {
-      console.log('end near');
     }
   }
 
