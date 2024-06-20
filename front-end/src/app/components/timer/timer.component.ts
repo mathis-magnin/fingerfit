@@ -10,7 +10,7 @@ import { TimerService } from 'src/services/timer.service';
 export class TimerComponent implements OnInit {
 
     public counterS: number = 0;
-    
+
     @Input()
     public paused: boolean = false;
 
@@ -31,12 +31,11 @@ export class TimerComponent implements OnInit {
             this.counterS = Math.trunc(time);
             this.checkTime();
         });
-        
+
     }
 
     ngOnInit(): void {
-        if (this.start)
-            this.startTimer();
+        this.startTimer();
     }
 
     public startTimer(): void {

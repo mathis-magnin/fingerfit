@@ -6,36 +6,34 @@
 <main [ngClass]="{disable:showPopup}">
     <div class="option">
 
-        <app-list [items]="quizList" [text]="'Sélectionner un quiz'" (selectedItems)="selectQuiz($event[0])"
+        <app-list [items]="quizList" [text]="'Sélectionner un quiz'" (selectedItems)="setQuiz($event[0])"
             (searchValue)="searchQuizzes($event)" (selectedFilter)="filterQuizzes($event)" />
 
         <hr />
 
-        <app-option [caption]="'Mode de jeu'">
-            <app-selector [options]="gameModes" (selectedOption)="setGameMode($event)" />
-        </app-option>
+        <app-option [caption]="'Mode de jeu'" />
+        <div class="columns">
+            <app-card *ngFor="let gameMode of gameModes" [name]="gameModeToString(gameMode)"
+                [image]="'/game-mode/' + GameMode[gameMode]" [isSelected]="options.gameMode == gameMode"
+                (selected)="setGameMode(gameMode)" />
+        </div>
 
         <hr />
 
-        <app-option [caption]="'Afficher le chronomètre'" (change)="switchChronometer($event)">
-            <app-checkbox [checked]="this.chronometer"/>
-        </app-option>
-
-        <hr />
-
-        <app-option [caption]="'Définir un temps par position de main'">
-            <app-checkbox (change)="switchTimer($event)" [checked]="this.timePerQuestion!=0" />
-            <input type="number" placeholder="{{options?.timePerQuestion}}sec" min="1" #numberInput
-                (change)="setTime(numberInput.value)" [value]="timePerQuestion"/>
-        </app-option>
+        <app-option [caption]="'Mesure du temps par position'" />
+        <div class="columns">
+            <app-card *ngFor="let timeMesure of timeMesures" [name]="timeMesureToString(timeMesure)"
+                [image]="'/time-mesure/' + TimeMesure[timeMesure]" [isSelected]="options.timeMesure == timeMesure"
+                [hasInput]="timeMesure == TimeMesure.COUNTDOWN" [input]="options.countdown"
+                (selected)="setTimeMesure(timeMesure)" (inputNumber)="setCountdown($event)" />
+        </div>
 
         <hr />
     </div>
 
+    <app-warning-popup *ngIf="warning != ''" [text]="warning" />
     <div class="validate">
-        <app-warning-popup *ngIf="isWarningVisible" [text]="currentError" />
-        <app-button [text]="'Valider et Jouer'" [buttonStyle]="playButtonStyle" (click)="switchGame()"
-            id="play_button" />
+        <app-button [text]="'Valider et Jouer'" [buttonStyle]="playButtonStyle" (click)="play()" id="play_button" />
     </div>
 </main>
 

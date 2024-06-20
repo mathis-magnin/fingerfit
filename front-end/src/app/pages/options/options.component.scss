@@ -30,19 +30,7 @@ app-option input[type="number"] {
 }
 
 
-input {
-    text-align: center;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid black;
-    margin-left: 20px;
-    width: 5vw;
-}
-
-
 .validate {
-    position: sticky;
-    bottom: 1vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,4 +40,19 @@ input {
 .disable {
     pointer-events: none;
     filter: blur(50px);
+}
+
+
+.columns {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
+
+
+app-warning-popup {
+    position: sticky;
+    bottom: 0;
 }
