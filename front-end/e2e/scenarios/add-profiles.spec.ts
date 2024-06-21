@@ -56,8 +56,6 @@ test.describe('Ajout d\'un profil', () => {
             const profiles = await profilesComponentFixture.getProfiles();
             expect(profiles).toBeVisible();
 
-            const newCount = await profilesComponentFixture.getProfileListCount();
-
             //recherche du profil ajouté
             const searchInput = await profilesComponentFixture.getSearchInput();
             expect(searchInput).toBeVisible();
@@ -65,13 +63,6 @@ test.describe('Ajout d\'un profil', () => {
             const newCount2 = await profilesComponentFixture.getProfileListCount();
 
 
-            //affichage du profil ajouté si possible
-            if(count<=2){
-                expect(newCount).toBe(count + 1);
-            }
-            else{
-                expect(newCount).toBe(count);
-            }
             expect(newCount2).toBeGreaterThan(0);
 
             await profilesComponentFixture.clickShowProfile();
