@@ -55,7 +55,7 @@ test.describe('Positions creation', () => {
             await page.keyboard.down('Q');
             await page.keyboard.down('D');
             await page.keyboard.down('B');
-            let txtValid = positionsFixture.getByText('La position a bien été ajoutée');
+            let txtValid = await positionsFixture.getByText('La position a bien été ajoutée');
             expect(txtValid).not.toBeVisible();
             await page.keyboard.down('Space');
 

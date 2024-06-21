@@ -1,16 +1,13 @@
 import { PlaywrightTestConfig } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
-  reporter: [['html', { open: 'always' }]],
+  reporter: [['json', { outputFile: './test-results/test-results.json' }]],
   use: {
-    headless: false,
+    headless: true,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
-    video: 'on-first-retry',
-    screenshot: 'only-on-failure',
-    launchOptions: {
-      slowMo: 1000,
-    }
+    video: 'on',
+    screenshot: 'on',
   },
   timeout: 120000
 };
