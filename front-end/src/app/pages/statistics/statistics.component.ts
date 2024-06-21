@@ -13,7 +13,7 @@ import { StatisticsService } from 'src/services/statistics.service';
 })
 
 export class StatisticsComponent {
-    public listStyle: ListStyle = { height: "75vh" };
+    public listStyle: ListStyle = { height: "70vh" };
     public tempPositionList: Position[] = [];
     public positionList: Position[] = [];
     public allStatistics: Statistic[] = [];

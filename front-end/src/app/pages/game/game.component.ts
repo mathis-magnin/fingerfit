@@ -47,13 +47,13 @@ export class GameComponent {
       (numberOfPositions) => {
         this.numberOfPositions = numberOfPositions;
       }
-    )
+    );
 
     this.positionService.currentPositionIndex$.subscribe(
       (currentPositionIndex) => {
         this.currentPositionNumber = currentPositionIndex + 1;
       }
-    )
+    );
 
     this.positionService.position$.subscribe(
       (position) => {
@@ -74,6 +74,7 @@ export class GameComponent {
   ngOnInit(): void {
     this.answersService.clearAnswers();
     this.statisticService.fetchStat();
+    this.positionService.positionStart(true);
   }
 
   public nextPosition(): void {
@@ -88,9 +89,9 @@ export class GameComponent {
       console.log('keysShown: ', this.keysShown);
     }
     else {
-      this.answersService.addAnswer({ time: this.positionService.TimerService.count, correct: this.isCorrect });
+      this.answersService.addAnswer({ time: this.positionService.timerService.count, correct: this.isCorrect });
       console.log(this.statisticService.statisticUrl);
-      this.statisticService.updateStat({ time: this.positionService.TimerService.count, correct: this.isCorrect });
+      this.statisticService.updateStat({ time: this.positionService.timerService.count, correct: this.isCorrect });
       if (!this.positionService.nextPosition()) {
         this.endGame();
       }

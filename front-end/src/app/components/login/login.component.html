@@ -1,9 +1,41 @@
-<div class="login">
+<div class="login" *ngIf="firstConnection">
+    <div class="caption">
+        <img src="../../../assets/lock.png" alt="cadenat">
+        <label>Créer un mot de passe administrateur</label>
+    </div>
+    <input type="password" #creationInput placeholder="Mot de passe" (input)="onCreationChange($event)">
+    <input type="password" #confirmationInput placeholder="Confirmation mot de passe"
+        (input)="onConfirmationChange($event)">
+    <app-warning-popup *ngIf="warning != ''" [text]="warning" />
+    <app-button [buttonStyle]="createButtonStyle" [text]="'Créer et se connecter'" (click)="createPassword()" />
+</div>
+
+<div class="login" *ngIf="!firstConnection && !update">
     <div class="caption">
         <img src="../../../assets/lock.png" alt="cadenat">
         <label>Se connecter en tant qu'administrateur</label>
     </div>
-    <input type="password" #passwordInput placeholder="Mot de passe" (input)="onPasswordChange($event)">
-    <app-warning-popup *ngIf="showWarning" [text]="'Mot de passe incorrect'"></app-warning-popup>
-    <app-button [buttonStyle]="buttonStyle" [text]="'Se connecter'" (click)="tryLogin()"></app-button>
+    <input type="password" #connexionInput placeholder="Mot de passe" (input)="onConnexionChange($event)">
+    <app-warning-popup *ngIf="warning != ''" [text]="warning" />
+    <div class="row">
+        <app-button [buttonStyle]="cancelButtonStyle" [text]="'Modifier le mot de passe'" (click)="toogleUpdate()" />
+        <app-button [buttonStyle]="createButtonStyle" [text]="'Se connecter'" (click)="tryLogin()" />
+    </div>
+</div>
+
+<div class="login" *ngIf="update">
+    <div class="caption">
+        <img src="../../../assets/lock.png" alt="cadenat">
+        <label>Modifier le mot de passe administrateur</label>
+    </div>
+    <input type="password" #connexionInput placeholder="Ancien mot de passe" (input)="onConnexionChange($event)">
+    <input type="password" #creationInput placeholder="Nouveau mot de passe" (input)="onCreationChange($event)"
+        class="update">
+    <input type="password" #confirmationInput placeholder="Confirmation nouveau mot de passe"
+        (input)="onConfirmationChange($event)" class="update">
+    <app-warning-popup *ngIf="warning != ''" [text]="warning" />
+    <div class="row">
+        <app-button [buttonStyle]="cancelButtonStyle" [text]="'Annuler'" (click)="toogleUpdate()" />
+        <app-button [buttonStyle]="createButtonStyle" [text]="'Modifier et se connecter'" (click)="updatePassword()" />
+    </div>
 </div>

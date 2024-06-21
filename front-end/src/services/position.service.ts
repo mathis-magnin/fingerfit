@@ -19,7 +19,7 @@ export class PositionService {
     public position$: BehaviorSubject<Position> = new BehaviorSubject(this.position);
 
 
-    constructor(public quizService: QuizService, public TimerService: TimerService) {
+    constructor(public quizService: QuizService, public timerService: TimerService) {
         this.quizService.quiz$.subscribe(
             (quiz) => {
                 this.currentPositionIndex = 0;
@@ -33,7 +33,7 @@ export class PositionService {
 
 
     nextPosition(): boolean {
-        this.TimerService.stop();
+        this.timerService.stop();
         this.currentPositionIndex++;
         this.currentPositionIndex$.next(this.currentPositionIndex);
 
@@ -54,12 +54,12 @@ export class PositionService {
 
 
     positionStop(): void {
-        this.TimerService.stop();
+        this.timerService.stop();
     }
 
     positionStart(reset?: boolean): void {
         if(reset)
-            this.TimerService.clearTimer();
-        this.TimerService.startTimer();
+            this.timerService.clearTimer();
+        this.timerService.startTimer();
     }
 }

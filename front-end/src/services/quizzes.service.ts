@@ -14,7 +14,7 @@ export class QuizzesService {
     public quizzes: Quiz[] = [];
     public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
 
-    private QuizUrl = serverUrl + '/quizzes';
+    private quizUrl = serverUrl + '/quizzes';
     private httpOptions = httpOptionsBase;
 
 
@@ -26,7 +26,7 @@ export class QuizzesService {
     /* Database functions */
 
     public fetchQuizzes(): void {
-        this.http.get<Quiz[]>(this.QuizUrl).subscribe((quizList) => {
+        this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
             this.quizzes = quizList;
             this.quizzes$.next(this.quizzes);
         });
@@ -34,23 +34,23 @@ export class QuizzesService {
 
 
     public createQuiz(quiz: Quiz): void {
-        this.http.post<Quiz>(this.QuizUrl, quiz, this.httpOptions).subscribe(() => {
+        this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe(() => {
             this.fetchQuizzes();
         });
     }
 
 
     public updateQuiz(quiz: Quiz): void {
-        this.http.put<Quiz>(this.QuizUrl + '/' + quiz.id, quiz).subscribe(() => {
+        this.http.put<Quiz>(this.quizUrl + '/' + quiz.id, quiz).subscribe(() => {
             this.fetchQuizzes();
         });
     }
 
 
     public deleteQuiz(quiz: Quiz): void {
-        this.http.delete<Quiz>(this.QuizUrl + '/' + quiz.id).subscribe(() => {
+        this.http.delete<Quiz>(this.quizUrl + '/' + quiz.id).subscribe(() => {
             this.fetchQuizzes();
-        })
+        });
     }
 
 
