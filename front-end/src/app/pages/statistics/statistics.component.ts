@@ -13,7 +13,7 @@ import { StatisticsService } from 'src/services/statistics.service';
 })
 
 export class StatisticsComponent {
-  public listStyle: ListStyle = { height: "75vh" };
+  public listStyle: ListStyle = { height: "70vh" };
   public positionList: Position[] = [];
   public statisticList: Statistic[] = [];
   public side: Side = Side.UNDEFINED;
