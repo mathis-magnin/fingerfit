@@ -4,6 +4,7 @@ import { NavbarItem } from 'src/models/navbar.model';
 import { Position, Side, sideToString, stringToSide } from 'src/models/position.model';
 import { ButtonStyle, HandsStyle, KeyboardStyle, ListStyle } from 'src/models/style-input.model';
 import { PositionsService } from 'src/services/positions.service';
+import { StatisticsService } from 'src/services/statistics.service';
 
 @Component({
     selector: 'app-positions',
