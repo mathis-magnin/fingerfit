@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
 
     @Input() public exitButtonLink: string = '/home';
 
-    public exitButtonStyle: ButtonStyle = new ButtonStyle({width: '3.125vw', backgroundColor: 'grey'});
+    public exitButtonStyle: ButtonStyle = new ButtonStyle({width: '2.5vw', backgroundColor: 'cornflowerblue'});
 
     constructor() {}
 

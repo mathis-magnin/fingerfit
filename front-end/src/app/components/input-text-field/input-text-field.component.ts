@@ -7,15 +7,13 @@ import { Component, Output, OnInit, Input, EventEmitter } from '@angular/core';
 })
 
 export class InputTextFieldComponent implements OnInit {
-    @Input()
-    public label?: string;
+    @Input() public label?: string;
     @Input() isDisabled: boolean = false;
-    @Input() preset?: string;
-    @Input() type?: string;
+    @Input() preset?: any;
 
-    public value: string = '';
-    @Output()
-    public valueChange = new EventEmitter<string>();
+    public value: any = '';
+
+    @Output() public valueChange = new EventEmitter<any>();
 
     constructor() { }
 

@@ -1,4 +1,4 @@
-<div class="item" [ngClass]="{selected: isSelected}" (click)="clicked()">
+<div class="item" [ngClass]="{selected: isSelected}" (click)="clicked()" [ngStyle]="getStyle()">
     <app-position *ngIf="item.keys" [position]="item" />
     <app-quiz *ngIf="item.name" [quiz]="item" [showDetails]="isSelected" />
 </div>

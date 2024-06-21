@@ -72,7 +72,7 @@ export class PositionDescriptionTabComponent {
     
     public avoidDuplicatedSymbol(finger: Finger, fingerPreviousSymbol: Symbol): void {
         for(let f = Finger.THUMB; f <= Finger.PINKY; f++) {
-            if(f != finger && this.symbolOnFinger[f] == this.symbolOnFinger[finger]) {
+            if((f != finger) && (this.symbolOnFinger[f] == this.symbolOnFinger[finger])) {
                 this.symbolOnFinger[f] = fingerPreviousSymbol;
                 this.symbolsDefaultValueOnFinger[f] = symbolToString(fingerPreviousSymbol);
             }
@@ -82,7 +82,7 @@ export class PositionDescriptionTabComponent {
 
     public avoidDuplicatedOrder(finger: Finger, fingerPreviousOrder: Order): void {
         for(let f = Finger.THUMB; f <= Finger.PINKY; f++) {
-            if(f != finger && this.orderOnFinger[f] == this.orderOnFinger[finger]) {
+            if((f != finger) && (this.orderOnFinger[f] == this.orderOnFinger[finger])) {
                 this.orderOnFinger[f] = fingerPreviousOrder;
                 this.ordersDefaultValueOnFinger[f] = orderToString(fingerPreviousOrder);
             }
@@ -106,12 +106,12 @@ export class PositionDescriptionTabComponent {
     public updateOrder(finger: Finger, order: string) {
         let fingerPreviousOrder = this.orderOnFinger[finger];
         if (fingerPreviousOrder == Order.NOT_WORKED) {
-            fingerPreviousOrder = Order.FIRST;
-            while (this.orderOnFinger.includes(fingerPreviousOrder)) {
+            do {
                 fingerPreviousOrder++;                
-            }
+            } while (this.orderOnFinger.includes(fingerPreviousOrder));
         }
         this.orderOnFinger[finger] = stringToOrder(order);
+        this.ordersDefaultValueOnFinger[finger] = order;
         if (this.orderOnFinger[finger] != Order.NOT_WORKED) {
             this.avoidDuplicatedOrder(finger, fingerPreviousOrder);
         }
@@ -122,6 +122,7 @@ export class PositionDescriptionTabComponent {
     public updateSymbol(finger: Finger, symbol: string) {
         let fingerPreviousSymbol = this.symbolOnFinger[finger];
         this.symbolOnFinger[finger] = stringToSymbol(symbol);
+        this.symbolsDefaultValueOnFinger[finger] = symbol;
         if (this.orderOnFinger[finger] == Order.NOT_WORKED) {
             let availableOrder = Order.FIRST;
             while (this.orderOnFinger.includes(availableOrder)) {

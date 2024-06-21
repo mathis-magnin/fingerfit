@@ -10,6 +10,7 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
   
 export class profilePictureComponent {
   @Input() imgURL?: string;
+  @Input() isDisabled: boolean = false;
   @Output() imgClicked = new EventEmitter<string>();
 
   constructor() { }

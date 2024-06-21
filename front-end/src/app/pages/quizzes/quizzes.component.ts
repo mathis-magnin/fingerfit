@@ -27,7 +27,7 @@ export class QuizzesComponent {
 
     public createButtonStyle: ButtonStyle = new ButtonStyle({ width: '7.5vw', height: '5vh' });
     public deleteButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', backgroundColor: "red" });
-    public cancelButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', backgroundColor: "gray" });
+    public cancelButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', backgroundColor: "black" });
     public validateButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
 
 

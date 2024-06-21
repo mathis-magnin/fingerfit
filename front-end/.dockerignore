@@ -1,0 +1,14 @@
+node_modules
+
+.dockerignore
+Dockerfile
+
+.gitignore
+
+README.md
+
+playwright-report
+test-results
+
+.angular
+.editorconfig

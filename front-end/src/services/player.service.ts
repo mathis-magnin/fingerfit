@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Profile } from '../models/profile.model';
 import { HttpClient } from '@angular/common/http';
+import { StatisticsService } from './statistics.service';
 import { serverUrl } from '../configs/server.config';
-import { GameMode, TimeMesure } from 'src/models/options.model';
 
 
 @Injectable({
@@ -14,7 +14,7 @@ export class PlayerService {
     private userUrl = serverUrl + '/users';
     public player$: BehaviorSubject<Profile | undefined> = new BehaviorSubject<Profile | undefined>(undefined);
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private statisticsService: StatisticsService) {
     }
 
 
@@ -34,6 +34,7 @@ export class PlayerService {
     public deleteProfile(): void {
         this.http.delete<Profile>(this.userUrl + '/' + this.player$.value?.id,).subscribe((deletedProfile) => {
             this.player$.next(deletedProfile);
+            this.statisticsService.deleteUserStatistics();
         });
     }
 
