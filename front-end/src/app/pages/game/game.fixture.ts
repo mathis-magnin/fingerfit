@@ -16,7 +16,7 @@ export class GameFixture extends E2EComponentFixture {
     constructor(page: Page) {
         super(page);
 
-        this.pauseButton = this.page.locator("app-button", { hasText: "Faire une pause" });
+        this.pauseButton = this.page.locator(".pause button");
         this.resumePopUpButton = this.page.locator("app-button", { hasText: "Reprendre" });
     }
 
