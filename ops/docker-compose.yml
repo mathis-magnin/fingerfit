@@ -1,7 +1,11 @@
 services:
   front:
     image: ps6-front
-    build: ../front-end
+    build: 
+      context: ../front-end
+      dockerfile: Dockerfile
+      args:
+        - SERVER_URL=http://localhost:8081/api
     ports:
       - "8080:80"
     healthcheck:
@@ -17,7 +21,9 @@ services:
   
   back:
     image: ps6-back
-    build: ../backend
+    build: 
+      context: ../backend
+      dockerfile: Dockerfile
     ports:
       - "8081:9428"
     volumes:

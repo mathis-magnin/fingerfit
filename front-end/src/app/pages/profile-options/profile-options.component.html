@@ -5,32 +5,27 @@
 <main>
     <h1>Informations du profil</h1>
     <div class="profile">
-        <app-button class="delete" [picture]="'../../assets/delete.png'" (buttonClicked)="showPopup()"
-            [buttonStyle]="buttonStyle"/>
         <app-profil-info />
     </div>
 
     <h1>Préconfiguration des parties</h1>
     <div class="preset">
-        <app-option [caption]="'Afficher le chronomètre'">
-            <app-checkbox (change)="switchChronometer($event)" [checked]="chronometer" />
-        </app-option>
+        <app-option [caption]="'Mode de jeu'" />
+        <div class="columns">
+            <app-card *ngFor="let gameMode of gameModes" [name]="gameModeToString(gameMode)"
+                [image]="'/game-mode/' + GameMode[gameMode]" [isSelected]="user.gameMode == gameMode"
+                (selected)="setGameMode(gameMode)" />
+        </div>
 
         <hr />
 
-        <app-option [caption]="'Définir un temps par position de main'">
-            <app-checkbox (change)="switchTimer($event)" [checked]="timeWaitingValue!=0" />
-            <input type="number" placeholder="{{this.timeWaitingValue}}sec" min="1" #numberInput
-                [value]="this.timeWaitingValue" (change)="setTime(numberInput.value)" />
-        </app-option>
-    </div>
-
-    <app-popup *ngIf="popupVisible" class="confirm-popup" [hideExitButton]="true">
-        <p>Êtes-vous sûr de vouloir supprimer ce profil ?</p>
-        <div class="preset">
-            <app-button [text]="'Annuler'" (buttonClicked)="showPopup()" [buttonStyle]="buttonCancelStyle"></app-button>
-            <app-button [text]="'Supprimer'" (buttonClicked)="deleteUser()"
-                [buttonStyle]="buttonAcceptStyle"></app-button>
+        <app-option [caption]="'Mesure du temps par position'" />
+        <div class="columns">
+            <app-card *ngFor="let timeMesure of timeMesures" [name]="timeMesureToString(timeMesure)"
+                [image]="'/time-mesure/' + TimeMesure[timeMesure]" [isSelected]="user.timeMesure == timeMesure"
+                [hasInput]="timeMesure == TimeMesure.COUNTDOWN" [input]="user.countdown"
+                (selected)="setTimeMesure(timeMesure)" (inputNumber)="setCountdown($event)" />
         </div>
-    </app-popup>
+
+    </div>
 </main>

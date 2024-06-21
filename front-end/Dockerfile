@@ -4,6 +4,9 @@ WORKDIR /app
 
 COPY ./ /app
 
+ARG SERVER_URL
+RUN sed -i "s|serverUrl: '.*'|serverUrl: '${SERVER_URL}'|g" src/environments/environment.prod.ts
+
 COPY package.json ./
 RUN npm install
 

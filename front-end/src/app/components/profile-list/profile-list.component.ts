@@ -26,7 +26,7 @@ export class ProfileListComponent {
     @Input() public firstAndLastButtonStyle: ButtonStyle = new ButtonStyle({ width: '3vw', height: '6vh', backgroundColor: 'rgb(167, 165, 165)', borderRadius: '50%' });
     @Input() public middleButtonStyle: ButtonStyle = new ButtonStyle({ width: '8vw', height: '6vh' });
 
-    constructor(public profilesService: ProfilesService,private router: Router,private playerService: PlayerService, private statisticService: StatisticService, private statisticsService: StatisticsService) {
+    constructor(public profilesService: ProfilesService, private router: Router, private playerService: PlayerService, private statisticService: StatisticService, private statisticsService: StatisticsService) {
         this.profilesService.profiles$.subscribe((profiles) => {
             this.profiles = profiles;
             this.start = Math.floor(this.profiles.length / 2);
@@ -51,7 +51,7 @@ export class ProfileListComponent {
                 this.hasLeftNeighbor = false;
                 this.hasRightNeighbor = false;
             }
-            if(this.profiles.length === 2) {
+            if (this.profiles.length === 2) {
                 this.hasRightNeighbor = false;
                 this.hasLeftNeighbor = true;
             }
@@ -97,10 +97,10 @@ export class ProfileListComponent {
 
     }
 
-    public checkProfileSelected(redirect:string): void {
+    public checkProfileSelected(redirect: string): void {
         this.currentProfile = this.profiles[this.start];
         console.log(this.currentProfile);
-        if (this.currentProfile===undefined) {
+        if (this.currentProfile === undefined) {
             this.warning = true;
         }
         else {

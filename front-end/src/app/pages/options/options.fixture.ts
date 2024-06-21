@@ -48,38 +48,60 @@ export class OptionsFixture extends E2EComponentFixture {
     }
 
 
-    /* Other options */
+    /* Game mode */
 
-    /* Game mode selector */
+    /* All at once */
 
-    getGameModeSelector() {
-        return this.page.locator("select", { hasText: "Tous les doigts en même temps" });
+    getAllAtOnceButton() {
+        return this.page.locator("app-card", { hasText: "Tous les doigts en même temps" });
     }
 
-    setGameModeSelector(str: string) {
-        return this.getGameModeSelector().selectOption(str);
+    clickAllAtOnceButton() {
+        return this.getAllAtOnceButton().click();
+    }
+
+
+    /* Time mesure */
+
+    /* No mesure */
+
+    getNoMesureButton() {
+        return this.page.locator("app-card", { hasText: "Aucune mesure" });
+    }
+
+    clickNoMesureButton() {
+        return this.getNoMesureButton().click();
     }
 
 
     /* Chronometer */
 
     getChronometerButton() {
-        return this.page.locator("app-option", { hasText: "Afficher le chronomètre" }).locator("app-checkbox");
+        return this.page.locator("app-card", { hasText: "Chronomètre" });
     }
 
-    clickChronometerbutton() {
+    clickChronometerButton() {
         return this.getChronometerButton().click();
     }
 
 
-    /* Timer */
+    /* Countdown */
 
-    getTimerButton() {
-        return this.page.locator("app-option", { hasText: "Définir un temps par position de main" }).locator("app-checkbox");
+    getCountdownButton() {
+        return this.page.locator("app-card", { hasText: "Compte à rebours" });
     }
 
-    clickTimerButton() {
-        return this.getTimerButton().click();
+    clickCountdownButton() {
+        return this.getCountdownButton().click();
+    }
+
+
+    getCountdownInput() {
+        return this.page.getByPlaceholder("sec");
+    }
+
+    fillCountdownInput(str: string) {
+        return this.getCountdownInput().fill(str);
     }
 
 

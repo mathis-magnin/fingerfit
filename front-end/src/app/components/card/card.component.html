@@ -1,0 +1,6 @@
+<div class="card" [ngClass]="{selected: isSelected}" (click)="clicked()">
+  <label>{{name}}</label>
+  <img src="assets/{{image}}.png">
+  <input *ngIf="hasInput" type="number" placeholder="sec" min="1" [value]="input"
+    (change)="changeinput(numberInput.value)" #numberInput />
+</div>

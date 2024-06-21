@@ -24,8 +24,10 @@ test.describe("Play game scenario", () => {
             await optionsFixture.SetListFilterSelector("Deux mains");
             await optionsFixture.fillListSearchBar("Test");
             await optionsFixture.clickListItem("Test");
-            await optionsFixture.clickChronometerbutton();
-            await optionsFixture.clickTimerButton();
+            await optionsFixture.clickAllAtOnceButton();
+            await optionsFixture.clickNoMesureButton();
+            await optionsFixture.clickCountdownButton();
+            await optionsFixture.fillCountdownInput("30");
             await optionsFixture.clickPlayButton();
         });
 

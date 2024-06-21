@@ -12,4 +12,6 @@ COPY . /app
 
 EXPOSE 9428
 
-CMD ["npm", "run", "start","dev"]
+ARG NODE_ENV
+ENV NODE_ENV=${NODE_ENV}
+CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"e2e\" ]; then npm run start:e2e; else npm run start; fi"]
