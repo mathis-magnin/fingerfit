@@ -1,11 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { NavbarItem, navbarProfileOptionsStatistics } from 'src/models/navbar.model';
-import { ButtonStyle } from 'src/models/style-input.model';
 import { PlayerService } from 'src/services/player.service';
-import { Router } from '@angular/router';
 import { ProfilesService } from 'src/services/profiles.service';
 import { Profile } from 'src/models/profile.model';
 import { GameMode, TimeMesure, gameModeToString, timeMesureToString } from 'src/models/options.model';
+import { ButtonStyle } from 'src/models/style-input.model';
 
 
 @Component({
@@ -49,7 +48,7 @@ export class ProfileOptionsComponent {
   public timeMesures: TimeMesure[] = [];
 
 
-  constructor(private playerService: PlayerService, private router: Router, private profileService: ProfilesService) {
+  constructor(private playerService: PlayerService, private profileService: ProfilesService) {
     this.playerService.player$.subscribe((player) => {
       if (player) {
         this.user = player;
@@ -70,16 +69,7 @@ export class ProfileOptionsComponent {
     console.log(this.user);
     this.playerService.updateProfile(this.user);
   }
-
-
-  public deleteUser(): void {
-    this.playerService.deleteProfile();
-    this.router.navigate(['/profiles']);
-  }
-
-  public showPopup(): void {
-    this.popupVisible = !this.popupVisible;
-  }
+    
 
   /* Game mode */
 

@@ -1,4 +1,5 @@
 import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { Profile } from 'src/models/profile.model';
 import { ButtonStyle } from 'src/models/style-input.model';
 import { PlayerService } from 'src/services/player.service';
@@ -13,22 +14,26 @@ import { PlayerService } from 'src/services/player.service';
 export class InfoProfileComponent {
 
   @Input() profile: Profile | undefined;
-  public editMode: boolean = false;
-  public editText: string = "Modifier";
-
   public newPicture?: string;
   public newName?: string;
   public newFirstName?: string;
   public newAge?: number;
 
+  public editMode: boolean = false;
+
   public showPopup: boolean = false;
+  public popupMsg: string = "Voulez-vous vraiment modifier ce profil ?";
+
   public errorMsg: string = "Remplissez tous les champs correctement";
   public warningVisible: boolean = false;
+
   public closePictures: boolean = false;
-  public addButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', margin: "1vw" });
+
+  public deleteButtonStyle: ButtonStyle = new ButtonStyle({ backgroundColor: '#ff0000' });
+  public modifyButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', margin: "1vw" });
   public cancelButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', margin: "1vw", backgroundColor: "grey" });
 
-  public constructor(public playerService: PlayerService, public changeDetector: ChangeDetectorRef) {
+  public constructor(public playerService: PlayerService, private router: Router, public changeDetector: ChangeDetectorRef) {
     playerService.player$.subscribe((player) => {
       this.profile = player;
     });
@@ -39,35 +44,48 @@ export class InfoProfileComponent {
     this.newPicture = this.profile?.profilePicture;
   }
 
-  public triggerPopup(): void {
-    this.closePictures = false;
-    if (this.newName === '' || this.newFirstName === '' || !this.newAge || !this.newPicture) {
-      this.closePictures = true;
-      this.errorMsg = "Remplissez tous les champs correctement";
-      this.warningVisible = true;
-      return;
+  public modifyProfile(): void {
+    if(!this.showPopup) {
+      this.closePictures = this.editMode;
+      if(this.editMode) {
+        if (this.newName === '' || this.newFirstName === '' || !this.newAge || !this.newPicture) {
+          this.errorMsg = "Remplissez tous les champs correctement";
+          this.warningVisible = true;
+        }
+        else if (isNaN(this.newAge) || this.newAge <= 0) {
+          this.errorMsg = "L'âge doit être un nombre supérieur à 0";
+          this.warningVisible = true;
+        }
+        else {
+          this.openConfirmModificationPopup();
+        }
+      }
+      else {
+        this.editMode = true;
+      }
     }
-    if (isNaN(this.newAge) || this.newAge <= 0) {
-      this.closePictures = true;
-      this.errorMsg = "L'âge doit être un nombre supérieur à 0";
-      this.warningVisible = true;
-      return;
-    }
-    if (this.editMode) {
-      this.closePictures = true;
+  }
+
+  public openConfirmModificationPopup(): void {
+    if(!this.showPopup) {
+      this.popupMsg = "Voulez-vous vraiment modifier ce profil ?"
       this.showPopup = true;
     }
-    else {
-      this.editMode = true;
-      this.editText = "Valider"
+  }
+
+  public openConfirmDeletionPopup(): void {
+    if(!this.showPopup) {
+      this.popupMsg = "Voulez-vous vraiment supprimer ce profil ?"
+      this.showPopup = true;
     }
   }
 
   public exitEditMode(): void {
-    this.closePictures = true;
-    this.editMode = false;
-    this.editText = "Modifier";
-    this.resetInput();
+    if(!this.showPopup) {
+      this.closePictures = true;
+      this.editMode = false;
+      this.resetInput();
+    }
   }
 
   setProfilePicture(event: any): void {
@@ -86,9 +104,15 @@ export class InfoProfileComponent {
     this.newAge = event;
   }
 
-  public confirmEdit(): void {
-    this.updatePlayer();
-    this.exitEditMode();
+  public confirm(): void {
+    if(this.editMode) {
+      this.updatePlayer();
+      this.exitEditMode();
+    }
+    else {
+      this.playerService.deleteProfile();
+      this.router.navigate(['/profiles']);
+    }
   }
 
   public updatePlayer(): void {
@@ -108,6 +132,5 @@ export class InfoProfileComponent {
     this.newFirstName = this.profile?.firstName;
     this.newPicture = this.profile?.profilePicture;
   }
-
 
 }
