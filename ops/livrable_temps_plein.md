@@ -1,5 +1,21 @@
 # Livrable FingerFit
 
+## Sommaire 
+
+- [Tests playwright](#tests-playwright)
+    - [Critères de priorisation des tests](#critères-de-priorisation-des-tests)
+    - [Scénarios des tests](#scénarios-des-tests)
+        - [État d’implémentation](#etat-dimplémentation)
+        - [Ordre de priorité du scénario en fonction de nos critères et justification](#ordre-de-priorité-du-scénario-en-fonction-de-nos-critères-et-justification)
+- [Ops](#ops)
+    - [Explication et status du livrable](#explication-et-status-du-livrable)
+        - [run.sh](#runsh)
+        - [run-e2e.sh](#run-e2esh)
+    - [Healthchecks](#healthchecks)
+        - [Back](#back)
+        - [Front](#front)
+
+
 ## Tests playwright 
 
 ### Critères de priorisation des tests
@@ -23,15 +39,15 @@ Nous avons identifié cinq scénarios de tests à implémenter :
 4. L'ajout/suppression de profils par l'encadrante
 5. La consultation des statistiques relative à un enfant
 
-**État d’implémentation**
+#### Etat d’implémentation
 
-1. [IN PROGRESS]
-2. [IN PROGRESS]
-3. [IN PROGRESS]
+1. [DONE]
+2. [DONE]
+3. [DONE]
 4. [DONE]
-5. [IN PROGRESS]
+5. [DONE]
 
-**Ordre de priorité du scénario en fonction de nos critères et justification**
+#### Ordre de priorité du scénario en fonction de nos critères et justification
 
 Nous avons décidé de prioriser nos tests de façon ordonnée de la façon suivante : 
 
@@ -50,4 +66,59 @@ Nous avons décidé de prioriser nos tests de façon ordonnée de la façon suiv
 
 ## Ops 
 
+### Explication et statut du livrable 
+
+Dans l'état actuel des choses, vous retrouverez dans ce dossier deux scripts shell pour exécuter le site en version dockerisé ([run.sh](run.sh)) ou exécuter les tests avec playwright dockerisé ([run-e2e.sh](run-e2e.sh)).
+
+Chaque script appel un docker compose différent.
+
+Vous retrouverez deux Dockerfiles (un pour les tests et un pour run normalement) dans le front et un dans le back.
+
+Il est actuellement possible de run le site classiquement sans docker ou bien le run avec docker. 
+
+Nous avons fait en sorte que le back puisse run différemment si c'est un test grâce à des arguments passés dans le compose ([Dockerfile du back](../backend/Dockerfile)) : 
+
+```
+CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"e2e\" ]; then npm run start:e2e; else npm run start; fi"]
+```
+
+Nous avons également utilisé les arguments et environnements docker compose pour changer des URL différents en fonction de la version utilisée
+
+#### run.sh
+
+Ce script va run le docker compose associé et vérifié que les healthchecks sont bien effectués
+
+#### run-e2e.sh
+
+Ce script va run le docker compose associé et vérifié que les healthchecks sont bien effectués puis va enregistrer le résultat des tests dans le dossier [test-results](test-results)
+
+### Healthchecks
+
+#### Front 
+
+Pour le healthcheck du front, nous avons simplement vérifié que le localhost:80 est bien setup, cette vérification qui est répétée avec un intervalle de 10s
+
+On remarque qu'on attend ici que le back soit healthy pour startup le front.
+
+```
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      back:
+        condition: service_healthy
+```
+
+#### Back
+On fait de même pour le back avec le port du container : 
+
+```
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9428/api/status"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+```
 
