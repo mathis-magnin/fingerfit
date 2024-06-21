@@ -8,5 +8,15 @@
     "gameMode": 1,
     "timeMesure": 1,
     "countdown": 25
+  },
+  {
+    "id": 1718891201391,
+    "name": "Jean",
+    "firstName": "Jean",
+    "age": "90",
+    "profilePicture": "../../../assets/profile-character/character1.png",
+    "gameMode": 1,
+    "timeMesure": 1,
+    "countdown": 25
   }
 ]

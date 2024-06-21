@@ -14,7 +14,7 @@ test.describe("Play game scenario", () => {
         await test.step("Profiles page", async () => {
             const profilesFixture = new ProfilesFixture(page);
 
-            await profilesFixture.fillSearchBar("Mardé TEST");
+            await profilesFixture.fillSearchBar("Jean Jean");
             await profilesFixture.clickPlayButton();
         });
 

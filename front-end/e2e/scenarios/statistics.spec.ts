@@ -1,15 +1,18 @@
-import {test, expect} from '@playwright/test';
-import {testUrl} from 'e2e/e2e.config';
+import { test, expect } from '@playwright/test';
+import { testUrl } from 'e2e/e2e.config';
+import { ProfilesFixture } from 'src/app/pages/profiles/profiles.fixture';
 import { StatisticsFixture } from 'src/app/pages/statistics/statistics.fixture';
 
 test.describe('Statistics', () => {
 
-    test('Check statistics', async ({page}) => {
+    test('Check statistics', async ({ page }) => {
         await page.goto(testUrl + '/profiles');
-        
+
         const statisticsFixture = new StatisticsFixture(page);
+        const profilesFixture = new ProfilesFixture(page);
+        await profilesFixture.fillSearchBar("Mardé TEST");
         await page.getByRole('button').nth(3).click();
-        
+
         await test.step('Check statistics', async () => {
             expect(await statisticsFixture.countPositions()).toBe(3);
             await expect(page).toHaveScreenshot('stats-test-0.png');
