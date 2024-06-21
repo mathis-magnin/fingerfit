@@ -20,7 +20,8 @@ export class StatisticsComponent {
     public statisticList: Statistic[] = [];
     public side: Side = Side.UNDEFINED;
     public search: string = "";
-    public colors: string[] = [];
+    public colorList = ["#74D0F1", "#FA8072", "#16B84E", "#F4C430", "#C9A0DC", "#FD6C9E", "#FEA347", "#7FFFD4", "#D2B48C", "#9FE855"]
+    public colorMap: Map<any, string> = new Map<any, string>();
 
     public currentPageIndex: number = 1;
     public navItems: NavbarItem[] = navbarProfileOptionsStatistics;
@@ -59,14 +60,14 @@ export class StatisticsComponent {
 
     public filterStatistics(positions: Position[]) {
         this.statisticsService.filterStatistics(positions);
-        console.log("statistics filterd : " + this.statisticList.length);
+        console.log("statistics filtered : " + this.statisticList.length);
     }
 
-    
-    public updateColors(colors: string[]) {
-        console.log("couleurs reçu sur la page : " + colors);
-        this.colors = colors;
+
+    public sendColorMap(colorMap: Map<any, string>) {
+        this.colorMap = colorMap;
     }
+
 
     public positionToDisplay() {
         this.positionList = [];

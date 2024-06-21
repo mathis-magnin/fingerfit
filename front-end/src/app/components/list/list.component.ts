@@ -36,17 +36,13 @@ export class ListComponent {
     }
     @Input() public multipleChoice: boolean = false;
     @Input() public text: string = "Sélectionner un élément";
-    @Input() public colors: string[] = [];
+    @Input() public colors: string[] = ["gainsboro"];
 
 
     @Output() public selectedItems: EventEmitter<any[]> = new EventEmitter<any[]>();
     @Output() public selectedFilter: EventEmitter<string> = new EventEmitter<string>();
     @Output() public searchValue: EventEmitter<string> = new EventEmitter<string>();
-
-    //ngOnchange
-    ngOnChanges() {
-        this.updateColorMap();
-    }
+    @Output() public colormapEmitter: EventEmitter<Map<any, string>> = new EventEmitter<Map<any, string>>();
 
 
     search(event: any) {
@@ -64,6 +60,7 @@ export class ListComponent {
         for (let i = 0; i < this.selectedOnes.length; i++) {
             if (this.selectedOnes[i] == item) {
                 this.selectedOnes.splice(i, 1);
+                this.sendColor();
                 this.selectedItems.emit(this.selectedOnes);
                 return;
             }
@@ -77,14 +74,16 @@ export class ListComponent {
         else {
             this.selectedOnes = [item];
         }
+        this.sendColor();
         this.selectedItems.emit(this.selectedOnes);
     }
 
-    updateColorMap() {
+    sendColor() {
         let map: Map<any, string> = new Map<any, string>();
         for (let i = 0; i < Math.min(this.selectedOnes.length, this.colors.length); i++) {
             map.set(this.selectedOnes[i].id, this.colors[i]);
         }
         this.colorMap = map;
+        this.colormapEmitter.emit(this.colorMap);
     }
 }

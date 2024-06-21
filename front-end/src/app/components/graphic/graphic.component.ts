@@ -28,18 +28,18 @@ export type ChartOptions = {
 })
 
 export class GraphicComponent {
-    public colorsList = ["#008FFB", "#00E396", "#FEB019", "#FF4560", "#775DD0", "#546E7A", "#26a69a", "#D10CE8", "#FF7F00", "#FF00FF"]
 
     @Input() public items: Statistic[] = [];
+    @Input() public colorMap: Map<any, string> = new Map<any, string>();
 
-    @Output() public colorsOutput: EventEmitter<string[]> = new EventEmitter<string[]>();
 
-  @ViewChild("chart") chart: ChartComponent | undefined;
-  public chartOptions: any = {
+    @ViewChild("chart") chart: ChartComponent | undefined;
+    public chartOptions: any = {
     series: [],
     chart: {},
     xaxis: {},
-    colors: []
+    colors: [],
+    legend: {},
     };
 
     constructor() {
@@ -71,7 +71,10 @@ export class GraphicComponent {
             },
             xaxis: {
                 categories: []
-            }
+            },
+            legend: {
+                show: false,
+            },
         };
     }
 
@@ -79,8 +82,15 @@ export class GraphicComponent {
         console.log("items changed");
         this.chartOptions.series = this.processSeries();
         this.chartOptions.xaxis.categories = this.processCategories();
-        this.chartOptions.colors = this.processColors();
-        this.outputColors(this.chartOptions.colors);
+        this.chartOptions.colors = this.processColor();
+    }
+
+    public processColor(): string[] {
+        let tempColors: string[] = [];
+        for (let item of this.items) {
+            tempColors.push(this.colorMap.get(item.positionId) || "");
+        }
+        return tempColors;
     }
 
     public processSeries(): { name: string, data: number[] }[] {
@@ -103,21 +113,5 @@ export class GraphicComponent {
             categories.push(i + 1);
         }
         return categories;
-    }
-
-    public processColors(): string[] {
-        console.log("items : " + this.items.length);
-        console.log("series : " + this.chartOptions.series.length);
-        let newColors: string[] = [];
-        for (let i = 0; i < this.items.length; i++) {
-            newColors.push(this.colorsList[i % this.colorsList.length]);
-        }
-        return newColors;
-    }
-
-    public outputColors(colors: string[]) {
-        this.colorsOutput.emit(colors);
-        console.log("LES COULEURS " + colors);
-
     }
 }

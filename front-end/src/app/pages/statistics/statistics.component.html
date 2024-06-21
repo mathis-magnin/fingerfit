@@ -3,9 +3,9 @@
 </header>
 
 <main class="statistics">
-    <app-list [style]="listStyle" [items]="positionList" [multipleChoice]="true"
-        [text]="'Sélectionnez la ou les position(s) à afficher sur le graphique'" [colors]="colors"
+    <app-list [style]="listStyle" [items]="positionList" [multipleChoice]="true" [colors]="colorList"
+        [text]="'Sélectionnez une ou plusieurs positions'" (colormapEmitter)="sendColorMap($event)"
         (searchValue)="searchPositions($event)" (selectedFilter)="filterPositions($event)"
         (selectedItems)="filterStatistics($event)" />
-    <app-graphic class="stats-chart" [items]="statisticList" (colorsOutput)="updateColors($event)"/>
+    <app-graphic class="stats-chart" [items]="statisticList" [colorMap]="colorMap"/>
 </main>
