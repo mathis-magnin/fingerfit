@@ -10,16 +10,22 @@
 
     <h1>Préconfiguration des parties</h1>
     <div class="preset">
-        <app-option [caption]="'Afficher le chronomètre'">
-            <app-checkbox (change)="switchChronometer($event)" [checked]="chronometer" />
-        </app-option>
+        <app-option [caption]="'Mode de jeu'" />
+        <div class="columns">
+            <app-card *ngFor="let gameMode of gameModes" [name]="gameModeToString(gameMode)"
+                [image]="'/game-mode/' + GameMode[gameMode]" [isSelected]="user.gameMode == gameMode"
+                (selected)="setGameMode(gameMode)" />
+        </div>
 
         <hr />
 
-        <app-option [caption]="'Définir un temps par position de main'">
-            <app-checkbox (change)="switchTimer($event)" [checked]="timeWaitingValue!=0" />
-            <input type="number" placeholder="{{this.timeWaitingValue}}sec" min="1" #numberInput
-                [value]="this.timeWaitingValue" (change)="setTime(numberInput.value)" />
-        </app-option>
+        <app-option [caption]="'Mesure du temps par position'" />
+        <div class="columns">
+            <app-card *ngFor="let timeMesure of timeMesures" [name]="timeMesureToString(timeMesure)"
+                [image]="'/time-mesure/' + TimeMesure[timeMesure]" [isSelected]="user.timeMesure == timeMesure"
+                [hasInput]="timeMesure == TimeMesure.COUNTDOWN" [input]="user.countdown"
+                (selected)="setTimeMesure(timeMesure)" (inputNumber)="setCountdown($event)" />
+        </div>
+
     </div>
 </main>

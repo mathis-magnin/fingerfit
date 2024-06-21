@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { OptionsService } from 'src/services/options.service';
-import { Options, GameMode, gameModeToString, stringToGameMode } from 'src/models/options.model';
+import { Options, GameMode, gameModeToString, stringToGameMode, TimeMesure, stringToTimeMesure, timeMesureToString } from 'src/models/options.model';
 import { BoxStyle, ButtonStyle } from 'src/models/style-input.model';
 import { NavbarItem } from 'src/models/navbar.model';
 import { Side, stringToSide } from 'src/models/position.model';
@@ -16,130 +16,131 @@ import { PlayerService } from 'src/services/player.service';
 })
 export class OptionsComponent {
 
+  /* Navigation bar and popup */
+
   public currentPageIndex: number = 0;
   public navItems: NavbarItem[] = [{ name: 'Paramétrage de la partie', url: '/options' }];
   public exitButtonLink: string = '/profiles';
 
-  public options: Options | undefined;
-  public isPopupVisible: boolean = false;
-  public numberValue: number = 0;
-  public isWarningVisible: boolean = false;
   public showPopup: boolean = false;
-  public timeWaitingValue: number = 20;
-  public currentError: string = '';
-  public gameModes: string[] = [];
+
+
+  /* List */
 
   public quizList: Quiz[] = [];
   public side: Side = Side.UNDEFINED;
   public search: string = '';
   public selectedQuiz?: Quiz;
 
+
+  /* Button style */
+
   public boxStyle: BoxStyle = new BoxStyle({});
   public playButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh' });
 
-  public chronometer: boolean = false;
-  public timePerQuestion: number = 20;
+
+  /* Options */
+
+  GameMode = GameMode;
+  gameModeToString = gameModeToString;
+  public gameModes: GameMode[] = [];
+
+  TimeMesure = TimeMesure;
+  timeMesureToString = timeMesureToString;
+  public timeMesures: TimeMesure[] = [];
+
+  public options: Options = {
+    quiz: undefined,
+    gameMode: GameMode.ALL_AT_ONCE,
+    timeMesure: TimeMesure.NONE,
+    countdown: 20
+  };
+
+  public countdownUnset: boolean = false;
+  public warning: string = "";
+
+
 
   constructor(private router: Router, public optionsService: OptionsService, public quizzesService: QuizzesService, public playerService: PlayerService) {
-    this.optionsService.options$.subscribe((options) => {
-      this.options = options;
-    });
+    optionsService.clearOptions();
 
     this.quizzesService.quizzes$.subscribe((quizList) => {
       this.quizList = quizList;
     })
 
+
     this.playerService.player$.subscribe((player) => {
       if (player) {
-        this.chronometer = player.chronometer;
-        this.timePerQuestion = player.timePerQuestion;
+        this.options.gameMode = player.gameMode;
+        this.options.timeMesure = player.timeMesure;
+        this.options.countdown = player.countdown;
       }
     });
 
     for (let gameMode = GameMode.ALL_AT_ONCE; gameMode <= GameMode.ONE_BY_ONE; gameMode++) {
-      this.gameModes.push(gameModeToString(gameMode));
+      this.gameModes.push(gameMode);
+    }
+
+    for (let timeMesure = TimeMesure.NONE; timeMesure <= TimeMesure.COUNTDOWN; timeMesure++) {
+      this.timeMesures.push(timeMesure);
     }
   }
 
-
-  ngOnInit(): void {
-    this.optionsService.clearOptions();
-    this.quizzesService.resetQuizzes();
-    if (this.chronometer) {
-      this.optionsService.setChronometer(true);
-    }
-    if (this.timePerQuestion != 0) {
-      this.setTime(this.timePerQuestion.toString());
-      this.switchTimer({ target: { checked: this.timePerQuestion != 0 } });
-    }
-  }
-
-
-  searchQuizzes(value: string) {
-    this.quizzesService.filterQuizzes(this.side, this.search = value);
-  }
-
-
-  filterQuizzes(side: string) {
-    this.quizzesService.filterQuizzes(this.side = stringToSide(side), this.search)
-  }
-
-
-  public togglePopup(): void {
-    this.isPopupVisible = !this.isPopupVisible;
-  }
-
-
-  public switchChronometer(event: any): void {
-    if (event.target.checked) {
-      this.optionsService.setChronometer(true);
-    }
-    else {
-      this.optionsService.setChronometer(false);
-    }
-  }
-
-  public setGameMode(gameMode: string): void {
-    this.optionsService.setGameMode(stringToGameMode(gameMode));
-  }
-
-  public setTime(time: string): void {
-    this.timeWaitingValue = parseFloat(time);
-    if (this.options?.timePerQuestion && this.timeWaitingValue > 0) {
-      this.optionsService.setTime(this.timeWaitingValue);
-    }
-  }
-
-  public switchTimer(event: any): void {
-    if (event.target.checked) {
-      this.optionsService.setTimer(true);
-      this.optionsService.setTime(this.timeWaitingValue);
-    }
-    else {
-      this.optionsService.setTimer(false);
-    }
-  }
-
-  public switchGame(): void {
-    if (this.optionsService.checkOptions() && (this.timeWaitingValue > 0 || this.options?.timePerQuestion === undefined)) {
-      this.router.navigateByUrl('/game');
-    }
-    else if (!this.selectedQuiz) {
-      this.currentError = 'Veuillez sélectionner un quiz';
-      this.isWarningVisible = true;
-    }
-    else if (this.timeWaitingValue <= 0) {
-      this.currentError = 'Veuillez entrer un nombre positif pour le temps de réponse';
-      this.isWarningVisible = true;
-    }
-  }
-
-  public selectQuiz(quiz: Quiz): void {
-    this.selectedQuiz = quiz;
-    this.optionsService.selectQuiz(quiz);
-  }
 
   public togglePopupLogin(exit: boolean): void {
     this.showPopup = !exit;
   }
+
+
+  /* Quiz */
+
+  public searchQuizzes(value: string): void {
+    this.quizzesService.filterQuizzes(this.side, this.search = value);
+  }
+
+
+  public filterQuizzes(side: string): void {
+    this.quizzesService.filterQuizzes(this.side = stringToSide(side), this.search)
+  }
+
+
+  public setQuiz(quiz: Quiz) {
+    this.options.quiz = quiz;
+  }
+
+
+  /* Game mode */
+
+  public setGameMode(gameMode: GameMode): void {
+    this.options.gameMode = gameMode;
+  }
+
+
+  /* Time mesure */
+
+  public setTimeMesure(timeMesure: TimeMesure): void {
+    this.options.timeMesure = timeMesure;
+  }
+
+
+  public setCountdown(countdown: number | undefined): void {
+    if (countdown) {
+      this.options.countdown = countdown;
+    }
+    else {
+      this.countdownUnset = true;
+    }
+  }
+
+
+  /* Validate and play */
+
+  public play() {
+    this.warning = (this.options.quiz == undefined) ? "Veuillez sélectionner un quiz" : ((this.options.timeMesure == TimeMesure.COUNTDOWN) && ((this.countdownUnset) || (this.options.countdown < 0)) ? "Veuillez entrer un nombre strictement positif pour le compte à rebours" : "");
+    if (this.warning == "") {
+      this.optionsService.setOptions(this.options);
+      this.router.navigateByUrl("/game");
+    }
+  }
+
 }
