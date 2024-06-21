@@ -13,9 +13,9 @@ test.describe('Statistics', () => {
         await test.step('Check statistics', async () => {
             expect(await statisticsFixture.countPositions()).toBe(3);
             await expect(page).toHaveScreenshot('stats-test-0.png');
-            //await expect(page).not.toHaveScreenshot('stats-test-1.png');
-            //await expect(page).not.toHaveScreenshot('stats-test-2.png');
-            //await expect(page).not.toHaveScreenshot('stats-test-3.png');
+            await expect(page).not.toHaveScreenshot('stats-test-1.png');
+            await expect(page).not.toHaveScreenshot('stats-test-2.png');
+            await expect(page).not.toHaveScreenshot('stats-test-3.png');
             await statisticsFixture.clickPosition(0);
             await statisticsFixture.clickStatButton();
             await expect(page).toHaveScreenshot('stats-test-1.png');
@@ -23,9 +23,9 @@ test.describe('Statistics', () => {
             await statisticsFixture.clickPosition(2);
             await statisticsFixture.clickStatButton();
             await expect(page).toHaveScreenshot('stats-test-3.png');
-            //await expect(page).not.toHaveScreenshot('stats-test-2.png');
-            //await expect(page).not.toHaveScreenshot('stats-test-1.png');
-            //await expect(page).not.toHaveScreenshot('stats-test-0.png');
+            await expect(page).not.toHaveScreenshot('stats-test-2.png');
+            await expect(page).not.toHaveScreenshot('stats-test-1.png');
+            await expect(page).not.toHaveScreenshot('stats-test-0.png');
             await statisticsFixture.clickPosition(0);
             await statisticsFixture.clickStatButton();
             await expect(page).toHaveScreenshot('stats-test-2.png');

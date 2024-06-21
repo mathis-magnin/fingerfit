@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { testUrl } from 'e2e/e2e.config';
 import { ProfilesFixture } from 'src/app/pages/profiles/profiles.fixture';
-import { ProfileOptionFixture } from 'src/app/pages/profile-options/profiles.fixture';
+import { ProfileOptionFixture } from 'src/app/pages/profile-options/profile-options.fixture';
 
 // https://playwright.dev/docs/locators
 test.describe('Ajout d\'un profil', () => {
