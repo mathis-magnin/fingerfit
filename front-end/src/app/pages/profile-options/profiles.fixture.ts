@@ -23,7 +23,7 @@ export class ProfileOptionFixture extends E2EComponentFixture {
     }
 
     getConfirm() {
-        return this.page.locator('app-button', { hasText: 'Supprimer' });
+        return this.page.locator('app-button', { hasText: 'Confirmer' });
     }
 
     clickConfirm() {
