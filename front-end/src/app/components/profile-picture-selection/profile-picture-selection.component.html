@@ -4,5 +4,5 @@
       <app-profile-picture [imgURL]="img" (imgClicked)="selectProfilePicture(img)"/>
     </div>
   </div>
-  <app-profile-picture *ngIf="!displayChoice" [imgURL]="imgURL?imgURL:randomProfilePicture" (imgClicked)="changeProfilePicture()"/>
+  <app-profile-picture *ngIf="!displayChoice" [isDisabled]="isDisabled" [imgURL]="imgURL?imgURL:randomProfilePicture" (imgClicked)="changeProfilePicture()"/>
 </div>

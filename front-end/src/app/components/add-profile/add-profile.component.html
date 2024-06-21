@@ -5,7 +5,7 @@
         <div class="form">
             <app-input-text-field [label]="'Nom'" (valueChange)="setName($event)"/>
             <app-input-text-field [label]="'Prénom'" (valueChange)="setFirstName($event)"/>
-            <app-input-text-field [label]="'Age'" (valueChange)="setAge($event)" [type]="'number'"/>
+            <app-input-text-field [label]="'Age'" (valueChange)="setAge($event)"/>
         </div>
     </div>
     <app-button [text]="'Enregistrer le profil'" (click)="checkAndApply()" [buttonStyle]="addButtonStyle"></app-button>

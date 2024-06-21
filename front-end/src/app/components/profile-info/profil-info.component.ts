@@ -45,39 +45,47 @@ export class InfoProfileComponent {
   }
 
   public modifyProfile(): void {
-    this.closePictures = this.editMode;
-    if(this.editMode) {
-      if (this.newName === '' || this.newFirstName === '' || !this.newAge || !this.newPicture) {
-        this.errorMsg = "Remplissez tous les champs correctement";
-        this.warningVisible = true;
-      }
-      else if (isNaN(this.newAge) || this.newAge <= 0) {
-        this.errorMsg = "L'âge doit être un nombre supérieur à 0";
-        this.warningVisible = true;
+    if(!this.showPopup) {
+      this.closePictures = this.editMode;
+      if(this.editMode) {
+        if (this.newName === '' || this.newFirstName === '' || !this.newAge || !this.newPicture) {
+          this.errorMsg = "Remplissez tous les champs correctement";
+          this.warningVisible = true;
+        }
+        else if (isNaN(this.newAge) || this.newAge <= 0) {
+          this.errorMsg = "L'âge doit être un nombre supérieur à 0";
+          this.warningVisible = true;
+        }
+        else {
+          this.openConfirmModificationPopup();
+        }
       }
       else {
-        this.openConfirmModificationPopup();
+        this.editMode = true;
       }
-    }
-    else {
-      this.editMode = true;
     }
   }
 
   public openConfirmModificationPopup(): void {
-    this.popupMsg = "Voulez-vous vraiment modifier ce profil ?"
-    this.showPopup = true;
+    if(!this.showPopup) {
+      this.popupMsg = "Voulez-vous vraiment modifier ce profil ?"
+      this.showPopup = true;
+    }
   }
 
   public openConfirmDeletionPopup(): void {
-    this.popupMsg = "Voulez-vous vraiment supprimer ce profil ?"
-    this.showPopup = true;
+    if(!this.showPopup) {
+      this.popupMsg = "Voulez-vous vraiment supprimer ce profil ?"
+      this.showPopup = true;
+    }
   }
 
   public exitEditMode(): void {
-    this.closePictures = true;
-    this.editMode = false;
-    this.resetInput();
+    if(!this.showPopup) {
+      this.closePictures = true;
+      this.editMode = false;
+      this.resetInput();
+    }
   }
 
   setProfilePicture(event: any): void {

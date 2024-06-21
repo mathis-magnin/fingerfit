@@ -7,8 +7,8 @@
                 (valueChange)="setName($event)" />
             <app-input-text-field [label]="'Prénom'" [isDisabled]="!editMode" [preset]="this.newFirstName"
                 (valueChange)="setFirstName($event)" />
-            <app-input-text-field [label]="'Age'" [isDisabled]="!editMode" [preset]="this.newAge?.toString()"
-                (valueChange)="newAge" (valueChange)="setAge($event)" />
+            <app-input-text-field [label]="'Age'" [isDisabled]="!editMode" [preset]="this.newAge"
+                (valueChange)="setAge($event)" />
         </div>
     </div>
     <div class="edit-info">
