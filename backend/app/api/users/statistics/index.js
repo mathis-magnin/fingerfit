@@ -17,6 +17,10 @@ router.get('/', (req, res) => {
       const statistics = Statistic.get()
       const filteredStatitics = statistics.filter(statistic => statistic.userId === Number(userId));
       return res.status(200).json(filteredStatitics)
+    } else if (positionId) {
+      const statistics = Statistic.get()
+      const filteredStatitics = statistics.filter(statistic => statistic.positionId === Number(positionId));
+      return res.status(200).json(filteredStatitics)
     } else {
       res.status(200).json(Statistic.get())
     }

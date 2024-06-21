@@ -81,13 +81,10 @@ export class ListComponent {
     }
 
     updateColorMap() {
-        console.log("couleurs reçues par la liste : " + this.colors)
         let map: Map<any, string> = new Map<any, string>();
         for (let i = 0; i < Math.min(this.selectedOnes.length, this.colors.length); i++) {
             map.set(this.selectedOnes[i].id, this.colors[i]);
-            console.log("couleur ajoutée : " + this.selectedOnes[i].id + " ; " + this.colors[i])
         }
-        console.log("fin de la map des couleurs")
         this.colorMap = map;
     }
 }

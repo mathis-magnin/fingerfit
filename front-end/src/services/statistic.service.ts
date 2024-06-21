@@ -21,27 +21,23 @@ export class StatisticService {
     public statisticUrl = serverUrl;
     private httpOptions = httpOptionsBase;
 
-    constructor(private http: HttpClient, private playerService: PlayerService, private positionService: PositionService) { 
-        this.playerService.player$.subscribe((player) => {
-            this.player = player;
-        });
+    constructor(private http: HttpClient, private positionService: PositionService) { 
         this.positionService.position$.subscribe((position) => {
             this.position = position;
         });
     }
 
     public fetchStat(): void {
-        console.log("FETCHING STATISTIC");
         console.log(this.player?.id);
         console.log(this.position?.id);
         this.http.get<Statistic[]>(this.statisticUrl + '/?positionId=' + this.position?.id + '&userId=' + this.player?.id).subscribe((statistics) => {
             this.statistic$.next(statistics[0]);
-            console.log("J'AI BIEN RECUPERE LA STATISTIQUE")
             console.log(statistics[0]);
         });
     }
 
-    public updateUrl(): void {
+    public updateUrl(player: Profile): void {
+        this.player = player;
         this.statisticUrl = serverUrl + '/users/' + this.player?.id + '/statistics';
     }
 
@@ -64,8 +60,6 @@ export class StatisticService {
         } else {
             if (statistic === undefined) {
                 console.log("statistic is undefined");
-            } else {
-                console.log("WTFFF ????");
             }
             let newStat: Statistic = {
                 averageTime: answer.time,

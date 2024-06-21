@@ -5,6 +5,7 @@ import { PlayerService } from 'src/services/player.service';
 import { Router } from '@angular/router';
 import { ProfilesService } from 'src/services/profiles.service';
 import { Profile } from 'src/models/profile.model';
+import { StatisticsService } from 'src/services/statistics.service';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class ProfileOptionsComponent {
   public chronometer: boolean = false;
 
 
-  constructor(private playerService: PlayerService, private router: Router, private profileService: ProfilesService) {
+  constructor(private playerService: PlayerService, private router: Router) {
     this.playerService.player$.subscribe((player) => {
       this.currentProfile = player;
       if (player){

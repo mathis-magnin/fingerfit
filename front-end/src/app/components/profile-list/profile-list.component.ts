@@ -105,8 +105,8 @@ export class ProfileListComponent {
         }
         else {
             this.playerService.setPlayer(this.currentProfile);
-            this.statisticService.updateUrl();
-            this.statisticsService.updateUrl();
+            this.statisticService.updateUrl(this.currentProfile);
+            this.statisticsService.updateUrl(this.currentProfile);
             this.router.navigate([redirect]);
         }
     }
