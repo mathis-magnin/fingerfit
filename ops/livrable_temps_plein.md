@@ -70,7 +70,7 @@ Nous avons décidé de prioriser nos tests de façon ordonnée de la façon suiv
 
 Dans l'état actuel des choses, vous retrouverez dans ce dossier deux scripts shell pour exécuter le site en version dockerisé ([run.sh](run.sh)) ou exécuter les tests avec playwright dockerisé ([run-e2e.sh](run-e2e.sh)).
 
-Chaque script appel un docker compose différent.
+Chaque script appel un docker compose différent (respectivement [docker-compose](docker-compose.yml) et [docker-compose-e2e](docker-compose-e2e.yml)).
 
 Vous retrouverez deux Dockerfiles (un pour les tests et un pour run normalement) dans le front et un dans le back.
 
@@ -82,7 +82,9 @@ Nous avons fait en sorte que le back puisse run différemment si c'est un test g
 CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"e2e\" ]; then npm run start:e2e; else npm run start; fi"]
 ```
 
-Nous avons également utilisé les arguments et environnements docker compose pour changer des URL différents en fonction de la version utilisée
+Nous avons également utilisé les arguments et environnements docker compose pour changer des URL différents en fonction de la version utilisée, en l'occurence nous avons changer la variable contenant l'[URL du back](../front-end/src/environments/environment.prod.ts) dans le front grâce au [Dockerfile](../front-end/Dockerfile) associé (grâce a un sed) qui va remplacer cette variable selon l'argument précisé dans le docker compose.
+
+
 
 #### run.sh
 
@@ -112,7 +114,7 @@ On remarque qu'on attend ici que le back soit healthy pour startup le front.
 ```
 
 #### Back
-On fait de même pour le back avec le port du container : 
+On fait de même pour le back en envoyant une requête au serveur pour la route status: 
 
 ```
     healthcheck:
