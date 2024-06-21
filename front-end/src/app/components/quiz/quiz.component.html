@@ -9,9 +9,10 @@
     </div>
 
     <div class="details" *ngIf="showDetails">
+        <label class="details_title" >Détails du quiz</label>
         <ng-container *ngFor="let position of this.quiz.positions">
             <hr />
-            <app-position [position]="position" />
+            <app-position [position]="position" [handsStyle]="positionsHandsStyle" [keyStyle]="positionsKeyStyle" />
         </ng-container>
     </div>
 </div>
