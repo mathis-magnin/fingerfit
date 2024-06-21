@@ -7,7 +7,7 @@ import { TimerService } from 'src/services/timer.service';
     styleUrls: ['./timer.component.scss']
 })
 
-export class TimerComponent implements OnInit {
+export class TimerComponent /*implements OnInit*/ {
 
     public counterS: number = 0;
 
@@ -33,20 +33,7 @@ export class TimerComponent implements OnInit {
         });
 
     }
-
-    ngOnInit(): void {
-        this.startTimer();
-    }
-
-    public startTimer(): void {
-        this.TimerService.clearTimer();
-        this.TimerService.startTimer();
-    }
-
-    public clearTimer(): void {
-        this.TimerService.clearTimer();
-    }
-
+    
     public checkTime(): void {
         if (this.maxTime && this.maxTime - this.counterS <= 0) {
             this.end();
