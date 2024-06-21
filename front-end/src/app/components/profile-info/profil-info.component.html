@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="edit-info">
-        <app-button *ngIf="!editMode" [picture]="'../../assets/delete.png'" [buttonStyle]="deleteButtonStyle" (buttonClicked)="openConfirmDeletionPopup()" />
+        <app-button *ngIf="!editMode" class="delete" [picture]="'../../assets/delete.png'" [buttonStyle]="deleteButtonStyle" (buttonClicked)="openConfirmDeletionPopup()" />
         <app-button [text]="(editMode) ? 'Valider' : 'Modifier'" [buttonStyle]="modifyButtonStyle" (click)="modifyProfile()"></app-button>
         <app-popup *ngIf="showPopup" class="confirm-popup" [hideExitButton]="true">
             <p>{{popupMsg}}</p>
