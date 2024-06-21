@@ -7,9 +7,7 @@ Dockerfile
 
 README.md
 
-e2e
 playwright-report
-playwright.config.ts
 test-results
 
 .angular
