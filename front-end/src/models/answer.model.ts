@@ -1,4 +1,4 @@
-export interface Answer{
-    time : number;
-    correct : boolean;
+export interface Answer {
+    time: number;
+    correct: boolean;
 }

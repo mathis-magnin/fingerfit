@@ -8,7 +8,11 @@ const config: PlaywrightTestConfig = {
     ignoreHTTPSErrors: true,
     video: 'on',
     screenshot: 'on',
+    launchOptions: {
+      slowMo: 1000,
+    }
   },
+  
   timeout: 120000
 };
 
