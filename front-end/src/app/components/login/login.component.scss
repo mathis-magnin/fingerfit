@@ -1,33 +1,44 @@
-.login{
+.login {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding:5vh;
+    padding: 5vh;
 }
 
-.login app-exit-button{
-    position:fixed;
-    top:1vh;
-    right: 0.8vw;
+.login app-exit-button {
+    position: fixed;
+    top: 1vh;
+    right: 1vw;
 }
 
-.login input{
+.login input {
     padding: 10px;
-    margin: 10px;
+    margin: 2vh;
     border-radius: 5px;
     border: 1px solid black;
-    width: 10vw;
+    width: 15vw;
+    text-align: center;
 }
 
 
 
-.caption{
+.caption {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.caption img{
+
+
+.caption img {
     height: 5vh
+}
+
+
+.row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 25vw;
 }
