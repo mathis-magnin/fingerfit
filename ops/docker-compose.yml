@@ -1,0 +1,39 @@
+services:
+  front:
+    image: ps6-front
+    build: 
+      context: ../front-end
+      dockerfile: Dockerfile
+      args:
+        - SERVER_URL=http://localhost:8081/api
+    ports:
+      - "8080:80"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      back:
+        condition: service_healthy
+    
+    
+  
+  back:
+    image: ps6-back
+    build: 
+      context: ../backend
+      dockerfile: Dockerfile
+    ports:
+      - "8081:9428"
+    volumes:
+      - ../backend/database:/app/database
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9428/api/status"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  back_data:
+ 

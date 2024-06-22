@@ -1,21 +1,21 @@
 <header>
     <app-navbar [currentPageIndex]="currentPageIndex" [navItems]="navItems"
-        [exitButtonLink]="exitButtonLink"></app-navbar>
+        [showExitButton]="false"></app-navbar>
 </header>
 
 <main>
-    <section class="choice" *ngIf="!manage">
-        <app-option [caption]="'Créer une position'">
+    <section class="choice" *ngIf="!manage && !informPopup">
+        <app-option [caption]="'Créer une nouvelle position'">
             <app-button [text]="'Créer'" [buttonStyle]="createButtonStyle" (buttonClicked)="creation()" />
         </app-option>
 
         <hr />
 
-        <app-list [items]="positionList" [text]="'Modifier une position'" (selectedItems)="modification($event[0])"
+        <app-list [items]="positionList" [text]="'Modifier une position existante'" (selectedItems)="modification($event[0])"
             (searchValue)="searchPositions($event)" (selectedFilter)="filterPositions($event)" />
     </section>
 
-    <section class="manage" *ngIf="manage">
+    <section class="manage" *ngIf="manage && !positionTest && !popUp">
         <app-option [caption]="'Main travaillée'">
             <app-selector [options]="sidePossibilities" [defaultOption]="sideToString(position.side)"
                 (selectedOption)="updateSide($event)" />
@@ -28,18 +28,6 @@
         <app-position-description-tab [keys]="position.keys"
             (keysDescribed)="updateKeys($event)"></app-position-description-tab>
 
-        <app-warning-popup class="explainations" [text]="'N\'oubliez pas de tester la position avant de la valider'" />
-        <!--
-        <p class="explainations">
-            Appuyez en même temps sur l'ensemble des touches concernées par la position pour
-            vérifier qu'elles son détectées simultanément par votre clavier.
-            <br />
-            Si toutes les touches que vous pressez ne sont pas relevées sur le clavier ci-dessous,
-            cela signifie que la position n'est pas réalisable sur votre clavier.
-        </p>
--->
-        <app-keyboard [keyboardStyle]="keyboardStyle" [keysToPress]="allKeysInPurple" />
-
         <hr />
 
         <div class="buttons" *ngIf="manage">
@@ -48,19 +36,36 @@
             <app-button [buttonStyle]="cancelButtonStyle" [text]="'Annuler'" (buttonClicked)="reset()" />
             <div class="validate">
                 <app-warning-popup *ngIf="warning != ''" [text]="warning" />
-                <app-button [buttonStyle]="validateButtonStyle" [text]="(update) ? 'Modifer' : 'Créer'"
-                    (buttonClicked)="validateChanges()" />
+                <app-button [buttonStyle]="validateButtonStyle" [text]="'Tester pour valider'"
+                    (buttonClicked)="testPosition()" />
             </div>
         </div>
-
-        <app-popup *ngIf="popUp" class="confirm-popup" (exit)="showPopup()">
-            <p>Êtes-vous sûr de vouloir supprimer cette position ?</p>
-            <div>
-                <app-button [text]="'Annuler'" (buttonClicked)="showPopup()"
-                    [buttonStyle]="cancelButtonStyle"></app-button>
-                <app-button [text]="'Supprimer'" (buttonClicked)="deletePosition()"
-                    [buttonStyle]="validateButtonStyle"></app-button>
-            </div>
-        </app-popup>
     </section>
+
+    <app-popup *ngIf="popUp" class="confirm-popup" [hideExitButton]="true">
+        <p>Êtes-vous sûr de vouloir supprimer cette position ?</p>
+        <div>
+            <app-button [text]="'Annuler'" (buttonClicked)="showPopup()"
+                [buttonStyle]="cancelButtonStyle"></app-button>
+            <app-button [text]="'Supprimer'" (buttonClicked)="deletePosition()"
+                [buttonStyle]="validateButtonStyle"></app-button>
+        </div>
+    </app-popup>
+
+    <section class="positionTest" *ngIf="manage && positionTest">
+        <div class="positionTestHeader">
+            <app-warning-popup [text]="(update) ? 'Réussissez la position pour valider sa modification' : 'Réussissez la position pour valider sa création'" />
+            <app-hands [handsStyle]="handsStyle" [keysToPress]="positionModified.keys" [side]="positionModified.side" />
+            <app-button [text]="'Arrêter le test'" (buttonClicked)="stopTest()" [buttonStyle]="cancelButtonStyle"></app-button>
+        </div>
+        <app-keyboard [keyboardStyle]="keyboardStyle" [keysToPress]="positionModified.keys" (nextPosition)="validateChanges()" />
+    </section>
+
+    <app-popup *ngIf="informPopup" class="inform-user-popup" [hideExitButton]="true">
+        <p>{{informPopupMessage}}</p>
+        <div>
+            <app-button [text]="'Ok'" (buttonClicked)="hideInformPopup()"
+                [buttonStyle]="validateButtonStyle"></app-button>
+        </div>
+    </app-popup>
 </main>

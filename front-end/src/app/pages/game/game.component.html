@@ -1,19 +1,28 @@
-<header [ngClass]="{disable:showPopup}">
+<header [ngClass]="{disable:showPopup || showPopupBreak}">
     <div class="timer_progress">
         <app-progress-bar [positions]="numberOfPositions" [current_position]="currentPositionNumber" />
-        <app-timer [maxTime]="options.timePerQuestion"
-            [start]="this.options.timePerQuestion !== undefined || this.options.chronometer" [paused]="this.showPopup"
-            [stop]="this.stop" (timeOut)="nextPosition()" *ngIf="options.chronometer || options.timePerQuestion" />
+        <app-timer [maxTime]="(options.timeMesure == TimeMesure.COUNTDOWN) ? options.countdown : 0"
+            [paused]="this.showPopup" [stop]="this.stop" (timeOut)="nextPosition()"
+            *ngIf="options.timeMesure != TimeMesure.NONE" />
     </div>
+    <app-button class="pause" [picture]="'../assets/pause.png'" (click)="takeBreak()" />
     <app-exit-button (click)="togglePopup(false)" />
 </header>
 
-<main *ngIf="!isCorrect" [ngClass]="{disable:showPopup}">
+<main *ngIf="!isCorrect" [ngClass]="{disable:showPopup || showPopupBreak}">
     <app-hands [handsStyle]="handsStyle" [keysToPress]="keysShown" [side]="position.side" />
-    <app-keyboard [keysToPress]="keysShown" (nextPosition)="nextPosition()" (isCorrect)="isAnswerCorrect($event)" />
+    <app-keyboard [keyboardStyle]="keyboardStyle" [keysToPress]="keysShown" (nextPosition)="nextPosition()"
+        (isCorrect)="isAnswerCorrect($event)" />
 </main>
 
 <app-popup *ngIf="showPopup" (exit)="togglePopup($event)">
     <app-login />
+</app-popup>
+
+<app-popup class="break_popup" *ngIf="showPopupBreak" [hideExitButton]="true">
+    <div class="break_popup_content">
+        <p>Une petite pause bien méritée !<br />Prêt à reprendre la partie ?</p>
+        <app-button [buttonStyle]="breakPopupButtonStyle" [text]="'Reprendre'" (click)="endBreak()" />
+    </div>
 </app-popup>
 <app-congrat-character *ngIf="isCorrect">

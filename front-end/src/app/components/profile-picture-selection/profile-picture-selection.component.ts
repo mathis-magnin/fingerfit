@@ -20,8 +20,7 @@ export class ProfilePictureSelectionComponent implements OnInit {
     @Input() imgURL?: string;
     @Input() closeSelection?: boolean;
     public selectedProfilePicture: File | null = null;
-    @Output()
-    public profilePicture: EventEmitter<string> = new EventEmitter<string>();
+    @Output() public profilePicture: EventEmitter<string> = new EventEmitter<string>();
     public displayChoice: boolean = false;
     public profilePictures: string[] = [ "../../../assets/profile-character/character1.png", "../../../assets/profile-character/character2.png", "../../../assets/profile-character/character3.png", "../../../assets/profile-character/character4.png", "../../../assets/profile-character/character5.png", "../../../assets/profile-character/character6.png", "../../../assets/profile-character/character7.png"]
     public randomProfilePicture?: string;

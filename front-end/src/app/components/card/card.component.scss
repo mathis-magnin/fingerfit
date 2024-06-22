@@ -1,0 +1,63 @@
+img {
+  height: 11vw;
+  width: 11vw;
+}
+
+label {
+  height: 2vw;
+  font-size: 1.3em;
+  justify-self: center;
+  z-index: 1;
+}
+
+
+input {
+  position: absolute;
+  top: 13.5vw;
+  text-align: center;
+  padding: 1vw;
+  border: 1px black;
+  box-shadow: 0 0 5px 0px black;
+  background-color: white;
+  border-radius: 0.5dvi;
+  width: 5vw;
+}
+
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  height: 13vw;
+  width: 13vw;
+
+  box-shadow: 0 0 5px 0px black;
+  background-color: white;
+  border-radius: 0.5dvi;
+  padding: 1vw;
+
+  &:hover {
+    transform: scale(1.015);
+    transition-duration: 0.1s;
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(0.985);
+    transition-duration: 0.1s;
+    opacity: 0.5;
+  }
+}
+
+.selected {
+  background-color: gainsboro;
+}
+
+@media (max-width: 1275px) {
+  .card img {
+    display: none;
+  }
+}

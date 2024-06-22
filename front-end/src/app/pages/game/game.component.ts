@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { OptionsService } from '../../../services/options.service';
-import { Options, GameMode } from '../../../models/options.model';
+import { Options, GameMode, TimeMesure } from '../../../models/options.model';
 import { PositionService } from '../../../services/position.service';
 import { Position } from '../../../models/position.model';
 import { Key } from '../../../models/key.model';
 import { Router } from '@angular/router';
 import { AnswersService } from 'src/services/answers.service';
 import { StatisticService } from 'src/services/statistic.service';
-import { HandsStyle } from 'src/models/style-input.model';
+import { ButtonStyle, HandsStyle, KeyboardStyle } from 'src/models/style-input.model';
 
 @Component({
   selector: 'app-game',
@@ -16,18 +16,22 @@ import { HandsStyle } from 'src/models/style-input.model';
 })
 export class GameComponent {
 
+  TimeMesure = TimeMesure;
   public options: Options = {
-    timePerQuestion: undefined,
-    chronometer: false,
     quiz: undefined,
     gameMode: GameMode.ALL_AT_ONCE,
+    timeMesure: TimeMesure.NONE,
+    countdown: 20
   };
 
   public handsStyle: HandsStyle = { width: '30vh', height: '30vh' };
+  public keyboardStyle: KeyboardStyle = new KeyboardStyle(2.5);
+  public breakPopupButtonStyle: ButtonStyle = new ButtonStyle({ width: '10vw', height: '5vh', margin: "1vw" });
 
   public currentPositionNumber: number = 1;
   public numberOfPositions: number = 0;
   public showPopup: boolean = false;
+  public showPopupBreak: boolean = false;
   public position: Position = this.positionService.position$.value;
   public keysShown: Key[] = this.position.keys;
   public currentKeyIndex: number = 0;
@@ -43,13 +47,13 @@ export class GameComponent {
       (numberOfPositions) => {
         this.numberOfPositions = numberOfPositions;
       }
-    )
+    );
 
     this.positionService.currentPositionIndex$.subscribe(
       (currentPositionIndex) => {
         this.currentPositionNumber = currentPositionIndex + 1;
       }
-    )
+    );
 
     this.positionService.position$.subscribe(
       (position) => {
@@ -70,6 +74,7 @@ export class GameComponent {
   ngOnInit(): void {
     this.answersService.clearAnswers();
     this.statisticService.fetchStat();
+    this.positionService.positionStart(true);
   }
 
   public nextPosition(): void {
@@ -84,15 +89,15 @@ export class GameComponent {
       console.log('keysShown: ', this.keysShown);
     }
     else {
-      this.answersService.addAnswer({ time: this.positionService.TimerService.count, correct: this.isCorrect });
+      this.answersService.addAnswer({ time: this.positionService.timerService.count, correct: this.isCorrect });
       console.log(this.statisticService.statisticUrl);
-      this.statisticService.updateStat({ time: this.positionService.TimerService.count, correct: this.isCorrect});
+      this.statisticService.updateStat({ time: this.positionService.timerService.count, correct: this.isCorrect });
       if (!this.positionService.nextPosition()) {
         this.endGame();
       }
       else {
+        this.stop = true;
         if (this.isCorrect && (this.currentPositionNumber - 1 === Math.floor(this.numberOfPositions / 2))) {
-          this.stop = true;
           console.log('animate');
           this.animate().then(() => {
             console.log('animate end');
@@ -102,8 +107,14 @@ export class GameComponent {
           });
         }
         else {
+          console.log('Fonction nextPosition: pas super-hand');
           this.isCorrect = false;
-          this.positionService.positionStart(true);
+          new Promise<void>((resolve) => {
+            setTimeout(() => { resolve(); }, 1);
+          }).then(() => {
+            this.positionService.positionStart(true);
+            this.stop = false;
+          }); /* Cette promise a uniquement pour but de faire recommencer l'animation du timer */
         }
       }
     }
@@ -130,7 +141,6 @@ export class GameComponent {
   public togglePopup(exit: boolean): void {
     this.showPopup = !exit;
     if (exit) {
-
       this.positionService.positionStart();
     }
     else {
@@ -138,9 +148,14 @@ export class GameComponent {
     }
   }
 
-  public endNear(event: boolean): void {
-    if (event && this.options.timePerQuestion) {
-      console.log('end near');
-    }
+  public takeBreak(): void {
+    this.positionService.positionStop();
+    this.showPopupBreak = true;
   }
+
+  public endBreak(): void {
+    this.showPopupBreak = false;
+    this.positionService.positionStart();
+  }
+
 }

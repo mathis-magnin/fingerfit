@@ -46,6 +46,7 @@ import { OptionComponent } from './components/option/option.component';
 import { profilePictureComponent } from './components/profile-picture/profile-picture.component';
 import { HandsComponent } from './components/hands/hands.component';
 import { CongratCharacterComponent } from './components/congrat-character/congrat-character.component';
+import { CardComponent } from './components/card/card.component';
 
 
 
@@ -92,7 +93,8 @@ import { CongratCharacterComponent } from './components/congrat-character/congra
     ListItemComponent,
     SelectorComponent,
     OptionComponent,
-    profilePictureComponent
+    profilePictureComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

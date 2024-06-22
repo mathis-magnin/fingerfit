@@ -16,7 +16,7 @@ export class PositionComponent {
     @Input() public position: Position = { keys: [], side: Side.LEFT, id: 0 };
 
     @Input() public handsStyle: HandsStyle = { width: "10vh", height: "10vh" };
-    @Input() public keyStyle: KeyStyle = { fontSize: "1.5em" }
+    @Input() public keyStyle: KeyStyle = { fontSize: "1.5em" };
 
     constructor() { }
 

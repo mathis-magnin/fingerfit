@@ -25,34 +25,6 @@ export class KeyboardComponent {
 
     @Output() public isCorrect: EventEmitter<boolean> = new EventEmitter();
 
-    updateSymbolsPressed(isKeyPressed: IsSymbolPressed) : void {
-        if (isKeyPressed.isPressed && !this.symbolsPressed.includes(isKeyPressed.symbol)) {
-            this.symbolsPressed.push(isKeyPressed.symbol);
-        }
-        else if(!isKeyPressed.isPressed) {
-            this.symbolsPressed = this.symbolsPressed.filter(symbol => symbol !== isKeyPressed.symbol);
-        }
-        console.log(this.symbolsPressed); /* A SUPPRIMER */
-
-        if (this.isPositionFinished()) {
-            this.nextPosition.emit();
-        }
-    }
-
-    isPositionFinished(): boolean {
-        if (this.symbolsPressed.length === this.keysToPress.length) {
-            for (let k of this.keysToPress) {
-                if (!this.symbolsPressed.includes(k.symbol)) {
-                    return false;
-                }
-            }
-            this.isCorrect.emit(true);
-            return true;
-        }
-        this.isCorrect.emit(false);
-        return false;
-    }
-
     constructor() { }
 
     ngOnChanges(): void {
@@ -66,6 +38,34 @@ export class KeyboardComponent {
         for (let key of this.keysToPress) {
             this.keys[key.symbol].finger = key.finger;
         }
+    }
+
+    public updateSymbolsPressed(isKeyPressed: IsSymbolPressed) : void {
+        if (isKeyPressed.isPressed && !this.symbolsPressed.includes(isKeyPressed.symbol)) {
+            this.symbolsPressed.push(isKeyPressed.symbol);
+        }
+        else if(!isKeyPressed.isPressed) {
+            this.symbolsPressed = this.symbolsPressed.filter(symbol => symbol !== isKeyPressed.symbol);
+        }
+        console.log(this.symbolsPressed); /* A SUPPRIMER */
+
+        if (this.isPositionFinished()) {
+            this.nextPosition.emit();
+        }
+    }
+
+    public isPositionFinished(): boolean {
+        if (this.symbolsPressed.length === this.keysToPress.length) {
+            for (let k of this.keysToPress) {
+                if (!this.symbolsPressed.includes(k.symbol)) {
+                    return false;
+                }
+            }
+            this.isCorrect.emit(true);
+            return true;
+        }
+        this.isCorrect.emit(false);
+        return false;
     }
 
 }

@@ -3,8 +3,9 @@
 </header>
 
 <main class="statistics">
-    <app-list [style]="listStyle" [items]="positionList" [multipleChoice]="true"
-        [text]="'Sélectionnez une ou plusieurs position(s)'" (searchValue)="searchPositions($event)"
-        (selectedFilter)="filterPositions($event)" (selectedItems)="filterStatistics($event)" />
-    <app-graphic class="stats-chart" [items]="statisticList"/>
+    <app-list [style]="listStyle" [items]="positionList" [multipleChoice]="true" [colors]="colorList"
+        [text]="'Sélectionnez une ou plusieurs positions'" (colormapEmitter)="sendColorMap($event)"
+        (searchValue)="searchPositions($event)" (selectedFilter)="filterPositions($event)"
+        (selectedItems)="filterStatistics($event)" />
+    <app-graphic class="stats-chart" [items]="statisticList" [colorMap]="colorMap"/>
 </main>

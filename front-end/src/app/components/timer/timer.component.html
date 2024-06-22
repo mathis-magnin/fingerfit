@@ -1,6 +1,6 @@
 <div>
     <svg viewBox="0 0 200 200">
-        <circle cx="100" cy="100" r="80" [ngClass]="{pauseAnimation:paused,stopAnimation:stop}"[style.animation-duration]="maxTime?maxTime+'s':0"/>
+        <circle cx="100" cy="100" r="80" [ngClass]="{pauseAnimation:paused,stopAnimation:stop}" [style.animation-duration]="maxTime?maxTime+'s':0"/>
     </svg>
     <label>{{maxTime?maxTime-counterS:counterS}}</label>
 </div>

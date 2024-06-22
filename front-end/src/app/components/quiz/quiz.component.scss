@@ -20,7 +20,6 @@
 
 .name {
     font-size: 1.5em;
-    margin-right: 1vw;
     justify-self: center;
 }
 
@@ -35,6 +34,10 @@
     flex-direction: column;
     justify-content: space-evenly;
     grid-column: 1 / 4;
+
+    .details_title {
+        text-align: center;
+    }
 }
 
 

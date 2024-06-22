@@ -5,6 +5,7 @@ import { symbolToString } from 'src/models/key.model';
 import { HttpClient } from '@angular/common/http';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { QuizzesService } from './quizzes.service';
+import { StatisticsService } from './statistics.service';
 
 
 @Injectable({
@@ -18,7 +19,7 @@ export class PositionsService {
     private httpOptions = httpOptionsBase;
 
 
-    constructor(private http: HttpClient, private quizzesService: QuizzesService) {
+    constructor(private http: HttpClient, private quizzesService: QuizzesService, private statisticsService: StatisticsService) {
         this.fetchPositions();
     }
 
@@ -85,6 +86,8 @@ export class PositionsService {
         this.http.delete<Position>(this.positionUrl + '/' + position.id).subscribe(() => {
             this.fetchPositions();
             this.quizzesService.removePositionFromQuizzes(position);
+            this.statisticsService.deletePositionStatistics(position.id);
+
         })
     }
 
